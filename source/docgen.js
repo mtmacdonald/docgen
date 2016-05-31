@@ -8,7 +8,6 @@ var moment = require('moment');
 var childProcess = require("child_process");
 var schemaValidator = require("z-schema");
 var chalk = require('chalk');
-var spawnArgs = require('spawn-args');
 var cliSpinner = require('cli-spinner').Spinner;
 var imageSizeOf = require('image-size');
 
@@ -710,29 +709,39 @@ function DocGen (process)
     */
 
     var pdfOptions = [
-        ' --zoom 1.0',
-        ' --image-quality 100',
-        ' --print-media-type',
-        ' --orientation portrait',
-        ' --page-size A4',
-        ' --margin-top 25',
-        ' --margin-right 15',
-        ' --margin-bottom 16',
-        ' --margin-left 15',
-        ' --header-spacing 5',
-        ' --footer-spacing 5',
-        ' --no-stop-slow-scripts',
+        '--zoom', '1.0',
+        '--image-quality', '100',
+        '--print-media-type',
+        '--orientation', 'portrait',
+        '--page-size', 'A4',
+        '--margin-top', '25',
+        '--margin-right', '15',
+        '--margin-bottom', '16',
+        '--margin-left', '15',
+        '--header-spacing', '5',
+        '--footer-spacing', '5',
+        '--no-stop-slow-scripts',
     ];
 
     var getPdfArguments = function () {
         var pdfName = meta.parameters.name.toLowerCase()+'.pdf';
-        pdfOptions.push(' --javascript-delay '+options.pdfDelay);  //code syntax highlight in wkhtmltopdf 0.12.2.1 fails without a delay (but why doesn't --no-stop-slow-scripts work?)
-        pdfOptions.push(' --user-style-sheet '+__dirname+'/pdf-stylesheet.css');
-        pdfOptions.push(' --header-html '+options.output+'temp/pdfHeader.html');
-        pdfOptions.push(' --footer-html '+options.output+'temp/pdfFooter.html');
-        pdfOptions.push(' cover '+options.output+'temp/pdfCover.html');
-        pdfOptions.push(' toc --xsl-style-sheet '+__dirname+'/pdf-contents.xsl');
-        var allPages = '';
+        
+        // code syntax highlight in wkhtmltopdf 0.12.2.1 fails without a delay (but why doesn't --no-stop-slow-scripts work?)
+        pdfOptions.push('--javascript-delay');
+        pdfOptions.push(options.pdfDelay);
+        pdfOptions.push('--user-style-sheet');
+        pdfOptions.push(__dirname+'/pdf-stylesheet.css');
+        pdfOptions.push('--header-html');
+        pdfOptions.push(__dirname+'/templates/pdfHeader.html');
+        pdfOptions.push('--footer-html');
+        pdfOptions.push(__dirname+'/templates/pdfFooter.html');
+        pdfOptions.push('cover');
+        pdfOptions.push(__dirname+'/templates/pdfCover.html');
+        pdfOptions.push('toc');
+        pdfOptions.push('--xsl-style-sheet');
+        pdfOptions.push(__dirname+'/pdf-contents.xsl');
+        
+        // Add html files
         for (var key in sortedPages) {
             if (sortedPages.hasOwnProperty(key)) {
                 sortedPages[key].forEach( function (section) {
@@ -740,15 +749,16 @@ function DocGen (process)
                         var key = page.source;
                         var name = key.substr(0, page.source.lastIndexOf('.'));
                         var path = options.output+name+'.html';
-                        allPages += ' '+path;
+                        pdfOptions.push(path);
                     });
                 });
             }
         }
-        var args = pdfOptions.join('');
-        args += allPages;
-        args += ' '+options.output+pdfName;
-        return spawnArgs(args);
+        
+        // Add PDF file name
+        pdfOptions.push(options.output+pdfName);
+        
+        return pdfOptions;
     }
 
     var checkPdfVersion = function () {
@@ -787,6 +797,15 @@ function DocGen (process)
     var generatePdf = function () {
         console.log(chalk.green('Creating the PDF copy (may take some time)'));
         var args = getPdfArguments();
+
+        if (options.verbose === true) {
+            var cmdLine = '"' + options.wkhtmltopdfPath + '"';
+            for (var i = 0 ; i < args.length ; ++i) {
+                cmdLine += ' "' + args[i] + '"';
+            }
+            console.log(chalk.white("Command line: " + cmdLine));
+        }
+        
         var wkhtmltopdf = childProcess.spawn(options.wkhtmltopdfPath, args);
         var spinner = new cliSpinner(chalk.green('   Processing... %s'));
         spinner.setSpinnerString('|/-\\');
