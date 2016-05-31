@@ -3,7 +3,7 @@ var rsvp = require('rsvp');
 var fs = require('fs-extra');
 var path = require('path');
 var cheerio = require('cheerio');
-var markdown = require('markdown-it')('commonmark').enable('table');;
+var markdown = require('markdown-it')('commonmark').enable('table');
 var moment = require('moment');
 var childProcess = require("child_process");
 var schemaValidator = require("z-schema");
@@ -33,7 +33,7 @@ function DocGen (process)
 
     this.getVersion = function () {
         return version;
-    }
+    };
 
     this.setOptions = function (userOptions) {
         options = userOptions;
@@ -49,7 +49,7 @@ function DocGen (process)
         if (options.wkhtmltopdfPath && options.wkhtmltopdfPath !== '') {
             options.wkhtmltopdfPath = path.normalize(options.wkhtmltopdfPath);
         }
-    }
+    };
 
     /*
         copy the example source files (template) to any directory, when scaffold command is invoked
@@ -58,14 +58,14 @@ function DocGen (process)
     this.scaffold = function () {
         console.log(chalk.green('Creating scaffold template directory'));
         copyDirSync(__dirname+'/example', options.output);
-    }
+    };
 
     this.run = function () {
         console.log(chalk.green.bold('DocGen version '+version));
         //delete and recreate the output directory
         remakeDirSync(options.output);
         loadTemplates();
-    }
+    };
 
     /*
         read any file (async)
@@ -83,7 +83,7 @@ function DocGen (process)
                 }
             });
         });
-    }
+    };
 
     /*
         write any file (async)
@@ -100,7 +100,7 @@ function DocGen (process)
                 }
             });
         });
-    }
+    };
 
     /*
         copy any directory (sync)
@@ -116,7 +116,7 @@ function DocGen (process)
                 mainProcess.exit(1);
             }
         }
-    }
+    };
 
     /*
         remake a directory (sync) ... remove and then mkdir in one operation
@@ -133,7 +133,7 @@ function DocGen (process)
                 mainProcess.exit(1);
             }
         }
-    }
+    };
 
     /*
         remove any directory (sync)
@@ -149,7 +149,7 @@ function DocGen (process)
                 mainProcess.exit(1);
             }
         }
-    }
+    };
 
     /*
         load all HTML template files
@@ -181,7 +181,7 @@ function DocGen (process)
             }
             mainProcess.exit(1);
         });
-    }
+    };
 
     /*
         JSON schema validation
@@ -307,7 +307,7 @@ function DocGen (process)
             }
         }
         return valid;
-    }
+    };
 
     /*
         load all metadata files (JSON)
@@ -355,7 +355,7 @@ function DocGen (process)
             }
             mainProcess.exit(1);
         });
-    }
+    };
 
     /*
         load all markdown files (source)
@@ -400,7 +400,7 @@ function DocGen (process)
             }
             mainProcess.exit(1);
         });
-    }
+    };
 
     var sortPages = function () {
         //sort the contents by heading
@@ -412,7 +412,7 @@ function DocGen (process)
 
         });
         sortedPages = headings;
-    }
+    };
 
     /*
         build the HTML for the table of contents
@@ -458,7 +458,7 @@ function DocGen (process)
         html[++i] = '</tr></table></div>';
         $('#dg-toc').html(html.join(''));
         templates.main = $;
-    }
+    };
 
     /*
         insert the parameters into all templates
@@ -600,7 +600,7 @@ function DocGen (process)
                 //Note - wkhtmlpdf //cdn urls - see https://github.com/wkhtmltopdf/wkhtmltopdf/issues/1634
             $('head').append('<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>');
         }
-    }
+    };
 
     /*
         process each input into an output
@@ -661,7 +661,7 @@ function DocGen (process)
         $('#dg-innerContent').html(templates.webCover.html());
         templates.webCover = $;
         writePages();
-    }
+    };
 
     /*
         write each html page
@@ -702,7 +702,7 @@ function DocGen (process)
             }
             mainProcess.exit(1);
         });
-    }
+    };
 
     /*
         wkthmltopdf options
@@ -759,7 +759,7 @@ function DocGen (process)
         pdfOptions.push(options.output+pdfName);
         
         return pdfOptions;
-    }
+    };
 
     var checkPdfVersion = function () {
         if (options.pdf === true) {
@@ -788,7 +788,7 @@ function DocGen (process)
         } else {
             cleanUp();
         }
-    }
+    };
 
     /*
         call wkhtmltopdf as an external executable
@@ -845,7 +845,7 @@ function DocGen (process)
             }
             cleanUp();
         });
-    }
+    };
 
     var createRedirect = function () {
         if (options.redirect) {
@@ -868,7 +868,7 @@ function DocGen (process)
                 //don't exit because redirect error is not a fatal error
             }
         }
-    }
+    };
 
     /*
         cleanup
@@ -881,7 +881,7 @@ function DocGen (process)
             removeDirSync(options.output+'temp');
         }
         console.log(chalk.green.bold('Done!'));
-    }
+    };
 }
 
 module.exports = DocGen;
