@@ -30,7 +30,7 @@
     "husky": "^4.3.0",
     "image-size": "0.9.3",
     "lint-staged": "^10.5.1",
-    "markdown-it": "12.0.2",
+    "markdown-it": "12.3.2",
     "moment": "2.29.1",
     "rsvp": "4.8.5",
     "spawn-args": "0.2.0",
