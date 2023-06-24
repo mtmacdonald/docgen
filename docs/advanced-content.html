@@ -1,6 +1,4 @@
-<!doctype html>
-<html>
- <head>
+<!DOCTYPE html><html><head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--Prevent IE using compatibility mode on local or intranet pages. Do not put scripts before this line.-->
   <meta name="viewport" content="width=device-width, user-scalable=yes"><!--Mobile device scaling-->
   <meta charset="UTF-8">
@@ -57,14 +55,14 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 
 <body>
 
-<div id="dg-toc"><div><table class="unstyled"><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li><li><a href="upgrading.html">Upgrading</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="commonmark.html">CommonMark reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><button class="w-icon-button" onclick="window.location=&apos;docgen.pdf&apos;;"><span class="w-icon" data-name="document"></span><span>PDF copy</span></button></div></td></tr></table></div></div>
+<div id="dg-toc"><div><table class="unstyled"><tbody><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li><li><a href="upgrading.html">Upgrading</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="commonmark.html">CommonMark reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><button class="w-icon-button" onclick="window.location=&apos;docgen.pdf&apos;;"><span class="w-icon" data-name="document"></span><span>PDF copy</span></button></div></td></tr></tbody></table></div></div>
 <div id="dg-navigator">Table of contents</div>
 
 <header>
  <div class="w-fixed-width">
   <a id="dg-homelink" href="index.html">
     <div id="dg-logo" style="background-image: url(files/images/logo.png); height: 42px; line-height: 42px; padding-left: 85px;">
-      <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(2.1.3)</span>
+      <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(3.0.0)</span>
     </div>
   </a>
   <div>
@@ -73,7 +71,7 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
  </div>
 </header>
 
-<section id="dg-content"><div class="w-fixed-width"><div id="dg-innerContent"><h1 id="dg-autoTitle">Advanced content</h1><ul class="dg-pageToc"><li><a href="#advanced-styles">Advanced styles</a></li><li><a href="#basic-tables">Basic tables</a></li><li><a href="#html-tables">HTML tables</a></li><li><a href="#creating-internal-links-to-page-sections">Creating internal links to page sections</a></li><li><a href="#creating-internal-links-to-other-pages">Creating internal links to other pages</a></li><li><a href="#control-of-page-breaks-in-the-pdf">Control of page breaks in the PDF</a></li></ul><style>
+<section id="dg-content"><div class="w-fixed-width"><div id="dg-innerContent"><h1 id="dg-autoTitle">Advanced content</h1><style>
 .container {
   box-sizing: border-box;
   float:left;
@@ -177,7 +175,7 @@ the <a href="http://mtmacdonald.github.io/webknife/docs/reference.html">Webknife
 </div>
 <div class="container exampleContainer">
 <table style="width:100%;" class="w-table w-fixed w-stripe">
- <tr>
+ <tbody><tr>
   <th>Heading</th>
   <th>Heading</th>
   <th>Heading</th>
@@ -197,7 +195,7 @@ the <a href="http://mtmacdonald.github.io/webknife/docs/reference.html">Webknife
   <td class="w-error-text">Example</td>
   <td><span class="w-icon" data-name="close"></span></td>
  </tr>
-</table>
+</tbody></table>
 </div><br class="w-clear">
 <h2 id="creating-internal-links-to-page-sections">Creating internal links to page sections</h2>
 <p>To create links to other sections within one content page, put hyphens between the words in the heading and prepend with #:</p>
@@ -224,16 +222,17 @@ To apply the same technique to other elements, revert to HTML and apply the <str
 </div></div></section>
 
  <footer>
-  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 2.1.3 released on 29/05/2015.</span></p></div>
+  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.0.0 released on 24/06/2023.</span></p></div>
   <div class="w-fixed-width">
-    <p><span id="dg-copyright">&#xA9; 2015 <a href="https://github.com/mtmacdonald">Mark Macdonald</a></span></p>
+    <p><span id="dg-copyright">&#xA9; 2023 <a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p>
     <p>
       <span id="dg-marking">MIT License.</span>
       <span id="dg-legalese"></span>
-      <span id="dg-attribution">Created by DocGen 2.1.3 on 29/05/2015 at 13:57:42.</span>
+      <span id="dg-attribution">Created by DocGen 3.0.0 on 24/06/2023 at 16:02:20.</span>
     </p>
   </div>
  </footer>
  
- </body>
-</html>
+ 
+
+</body></html>
