@@ -55,7 +55,7 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 
 <body>
 
-<div id="dg-toc"><div><table class="unstyled"><tbody><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li><li><a href="upgrading.html">Upgrading</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="commonmark.html">CommonMark reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><button class="w-icon-button" onclick="window.location=&apos;docgen.pdf&apos;;"><span class="w-icon" data-name="document"></span><span>PDF copy</span></button></div></td></tr></tbody></table></div></div>
+<div id="dg-toc"><div><table class="unstyled"><tbody><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li><li><a href="upgrading.html">Upgrading</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="commonmark.html">CommonMark reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><button class="w-icon-button" onclick="window.location='docgen.pdf';"><span class="w-icon" data-name="document"></span><span>PDF copy</span></button></div></td></tr></tbody></table></div></div>
 <div id="dg-navigator">Table of contents</div>
 
 <header>
@@ -76,30 +76,30 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 <p>DocGen 2 is not backwards compatible with DocGen 1, but the upgrade is easy with these instructions:</p>
 <ul>
 <li>Install DocGen 2 by following the <a href="installation.html">installation guide</a></li>
-<li>Create a replacement &apos;source&apos; directory, e.g: <strong><code>docgen scaffold -o $HOME/source</code></strong></li>
+<li>Create a replacement 'source' directory, e.g: <strong><code>docgen scaffold -o $HOME/source</code></strong></li>
 <li>Migrate the source files
 <ul>
-<li>Copy the source (.txt) files from the old &apos;Src&apos; directory to the new &apos;source&apos; directory</li>
+<li>Copy the source (.txt) files from the old 'Src' directory to the new 'source' directory</li>
 <li>Remove the top-level page headings in each source file (DocGen now inserts these automatically, based on contents.json)</li>
-<li>Rename <em>&apos;change-log.txt&apos;</em> to <em>&apos;release-notes.txt&apos;</em></li>
+<li>Rename <em>'change-log.txt'</em> to <em>'release-notes.txt'</em></li>
 </ul>
 </li>
 <li>Migrate the attached content
 <ul>
-<li>Place a logo with filename &apos;logo.png&apos; in &apos;files/images&apos; directory (the logo is now part of the source)</li>
-<li>Copy the images from <em>&apos;Images&apos;</em> to <em>&apos;files/images&apos;</em></li>
-<li>Copy attached files from <em>&apos;Files&apos;</em> to <em>&apos;files&apos;</em></li>
+<li>Place a logo with filename 'logo.png' in 'files/images' directory (the logo is now part of the source)</li>
+<li>Copy the images from <em>'Images'</em> to <em>'files/images'</em></li>
+<li>Copy attached files from <em>'Files'</em> to <em>'files'</em></li>
 </ul>
 </li>
 <li>Migrate the metadata
 <ul>
-<li>Edit <em>&apos;parameters.json&apos;</em> with the relevant values from <em>&apos;doc-parameters.yml&apos;</em></li>
-<li>Edit <em>&apos;contents.json&apos;</em> with the relevant values from <em>&apos;table-of-contents.yml&apos;</em></li>
+<li>Edit <em>'parameters.json'</em> with the relevant values from <em>'doc-parameters.yml'</em></li>
+<li>Edit <em>'contents.json'</em> with the relevant values from <em>'table-of-contents.yml'</em></li>
 </ul>
 </li>
 <li>Run DocGen: <strong><code>docgen -i $HOME/source -o $HOME/output</code></strong></li>
 <li>Check the styling in the latest version still works well with the old content</li>
-<li>Note that the PDF is no longer generated by default (pass the <em>&apos;-p&apos;</em> option)</li>
+<li>Note that the PDF is no longer generated by default (pass the <em>'-p'</em> option)</li>
 </ul>
 <blockquote>
 <p>DocGen 1 tool-behaviours.yml has been replaced by command-line options. For help, see <strong><code>docgen run -h</code></strong>.</p>
@@ -109,11 +109,11 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
  <footer>
   <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.0.0 released on 24/06/2023.</span></p></div>
   <div class="w-fixed-width">
-    <p><span id="dg-copyright">&#xA9; 2023 <a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p>
+    <p><span id="dg-copyright">© 2023 <a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p>
     <p>
       <span id="dg-marking">MIT License.</span>
       <span id="dg-legalese"></span>
-      <span id="dg-attribution">Created by DocGen 3.0.0 on 24/06/2023 at 16:35:40.</span>
+      <span id="dg-attribution">Created by DocGen 3.0.0 on 25/06/2023 at 19:30:35.</span>
     </p>
   </div>
  </footer>
