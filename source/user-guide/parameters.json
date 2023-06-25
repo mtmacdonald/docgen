@@ -1,24 +1,24 @@
 {
   "title": "DocGen - a documentation tool",
   "name": "DocGen",
-  "version": "2.1.3",
-  "date": "29/05/2015",
+  "version": "3.0.0",
+  "date": "24/06/2023",
   "organization": {
-    "name": "Mark Macdonald",
-    "url": "https://github.com/mtmacdonald"
+    "name": "Inkit Inc. and contributors",
+    "url": "https://www.inkit.com"
   },
   "author": {
-    "name": "Mark Macdonald",
-    "url": "https://github.com/mtmacdonald"
+    "name": "Inkit Inc. and contributors",
+    "url": "https://www.inkit.com"
   },
   "owner": {
-    "name": "Mark Macdonald",
-    "url": "https://github.com/mtmacdonald"
+    "name": "Inkit Inc.",
+    "url": "https://www.inkit.com"
   },
   "contributors": [
     {
-      "name": "",
-      "url": ""
+      "name": "Mark Macdonald",
+      "url": "https://github.com/mtmacdonald"
     }
   ],
   "website": {

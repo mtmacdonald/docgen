@@ -1,19 +1,26 @@
 ﻿html {
- background-color :white; /*otherwise background artefacts appear as a feint outline in PDF*/
+  background-color: white; /*otherwise background artefacts appear as a feint outline in PDF*/
 }
 
 .dg-pageToc {
-	display: none;
+  display: none;
 }
 
-#dg-toc, #dg-navigator, header, footer {
-	display: none;
+#dg-toc,
+#dg-navigator,
+header,
+footer {
+  display: none;
 }
 
-.dg-avoidBreak, #dg-content th, #dg-content tr, #dg-content blockquote, #dg-content pre {
-	page-break-inside: avoid;
+.dg-avoidBreak,
+#dg-content th,
+#dg-content tr,
+#dg-content blockquote,
+#dg-content pre {
+  page-break-inside: avoid;
 }
 
 .dg-forceBreak {
-	page-break-after: always;
+  page-break-after: always;
 }

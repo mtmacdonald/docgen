@@ -167,6 +167,19 @@
 
 <div style="padding-top:20px;"><div class="w-fixed-width">
 
+<h2>Sponsors</h2>
+
+DocGen is open-source software sponsored by <a href="https://www.inkit.com">inkit.com</a>.
+
+<div class="w-center">
+    <a href="https://www.inkit.com">
+        <img
+            src="files/images/svg/inkit-logo.svg"
+            style="width: 180px"
+        />
+    </a>
+</div>
+
 <p class="dg-forceBreak"></p>
 <h2>How it works</h2>
 
