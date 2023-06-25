@@ -31,7 +31,7 @@
     "image-size": "0.9.3",
     "lint-staged": "^10.5.1",
     "markdown-it": "12.3.2",
-    "moment": "2.29.1",
+    "moment": "2.29.4",
     "rsvp": "4.8.5",
     "spawn-args": "0.2.0",
     "z-schema": "5.0.5"
