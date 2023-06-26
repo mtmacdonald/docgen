@@ -2,12 +2,14 @@
   "name": "docgen-tool",
   "version": "3.0.0",
   "description": "A tool for creating HTML and PDF documentation",
-  "main": "docgen.js",
+  "main": "dist/docgen.js",
   "bin": {
-    "docgen": "docgen.js"
+    "docgen": "dist/docgen.js"
   },
   "scripts": {
+    "dev": "ts-node docgen.js run",
     "build": "tsc -p tsconfig.json",
+    "run:build": "dist/docgen.js",
     "build:docs": "ts-node docgen.js run -i ./source/user-guide -o ./docs -p -m -n -d 40000",
     "test": "npm run prettier:check",
     "prettier:check": "prettier --check 'docgen.js' '*.{js,json,css,less}'",
