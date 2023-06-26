@@ -4,7 +4,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 const markdown = require('markdown-it')('commonmark').enable('table');
 const moment = require('moment');
-const childProcess = require('child_process');
+import { spawn, exec } from 'child_process';
 const schemaValidator = require('z-schema');
 const chalk = require('chalk');
 const spawnArgs = require('spawn-args');
@@ -628,7 +628,7 @@ function DocGen(process) {
 
     for (let key in templates) {
       if (templates.hasOwnProperty(key)) {
-        $ = templates[key];
+        let $ = templates[key];
         //logo
         if (hasLogo === true) {
           let logoUrl = 'files/images/logo.png';
@@ -662,7 +662,7 @@ function DocGen(process) {
       }
     }
     if (options.mathKatex === true) {
-      $ = templates.main;
+      let $ = templates.main;
       //support for KaTeX (bundled with DocGen)
       $('head').append(
         '<link rel="stylesheet" href="require/katex/katex.min.css" type="text/css">',
@@ -865,11 +865,7 @@ function DocGen(process) {
   let checkPdfVersion = function () {
     if (options.pdf === true) {
       //first check that wkhtmltopdf is installed
-      childProcess.exec(options.wkhtmltopdfPath + ' -V', function (
-        error,
-        stdout,
-        stderr,
-      ) {
+      exec(options.wkhtmltopdfPath + ' -V', function (error, stdout, stderr) {
         if (error) {
           console.log(
             chalk.red(
@@ -908,7 +904,7 @@ function DocGen(process) {
   let generatePdf = function () {
     console.log(chalk.green('Creating the PDF copy (may take some time)'));
     let args = getPdfArguments();
-    let wkhtmltopdf = childProcess.spawn(options.wkhtmltopdfPath, args);
+    let wkhtmltopdf = spawn(options.wkhtmltopdfPath, args);
     let spinner = new cliSpinner(chalk.green('   Processing... %s'));
     spinner.setSpinnerString('|/-\\');
 
@@ -958,7 +954,7 @@ function DocGen(process) {
       homepage =
         homepage.source.substr(0, homepage.source.lastIndexOf('.')) + '.html';
       let redirectLink = parent + '/' + homepage;
-      $ = templates.redirect;
+      let $ = templates.redirect;
       $('a').attr('href', redirectLink);
       $('meta[http-equiv=REFRESH]').attr('content', '0;url=' + redirectLink);
       let file = options.output + '../' + 'index.html';
