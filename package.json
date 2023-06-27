@@ -12,6 +12,7 @@
     "run:build": "dist/docgen.js",
     "build:docs": "ts-node docgen.js run -i ./source/user-guide -o ./docs -p -m -n -d 40000",
     "test": "npm run prettier:check",
+    "test:run": "ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
     "prettier:check": "prettier --check 'docgen.js' '*.{js,json,css,less}'",
     "prettier:fix": "prettier --write 'docgen.js' '*.{js,json,css,less}'"
   },
