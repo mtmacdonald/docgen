@@ -14,7 +14,7 @@ const imageSizeOf = require('image-size');
 //Allow CommonMark links that use other protocols, such as file:///
 //The markdown-it implementation is more restrictive than the CommonMark spec
 //See https://github.com/markdown-it/markdown-it/issues/108
-markdown.validateLink = function () {
+markdown.validateLink = () => {
   return true;
 };
 
@@ -32,11 +32,11 @@ function DocGen(process) {
   let pages = {};
   let sortedPages = {};
 
-  this.getVersion = function () {
+  this.getVersion = () => {
     return version;
   };
 
-  this.setOptions = function (userOptions) {
+  this.setOptions = (userOptions) => {
     options = userOptions;
     //all user-specified paths must be normalized
     if (options.input) {
@@ -56,12 +56,12 @@ function DocGen(process) {
     copy the example source files (template) to any directory, when scaffold command is invoked
   */
 
-  this.scaffold = function () {
+  this.scaffold = () => {
     console.log(chalk.green('Creating scaffold template directory'));
     copyDirSync(__dirname + '/example', options.output);
   };
 
-  this.run = function () {
+  this.run = () => {
     console.log(chalk.green.bold('DocGen version ' + version));
     //delete and recreate the output directory
     remakeDirSync(options.output);
@@ -72,9 +72,9 @@ function DocGen(process) {
         read any file (async)
     */
 
-  let readFile = function (path) {
-    return new rsvp.Promise(function (resolve, reject) {
-      fs.readFile(path, 'utf8', function (error, data) {
+  let readFile = (path) => {
+    return new rsvp.Promise((resolve, reject) => {
+      fs.readFile(path, 'utf8', (error, data) => {
         if (error) {
           console.log(chalk.red('Error reading file: ' + path));
           reject(error);
@@ -90,9 +90,9 @@ function DocGen(process) {
         write any file (async)
     */
 
-  let writeFile = function (path, data) {
-    return new rsvp.Promise(function (resolve, reject) {
-      fs.writeFile(path, data, function (error) {
+  let writeFile = (path, data) => {
+    return new rsvp.Promise((resolve, reject) => {
+      fs.writeFile(path, data, (error) => {
         if (error) {
           console.log(chalk.red('Error writing file: ' + path));
           reject(error);
@@ -107,7 +107,7 @@ function DocGen(process) {
         copy any directory (sync)
     */
 
-  let copyDirSync = function (source, destination) {
+  let copyDirSync = (source, destination) => {
     try {
       fs.copySync(source, destination);
     } catch (error) {
@@ -125,7 +125,7 @@ function DocGen(process) {
         remake a directory (sync) ... remove and then mkdir in one operation
     */
 
-  let remakeDirSync = function (path) {
+  let remakeDirSync = (path) => {
     try {
       fs.removeSync(path);
       fs.mkdirpSync(path);
@@ -142,7 +142,7 @@ function DocGen(process) {
         remove any directory (sync)
     */
 
-  let removeDirSync = function (path) {
+  let removeDirSync = (path) => {
     try {
       fs.removeSync(path);
     } catch (error) {
@@ -158,7 +158,7 @@ function DocGen(process) {
         load all HTML template files
     */
 
-  let loadTemplates = function () {
+  let loadTemplates = () => {
     console.log(chalk.green('Loading templates'));
     let files = {
       main: readFile(__dirname + '/templates/main.html'),
@@ -170,7 +170,7 @@ function DocGen(process) {
     };
     rsvp
       .hash(files)
-      .then(function (files) {
+      .then((files) => {
         for (let key in files) {
           if (files.hasOwnProperty(key)) {
             let file = files[key];
@@ -180,7 +180,7 @@ function DocGen(process) {
         }
         loadMeta();
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(chalk.red('Error loading templates'));
         if (options.verbose === true) {
           console.log(chalk.red(error));
@@ -314,7 +314,7 @@ function DocGen(process) {
     },
   };
 
-  let validateJSON = function (key, data) {
+  let validateJSON = (key, data) => {
     let schema = schemas[key];
     let validator = new schemaValidator();
     let valid = validator.validate(data, schema);
@@ -337,7 +337,7 @@ function DocGen(process) {
     load all metadata files (JSON)
   */
 
-  let loadMeta = function () {
+  let loadMeta = () => {
     console.log(chalk.green('Loading required JSON metadata files'));
     let files = {
       parameters: readFile(options.input + '/parameters.json'),
@@ -345,7 +345,7 @@ function DocGen(process) {
     };
     rsvp
       .hash(files)
-      .then(function (files) {
+      .then((files) => {
         for (let key in files) {
           if (files.hasOwnProperty(key)) {
             //ignore prototype
@@ -380,7 +380,7 @@ function DocGen(process) {
         meta.contents.push(extra);
         loadMarkdown();
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(chalk.red('Error loading required JSON metadata files'));
         if (options.verbose === true) {
           console.log(chalk.red(error));
@@ -393,12 +393,12 @@ function DocGen(process) {
     load all markdown files (source)
   */
 
-  let loadMarkdown = function () {
+  let loadMarkdown = () => {
     console.log(chalk.green('Loading source files'));
     let keys = [];
     let files = [];
-    meta.contents.forEach(function (section) {
-      section.pages.forEach(function (page) {
+    meta.contents.forEach((section) => {
+      section.pages.forEach((page) => {
         keys.push(page);
         files.push(options.input + '/' + page.source);
       });
@@ -408,8 +408,8 @@ function DocGen(process) {
     files.push(options.input + '/release-notes.txt');
     rsvp
       .all(files.map(readFile))
-      .then(function (files) {
-        files.forEach(function (page, index) {
+      .then((files) => {
+        files.forEach((page, index) => {
           try {
             let key = keys[index];
             if (key.html === true) {
@@ -432,7 +432,8 @@ function DocGen(process) {
         });
         processContent();
       })
-      .catch(function (error) {
+      .catch((error) => {
+        console.log(error);
         console.log(chalk.red('Error loading source files'));
         if (options.verbose === true) {
           console.log(chalk.red(error));
@@ -441,10 +442,10 @@ function DocGen(process) {
       });
   };
 
-  let sortPages = function () {
+  let sortPages = () => {
     //sort the contents by heading
     let headings = { 1: [], 2: [], 3: [], 4: [], 5: [] };
-    meta.contents.forEach(function (section) {
+    meta.contents.forEach((section) => {
       if (headings.hasOwnProperty(section.column)) {
         headings[section.column].push(section);
       }
@@ -456,7 +457,7 @@ function DocGen(process) {
     build the HTML for the table of contents
   */
 
-  let webToc = function () {
+  let webToc = () => {
     sortPages();
     let pdfName = meta.parameters.name.toLowerCase() + '.pdf';
     let $ = templates.main;
@@ -469,10 +470,10 @@ function DocGen(process) {
         if (key != 5) {
           //skip the extra column
           html[++i] = '<td class="dg-tocGroup">';
-          sortedPages[key].forEach(function (section) {
+          sortedPages[key].forEach((section) => {
             html[++i] =
               '<ul><li class="dg-tocHeading">' + section.heading + '</li>';
-            section.pages.forEach(function (page) {
+            section.pages.forEach((page) => {
               let name = page.source.substr(0, page.source.lastIndexOf('.'));
               let path = name + '.html';
               html[++i] =
@@ -511,7 +512,7 @@ function DocGen(process) {
     insert the parameters into all templates
   */
 
-  let insertParameters = function () {
+  let insertParameters = () => {
     //------------------------------------------------------------------------------------------------------
     //logo dimensions
     let hasLogo = false;
@@ -609,7 +610,7 @@ function DocGen(process) {
     }
 
     let contributors = '';
-    meta.parameters.contributors.forEach(function (contributor) {
+    meta.parameters.contributors.forEach((contributor) => {
       if (contributor.url !== '') {
         contributors +=
           '<a href="' + contributor.url + '">' + contributor.name + '</a>, ';
@@ -688,12 +689,12 @@ function DocGen(process) {
     process each input into an output
   */
 
-  let processContent = function () {
+  let processContent = () => {
     console.log(chalk.green('Generating the static web content'));
     webToc();
     insertParameters();
-    meta.contents.forEach(function (section) {
-      section.pages.forEach(function (page) {
+    meta.contents.forEach((section) => {
+      section.pages.forEach((page) => {
         let $ = cheerio.load(templates.main.html()); //clone
         let key = page.source;
         let content = pages[key];
@@ -717,7 +718,7 @@ function DocGen(process) {
         if (headings.length > 0) {
           html[++i] = '<ul class="dg-pageToc">';
         }
-        headings.each(function (index) {
+        headings.each(function () {
           let label = $(this).text();
           let anchor = label.toLowerCase().replace(/\s+/g, '-');
           $(this).attr('id', anchor);
@@ -758,11 +759,11 @@ function DocGen(process) {
     write each html page
   */
 
-  let writePages = function () {
+  let writePages = () => {
     console.log(chalk.green('Writing the web page files'));
     let promises = {};
-    meta.contents.forEach(function (section) {
-      section.pages.forEach(function (page) {
+    meta.contents.forEach((section) => {
+      section.pages.forEach((page) => {
         let key = page.source;
         let name = key.substr(0, page.source.lastIndexOf('.'));
         let path = options.output + name + '.html';
@@ -793,7 +794,7 @@ function DocGen(process) {
     }
     rsvp
       .hash(promises)
-      .then(function (files) {
+      .then(() => {
         copyDirSync(__dirname + '/require', options.output + 'require'); //CSS, JavaScript
         copyDirSync(options.input + '/files', options.output + 'files'); //user-attached files and images
         if (options.mathKatex === true) {
@@ -804,7 +805,7 @@ function DocGen(process) {
         }
         checkPdfVersion();
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(chalk.red('Error writing the web page files'));
         if (options.verbose === true) {
           console.log(chalk.red(error));
@@ -832,7 +833,7 @@ function DocGen(process) {
     ' --no-stop-slow-scripts',
   ];
 
-  let getPdfArguments = function () {
+  let getPdfArguments = () => {
     let pdfName = meta.parameters.name.toLowerCase() + '.pdf';
     pdfOptions.push(' --enable-local-file-access');
     pdfOptions.push(' --javascript-delay ' + options.pdfDelay); //code syntax highlight in wkhtmltopdf 0.12.2.1 fails without a delay (but why doesn't --no-stop-slow-scripts work?)
@@ -846,8 +847,8 @@ function DocGen(process) {
     let allPages = '';
     for (let key in sortedPages) {
       if (sortedPages.hasOwnProperty(key)) {
-        sortedPages[key].forEach(function (section) {
-          section.pages.forEach(function (page) {
+        sortedPages[key].forEach((section) => {
+          section.pages.forEach((page) => {
             let key = page.source;
             let name = key.substr(0, page.source.lastIndexOf('.'));
             let path = options.output + name + '.html';
@@ -862,10 +863,10 @@ function DocGen(process) {
     return spawnArgs(args);
   };
 
-  let checkPdfVersion = function () {
+  let checkPdfVersion = () => {
     if (options.pdf === true) {
       //first check that wkhtmltopdf is installed
-      exec(options.wkhtmltopdfPath + ' -V', function (error, stdout, stderr) {
+      exec(options.wkhtmltopdfPath + ' -V', (error, stdout, stderr) => {
         if (error) {
           console.log(
             chalk.red(
@@ -901,14 +902,14 @@ function DocGen(process) {
     call wkhtmltopdf as an external executable
   */
 
-  let generatePdf = function () {
+  let generatePdf = () => {
     console.log(chalk.green('Creating the PDF copy (may take some time)'));
     let args = getPdfArguments();
     let wkhtmltopdf = spawn(options.wkhtmltopdfPath, args);
     let spinner = new cliSpinner(chalk.green('   Processing... %s'));
     spinner.setSpinnerString('|/-\\');
 
-    wkhtmltopdf.on('error', function (error) {
+    wkhtmltopdf.on('error', (error) => {
       console.log(chalk.red('Error calling wkhtmltopdf to generate the PDF'));
       if (options.verbose === true) {
         console.log(chalk.red(error));
@@ -924,15 +925,15 @@ function DocGen(process) {
       wkhtmltopdf.stderr.pipe(mainProcess.stdout);
     }
 
-    wkhtmltopdf.stdout.on('data', function (data) {
+    wkhtmltopdf.stdout.on('data', (data) => {
       //do nothing
     });
 
-    wkhtmltopdf.stderr.on('data', function (data) {
+    wkhtmltopdf.stderr.on('data', (data) => {
       //do nothing
     });
 
-    wkhtmltopdf.on('close', function (code) {
+    wkhtmltopdf.on('close', (code) => {
       if (options.verbose !== true) {
         spinner.stop();
         console.log(''); //newline after spinner stops
@@ -946,7 +947,7 @@ function DocGen(process) {
     });
   };
 
-  let createRedirect = function () {
+  let createRedirect = () => {
     if (options.redirect) {
       let parent = options.output.replace(/\/$/, ''); //trim any trailing slash
       parent = parent.split(path.sep).slice(-1).pop(); //get name of final directory in the path
@@ -974,7 +975,7 @@ function DocGen(process) {
     cleanup
   */
 
-  let cleanUp = function () {
+  let cleanUp = () => {
     createRedirect();
     //remove temp files
     if (options.pdf === true) {
