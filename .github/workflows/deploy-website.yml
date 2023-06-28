@@ -14,8 +14,9 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          sudo apt-get update
-          sudo apt-get install -y wkhtmltopdf
+          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+          sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+          sudo apt-get -f install
           yarn install --frozen-lockfile
           yarn build:docs
 
