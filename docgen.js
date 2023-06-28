@@ -5,15 +5,15 @@ let program = require('commander');
 
 let generator = new docgen(process);
 
-function scaffold(command) {
+const scaffold = (command) => {
   generator.setOptions(command);
   generator.scaffold();
-}
+};
 
-function run(command) {
+const run = (command) => {
   generator.setOptions(command);
   generator.run();
-}
+};
 
 /*
     parse command-line arguments with node commander
@@ -33,7 +33,7 @@ program
     './',
   )
   .option('-v, --verbose', 'show verbose output including detailed errors')
-  .action(function (command) {
+  .action((command) => {
     scaffold(command);
   });
 
@@ -83,7 +83,7 @@ program
     'specify a custom path to wkhtmltopdf [default: wkhtmltopdf]',
     'wkhtmltopdf',
   )
-  .action(function (command) {
+  .action((command) => {
     run(command);
   });
 
