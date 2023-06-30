@@ -1,6 +1,6 @@
 {
   "name": "docgen-tool",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "A tool for creating HTML and PDF documentation",
   "main": "dist/docgen.js",
   "bin": {
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist/",
-    "copy-files": "copyfiles source/katexInjector.js source/example/**/* source/optional/**/* source/require/**/* source/templates/**/* dist/",
+    "copy-files": "ncp source/require dist/source/require && ncp source/example dist/source/example && ncp source/optional dist/source/optional && ncp source/templates dist/source/templates && cp source/pdf-contents.xsl dist/source && cp source/pdf-stylesheet.css dist/source",
     "dev": "ts-node docgen.js run",
     "build": "yarn clean && tsc -p tsconfig.json && yarn copy-files",
     "run:build": "dist/docgen.js",
@@ -51,6 +51,7 @@
     "copyfiles": "^2.4.1",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
+    "ncp": "^2.0.0",
     "prettier": "^2.1.2",
     "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
