@@ -1,18 +1,24 @@
 {
   "name": "docgen-tool",
-  "version": "3.0.0",
+  "version": "3.0.4",
   "description": "A tool for creating HTML and PDF documentation",
   "main": "dist/docgen.js",
   "bin": {
     "docgen": "dist/docgen.js"
   },
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
+    "clean": "rimraf dist/",
+    "copy-files": "ncp source/require dist/source/require && ncp source/example dist/source/example && ncp source/optional dist/source/optional && ncp source/templates dist/source/templates && cp source/pdf-contents.xsl dist/source && cp source/pdf-stylesheet.css dist/source",
     "dev": "ts-node docgen.js run",
-    "build": "tsc -p tsconfig.json",
+    "build": "yarn clean && tsc -p tsconfig.json && yarn copy-files",
     "run:build": "dist/docgen.js",
     "build:docs": "ts-node docgen.js run -i ./source/user-guide -o ./docs -p -m -n -d 40000",
     "test": "npm run prettier:check",
     "test:run": "ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
+    "test:prod:run": "./dist/docgen.js run -i ./source/__test__/test-run -o -p -v -d 20000 ../source/__test__/test-run-output",
     "prettier:check": "prettier --check 'docgen.js' '*.{js,json,css,less}'",
     "prettier:fix": "prettier --write 'docgen.js' '*.{js,json,css,less}'"
   },
@@ -44,7 +50,9 @@
     "@types/node": "^20.3.1",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
+    "ncp": "^2.0.0",
     "prettier": "^2.1.2",
+    "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.3",
     "typescript": "^5.1.3"
