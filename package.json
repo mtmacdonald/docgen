@@ -6,6 +6,9 @@
   "bin": {
     "docgen": "dist/docgen.js"
   },
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "dev": "ts-node docgen.js run",
     "build": "tsc -p tsconfig.json",
