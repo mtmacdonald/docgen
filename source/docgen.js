@@ -24,7 +24,7 @@ markdown.validateLink = () => {
 
 function DocGen(process) {
   let mainProcess = process;
-  let version = '3.0.2';
+  let version = '3.0.3';
   let wkhtmltopdfVersion = 'wkhtmltopdf 0.12.6 (with patched qt)'; //output from wkhtmltopdf -V
   let options;
   let templates = {};

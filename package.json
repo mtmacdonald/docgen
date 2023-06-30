@@ -1,6 +1,6 @@
 {
   "name": "docgen-tool",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "A tool for creating HTML and PDF documentation",
   "main": "dist/docgen.js",
   "bin": {
@@ -11,13 +11,14 @@
   ],
   "scripts": {
     "clean": "rimraf dist/",
-    "copy-files": "copyfiles -u 1 src/example/* dist/",
+    "copy-files": "copyfiles source/katexInjector.js source/example/**/* source/optional/**/* source/require/**/* source/templates/**/* dist/",
     "dev": "ts-node docgen.js run",
     "build": "yarn clean && tsc -p tsconfig.json && yarn copy-files",
     "run:build": "dist/docgen.js",
     "build:docs": "ts-node docgen.js run -i ./source/user-guide -o ./docs -p -m -n -d 40000",
     "test": "npm run prettier:check",
     "test:run": "ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
+    "test:prod:run": "./dist/docgen.js run -i ./source/__test__/test-run -o -p -v -d 20000 ../source/__test__/test-run-output",
     "prettier:check": "prettier --check 'docgen.js' '*.{js,json,css,less}'",
     "prettier:fix": "prettier --write 'docgen.js' '*.{js,json,css,less}'"
   },
