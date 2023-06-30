@@ -1,4 +1,9 @@
-﻿DocGen 3.0.0 released 24/06/2024
+﻿DocGen 3.0.1 released 30/06/2023
+--------------------------------
+
+- publish only the dist directory to the NPM package
+
+DocGen 3.0.0 released 24/06/2023
 --------------------------------
 
 - Ownership and copyright transferred to project sponsor [Inkit Inc](https://www.inkit.com/)
