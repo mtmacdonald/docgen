@@ -30,7 +30,7 @@ jobs:
       - name: Publish NPM package 🚀
         uses: JS-DevTools/npm-publish@v2
         with:
-          token: ${{ secrets.NPM_TOKEN }}$
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Deploy Website 🚀
         uses: JamesIves/github-pages-deploy-action@v4
