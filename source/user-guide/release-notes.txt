@@ -1,12 +1,16 @@
-﻿DocGen 3.0.5 released 05/07/2023
---------------------------------
+﻿DocGen 3.0.5 - 3.0.6 released 05/07/2023
+----------------------------------------
 
-- automate Github CI/CD pipeline for publishing NPM releases
+- automated Github CI/CD pipeline for publishing the NPM package
 
 DocGen 3.0.1 - 3.0.4 released 30/06/2023
---------------------------------
+----------------------------------------
 
+- automated Github CI/CD pipeline for publishing the docs website
+- modernised the build tooling (TypeScript compiler)
 - publish only the dist directory to the NPM package
+- better NPM commands for developing and maintaining the repository
+- docs directory is now produced in a build step (build output is no longer committed)
 
 DocGen 3.0.0 released 24/06/2023
 --------------------------------

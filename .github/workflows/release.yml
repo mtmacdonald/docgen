@@ -15,7 +15,7 @@ jobs:
         id: check
         uses: EndBug/version-check@v2
 
-      - name: Log when unchanged
+      - name: Skipping release (no new version)
         if: steps.check.outputs.changed == 'false'
         run: 'echo "Skipping release (no package.json version change)"'
 
