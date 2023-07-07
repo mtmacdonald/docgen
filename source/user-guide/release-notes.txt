@@ -1,4 +1,9 @@
-﻿DocGen 3.0.5 - 3.0.6 released 05/07/2023
+﻿DocGen 3.0.7 - 3.0.8 07/07/2023
+-----------------------
+
+- automated Github CI/CD for tagging a release
+
+DocGen 3.0.5 - 3.0.6 released 05/07/2023
 ----------------------------------------
 
 - automated Github CI/CD pipeline for publishing the NPM package
