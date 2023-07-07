@@ -10,6 +10,7 @@ const chalk = require('chalk');
 const spawnArgs = require('spawn-args');
 const cliSpinner = require('cli-spinner').Spinner;
 const imageSizeOf = require('image-size');
+import { version } from '../package.json';
 
 //Allow CommonMark links that use other protocols, such as file:///
 //The markdown-it implementation is more restrictive than the CommonMark spec
@@ -24,7 +25,6 @@ markdown.validateLink = () => {
 
 function DocGen(process) {
   let mainProcess = process;
-  let version = '3.0.6';
   let wkhtmltopdfVersion = 'wkhtmltopdf 0.12.6 (with patched qt)'; //output from wkhtmltopdf -V
   let options;
   let templates = {};
