@@ -44,10 +44,10 @@ jobs:
 
       - name: Publish Git Tag 🚀
         if: steps.check.outputs.changed == 'true'
-        uses: actions-ecosystem/action-push-tag@v1
+        uses: mathieudutour/github-tag-action@v6.1
         with:
-          tag: "v${{ steps.package-version.outputs.current-version}}"
-          message: "Release version ${{ steps.package-version.outputs.current-version}}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: ${{ steps.package-version.outputs.current-version}}
 
       - name: Publish NPM package 🚀
         if: steps.check.outputs.changed == 'true'
