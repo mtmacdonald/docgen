@@ -11,13 +11,18 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Check whether to release (if package.json version has been updated)
+      - name: Check whether to release (if package.json version has been updated) 🛎️
         id: check
         uses: EndBug/version-check@v2
 
       - name: Skipping release (no new version)
         if: steps.check.outputs.changed == 'false'
         run: 'echo "Skipping release (no package.json version change)"'
+
+      - name: Get package version 🛎️
+        if: steps.check.outputs.changed == 'true'
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
 
       - name: Setup 🛎️
         if: steps.check.outputs.changed == 'true'
@@ -36,6 +41,13 @@ jobs:
           sudo apt-get -f install -y
           wkhtmltopdf -V
           yarn build:docs
+
+      - name: Publish Git Tag 🚀
+        if: steps.check.outputs.changed == 'true'
+        uses: actions-ecosystem/action-push-tag@v1
+        with:
+          tag: "v${{ steps.package-version.outputs.current-version}}"
+          message: "Release version ${{ steps.package-version.outputs.current-version}}"
 
       - name: Publish NPM package 🚀
         if: steps.check.outputs.changed == 'true'
