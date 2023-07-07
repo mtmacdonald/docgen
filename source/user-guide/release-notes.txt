@@ -1,4 +1,4 @@
-﻿DocGen 3.0.7 07/07/2023
+﻿DocGen 3.0.7 - 3.0.8 07/07/2023
 -----------------------
 
 - automated Github CI/CD for tagging a release
