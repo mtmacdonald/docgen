@@ -16,6 +16,7 @@
     "build": "yarn clean && tsc -p tsconfig.json && yarn copy-files",
     "run:build": "dist/docgen.js",
     "build:docs": "ts-node docgen.js run -i ./source/user-guide -o ./docs -p -m -n -d 40000",
+    "build:docs:nopdf": "ts-node docgen.js run -i ./source/user-guide -o ./docs",
     "test": "npm run prettier:check",
     "test:run": "ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
     "test:prod:run": "./dist/docgen.js run -i ./source/__test__/test-run -o -p -v -d 20000 ../source/__test__/test-run-output",
