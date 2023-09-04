@@ -43,11 +43,11 @@ header
 		vertical-align: middle;
 		padding: 30px 0 30px 0;
 
-		> a { 
+		> a {
 			text-decoration:none;
 			font-weight: bold;
 			font-size: 16px;
-			
+
 			div {
 				background-repeat: no-repeat;
 				height: $logo-height; line-height: $logo-height; //'vertical center'
@@ -74,7 +74,7 @@ header
 
 footer {
 
-	div { 
+	div {
 		padding: 15px 0 15px 0;
 	}
 
@@ -85,12 +85,12 @@ footer {
 	}
 
 	> div:nth-child(2) {
-	
+
 		@include fixed-color-text($light-text);
-	
+
 		text-align: center;
 		line-height: 35px;
-		
+
 		> p:nth-child(2) {
 			font-size: 10px;
 			line-height: 12px;
@@ -109,7 +109,7 @@ section {
 	padding: 25px 0 25px 0;
 
 	> div p, > div div, > div pre, > div ul, > div ol, > div table, > div blockquote {
-		margin: 20px 0 20px 0; 
+		margin: 20px 0 20px 0;
 	}
 
 }
