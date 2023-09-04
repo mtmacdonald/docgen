@@ -7,16 +7,16 @@
   <title></title>
 
   <!--load stylesheets first (rationale: https://developers.google.com/speed/docs/best-practices/rtt#PutStylesBeforeScripts)-->
-  <link rel="stylesheet" href="require/webknife/framework.min.css" type="text/css" />
-  <link rel="stylesheet" href="require/webknife/highlight.min.css" type="text/css" />
+  <link rel="stylesheet" href="require/styles/framework.css" type="text/css" />
+  <link rel="stylesheet" href="require/styles/highlight.min.css" type="text/css" />
   <link rel="stylesheet" href="require/docgen.css" type="text/css" />
   <link rel="stylesheet" href="require/print.css" media="print" />
 
   <!--load scripts second-->
 
-  <script src="require/webknife/framework.min.js"></script>
-  <script src="require/webknife/framework.icons.js"></script>
-  <script src="require/webknife/highlight.min.js"></script>
+  <script src="require/styles/framework.js"></script>
+  <script src="require/styles/framework.icons.js"></script>
+  <script src="require/styles/highlight.min.js"></script>
 
   <!--inline scripts last-->
 
@@ -61,16 +61,18 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 <div id="dg-navigator">Table of contents</div>
 
 <header>
- <div class="w-fixed-width">
-  <a id="dg-homelink" href="">
-    <div id="dg-logo">
-      <span id="dg-title"></span> <span id="dg-web-title-version" style="font-weight:normal;"></span>
+  <div class="w-fixed-width header-container">
+    <div class="header-title">
+      <a id="dg-homelink" href="#">
+        <div id="dg-logo" style="background-image:url('docs/images/logo.png');">
+          <span id="dg-title"></span> <span id="dg-web-title-version" style="font-weight:normal;"></span>
+        </div>
+      </a>
     </div>
-  </a>
-  <div>
-    <span id="dg-backlink"></span>
+    <div class="header-extra">
+      <span id="dg-backlink"></span>
+    </div>
   </div>
- </div>
 </header>
 
 <section id="dg-content">
@@ -88,6 +90,6 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
     </p>
   </div>
  </footer>
- 
+
  </body>
 </html>
