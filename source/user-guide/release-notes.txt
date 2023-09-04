@@ -1,9 +1,4 @@
-﻿DocGen 3.1.0 04/09/2023
------------------------
-
-- removed dependency on Webknife CSS framework, ported styles directly to this repo
-
-DocGen 3.0.7 - 3.0.8 07/07/2023
+﻿DocGen 3.0.7 - 3.0.8 07/07/2023
 -----------------------
 
 - automated Github CI/CD for tagging a release
