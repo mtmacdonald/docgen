@@ -498,9 +498,6 @@ header {
 header a, header a:hover, header a:active, header a:visited, header .w-false-link, header .w-false-link:hover {
   color: #385691;
 }
-header .header-container {
-  display: table;
-}
 header .header-title {
   display: table-cell;
   vertical-align: middle;
