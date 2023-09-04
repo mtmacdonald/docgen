@@ -5,16 +5,16 @@
   <title>DocGen - a documentation tool</title>
 
   <!--load stylesheets first (rationale: https://developers.google.com/speed/docs/best-practices/rtt#PutStylesBeforeScripts)-->
-  <link rel="stylesheet" href="require/webknife/framework.min.css" type="text/css">
-  <link rel="stylesheet" href="require/webknife/highlight.min.css" type="text/css">
+  <link rel="stylesheet" href="require/styles/framework.css" type="text/css">
+  <link rel="stylesheet" href="require/styles/highlight.min.css" type="text/css">
   <link rel="stylesheet" href="require/docgen.css" type="text/css">
   <link rel="stylesheet" href="require/print.css" media="print">
 
   <!--load scripts second-->
 
-  <script src="require/webknife/framework.min.js"></script>
-  <script src="require/webknife/framework.icons.js"></script>
-  <script src="require/webknife/highlight.min.js"></script>
+  <script src="require/styles/framework.js"></script>
+  <script src="require/styles/framework.icons.js"></script>
+  <script src="require/styles/highlight.min.js"></script>
 
   <!--inline scripts last-->
 
@@ -59,16 +59,18 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 <div id="dg-navigator">Table of contents</div>
 
 <header>
- <div class="w-fixed-width">
-  <a id="dg-homelink" href="index.html">
-    <div id="dg-logo" style="background-image: url(files/images/logo.png); height: 42px; line-height: 42px; padding-left: 85px;">
-      <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(3.0.8)</span>
+  <div class="w-fixed-width header-container">
+    <div class="header-title">
+      <a id="dg-homelink" href="index.html">
+        <div id="dg-logo" style="background-image: url(files/images/logo.png); height: 42px; line-height: 42px; padding-left: 85px;">
+          <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(3.1.0)</span>
+        </div>
+      </a>
     </div>
-  </a>
-  <div>
-    <span id="dg-backlink"></span>
+    <div class="header-extra">
+      <span id="dg-backlink"></span>
+    </div>
   </div>
- </div>
 </header>
 
 <section id="dg-content"><div class="w-fixed-width"><div id="dg-innerContent"><h1 id="dg-autoTitle">Advanced content</h1><style>
@@ -105,10 +107,6 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
   background-color: initial!important;
 }
 </style>
-<h2 id="advanced-styles">Advanced styles</h2>
-<p>DocGen is built on the <a href="http://mtmacdonald.github.io/webknife">Webknife CSS framework</a>. Any of the HTML elements and
-styles from Webknife can be used in a DocGen source file. For details, see
-the <a href="http://mtmacdonald.github.io/webknife/docs/reference.html">Webknife reference guide</a>.</p>
 <h2 id="basic-tables">Basic tables</h2>
 <p>Basic tables can be inserted with the Github-flavoured Markdown
 <a href="https://help.github.com/articles/github-flavored-markdown/#tables">table extension</a>.</p>
@@ -223,17 +221,17 @@ To apply the same technique to other elements, revert to HTML and apply the <str
 </div></div></section>
 
  <footer>
-  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.0.8 released on 07/07/2023.</span></p></div>
+  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.1.0 released on 04/09/2023.</span></p></div>
   <div class="w-fixed-width">
     <p><span id="dg-copyright">© 2023 <a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p>
     <p>
       <span id="dg-marking">MIT License.</span>
       <span id="dg-legalese"></span>
-      <span id="dg-attribution">Created by DocGen 3.0.8 on 07/07/2023 at 17:56:04.</span>
+      <span id="dg-attribution">Created by DocGen 3.1.0 on 04/09/2023 at 19:31:53.</span>
     </p>
   </div>
  </footer>
- 
+
  
 
 </body></html>
