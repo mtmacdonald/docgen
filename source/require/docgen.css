@@ -1,5 +1,5 @@
 pre {
-  font-size: 12px; /*todo - move to webknife*/
+  font-size: 12px; /*todo - move to base styles*/
 }
 
 section blockquote p,
@@ -130,7 +130,6 @@ section li p {
   text-decoration: none;
   font-weight: bold;
   color: #385691;
-  padding-bottom: 5px;
   border-bottom: 1px solid #999;
   margin: 20px 0 20px 0;
   font-size: 16px;

@@ -1,21 +1,3 @@
-
-/*! 
-Webknife (c) 2015 Mark Macdonald | http://mtmacdonald.github.io/webknife/LICENSE
-*/
-
-/*
-
-Webknife CSS coding conventions
-
-- always end with semi-colons
-- use spaces after colons
-- use tabs for indentation
-- opening braces belong on the same line
-- use only '-' and not '_' as separators (and avoid camel case)
-- selectors should describe content and not presentation
-
-*/
-
 @import 'config';
 @import 'normalize';
 @import 'common';
@@ -23,14 +5,5 @@ Webknife CSS coding conventions
 @import 'typography';
 @import 'tables';
 @import 'buttons';
-@import 'tabs';
-@import 'breadcrumbs';
-@import 'paginator';
-@import 'datetimepicker'; //datetimepicker
-@import 'chosen'; //multiselector
-@import 'switchbutton';
-@import 'forms';
-@import 'modals';
 @import 'images';
 @import 'icons';
-
