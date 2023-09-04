@@ -33,13 +33,6 @@
 }
 </style>
 
-Advanced styles
----------------
-
-DocGen is built on the [Webknife CSS framework](http://mtmacdonald.github.io/webknife). Any of the HTML elements and 
-styles from Webknife can be used in a DocGen source file. For details, see 
-the [Webknife reference guide](http://mtmacdonald.github.io/webknife/docs/reference.html).
-
 Basic tables
 ------------
 
@@ -144,7 +137,7 @@ To create links to other sections within one content page, put hyphens between t
 	[link to heading](#this-is-a-heading)
 
 	... other page content here ...
-	
+
 	This is a heading
 	-----------------
 
@@ -158,14 +151,14 @@ To create links to *other* content pages provide the relative url to the page:
 Control of page breaks in the PDF
 ---------------------------------
 
-DocGen does not provide precision control over PDF layout. However, some steps can be taken in case of page break 
+DocGen does not provide precision control over PDF layout. However, some steps can be taken in case of page break
 issues (the most common problem).
 
 To *force* a page break, insert the following before an element that should appear on a new page:
 
 	<p class="dg-forceBreak"></p>
 
-DocGen automatically tries to eliminate page breaks *inside* code blocks, block quotes, and table rows. 
+DocGen automatically tries to eliminate page breaks *inside* code blocks, block quotes, and table rows.
 To apply the same technique to other elements, revert to HTML and apply the **dg-avoidBreak** class. For example:
 
 	<p class="dg-avoidBreak">A long paragraph</p>
