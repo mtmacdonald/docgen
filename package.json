@@ -1,6 +1,6 @@
 {
   "name": "docgen-tool",
-  "version": "3.1.1",
+  "version": "3.1.0",
   "description": "A tool for creating HTML and PDF documentation",
   "main": "dist/docgen.js",
   "bin": {
@@ -10,15 +10,16 @@
     "dist/*"
   ],
   "scripts": {
-    "clean": "rimraf dist/",
     "copy-files": "ncp source/require dist/source/require && ncp source/example dist/source/example && ncp source/optional dist/source/optional && ncp source/templates dist/source/templates && cp source/pdf-contents.xsl dist/source && cp source/pdf-stylesheet.css dist/source",
     "dev": "ts-node docgen.js run",
-    "build": "yarn clean && tsc -p tsconfig.json && yarn copy-files",
+    "build": "rimraf dist && tsc -p tsconfig.json && yarn copy-files",
     "run:build": "dist/docgen.js",
-    "build:docs": "ts-node docgen.js run -i ./source/user-guide -o ./docs -p -m -n -d 40000",
+    "build:docs": "rimraf docs && ts-node docgen.js run -i ./source/user-guide -o ./docs -p -m -n -d 40000",
+    "build:docs:nopdf": "rimraf docs && ts-node docgen.js run -i ./source/user-guide -o ./docs",
+    "build:styles": "sass --no-source-map source/styles/main.scss source/require/styles/framework.css",
     "test": "npm run prettier:check",
-    "test:run": "ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
-    "test:prod:run": "./dist/docgen.js run -i ./source/__test__/test-run -o -p -v -d 20000 ../source/__test__/test-run-output",
+    "test:run": "rimraf source/__test__/test-run-output && ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
+    "test:prod:run": "rimraf source/__test__/test-run-output && ./dist/docgen.js run -i ./source/__test__/test-run -o -p -v -d 20000 ../source/__test__/test-run-output",
     "prettier:check": "prettier --check 'docgen.js' '*.{js,json,css,less}'",
     "prettier:fix": "prettier --write 'docgen.js' '*.{js,json,css,less}'"
   },
@@ -53,6 +54,7 @@
     "ncp": "^2.0.0",
     "prettier": "^2.1.2",
     "rimraf": "^5.0.1",
+    "sass": "^1.66.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.3",
     "typescript": "^5.1.3"
