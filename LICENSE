@@ -12,6 +12,10 @@ MIT licensed:
 
 KaTeX: Copyright (c) 2014 Khan Academy, (https://github.com/Khan/KaTeX)
 
+Webknife: Copyright (c) 2015 The Webknife Project, (http://mtmacdonald.github.io/webknife)
+
+	Webknife includes third-party libraries attributed here: https://github.com/mtmacdonald/webknife/blob/master/LICENSE
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
