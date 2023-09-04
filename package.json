@@ -17,6 +17,7 @@
     "run:build": "dist/docgen.js",
     "build:docs": "ts-node docgen.js run -i ./source/user-guide -o ./docs -p -m -n -d 40000",
     "build:docs:nopdf": "ts-node docgen.js run -i ./source/user-guide -o ./docs",
+    "build:styles": "sass --no-source-map source/require/src/main.scss source/require/webknife/framework.css",
     "test": "npm run prettier:check",
     "test:run": "ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
     "test:prod:run": "./dist/docgen.js run -i ./source/__test__/test-run -o -p -v -d 20000 ../source/__test__/test-run-output",
@@ -54,6 +55,7 @@
     "ncp": "^2.0.0",
     "prettier": "^2.1.2",
     "rimraf": "^5.0.1",
+    "sass": "^1.66.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.3",
     "typescript": "^5.1.3"
