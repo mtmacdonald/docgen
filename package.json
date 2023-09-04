@@ -18,8 +18,8 @@
     "build:docs:nopdf": "rimraf docs && ts-node docgen.js run -i ./source/user-guide -o ./docs",
     "build:styles": "sass --no-source-map source/styles/main.scss source/require/styles/framework.css",
     "test": "npm run prettier:check",
-    "test:run": "rimraf source/__test__/test-run-output ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
-    "test:prod:run": "./dist/docgen.js run -i ./source/__test__/test-run -o -p -v -d 20000 ../source/__test__/test-run-output",
+    "test:run": "rimraf source/__test__/test-run-output && ts-node docgen.js run -i ./source/__test__/test-run -o ./source/__test__/test-run-output",
+    "test:prod:run": "rimraf source/__test__/test-run-output && ./dist/docgen.js run -i ./source/__test__/test-run -o -p -v -d 20000 ../source/__test__/test-run-output",
     "prettier:check": "prettier --check 'docgen.js' '*.{js,json,css,less}'",
     "prettier:fix": "prettier --write 'docgen.js' '*.{js,json,css,less}'"
   },
