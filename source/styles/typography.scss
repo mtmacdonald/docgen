@@ -1,41 +1,32 @@
 
 /*
  typography
-
- The Open Sans and Droid Sans Mono fonts are open source and can be downloaded here:
-
-    http://www.google.com/fonts
-
- See this service for help with file optimizing (compression) (select 'Expert' and only choose only 'WOFF'):
-
-    http://www.fontsquirrel.com/tools/webfont-generator
-
 */
 
 @font-face {
-    font-family: 'open-sans';
-    src: url('fonts/OpenSans.woff') format('woff');
+    font-family: 'montserrat';
+    src: url('fonts/Montserrat.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'open-sans';
-    src: url('fonts/OpenSansBold.woff') format('woff');
+    font-family: 'montserrat';
+    src: url('fonts/Montserrat-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'open-sans';
-    src: url('fonts/OpenSansItalic.woff') format('woff');
+    font-family: 'montserrat';
+    src: url('fonts/Montserrat-Italic.woff') format('woff');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'open-sans';
-    src: url('fonts/OpenSansBoldItalic.woff') format('woff');
+    font-family: 'montserrat';
+    src: url('fonts/Montserrat-BoldItalic.woff') format('woff');
     font-weight: bold;
     font-style: italic;
 }
@@ -47,7 +38,7 @@
     font-style: normal;
 }
 
-$default-font: 'open-sans', Arial, sans-serif;
+$default-font: 'montserrat', Arial, sans-serif;
 $code-font: 'droid-sans-mono', Courier, monospace;
 $default-font-size: 14px;
 
@@ -80,8 +71,8 @@ a:visited { color: lighten($brand-color, 26%); }
 .w-false-link, .w-link-button { text-decoration: underline; cursor: pointer; }
 
 @mixin special-text($color: $dark) {
-	background-color: $color; 
-	border: 1px solid darken($color, 60%); 
+	background-color: $color;
+	border: 1px solid darken($color, 60%);
 	padding: 10px;
 	@include fixed-color-text(darken($color, 60%));
 }
@@ -107,7 +98,7 @@ h4  { font-size: 14px; padding-bottom: 3px; }
 h5  { font-size: 13px; padding-bottom: 2px; }
 h6  { font-size: 12px; padding-bottom: 2px; }
 
-.w-no-underline { border-bottom: none; } 
+.w-no-underline { border-bottom: none; }
 
 /*
  lists
