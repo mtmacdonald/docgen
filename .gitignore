@@ -5,3 +5,4 @@ example/output
 dist
 source/__test__/test-run-output
 docs/
+*.deb
