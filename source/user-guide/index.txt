@@ -121,38 +121,46 @@
 
 <ul class="features">
 <li>
-  <p><span class="w-icon" data-name="monitor"></span><span>Self-contained website</span></p>
+  <img src="files/images/icons/computer.svg" width="60px" />
+  <p><span>Self-contained website</span></p>
   <p>Creates a static website that works on any server, or as local files (CD, shared drive etc).</p>
 </li>
 <li>
-  <p><span class="w-icon" data-name="document"></span><span>Optional PDF</span></p>
+  <img src="files/images/icons/pdf.svg" width="60px" />
+  <p><span>Optional PDF</span></p>
   <p>Also publishes the website content as a single PDF, using <a href="http://wkhtmltopdf.org">wkhtmltopdf</a>.</p>
 </li>
 <li>
-  <p><span class="w-icon" data-name="edit"></span><span>Human-friendly input</span></p>
+  <img src="files/images/icons/pencil.svg" width="60px" />
+  <p><span>Human-friendly input</span></p>
   <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">CommonMark</a> format
   (Markdown).</p>
 </li>
 <li>
-  <p><span class="w-icon" data-name="gear_a"></span><span>Easy to version control</span></p>
+  <img src="files/images/icons/cog.svg" width="60px" />
+  <p><span>Easy to version control</span></p>
   <p>Easily version control software documentation in sync with its product.</p>
 </li>
 <li>
-  <p><span class="w-icon" data-name="clipboard"></span><span>Table of contents</span></p>
+  <img src="files/images/icons/document.svg" width="60px" />
+  <p></span><span>Table of contents</span></p>
   <p>Automatically creates tables of contents, with links and PDF page numbers.</p>
 </li>
 <li>
-  <p><span class="w-icon" data-name="code"></span><span>Code syntax highlighting</span></p>
+  <img src="files/images/icons/code.svg" width="60px" />
+  <p><span>Code syntax highlighting</span></p>
   <p>Automatically highlights code blocks, using <a href="https://highlightjs.org">Highlight.js</a>, with language detection.</p>
 </li>
 <li>
-  <p><span class="w-icon" data-name="compose"></span><span>Mathematical expressions</span></p>
+  <img src="files/images/icons/box.svg" width="60px" />
+  <p><span>Mathematical expressions</span></p>
   <p>Displays mathematical expressions without plugins, using either
   <a href="http://khan.github.io/KaTeX/">KaTeX</a> or
   <a href="https://www.mathjax.org">MathJax</a>.</p>
 </li>
 <li>
-  <p><span class="w-icon" data-name="star"></span><span>Branding and metadata</span></p>
+  <img src="files/images/icons/star.svg" width="60px" />
+  <p><span>Branding and metadata</span></p>
   <p>Easily brand with a logo, attribute ownership, and attach release notes.</p>
 </li>
 </ul>
