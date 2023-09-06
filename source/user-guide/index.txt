@@ -7,11 +7,8 @@
 }
 
 #banner {
-  color: #385691;
   font-weight: bold;
   padding-top: 30px;
-  background-color: #f7f7f7;
-  box-shadow: inset 0px 5px 5px 0px #e7e7e7;
 }
 
 #banner img {
@@ -19,9 +16,7 @@
 }
 
 #banner-buttons {
-  background-color: #f7f7f7;
   padding: 20px 0 20px 0;
-  background-color: #999;
 }
 
 .spaced {
@@ -105,12 +100,12 @@
 
 </style>
 
-<div id="banner" class="segment"><div class="w-fixed-width">
+<div id="banner"><div class="w-fixed-width">
   <p class="w-massive w-center w-no-underline">Better documentation for software products.</p>
   <img class="w-center" src="files/images/overview.png"  alt="overview" />
 </div></div>
- 
-<div id="banner-buttons" class="segment"><div class="w-fixed-width">
+
+<div id="banner-buttons"><div class="w-fixed-width">
   <span class="w-center">
   <a href="https://github.com/mtmacdonald/docgen/releases" class="w-button-link w-colored w-large spaced">Download</a>
   <a href="https://github.com/mtmacdonald/docgen/issues" class="w-button-link w-dark">Report Issues</a>
@@ -134,7 +129,7 @@
 </li>
 <li>
   <p><span class="w-icon" data-name="edit"></span><span>Human-friendly input</span></p>
-  <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">CommonMark</a> format 
+  <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">CommonMark</a> format
   (Markdown).</p>
 </li>
 <li>
@@ -200,7 +195,7 @@ DocGen is open-source software sponsored by <a href="https://www.inkit.com">inki
 
 <table style="width:600px; border:none; padding:0;">
  <tr style="border:none; padding:0;">
- 
+
   <td style="border:none; text-align:left; padding:0; vertical-align: top;"><ul>
    <li class="list-heading">Flexible Input Formats</li>
    <li>Plain text</li>
@@ -210,7 +205,7 @@ DocGen is open-source software sponsored by <a href="https://www.inkit.com">inki
    <li>Image diagrams</li>
    <li>Attach other documents</li>
   </ul></td>
-  
+
   <td style="border:none; text-align:left; padding:0; vertical-align: top;"><ul>
    <li class="list-heading">Configurable Metadata</li>
    <li>Branding (logo, title, organization)</li>
@@ -219,13 +214,13 @@ DocGen is open-source software sponsored by <a href="https://www.inkit.com">inki
    <li>Version information</li>
    <li>Release notes (change log)</li>
   </ul></td>
-  
+
  </tr>
 </table>
 
 <blockquote>
-DocGen is probably not the right tool for precision PDF layout. Or for product configurators which need to output 
-variants based on a common template. Docgen is intended more for free-form, human generated content which is regularly 
+DocGen is probably not the right tool for precision PDF layout. Or for product configurators which need to output
+variants based on a common template. Docgen is intended more for free-form, human generated content which is regularly
 updated and refactored, and standardised for each product release.
 </blockquote>
 
@@ -233,9 +228,9 @@ updated and refactored, and standardised for each product release.
 
 Output created by DocGen works in modern browsers (desktop and mobile devices).
 
-<ul><li/>tested in <a href= "http://windows.microsoft.com/en-us/internet-explorer/download-ie">Internet Explorer 9+</a>, 
-<a href= "http://www.google.com/chrome">Chrome</a>, 
-<a href= "https://www.mozilla.org/en-US/firefox/new">Firefox</a>, 
+<ul><li/>tested in <a href= "http://windows.microsoft.com/en-us/internet-explorer/download-ie">Internet Explorer 9+</a>,
+<a href= "http://www.google.com/chrome">Chrome</a>,
+<a href= "https://www.mozilla.org/en-US/firefox/new">Firefox</a>,
 <a href= "https://www.apple.com/safari">Safari</a></li></ul>
 
 <h2 id="quick-start">Quick start</h2>
@@ -245,7 +240,7 @@ Output created by DocGen works in modern browsers (desktop and mobile devices).
  <li>Install DocGen</li>
  <li>Scaffold an empty template</li>
  <li>Generate a static website</li>
-</ul 
+</ul
 
 <p>Enter these commands in the terminal:</p>
 
