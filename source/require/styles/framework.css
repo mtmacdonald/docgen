@@ -453,7 +453,9 @@ footer div {
   padding: 15px 0 15px 0;
 }
 footer > div:first-child {
-  background-color: #E4EDFC;
+  background-color: #ddd;
+  border-top: 2px solid #bbb;
+  border-bottom: 2px solid #bbb;
 }
 footer > div:nth-child(2) {
   color: #fff;
@@ -484,7 +486,7 @@ section > div p, section > div div, section > div pre, section > div ul, section
 */
 @font-face {
   font-family: "montserrat";
-  src: url("fonts/Montserrat.woff") format("woff");
+  src: url("fonts/Montserrat-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
