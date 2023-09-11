@@ -220,7 +220,7 @@ DocGen is open-source software sponsored by <a href="https://www.inkit.com">inki
 <div class="w-center">
     <a href="https://www.inkit.com">
         <img
-            src="files/images/svg/inkit-logo.svg"
+            src="files/images/inkit-logo.svg"
             style="width: 180px"
         />
     </a>
