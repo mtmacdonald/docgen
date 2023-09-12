@@ -232,7 +232,7 @@ DocGen, and run the tool to generate websites and PDF documents.
   </div>
 </div>
 
-<table style="width:600px; border:none; padding:0;">
+<table class="w-center" style="width:600px; border:none; padding:0;">
  <tr style="border:none; padding:0;">
 
   <td style="border:none; text-align:left; padding:0; vertical-align: top;"><ul>
