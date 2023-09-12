@@ -5,7 +5,7 @@
 
 html
 {
-	background-color: $brand-color; //'make short pages appear to stretch to bottom'
+	background-color: $brand-primary-color; //'make short pages appear to stretch to bottom'
 	color: $text;
 
 	body
@@ -30,8 +30,8 @@ header
 	@include fixed-color-text();
 
 	background-color: $content-background;
-	border-top: 2px solid $brand-color;
-	border-bottom: 2px solid $brand-color;
+	border-top: 2px solid $brand-primary-color;
+	border-bottom: 2px solid $brand-primary-color;
 
 	//.header-container {
 	//	display: table;

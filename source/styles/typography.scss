@@ -63,10 +63,10 @@ body {
  links
 */
 
-a, .w-false-link, .w-link-button { color: $brand-color; }
-a:hover, .w-false-link:hover, .w-link-button:hover { color: lighten($brand-color, 26%); text-decoration: none; }
+a, .w-false-link, .w-link-button { color: $brand-primary-color; }
+a:hover, .w-false-link:hover, .w-link-button:hover { color: lighten($brand-primary-color, 26%); text-decoration: none; }
 a:active { 	background: none; } //'browser normalization'
-a:visited { color: lighten($brand-color, 26%); }
+a:visited { color: lighten($brand-primary-color, 26%); }
 
 .w-false-link, .w-link-button { text-decoration: underline; cursor: pointer; }
 
@@ -90,7 +90,7 @@ a:visited { color: lighten($brand-color, 26%); }
  headings
 */
 
-h1, h2, h3, h4 , h5, h6 { text-decoration:none; font-weight: bold; color: $brand-color; padding-bottom: 5px; border-bottom: 1px solid $border;  margin: 20px 0 20px 0; }
+h1, h2, h3, h4 , h5, h6 { text-decoration:none; font-weight: bold; color: $brand-primary-color; padding-bottom: 5px; border-bottom: 1px solid $border;  margin: 20px 0 20px 0; }
 h1  { font-size: 20px; padding-bottom: 6px; }
 h2  { font-size: 18px; padding-bottom: 4px; }
 h3  { font-size: 16px; padding-bottom: 4px; }
@@ -116,9 +116,10 @@ section > div ul ul, section > div ol ol {margin:0;} /*don't put margin on neste
 */
 
 blockquote {
- padding: 10px 10px 10px 6px;
- border-left: 5px solid $dark;
- background-color: $medium;
+ padding: 20px 30px;
+ border-radius: 2px;
+ border-left: 5px solid $brand-secondary-color;
+ background-color: $brand-secondary-color-light;
 }
 
 /*

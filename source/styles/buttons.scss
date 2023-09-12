@@ -22,7 +22,7 @@
 }
 
 button, input[type=submit], input[type=button], a.w-button-link {
- 
+
 	box-sizing: border-box;
 	vertical-align: middle;
 	height: 36px; //'set the height to avoid inconsistency across browsers (noteably IE)'
@@ -42,24 +42,24 @@ button, input[type=submit], input[type=button], a.w-button-link {
 	}
 
 	&.w-colored {
-		@include button-color($brand-color, $light-text);
+		@include button-color($brand-primary-color, $light-text);
 	}
 
 	&.w-small {
-		height: 22px; 
+		height: 22px;
 		padding: 0 6px 0 6px;
 	}
 
 	&.w-large {
-		height: 52px; 
+		height: 52px;
 		font-size: 16px;
 		padding: 0 20px 0 20px;
 		border-width:2px; border-radius: 8px;
 	}
 
 	&.w-flat {
-		border-bottom-left-radius: 0; 
-		border-bottom-right-radius: 0; 
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
 	}
 
 	&:disabled{
@@ -73,7 +73,7 @@ a.w-button-link {
 	display: inline-block;
 	text-decoration: none;
 	line-height: 34px;
-	
+
 	&.w-small {
 		line-height:20px;
 	}
