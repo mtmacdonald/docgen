@@ -258,9 +258,8 @@ DocGen, and run the tool to generate websites and PDF documents.
 </table>
 
 <blockquote>
-DocGen is probably not the right tool for precision PDF layout. Or for product configurators which need to output
-variants based on a common template. Docgen is intended more for free-form, human generated content which is regularly
-updated and refactored, and standardised for each product release.
+NOTE: DocGen is intended for free-form, human-generated content which is regularly updated and improved, then
+automatically laid out according to a template. It is not intended as a precision PDF editing tool.
 </blockquote>
 
 <h2 class="browserSupport">Browser support</h2>
