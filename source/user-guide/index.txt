@@ -143,7 +143,10 @@ p.browserSupport {
 </style>
 
 <div id="banner"><div class="w-fixed-width">
-  <p class="w-massive w-center w-no-underline">Better documentation for software products.</p>
+  <p class="w-massive w-center w-no-underline">The Leading Open Source Documentation Tool</p>
+  <p class="heading-text">
+   DocGen generates HTML websites and PDF documents from plain text for free.
+  </p>
   <img class="w-center" src="files/images/overview.svg"  alt="overview" width="700px" />
 </div></div>
 
