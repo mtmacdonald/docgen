@@ -1,7 +1,11 @@
 ﻿<style>
+h1 {
+  font-size: 32px;
+  border-bottom: none;
+}
 h2 {
-    font-size: 32px;
-    border-bottom: none;
+  font-size: 28px;
+  border-bottom: none;
 }
 
 #dg-content, #dg-innerContent {
@@ -12,8 +16,7 @@ h2 {
 }
 
 #banner {
-  font-weight: bold;
-  padding-top: 30px;
+  padding-top: 36px;
 }
 
 #banner img {
@@ -124,8 +127,8 @@ p.browserSupport {
 
 </style>
 
-<div id="banner"><div class="w-fixed-width">
-  <p class="w-massive w-center w-no-underline">The Leading Open Source Documentation Tool</p>
+<div id="banner"><div class="w-fixed-width w-center">
+  <h1>The Leading Open Source Documentation Tool</h1>
   <p class="heading-text">
    DocGen generates HTML websites and PDF documents from plain text for free.
   </p>
