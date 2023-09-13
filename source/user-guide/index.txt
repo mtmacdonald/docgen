@@ -35,6 +35,10 @@ h2 {
   font-size: 16px;
   text-align: center;
 }
+.subDescription {
+  width: 400px;
+  display: inline-block;
+}
 
 .segment {
   border-bottom: 2px solid #4d4d4d;
@@ -70,8 +74,8 @@ h2 {
 }
 
 .features li img {
-    height: 44px;
-    margin-bottom: 5px;
+  height: 44px;
+  margin-bottom: 5px;
 }
 
 .features li span {
@@ -84,7 +88,6 @@ h2 {
   padding: 0 0 3px 0;
   font-size: 14px;
   font-weight: bold;
-  color: #385691;
   border: none;
 }
 
@@ -142,10 +145,16 @@ p.browserSupport {
   </span>
 </div></div>
 
+<div class="w-center">
+  <h2>DocGen is a Static Website Generator</h2>
+  <p class="heading-text">
+  <span class="subDescription">
+    DocGen is an open-source website generator that makes it easy to create high-quality technical documentation.
+  </span>
+  </p>
+</div>
+
 <div class="segment" style="border-bottom: none; margin-bottom:0; padding-bottom:0;"><div class="w-fixed-width">
-<p class="heading-text">
- <strong>DocGen</strong> is a <strong>static website generator</strong> that's ideal for making technical user guides for software products.
-</p>
 
 <h2 class="dg-hiddenTitle" id="features">Features</h2>
 
