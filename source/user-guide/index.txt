@@ -204,8 +204,6 @@ p.browserSupport {
 </li>
 </ul>
 
-<p class="heading-text">DocGen makes it easy for anyone to create high-quality technical documentation.</p>
-
 </div></div>
 
 <div style="padding-top:20px;"><div class="w-fixed-width">
