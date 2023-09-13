@@ -492,7 +492,7 @@ section > div p, section > div div, section > div pre, section > div ul, section
 }
 @font-face {
   font-family: "montserrat";
-  src: url("fonts/Montserrat-Bold.woff") format("woff");
+  src: url("fonts/Montserrat-SemiBold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
 }
@@ -504,7 +504,7 @@ section > div p, section > div div, section > div pre, section > div ul, section
 }
 @font-face {
   font-family: "montserrat";
-  src: url("fonts/Montserrat-BoldItalic.woff") format("woff");
+  src: url("fonts/Montserrat-SemiBoldItalic.woff") format("woff");
   font-weight: bold;
   font-style: italic;
 }
