@@ -36,7 +36,7 @@ h2 {
   text-align: center;
 }
 .subDescription {
-  width: 400px;
+  width: 500px;
   display: inline-block;
 }
 
@@ -65,24 +65,20 @@ h2 {
   padding: 0;
   width: 100%;
 }
-
 .features li {
   vertical-align: top;
   display: inline-block;
   width: 220px;
-  margin: 10px;
+  margin: 20px 10px;
 }
-
 .features li img {
   height: 44px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
-
 .features li span {
   vertical-align: middle;
   margin-right: 5px;
 }
-
 .features li p:first-of-type {
   margin: 0;
   padding: 0 0 3px 0;
@@ -90,7 +86,6 @@ h2 {
   font-weight: bold;
   border: none;
 }
-
 .features li p:last-of-type {
   padding-top: 5px;
   margin: 0;
