@@ -7,6 +7,10 @@ h2 {
   font-size: 28px;
   border-bottom: none;
 }
+h3 {
+  font-size: 24px;
+  border-bottom: none;
+}
 
 #dg-content, #dg-innerContent {
   padding-top: 0;
@@ -147,6 +151,34 @@ p.browserSupport {
   margin: 0;
 }
 
+.inkitSponsor {
+  width: 700px;
+  height: 240px;
+  background-image: url('files/images/inkit-dark-background.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  opacity: 0.9;
+  padding: 10px;
+  text-align: left;
+}
+.inkitSponsor a, .inkitSponsor h3 {
+  color: white;
+}
+.inkitSponsor h3 {
+  color: white;
+  line-height: 1.5;
+}
+.inkitSponsor img {
+  height: 200px;
+  margin: 0 20px;
+}
+.inkitSponsor div {
+  padding-right: 20px;
+}
 </style>
 
 <div id="banner"><div class="w-fixed-width w-center">
@@ -228,15 +260,15 @@ p.browserSupport {
 
 <h2>Sponsors</h2>
 
-DocGen is open-source software sponsored by <a href="https://www.inkit.com">inkit.com</a>.
-
-<div class="w-center">
-    <a href="https://www.inkit.com">
-        <img
-            src="files/images/inkit-logo.svg"
-            style="width: 180px"
-        />
-    </a>
+<div class="inkitSponsor w-center">
+  <img src="files/images/inkit-screenshot.png" alt="Inkit sponsor">
+  <div>
+    <h3>DocGen is Sponsored <br/>By Inkit</h3>
+    <p>
+      DocGen is open-source software sponsored by Inkit, the leading Zero Trust Document Generation Platform.
+    </p>
+    <p><a href="https://www.inkit.com">Learn More</a></p>
+  </div>
 </div>
 
 <p class="dg-forceBreak"></p>
