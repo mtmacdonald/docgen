@@ -181,7 +181,7 @@ p.browserSupport {
 <li>
   <img src="files/images/icons/computer.svg" />
   <p><span>Self-contained website</span></p>
-  <p>Creates a static website that works on any server, or as local files (CD, shared drive etc).</p>
+  <p>Creates a static website that works on any server, or as local files.</p>
 </li>
 <li>
   <img src="files/images/icons/pdf.svg" />
@@ -191,13 +191,12 @@ p.browserSupport {
 <li>
   <img src="files/images/icons/pencil.svg" />
   <p><span>Human-friendly input</span></p>
-  <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">CommonMark</a> format
-  (Markdown).</p>
+  <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">Markdown</a> format.</p>
 </li>
 <li>
   <img src="files/images/icons/cog.svg" />
   <p><span>Easy to version control</span></p>
-  <p>Easily version control software documentation in sync with its product.</p>
+  <p>Plain text input formats work well with all version control systems.</p>
 </li>
 <li>
   <img src="files/images/icons/document.svg" />
