@@ -79,9 +79,8 @@ footer {
 	}
 
 	> div:first-child {
-		background-color:$medium;
-		border-top: 2px solid $dark;
-		border-bottom: 2px solid $dark;
+		text-align: center;
+		background-color:$brand-secondary-color-light;
 	}
 
 	> div:nth-child(2) {

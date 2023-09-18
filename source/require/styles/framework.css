@@ -453,9 +453,8 @@ footer div {
   padding: 15px 0 15px 0;
 }
 footer > div:first-child {
-  background-color: #ddd;
-  border-top: 2px solid #bbb;
-  border-bottom: 2px solid #bbb;
+  text-align: center;
+  background-color: rgb(222, 232, 252);
 }
 footer > div:nth-child(2) {
   color: #fff;
