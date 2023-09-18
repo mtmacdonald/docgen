@@ -728,8 +728,13 @@ pre {
   border-radius: 2px;
 }
 
+table, .w-table {
+  border-spacing: 0;
+}
+
 .w-table {
   width: 700px;
+  border-collapse: collapse;
 }
 .w-table td, .w-table th {
   border: 1px solid #999;
