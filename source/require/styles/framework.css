@@ -701,7 +701,7 @@ section > div ul ul, section > div ol ol {
 blockquote {
   padding: 20px 30px;
   border-radius: 2px;
-  border-left: 5px solid rgb(35, 88, 222);
+  border-left: 5px solid rgb(46, 113, 225);
   background-color: rgb(222, 232, 252);
 }
 
@@ -760,127 +760,69 @@ pre {
 /*
  buttons
 */
-button, input[type=submit], input[type=button], a.w-button-link {
-  box-sizing: border-box;
-  vertical-align: middle;
-  height: 36px;
+button, .button {
   cursor: pointer;
-  padding: 0 9px 0 9px;
-  font-family: "montserrat", Arial, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 4px;
-}
-button, input[type=submit], input[type=button], a.w-button-link {
-  border: 1px solid #d5d5d5;
-  color: #444;
-  background-color: #eee;
-  box-shadow: inset 0px 1px 4px white;
-}
-button:not([disabled]):hover, input[type=submit]:not([disabled]):hover, input[type=button]:not([disabled]):hover, a.w-button-link:not([disabled]):hover {
-  background-color: #eeeeee;
-  border-color: #bbbbbb;
-  box-shadow: 0px 1px 1px #bbb;
-}
-button:not([disabled]):active, input[type=submit]:not([disabled]):active, input[type=button]:not([disabled]):active, a.w-button-link:not([disabled]):active {
-  border-color: #888888;
-}
-button.w-dark, input[type=submit].w-dark, input[type=button].w-dark, a.w-button-link.w-dark {
-  border: 1px solid #a2a2a2;
-  color: #444;
-  background-color: #bbb;
-  box-shadow: inset 0px 1px 4px #d5d5d5;
-}
-button.w-dark:not([disabled]):hover, input[type=submit].w-dark:not([disabled]):hover, input[type=button].w-dark:not([disabled]):hover, a.w-button-link.w-dark:not([disabled]):hover {
-  background-color: #bcbaba;
-  border-color: #888888;
-  box-shadow: 0px 1px 1px #bbb;
-}
-button.w-dark:not([disabled]):active, input[type=submit].w-dark:not([disabled]):active, input[type=button].w-dark:not([disabled]):active, a.w-button-link.w-dark:not([disabled]):active {
-  border-color: #555555;
-}
-button.w-colored, input[type=submit].w-colored, input[type=button].w-colored, a.w-button-link.w-colored {
-  border: 1px solid black;
-  color: #fff;
-  background-color: rgb(1, 3, 4);
-  box-shadow: inset 0px 1px 4px #0b222d;
-}
-button.w-colored:not([disabled]):hover, input[type=submit].w-colored:not([disabled]):hover, input[type=button].w-colored:not([disabled]):hover, a.w-button-link.w-colored:not([disabled]):hover {
-  background-color: #010304;
-  border-color: black;
-  box-shadow: 0px 1px 1px #bbb;
-}
-button.w-colored:not([disabled]):active, input[type=submit].w-colored:not([disabled]):active, input[type=button].w-colored:not([disabled]):active, a.w-button-link.w-colored:not([disabled]):active {
-  border-color: black;
-}
-button.w-small, input[type=submit].w-small, input[type=button].w-small, a.w-button-link.w-small {
-  height: 22px;
-  padding: 0 6px 0 6px;
-}
-button.w-large, input[type=submit].w-large, input[type=button].w-large, a.w-button-link.w-large {
-  height: 52px;
-  font-size: 16px;
-  padding: 0 20px 0 20px;
-  border-width: 2px;
-  border-radius: 8px;
-}
-button.w-flat, input[type=submit].w-flat, input[type=button].w-flat, a.w-button-link.w-flat {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-button:disabled, input[type=submit]:disabled, input[type=button]:disabled, a.w-button-link:disabled {
-  cursor: default;
-  border: 1px solid #d5d5d5;
-  color: #bbb;
-  background-color: #eee;
-  box-shadow: inset 0px 1px 4px white;
-}
-button:disabled:not([disabled]):hover, input[type=submit]:disabled:not([disabled]):hover, input[type=button]:disabled:not([disabled]):hover, a.w-button-link:disabled:not([disabled]):hover {
-  background-color: #eeeeee;
-  border-color: #bbbbbb;
-  box-shadow: 0px 1px 1px #bbb;
-}
-button:disabled:not([disabled]):active, input[type=submit]:disabled:not([disabled]):active, input[type=button]:disabled:not([disabled]):active, a.w-button-link:disabled:not([disabled]):active {
-  border-color: #888888;
-}
-
-a.w-button-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  vertical-align: baseline;
+  border: 2px solid rgb(46, 113, 225);
+  background: rgb(46, 113, 225);
+  color: white !important;
+  padding: 12px 26px;
+  text-transform: none;
+  text-shadow: none;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
   text-decoration: none;
-  line-height: 34px;
+  border-radius: 6px;
+  user-select: none;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  height: 14px;
+  max-width: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-a.w-button-link.w-small {
-  line-height: 20px;
+button:hover, .button:hover {
+  opacity: 0.8;
 }
-a.w-button-link.w-large {
-  line-height: 45px;
+button:focus, .button:focus {
+  color: white !important;
+  box-shadow: 0 0 0 2px rgba(22, 71, 193, 0.25);
 }
-
-.w-button-link:hover, .w-button-link:active {
-  color: #444;
+button:active, .button:active {
+  box-shadow: none;
 }
-.w-button-link:hover.w-colored, .w-button-link:active.w-colored {
-  color: #fff;
+button:hover, button:focus, button:active, .button:hover, .button:focus, .button:active {
+  position: relative;
+  z-index: 1;
 }
-
-/*
- link buttons
-*/
-button.w-link-button {
-  display: inline;
-  border: none;
-  border-radius: 0;
-  margin: 0;
-  padding: 0;
-  font: inherit;
-  height: auto;
-  line-height: 20px;
-  -moz-user-select: text;
-  background: none;
+button .icon, .button .icon {
+  margin: 0 0 0 38px;
+}
+button .icon svg, .button .icon svg {
+  height: 12px;
+  width: 12px;
 }
 
-button.w-link-button:hover, button.w-link-button:active {
-  background: none;
+.inverted {
+  background-color: transparent;
+  color: rgb(46, 113, 225) !important;
+  border: 2px solid rgb(46, 113, 225);
+  box-shadow: none;
+}
+.inverted:hover, .inverted:focus, .inverted:active {
+  background-color: rgb(46, 113, 225);
+  color: white !important;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.whiteInverted {
+  background-color: transparent;
+  color: white !important;
+  border: 2px solid white;
   box-shadow: none;
 }
 

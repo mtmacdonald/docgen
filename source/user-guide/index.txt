@@ -153,7 +153,7 @@ p.browserSupport {
 
 .inkitSponsor {
   width: 700px;
-  height: 240px;
+  height: 250px;
   background-image: url('files/images/inkit-dark-background.png');
   background-size: cover;
   background-position: center;
@@ -173,8 +173,8 @@ p.browserSupport {
   line-height: 1.5;
 }
 .inkitSponsor img {
-  height: 200px;
-  margin: 0 20px;
+  height: 240px;
+  margin: 15px 20px 0 20px;
 }
 .inkitSponsor div {
   padding-right: 20px;
@@ -191,8 +191,11 @@ p.browserSupport {
 
 <div id="banner-buttons"><div class="w-fixed-width">
   <span class="w-center">
-  <a href="https://github.com/mtmacdonald/docgen/releases" class="w-button-link w-colored w-large spaced">Download</a>
-  <a href="https://github.com/mtmacdonald/docgen/issues" class="w-button-link w-dark">Report Issues</a>
+  <a href="https://github.com/mtmacdonald/docgen/tags" class="button spaced">
+    <span>Download</span>
+    <img class="icon" src="files/images/icons/arrowRight.svg" alt="arrow">
+  </a>
+  <a href="https://github.com/mtmacdonald/docgen/issues" class="button inverted">Report Issues</a>
   </span>
 </div></div>
 
@@ -200,7 +203,7 @@ p.browserSupport {
   <h2>DocGen is a Static Website Generator</h2>
   <p class="heading-text">
   <span class="subDescription">
-    DocGen is an open-source website generator that makes it easy to create high-quality technical documentation.
+    DocGen is an open-source website generator that makes it easy to create high-quality documentation.
   </span>
   </p>
 </div>
@@ -267,7 +270,7 @@ p.browserSupport {
     <p>
       DocGen is open-source software sponsored by Inkit, the leading Zero Trust Document Generation Platform.
     </p>
-    <p><a href="https://www.inkit.com">Learn More</a></p>
+    <p><a href="https://www.inkit.com" class="button whiteInverted">Learn More</a></p>
   </div>
 </div>
 
