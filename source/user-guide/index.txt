@@ -117,14 +117,17 @@ p.browserSupport {
   margin-bottom: 10px;
 }
 .browsers {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  margin: 40px;
 }
 .browsers a {
+  display: inline-block;
+  margin: 0 10px;
+  vertical-align: top;
+  width: 80px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
-  margin: 0 30px;
+  margin: 0 20px;
   transition: opacity 0.2s;
 }
 .browsers a:hover {
@@ -331,7 +334,7 @@ automatically laid out according to a template. It is not intended as a precisio
   including Chrome, Edge, Firefox and Safari.
 </p>
 
-<div class="browsers">
+<div class="browsers w-center">
   <a href="https://www.google.com/chrome">
     <img src="files/images/icons/chrome.svg" alt="chrome" />
     <p>Chrome</p>
