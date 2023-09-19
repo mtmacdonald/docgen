@@ -90,20 +90,18 @@ h3 {
   margin: 0;
 }
 
-.featuresContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  grid-gap: 10px;
-  text-align: left;
-  width: 700px;
-  margin-bottom: 50px;
+.featureDetailsContainer {
+  margin-bottom: 40px;
 }
-.featuresBox {
-  display: flex;
-  align-items: center;
-  margin: 0;
+.featureDetails {
+  text-align:left;
+  display: inline-block;
+  margin: 0 10px;
+  vertical-align: top;
+  width: 300px;
+  padding: 10px;
 }
-.featuresBox ul {margin: 0}
+.featureDetails ul {margin: 10px 0 0 0}
 
 h2 {
   margin: 40px 0;
@@ -295,32 +293,28 @@ DocGen, and run the tool to generate websites and PDF documents.
   </div>
 </div>
 
-<div class="featuresContainer w-center">
-  <div class="featuresBox">
-   <strong>Flexible Input Formats</strong>
-  </div>
-  <div class="featuresBox">
-   <strong>Configurable Metadata</strong>
-  </div>
-  <div class="featuresBox">
-   <ul>
-    <li>Plain text</li>
-    <li>CommonMark (Markdown)</li>
-    <li>HTML</li>
-    <li>LaTeX mathematical expressions</li>
-    <li>Image diagrams</li>
-    <li>Attach other documents</li>
-   </ul>
-  </div>
-  <div class="featuresBox">
-   <ul>
-      <li>Branding (logo, title, organization)</li>
-      <li>License, copyright, and legal markings</li>
-      <li>Ownership and attribution</li>
-      <li>Version information</li>
-      <li>Release notes (change log)</li>
-     </ul>
-  </div>
+<div class="featureDetailsContainer w-center">
+    <div class="featureDetails">
+        <strong>Flexible Input Formats</strong>
+        <ul>
+            <li>Plain text</li>
+            <li>CommonMark (Markdown)</li>
+            <li>HTML</li>
+            <li>LaTeX mathematical expressions</li>
+            <li>Image diagrams</li>
+            <li>Attach other documents</li>
+        <ul>
+    </div>
+    <div class="featureDetails">
+       <strong>Configurable Metadata</strong>
+        <ul>
+          <li>Branding (logo, title, organization)</li>
+          <li>License, copyright, and legal markings</li>
+          <li>Ownership and attribution</li>
+          <li>Version information</li>
+          <li>Release notes (change log)</li>
+        </ul>
+    </div>
 </div>
 
 <blockquote>
