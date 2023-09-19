@@ -44,17 +44,19 @@ h3 {
   display: inline-block;
 }
 
-.how-it-works {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+.howItWorksDetails {
+    text-align:left;
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    padding: 10px;
 }
-.how-it-works img {
+.howItWorksDetails img {
   border-radius: 12px;
   box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
-  margin: 0 20px 20px 20px;
+  margin-bottom: 20px;
 }
-.how-it-works p {
+.howItWorksDetails p {
   width: 300px;
   margin: 10px 20px 10px 20px;
 }
@@ -278,16 +280,16 @@ p.browserSupport {
 Simply <a href="https://github.com/mtmacdonald/docgen/releases">download</a> or <a href="#quick-start">install</a>
 DocGen, and run the tool to generate websites and PDF documents.
 
-<div class="how-it-works">
-  <div>
+<div>
+  <div class="howItWorksDetails">
     <img src="files/images/text.png" alt="text" />
     <p>001 | <strong>Create content in plain text or human-friendly <a href="http://commonmark.org">Markdown</a></strong></p>
   </div>
-  <div>
+  <div class="howItWorksDetails">
     <img src="files/images/web.png" alt="website" />
     <p>002 | <strong>DocGen styles and publishes all your content as a website</strong></p>
   </div>
-  <div>
+  <div class="howItWorksDetails">
     <img src="files/images/pdf.png" alt="pdf" />
     <p>003 | <strong>DocGen also creates an equivalent PDF copy</strong></p>
   </div>
