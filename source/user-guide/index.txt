@@ -360,6 +360,7 @@ automatically laid out according to a template. It is not intended as a precisio
   </a>
 </div>
 
+<p class="dg-forceBreak"></p>
 <h2 id="quick-start">Quick start</h2>
 
 <div class="quickStart">
