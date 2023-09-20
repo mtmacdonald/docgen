@@ -343,19 +343,19 @@ automatically laid out according to a template. It is not intended as a precisio
 
 <div class="browsers w-center">
   <a href="https://www.google.com/chrome">
-    <img src="files/images/icons/chrome.svg" alt="chrome" />
+    <img src="files/images/icons/chrome.png" alt="chrome" />
     <p>Chrome</p>
   </a>
   <a href="https://www.microsoft.com/en-us/edge">
-    <img src="files/images/icons/edge.svg" alt="edge" />
+    <img src="files/images/icons/edge.png" alt="edge" />
     <p>Edge</p>
   </a>
   <a href="https://www.mozilla.org/en-US/firefox/new">
-    <img src="files/images/icons/firefox.svg" alt="firefox" />
+    <img src="files/images/icons/firefox.png" alt="firefox" />
     <p>Firefox</p>
   </a>
   <a href="https://www.apple.com/safari">
-    <img src="files/images/icons/safari.svg" alt="safari" />
+    <img src="files/images/icons/safari.png" alt="safari" />
     <p>Safari</p>
   </a>
 </div>
