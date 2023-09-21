@@ -495,11 +495,10 @@ function DocGen(process) {
     html[++i] = '</ul><div>';
     if (options.pdf) {
       html[++i] =
-        '<button class="w-icon-button" onclick="window.location=\'' +
+        '<button class="whiteInverted" onclick="window.location=\'' +
         pdfName +
         '\';">';
-      html[++i] = '<span class="w-icon" data-name="document"></span>';
-      html[++i] = '<span>PDF copy</span>';
+      html[++i] = '<span>PDF</span>';
       html[++i] = '</button>';
     }
     html[++i] = '</div></td>';

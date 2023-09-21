@@ -1,9 +1,14 @@
 
+table, .w-table {
+	border-spacing: 0;
+}
+
 .w-table {
 	width: 700px;
-	
-	td, th { 
-		@include border(1px);
+	border-collapse: collapse;
+
+	td, th {
+		border: 1px solid $border;
 		padding: 2px 15px 2px 15px;
 		height: 25px;
 		vertical-align: middle;
@@ -14,9 +19,9 @@
 		font-weight:bold;
 	}
 
-	caption { 
+	caption {
 		caption-side: bottom;
-		font-weight: bold; 
+		font-weight: bold;
 		padding: 15px;
 	}
 
@@ -29,7 +34,7 @@
 
 	//'optionally set .w-stripe to stripe a table'
 	&.w-stripe tbody tr:nth-of-type(2n){ background-color: $light; }
-	
+
 	//'override display:block on the w-center class within tables'
 	th.w-center, td.w-center { display:table-cell; }
 }

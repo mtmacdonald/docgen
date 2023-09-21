@@ -16,7 +16,7 @@ section li p {
 /*Table of contents button to initiate show/hide*/
 #dg-navigator {
   float: right;
-  background-color: #4d4d4d;
+  background-color: rgb(26, 34, 49);
   color: white;
   text-align: right;
   padding: 10px 20px 10px 20px;
@@ -29,7 +29,7 @@ section li p {
 /*Table of contents container*/
 #dg-toc {
   color: white;
-  background-color: #4d4d4d;
+  background-color: rgb(26, 34, 49);
 }
 
 #dg-toc table {
