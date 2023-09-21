@@ -48,3 +48,12 @@
   font-weight: normal;
   font-style: normal;
 }
+
+/*
+  hide button icons (wkhtmltopdf doesn't cope with flexbox layouts yet)
+ */
+button .icon,
+.button .icon,
+a .icon {
+  display: none;
+}
