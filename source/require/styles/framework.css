@@ -536,7 +536,7 @@ body {
 }
 
 .w-information-text {
-  color: black;
+  color: #0e3d9a;
 }
 
 .w-success-text {
@@ -615,13 +615,13 @@ a:visited {
 }
 
 .w-information {
-  background-color: rgb(46, 113, 225);
-  border: 1px solid black;
+  background-color: rgb(222, 232, 252);
+  border: 1px solid #0e3d9a;
   padding: 10px;
-  color: black;
+  color: #0e3d9a;
 }
 .w-information a, .w-information a:hover, .w-information a:active, .w-information a:visited, .w-information .w-false-link, .w-information .w-false-link:hover {
-  color: black;
+  color: #0e3d9a;
 }
 
 /*
@@ -941,7 +941,7 @@ button .icon svg, .button .icon svg {
 }
 
 .w-information > .w-icon svg {
-  fill: black;
+  fill: #0e3d9a;
 }
 
 td.center {
