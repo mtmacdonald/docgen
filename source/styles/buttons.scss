@@ -1,115 +1,81 @@
-
 /*
  buttons
 */
 
-@mixin button-color($color: $light, $text-color: $text) {
-	border: 1px solid darken($color, 10%);
-	color: $text-color;
-	background-color: $color;
-    box-shadow: inset 0px 1px 4px lighten($color, 10%);
-
-	&:not([disabled]):hover{
-		background-color: saturate($color, 1%);
-		border-color: darken($color, 20%);
-		box-shadow: 0px 1px 1px $dark;
-	}
-
-	&:not([disabled]):active{
-		border-color: darken($color, 40%);
-	}
-
-}
-
-button, input[type=submit], input[type=button], a.w-button-link {
- 
-	box-sizing: border-box;
-	vertical-align: middle;
-	height: 36px; //'set the height to avoid inconsistency across browsers (noteably IE)'
+button, .button {
 	cursor: pointer;
-	padding: 0 9px 0 9px;
-	font-family: $default-font;
-	font-size: 12px;
-	font-weight: bold;
-	border-radius: 4px;
-
-	& {
-		@include button-color;
-	}
-
-	&.w-dark {
-		@include button-color($dark);
-	}
-
-	&.w-colored {
-		@include button-color($brand-color, $light-text);
-	}
-
-	&.w-small {
-		height: 22px; 
-		padding: 0 6px 0 6px;
-	}
-
-	&.w-large {
-		height: 52px; 
-		font-size: 16px;
-		padding: 0 20px 0 20px;
-		border-width:2px; border-radius: 8px;
-	}
-
-	&.w-flat {
-		border-bottom-left-radius: 0; 
-		border-bottom-right-radius: 0; 
-	}
-
-	&:disabled{
-		cursor: default;
-		@include button-color($light, $dark);
-	}
-
-}
-
-a.w-button-link {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	outline: 0;
+	vertical-align: baseline;
+	border: 2px solid $brand-secondary-color;
+	background: $brand-secondary-color;
+	color: white!important;
+	padding: 12px 26px;
+	text-transform: none;
+	text-shadow: none;
+	line-height: 1em;
+	font-style: normal;
+	text-align: center;
 	text-decoration: none;
-	line-height: 34px;
-	
-	&.w-small {
-		line-height:20px;
+	border-radius: 6px;
+	user-select: none;
+	transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+	box-shadow 0.1s ease, background 0.1s ease;
+	height: 14px;
+	max-width: 100%;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+	&:hover {
+		opacity: 0.8;
 	}
 
-	&.w-large {
-		line-height:45px;
+	&:focus {
+		color: white!important;
+		box-shadow: 0 0 0 2px rgba($brand-secondary-color-dark, 0.25);
+	}
+
+	&:active {
+		box-shadow: none;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		position: relative;
+		z-index: 1;
+	}
+
+	.icon {
+		margin: 0 0 0 38px;
+
+		svg {
+			height: 12px;
+			width: 12px;
+		}
 	}
 }
 
-.w-button-link:hover, .w-button-link:active {
-	color: $text;
+.inverted {
+	background-color: transparent;
+	color: $brand-secondary-color!important;
+	border: 2px solid $brand-secondary-color;
+	box-shadow: none;
 
-	&.w-colored {
-		color: $light-text;
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: $brand-secondary-color;
+		color: white!important;
+		box-shadow: none;
+		opacity: 1;
 	}
 }
 
-/*
- link buttons
-*/
-
-button.w-link-button {
-    display: inline;
-    border: none;
-	border-radius: 0;
-    margin: 0;
-    padding: 0;
-    font: inherit;
-	height: auto;
-	line-height: 20px; //match typography
-    -moz-user-select: text; //'Make button text selectable in Gecko'
-	background: none;
-}
-button.w-link-button:hover, button.w-link-button:active {
-	background: none;
+.whiteInverted {
+	background-color: transparent;
+	color: white!important;
+	border: 2px solid white;
 	box-shadow: none;
 }
-
-
