@@ -1,4 +1,9 @@
-﻿DocGen 3.2.1 25/09/2023
+﻿DocGen 3.2.2 25/09/2023
+-----------------------
+
+- fix corrupted character / encoding issue in PDF footer ([#57](https://github.com/mtmacdonald/docgen/issues/57))
+
+DocGen 3.2.1 25/09/2023
 -----------------------
 
 - support SVG brand icons
