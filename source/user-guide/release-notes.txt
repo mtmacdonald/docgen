@@ -1,4 +1,9 @@
-﻿DocGen 3.2.0 21/09/2023
+﻿DocGen 3.2.1 25/09/2023
+-----------------------
+
+- support SVG brand icons
+
+DocGen 3.2.0 21/09/2023
 -----------------------
 
 - update website with rebrand and sponsorship
