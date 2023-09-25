@@ -644,7 +644,6 @@ function DocGen(process) {
       if (templates.hasOwnProperty(key)) {
         let $ = templates[key];
         //logo
-        console.log(hasLogo, logoPath);
         if (hasLogo === true) {
           let logoUrl = logoPath;
           $('#dg-logo').css('background-image', 'url(' + logoUrl + ')');
