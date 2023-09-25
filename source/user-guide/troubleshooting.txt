@@ -8,7 +8,7 @@ Pass the **-v** (verbose) option when running DocGen to get more detailed error 
 PDF missing content
 -------------------
 
-In complex pages, the PDF generator (wkhtmltopdf) needs to be given enough time for dynamic content to be rendered. 
+In complex pages, the PDF generator (wkhtmltopdf) needs to be given enough time for dynamic content to be rendered.
 Pass the **-d [milliseconds]** option to increase the rendering time for each page, if required.
 
 Attached files not in PDF
@@ -24,7 +24,8 @@ Make sure all the input text files are saved with UTF-8 encoding.
 Missing logo
 ------------
 
-The logo must be PNG format and saved with the path *files/images/logo.png*. 
+The logo must be PNG format and saved with the path *files/images/logo.svg* or *files/images/logo.png* and it must have
+suitable dimensions for the header (height and width).
 
 Other issues
 ------------

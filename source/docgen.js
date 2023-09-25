@@ -517,13 +517,27 @@ function DocGen(process) {
     let hasLogo = false;
     let logoWidth = 0;
     let logoHeight = 0;
+    let logoPath;
     try {
-      let logo = imageSizeOf(options.input + '/files/images/logo.png');
+      logoPath = 'files/images/logo.svg';
+      let logo = imageSizeOf(`${options.input}/${logoPath}`);
       logoWidth = logo.width;
       logoHeight = logo.height;
       hasLogo = true;
     } catch (error) {
       //do nothing. If logo file cannot be read, logo is simply not shown
+    }
+    if (!hasLogo) {
+      //PNG fallback
+      try {
+        logoPath = 'files/images/logo.png';
+        let logo = imageSizeOf(`${options.input}/${logoPath}`);
+        logoWidth = logo.width;
+        logoHeight = logo.height;
+        hasLogo = true;
+      } catch (error) {
+        //do nothing. If logo file cannot be read, logo is simply not shown
+      }
     }
 
     //------------------------------------------------------------------------------------------------------
@@ -630,8 +644,9 @@ function DocGen(process) {
       if (templates.hasOwnProperty(key)) {
         let $ = templates[key];
         //logo
+        console.log(hasLogo, logoPath);
         if (hasLogo === true) {
-          let logoUrl = 'files/images/logo.png';
+          let logoUrl = logoPath;
           $('#dg-logo').css('background-image', 'url(' + logoUrl + ')');
           $('#dg-logo').css('height', logoHeight + 'px');
           $('#dg-logo').css('line-height', logoHeight + 'px');
