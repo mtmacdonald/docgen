@@ -878,7 +878,6 @@ function DocGen(process) {
     let args = pdfOptions.join('');
     args += allPages;
     args += ' ' + options.output + pdfName;
-    console.log(options.output, pdfName);
     return spawnArgs(args);
   };
 
