@@ -72,11 +72,12 @@ function DocGen(process) {
         read any file (async)
     */
 
-  let readFile = (path) => {
+  const readFile = (filePath) => {
+    const normalized = path.normalize(filePath);
     return new rsvp.Promise((resolve, reject) => {
-      fs.readFile(path, 'utf8', (error, data) => {
+      fs.readFile(normalized, 'utf8', (error, data) => {
         if (error) {
-          console.log(chalk.red('Error reading file: ' + path));
+          console.log(chalk.red('Error reading file: ' + normalized));
           reject(error);
         } else {
           data = data.replace(/^\uFEFF/, ''); //remove the BOM (byte-order-mark) from UTF-8 files, if present
