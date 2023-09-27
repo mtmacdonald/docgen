@@ -5,7 +5,7 @@
     "pages": [
       {
         "title": "Overview",
-        "source": "overview.txt"
+        "source": "overview.md"
       }
     ]
   }

@@ -5,16 +5,16 @@
     "pages": [
       {
         "title": "Overview",
-        "source": "index.txt",
+        "source": "index.md",
         "html": true
       },
       {
         "title": "Installation",
-        "source": "installation.txt"
+        "source": "installation.md"
       },
       {
         "title": "Upgrading",
-        "source": "upgrading.txt"
+        "source": "upgrading.md"
       }
     ]
   },
@@ -24,19 +24,19 @@
     "pages": [
       {
         "title": "Running DocGen",
-        "source": "running.txt"
+        "source": "running.md"
       },
       {
         "title": "Writing content",
-        "source": "writing-content.txt"
+        "source": "writing-content.md"
       },
       {
         "title": "CommonMark reference",
-        "source": "commonmark.txt"
+        "source": "commonmark.md"
       },
       {
         "title": "Advanced content",
-        "source": "advanced-content.txt"
+        "source": "advanced-content.md"
       }
     ]
   },
@@ -46,11 +46,11 @@
     "pages": [
       {
         "title": "Troubleshooting",
-        "source": "troubleshooting.txt"
+        "source": "troubleshooting.md"
       },
       {
         "title": "Using with version control",
-        "source": "version-control.txt"
+        "source": "version-control.md"
       }
     ]
   }

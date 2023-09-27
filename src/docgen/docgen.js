@@ -386,7 +386,7 @@ function DocGen(process) {
         let extra = {
           heading: 'Extra',
           column: 5,
-          pages: [{ title: 'Release notes', source: 'release-notes.txt' }],
+          pages: [{ title: 'Release notes', source: 'release-notes.md' }],
         };
         meta.contents.push(extra);
         loadMarkdown();
@@ -416,7 +416,7 @@ function DocGen(process) {
     });
     //add the release notes page
     keys.push('ownership');
-    files.push(options.input + '/release-notes.txt');
+    files.push(options.input + '/release-notes.md');
     rsvp
       .all(files.map(readFile))
       .then((files) => {
