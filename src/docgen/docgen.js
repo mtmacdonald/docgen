@@ -58,7 +58,7 @@ function DocGen(process) {
 
   this.scaffold = () => {
     console.log(chalk.green('Creating scaffold template directory'));
-    copyDirSync(__dirname + '../include/example', options.output);
+    copyDirSync(__dirname + '/../include/example', options.output);
   };
 
   this.run = () => {
