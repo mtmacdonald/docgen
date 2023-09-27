@@ -3,6 +3,6 @@ example/output
 .idea
 .DS_Store
 dist
-src/__test__/test-run-output
+source/__test__/test-run-output
 docs/
 *.deb
