@@ -1,4 +1,4 @@
-﻿DocGen 3.2.4 - 3.2.8 27/09/2023
+﻿DocGen 3.2.4 - 3.2.9 27/09/2023
 -----------------------
 
 - refactor directory structure to better suit build process
