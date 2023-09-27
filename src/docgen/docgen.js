@@ -58,7 +58,7 @@ function DocGen(process) {
 
   this.scaffold = () => {
     console.log(chalk.green('Creating scaffold template directory'));
-    copyDirSync(__dirname + '/example', options.output);
+    copyDirSync(__dirname + '../include/example', options.output);
   };
 
   this.run = () => {
@@ -91,11 +91,12 @@ function DocGen(process) {
         write any file (async)
     */
 
-  let writeFile = (path, data) => {
+  let writeFile = (filePath, data) => {
+    const normalized = path.normalize(filePath);
     return new rsvp.Promise((resolve, reject) => {
-      fs.writeFile(path, data, (error) => {
+      fs.writeFile(normalized, data, (error) => {
         if (error) {
-          console.log(chalk.red('Error writing file: ' + path));
+          console.log(chalk.red('Error writing file: ' + normalized));
           reject(error);
         } else {
           resolve(true);
@@ -109,11 +110,18 @@ function DocGen(process) {
     */
 
   let copyDirSync = (source, destination) => {
+    const normalizedSource = path.normalize(source);
+    const normalizedDestination = path.normalize(destination);
     try {
-      fs.copySync(source, destination);
+      fs.copySync(normalizedSource, normalizedDestination);
     } catch (error) {
       console.log(
-        chalk.red('Error copying directory: ' + source + ' to ' + destination),
+        chalk.red(
+          'Error copying directory: ' +
+            normalizedSource +
+            ' to ' +
+            normalizedDestination,
+        ),
       );
       if (options.verbose === true) {
         console.log(chalk.red(error));
@@ -126,12 +134,13 @@ function DocGen(process) {
         remake a directory (sync) ... remove and then mkdir in one operation
     */
 
-  let remakeDirSync = (path) => {
+  let remakeDirSync = (directoryPath) => {
+    const normalized = path.normalize(directoryPath);
     try {
-      fs.removeSync(path);
-      fs.mkdirpSync(path);
+      fs.removeSync(normalized);
+      fs.mkdirpSync(normalized);
     } catch (error) {
-      console.log(chalk.red('Error recreating directory: ' + path));
+      console.log(chalk.red('Error recreating directory: ' + normalized));
       if (options.verbose === true) {
         console.log(chalk.red(error));
         mainProcess.exit(1);
@@ -143,11 +152,12 @@ function DocGen(process) {
         remove any directory (sync)
     */
 
-  let removeDirSync = (path) => {
+  let removeDirSync = (directoryPath) => {
+    const normalized = path.normalize(directoryPath);
     try {
-      fs.removeSync(path);
+      fs.removeSync(normalized);
     } catch (error) {
-      console.log(chalk.red('Error removing directory: ' + path));
+      console.log(chalk.red('Error removing directory: ' + normalized));
       if (options.verbose === true) {
         console.log(chalk.red(error));
         mainProcess.exit(1);
