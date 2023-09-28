@@ -55,7 +55,7 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 
 <body>
 
-<div id="dg-toc"><div><table class="unstyled"><tbody><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li><li><a href="upgrading.html">Upgrading</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="commonmark.html">CommonMark reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><button class="whiteInverted" onclick="window.location='docgen.pdf';"><span>PDF</span></button></div></td></tr></tbody></table></div></div>
+<div id="dg-toc"><div><table class="unstyled"><tbody><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="markdown.html">Markdown reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><button class="whiteInverted" onclick="window.location='docgen.pdf';"><span>PDF</span></button></div></td></tr></tbody></table></div></div>
 <div id="dg-navigator">Table of contents</div>
 
 <header>
@@ -63,7 +63,7 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
     <div class="header-title">
       <a id="dg-homelink" href="index.html">
         <div id="dg-logo" style="background-image: url(files/images/logo.svg); height: 42px; line-height: 42px; padding-left: 90px;">
-          <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(3.2.9)</span>
+          <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(3.2.11)</span>
         </div>
       </a>
     </div>
@@ -74,15 +74,17 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 </header>
 
 <section id="dg-content"><div class="w-fixed-width"><div id="dg-innerContent"><h1 id="dg-autoTitle">Running DocGen</h1><h2 id="overview">Overview</h2>
-<p>DocGen is a command-line tool which takes plain text input files and outputs a static website.</p>
+<p>DocGen is a command-line (CLI) tool which takes plain text or <a href="https://www.markdownguide.org/">markdown</a> input files and
+outputs a static website. It also optionally outputs a PDF copy of the website content.</p>
+<p>DocGen works by transforming an input directory (source files) into an output directory (website + PDF).</p>
 <h2 id="command-line-usage">Command-line usage</h2>
 <p>The DocGen command-line interface includes usage help for both the tool and its subcommands:</p>
 <pre><code>docgen --help
 docgen run --help
 </code></pre>
 <h2 id="scaffold-command">Scaffold command</h2>
-<p>The <strong>scaffold</strong> command creates an <em>example</em> input directory. It outputs the minumum files required by DocGen, which
-can then be used as a template for making any new website.</p>
+<p>Use the scaffold command for creating a new project. It creates an <em>example</em> input directory, by generating the minimum
+the skeleton input files required by DocGen. After generating them, you can customise them to create your website.</p>
 <p><strong>Create a scaffold template in the working directory</strong> (./)<strong>:</strong></p>
 <pre><code>docgen scaffold
 </code></pre>
@@ -108,13 +110,13 @@ to place all the files in the root directory.</p>
 </div></div></section>
 
  <footer>
-  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.2.9 released on 27/09/2023.</span></p></div>
+  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.2.11 released on 27/09/2023.</span></p></div>
   <div class="w-fixed-width">
     <p><span id="dg-copyright">© 2023 <a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p>
     <p>
       <span id="dg-marking">MIT License.</span>
       <span id="dg-legalese"></span>
-      <span id="dg-attribution">Created by DocGen 3.2.9 on 27/09/2023 at 17:30:44.</span>
+      <span id="dg-attribution">Created by DocGen 3.2.11 on 28/09/2023 at 16:29:54.</span>
     </p>
   </div>
  </footer>
