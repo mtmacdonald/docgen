@@ -138,13 +138,13 @@ To create links to other sections within one content page, put hyphens between t
 	This is a heading
 	-----------------
 
-# Creating internal links to other pages
+## Creating internal links to other pages
 
 To create links to *other* content pages provide the relative url to the page:
 
 	[link to heading](example-page.html)
 
-# Control of page breaks in the PDF
+## Control of page breaks in the PDF
 
 DocGen does not provide precision control over PDF layout. However, some steps can be taken in case of page break
 issues (the most common problem).
