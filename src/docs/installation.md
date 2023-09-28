@@ -5,11 +5,11 @@ any setup or installation. These setup instructions are needed only when running
 
 DocGen is a command-line (CLI) tool. It runs on most major operating systems. 
 
-# Install Dependencies
+## Install Dependencies
 
 Before installing the tool, you need some dependencies.
 
-## Node.js and NPM
+### Node.js and NPM
 
 DocGen needs [Node.js](https://nodejs.org) (JavaScript engine) and its package manager [NPM](https://www.npmjs.com/)
 which are downloaded and installed together.
@@ -20,7 +20,7 @@ See [Node.js downloads](https://nodejs.org/en/download) and choose the installer
 - **OS X:** use the [official installer](https://nodejs.org/en/download) or [nvm](https://github.com/nvm-sh/nvm)
 - **Ubuntu Linux:** use [nvm](https://github.com/nvm-sh/nvm) or see [other instructions](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)
 
-## wkhtmltopdf (optional)
+### wkhtmltopdf (optional)
 
 The [wkhtmltopdf](http://wkhtmltopdf.org) package is optional and only needed if you want to enable generation of
 PDF documents.
@@ -28,7 +28,7 @@ PDF documents.
 To install, [download the installer](https://wkhtmltopdf.org/downloads.html) or package for your operating system
 (choose the latest version).
 
-# Install DocGen
+## Install DocGen
 
 The easiest way to install DocGen is through **[npm](https://www.npmjs.com)** (the JavaScript package manager). Enter 
 this terminal command:
