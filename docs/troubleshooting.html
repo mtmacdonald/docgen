@@ -1,0 +1,112 @@
+<!DOCTYPE html><html><head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--Prevent IE using compatibility mode on local or intranet pages. Do not put scripts before this line.-->
+  <meta name="viewport" content="width=device-width, user-scalable=yes"><!--Mobile device scaling-->
+  <meta charset="UTF-8">
+  <title>DocGen - a documentation tool</title>
+
+  <!--load stylesheets first (rationale: https://developers.google.com/speed/docs/best-practices/rtt#PutStylesBeforeScripts)-->
+  <link rel="stylesheet" href="require/styles/framework.css" type="text/css">
+  <link rel="stylesheet" href="require/styles/highlight.min.css" type="text/css">
+  <link rel="stylesheet" href="require/docgen.css" type="text/css">
+  <link rel="stylesheet" href="require/print.css" media="print">
+
+  <!--load scripts second-->
+
+  <script src="require/styles/framework.js"></script>
+  <script src="require/styles/framework.icons.js"></script>
+  <script src="require/styles/highlight.min.js"></script>
+
+  <!--inline scripts last-->
+
+<script type="text/javascript">
+
+$(document).ready( function () {
+  $("#dg-toc").hide(); //hide the table of contents
+
+  //instantiate an svg injector to show SVG icons
+  var injector = new svgInject();
+  injector.inject();
+
+  //code syntax highlighting
+  $('pre code, .w-inline-code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  //toggle visibility of table of contents
+  $("#dg-navigator").click(function()
+  {
+    $("#dg-toc").slideToggle("fast");
+    $(this).toggleClass("active");
+  });
+
+});
+</script>
+
+<script type="text/x-mathjax-config">
+//MathJax configuration is the same as used by math.stackexchange.com
+MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+  tex2jax: { inlineMath: [ ["$", "$"], ["\\\\(","\\\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+  TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+  messageStyle: "none"
+});
+</script>
+
+<link rel="stylesheet" href="require/katex/katex.min.css" type="text/css"><script type="text/javascript" src="require/katex/katex.min.js"></script><script type="text/javascript" src="require/katexInjector.js"></script><script type="text/javascript" id="MathJax-script" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script></head>
+
+<body>
+
+<div id="dg-toc"><div><table class="unstyled"><tbody><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="markdown.html">Markdown reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><button class="whiteInverted" onclick="window.location='docgen.pdf';"><span>PDF</span></button></div></td></tr></tbody></table></div></div>
+<div id="dg-navigator">Table of contents</div>
+
+<header>
+  <div class="w-fixed-width header-container">
+    <div class="header-title">
+      <a id="dg-homelink" href="index.html">
+        <div id="dg-logo" style="background-image: url(files/images/logo.svg); height: 42px; line-height: 42px; padding-left: 90px;">
+          <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(3.2.12)</span>
+        </div>
+      </a>
+    </div>
+    <div class="header-extra">
+      <span id="dg-backlink"></span>
+    </div>
+  </div>
+</header>
+
+<section id="dg-content"><div class="w-fixed-width"><div id="dg-innerContent"><h1 id="dg-autoTitle">Troubleshooting</h1><p>This section gives help on solving common issues with DocGen.</p>
+<h2 id="displaying-detailed-errors">Displaying detailed errors</h2>
+<p>Pass the <strong>-v</strong> (verbose) option when running DocGen to get more detailed error messages.</p>
+<h2 id="pdf-missing-content">PDF missing content</h2>
+<p>In complex pages, the PDF generator (wkhtmltopdf) needs to be given enough time for dynamic content to be rendered.
+Pass the <strong>-d [milliseconds]</strong> option to increase the rendering time for each page, if required.</p>
+<h2 id="pdf-layouts">PDF layouts</h2>
+<p>The PDF generator <a href="https://wkhtmltopdf.org/">wkhtmltopdf</a> uses an older version of the Webkit browser engine than the
+engine in most modern browsers. Not all modern CSS features like grid and flexbox work, unfortunately. This only
+impacts the PDF output, not the website.</p>
+<h2 id="attached-files-not-in-pdf">Attached files not in PDF</h2>
+<p>Attached files are not converted to PDF, only the web content is. The website and PDF can link to other files.</p>
+<h2 id="corrupted-text-characters">Corrupted text characters</h2>
+<p>Make sure all the input text files are saved with UTF-8 encoding.</p>
+<h2 id="missing-logo">Missing logo</h2>
+<p>The logo must be in SVG or PNG formats and saved with the path <em>files/images/logo.svg</em> or <em>files/images/logo.png</em>. It
+must have suitable dimensions for the header (height and width).</p>
+<h2 id="other-issues">Other issues</h2>
+<p>For any other problems, please submit a <a href="https://github.com/mtmacdonald/docgen/issues">an issue ticket</a>.</p>
+</div></div></section>
+
+ <footer>
+  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.2.12 released on 28/09/2023.</span></p></div>
+  <div class="w-fixed-width">
+    <p><span id="dg-copyright">© 2023 <a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p>
+    <p>
+      <span id="dg-marking">MIT License.</span>
+      <span id="dg-legalese"></span>
+      <span id="dg-attribution">Created by DocGen 3.2.12 on 28/09/2023 at 20:30:26.</span>
+    </p>
+  </div>
+ </footer>
+
+ 
+
+</body></html>
