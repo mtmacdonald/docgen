@@ -1,4 +1,8 @@
-﻿## DocGen 3.2.10 - 3.2.11 28/09/2023
+﻿## DocGen 3.2.12 28/09/2023
+
+- fix deprecated MathJax CDN ([#77](https://github.com/mtmacdonald/docgen/issues/77))
+
+## DocGen 3.2.10 - 3.2.11 28/09/2023
 
 - improve and modernise docs (website)
 
