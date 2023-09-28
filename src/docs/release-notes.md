@@ -1,46 +1,41 @@
-﻿DocGen 3.2.4 - 3.2.9 27/09/2023
------------------------
+﻿## DocGen 3.2.10 28/09/2023
+
+- improve and modernise docs (website)
+
+## DocGen 3.2.4 - 3.2.9 27/09/2023
 
 - refactor directory structure to better suit build process
 - fix path resolution error in released build
 
-DocGen 3.2.3 26/09/2023
------------------------
+## DocGen 3.2.3 26/09/2023
 
 - fix missing build artefacts from the published NPM package ([#67](https://github.com/mtmacdonald/docgen/issues/67))
 
-DocGen 3.2.2 25/09/2023
------------------------
+## DocGen 3.2.2 25/09/2023
 
 - fix corrupted character / encoding issue in PDF footer ([#57](https://github.com/mtmacdonald/docgen/issues/57))
 
-DocGen 3.2.1 25/09/2023
------------------------
+## DocGen 3.2.1 25/09/2023
 
 - support SVG brand icons
 
-DocGen 3.2.0 21/09/2023
------------------------
+## DocGen 3.2.0 21/09/2023
 
 - update website with rebrand and sponsorship
 
-DocGen 3.1.0 - 3.1.3 05/09/2023
------------------------
+## DocGen 3.1.0 - 3.1.3 05/09/2023
 
 - removed dependency on Webknife CSS framework, ported styles directly to this repo
 
-DocGen 3.0.7 - 3.0.8 07/07/2023
------------------------
+## DocGen 3.0.7 - 3.0.8 07/07/2023
 
 - automated Github CI/CD for tagging a release
 
-DocGen 3.0.5 - 3.0.6 released 05/07/2023
-----------------------------------------
+## DocGen 3.0.5 - 3.0.6 released 05/07/2023
 
 - automated Github CI/CD pipeline for publishing the NPM package
 
-DocGen 3.0.1 - 3.0.4 released 30/06/2023
-----------------------------------------
+## DocGen 3.0.1 - 3.0.4 released 30/06/2023
 
 - automated Github CI/CD pipeline for publishing the docs website
 - modernised the build tooling (TypeScript compiler)
@@ -48,40 +43,33 @@ DocGen 3.0.1 - 3.0.4 released 30/06/2023
 - better NPM commands for developing and maintaining the repository
 - docs directory is now produced in a build step (build output is no longer committed)
 
-DocGen 3.0.0 released 24/06/2023
---------------------------------
+## DocGen 3.0.0 released 24/06/2023
 
 - Ownership and copyright transferred to project sponsor [Inkit Inc](https://www.inkit.com/)
 - License remains open-source MIT
 
-DocGen 2.1.3 released 29/05/2015
---------------------------------
+## DocGen 2.1.3 released 29/05/2015
 
 - Allow more protocols in CommonMark links (see markdown-it [ticket #108](https://github.com/markdown-it/markdown-it/issues/108))
 
-DocGen 2.1.2 released 28/05/2015
---------------------------------
+## DocGen 2.1.2 released 28/05/2015
 
 - Fixed a regression defect (exception when running docgen scaffold) that first appeared in DocGen 2.1.0
 
-DocGen 2.1.1 released 28/05/2015
---------------------------------
+## DocGen 2.1.1 released 28/05/2015
 
 - Upgraded all node dependencies to the latest versions
 - Upgraded styles to the latest release of Webknife (1.4.0)
 
-DocGen 2.1.0 released 27/05/2015
---------------------------------
+## DocGen 2.1.0 released 27/05/2015
 
 - Added a command-line option for specifying a custom path to wkhtmltopdf
 
-DocGen 2.0.1 released 31/03/2015
---------------------------------
+## DocGen 2.0.1 released 31/03/2015
 
 - Fixed the node package and user guide for installing with npm install -g
 
-DocGen 2.0.0 released 31/03/2015
---------------------------------
+## DocGen 2.0.0 released 31/03/2015
 
 - DocGen is now open source
 - Rewritten in JavaScript for Node.js
@@ -107,13 +95,11 @@ DocGen 2.0.0 released 31/03/2015
 - Dropped formal support for tool to run on multiple operating systems
 - Removed support for 'Mark of the Web'
 
-DocGen 1.0.1 released 18/01/2012
---------------------------------
+## DocGen 1.0.1 released 18/01/2012
 
 - Fixed a bug causing the table of contents headings to sometimes appear in the wrong order
 
-DocGen 1.0.0 released 04/11/2011
---------------------------------
+## DocGen 1.0.0 released 04/11/2011
 
 - Ruby implementation (not released as open source)
 - Creates a static website from Markdown input files

@@ -11,10 +11,6 @@
       {
         "title": "Installation",
         "source": "installation.md"
-      },
-      {
-        "title": "Upgrading",
-        "source": "upgrading.md"
       }
     ]
   },
@@ -31,8 +27,8 @@
         "source": "writing-content.md"
       },
       {
-        "title": "CommonMark reference",
-        "source": "commonmark.md"
+        "title": "Markdown reference",
+        "source": "markdown.md"
       },
       {
         "title": "Advanced content",

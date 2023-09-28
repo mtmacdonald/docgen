@@ -12,10 +12,10 @@ h3 {
   font-size: 24px;
   border-bottom: none;
 }
-
 #dg-content, #dg-innerContent {
   padding-top: 0;
 }
+
 #banner, #banner-buttons {
   margin: 0;
 }
@@ -118,7 +118,6 @@ p.browserSupport {
 }
 .browsers a {
   display: inline-block;
-  margin: 0 10px;
   vertical-align: top;
   width: 80px;
   padding: 10px;
@@ -370,12 +369,12 @@ automatically laid out according to a template. It is not intended as a precisio
      <li><strong>Install DocGen</strong></li>
      <li><strong>Scaffold an empty template</strong></li>
      <li><strong>Generate a static website</strong></li>
-    </ul
+    </ul>
     <p>Simply enter these commands in the terminal:</p>
   </div>
   <div class="column">
     <pre>
-<code>sudo npm install -g docgen-tool
+<code>npm install -g docgen-tool
 docgen scaffold
 docgen run -o $HOME/docgen-example</code></pre>
   </div>

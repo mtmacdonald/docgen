@@ -1,13 +1,10 @@
 One of the benefits of using DocGen for product software documentation is that its plain text source files are easy to 
-version control in sync with the product.
+version control using any modern version control tool such as [git](https://git-scm.com/).
 
-Recommended practice
---------------------
+## Recommended practice
 
 It is recommended to store the documentation **source files** (DocGen input directory) in the same version control 
-repository as the product code. This allows each release of the product to have a matching version of its
-documentation.
+repository as its parent project. For example, if you are using DocGen to document a software product, each release
+of the software app can then have a matching documentation version.
 
-> It is not necessary to version control the DocGen output, because this can always be regenerated. If the DocGen
-output is version controlled, file renames, additions, and deletions have to be performed manually in the 
-version control tool.
+> It is not necessary to version control the DocGen output, because this can always be regenerated.
