@@ -33,12 +33,20 @@
 }
 </style>
 
-Content for a DocGen website is authored in plain text, using any text editor. Image files can be embedded, and 
-other types of files can be attached as links. Additionally, website metadata is configured 
-via [JSON](http://json.org) files.
+Content for a DocGen website is authored either in:
 
-Overview
---------
+- plain text (`.txt` files)
+- [markdown](https://www.markdownguide.org/) (`.md` files)
+- HTML (embedded in `.md` files)
+
+You can use any text editor or IDE to edit these. The advantage of markdown is that it will be automatically styled
+(e.g. headings, bullet points etc).
+
+Image files can be embedded (via links), and other files can be attached (the website will link to these).
+
+Additionally, some website metadata is configured via [JSON](http://json.org) files.
+
+# Overview
 
 DocGen transforms source files from an input directory into output files in an output directory.
 
@@ -48,28 +56,27 @@ separate page in the website and a separate chapter in the PDF.
 DocGen adds metadata that is specified in **parameters.json**, and copies the images and files in the **files**
 directory to the output.
 
-> Always save input files with **UTF-8** encoding. This makes non-standard characters (ø © é etc) work.
+> Always save input files with **UTF-8** encoding. This makes non-standard characters (ø © é etc.) work.
 
-Metadata
---------
+# Metadata
 
 **parameters.json**
 
 The parameters file is used to specify metadata describing the product. 
 
-- **title** - the product title
-- **name** - the product name (also used to name the PDF)
+- **title** - the website title
+- **name** - the website name (also used to name the PDF)
 - **version** - the release version
 - **date** - the release date
 - **organization** - the company or organization 
 - **author** - the lead author of the document
-- **owner** - the owner of the product
+- **owner** - the owner of the document
 - **contributors** - list of contributors
-- **website** - a link to the product website
-- **backlink** - a link back to product user interface (useful for integrated documentation)
-- **module** - module name (useful for larger products with submodules)
-- **id** - reference number (e.g. product id in a change management tool)
-- **summary** - a descriptive summary of the product
+- **website** - a link to the parent website
+- **backlink** - a link back to another site (useful for integrated documentation)
+- **module** - module name (useful for larger sites with submodules)
+- **id** - reference number (e.g. id in a change management tool)
+- **summary** - a descriptive summary of the website/document
 - **marking** - license or other protective markings
 - **legalese** - document markings (confidentiality, disclaimers, smallprint etc)
 
@@ -82,13 +89,12 @@ Parameters with URLs can be either website URLs, or email addresses (specify *'m
 The contents file specifies the names, locations, order, and hierarchy of the source files. It is used to generate both
 the web and PDF table of contents.
 
-**release-notes.txt**
+**release-notes.md**
 
 The release notes source file is a mandatory source file (that does not need to be listed in contents.json). Use it to
 summarize the change history for each version of the product.
 
-Plain text
-----------
+# Plain text
 
 The simplest input format is just to write in plain text. Here is an example of the source and output:
 
@@ -105,17 +111,15 @@ Example paragraph.
 
 <p class="dg-forceBreak"></p>
 
-CommonMark (Markdown)
----------------------
+# Markdown
 
-[CommonMark](http://commonmark.org/) (also known as [MarkDown](http://daringfireball.net/projects/markdown/)) is a 
-human-friendly plain text markup format. The source format is easy to read and write, and the CommonMark parser 
-translates it into HTML. DocGen uses the <a href="https://markdown-it.github.io">markdown-it</a> implementation 
-of CommonMark. Here is an example of the source and output:
+[Markdown](https://www.markdownguide.org/) is a human-friendly plain text markup format. The source format is easy
+to read and write, and the CommonMark parser translates it into HTML. DocGen uses the [CommonMark](http://commonmark.org/)
+standard via a package called [markdown-it](https://markdown-it.github.io). Here is an example of the source and output:
 
 <div class="container codeContainer">
 
-    CommonMark Example
+    Markdown Example
     ------------------
 
     Paragraphs are text blocks separated by new lines.
@@ -130,7 +134,7 @@ of CommonMark. Here is an example of the source and output:
 </div>
 <div class="container exampleContainer">
 
-<p class="dg-fakeHeading" style="font-size: 18px; padding-bottom: 4px;">CommonMark Example</p>
+<p class="dg-fakeHeading" style="font-size: 18px; padding-bottom: 4px;">Markdown Example</p>
 
 Paragraphs are text blocks separated by new lines.
 
@@ -145,8 +149,7 @@ Here is an [example link](http://www.google.com).
 
 For more examples, see the [CommonMark reference](commonmark.html).
 
-HTML
-----
+# HTML
 
 For more complex pages not covered by CommonMark's syntax, simply use inline HTML:
 
@@ -175,20 +178,19 @@ For more examples, see [writing advanced content](advanced-content.html).
 possible to bypass the CommonMark parser altogether and specify a pure HTML input page, by setting 
 <code class="w-inline-code">"html": true</code> in a page object in *contents.json*.
 
-Embedding images
-----------------
+# Embedding images
 
-Diagrams (in image form, e.g. JPEG, PNG, GIF etc) should be put the *files/images* directory, and embedded as images.
+Diagrams (in image form, e.g. JPEG, PNG, GIF etc.) should be put the *files/images* directory, and embedded as image
+links.
 
 <div class="container codeContainer">
-<pre><code>![](files/images/logo.png)</code></pre>
+<pre><code>![logo](files/images/logo.svg)</code></pre>
 </div>
 <div class="container exampleContainer">
-<img src="files/images/logo.png" />
+<img src="files/images/logo.svg" />
 </div><br class="w-clear"/>
 
-Attaching files
----------------
+# Attaching files
 
 Other files you want to attach should go into *files* directory.
 
@@ -199,8 +201,7 @@ Other files you want to attach should go into *files* directory.
 <a href="user_guide.pdf">attachment</a>
 </div><br class="w-clear"/>
 
-Mathematical Expressions
-------------------------
+# Mathematical Expressions
 
 [LaTeX](http://en.wikipedia.org/wiki/LaTeX) is the most common markup format for mathematical expressions.
 
@@ -214,7 +215,7 @@ The document author decides which one (or both) to use.
 
 <p class="dg-forceBreak"></p>
 
-### Mathematics using KaTeX
+## Mathematics using KaTeX
 
 KaTeX is the recommended choice. It is bundled with DocGen but must be enabled by passing the 
 **-m** option.
@@ -234,7 +235,7 @@ f(x) = \int_{-\infty}^\infty
 </div>
 </div><br class="w-clear"/>
 
-### Mathematics using MathJax
+## Mathematics using MathJax
 
 MathJax is the fallback choice for expressions not yet supported by KaTex. When required, MathJax can be enabled by 
 passing the **-n** option.
