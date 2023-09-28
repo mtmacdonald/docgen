@@ -46,7 +46,7 @@ Image files can be embedded (via links), and other files can be attached (the we
 
 Additionally, some website metadata is configured via [JSON](http://json.org) files.
 
-# Overview
+## Overview
 
 DocGen transforms source files from an input directory into output files in an output directory.
 
@@ -58,7 +58,7 @@ directory to the output.
 
 > Always save input files with **UTF-8** encoding. This makes non-standard characters (ø © é etc.) work.
 
-# Metadata
+## Metadata
 
 **parameters.json**
 
@@ -94,7 +94,7 @@ the web and PDF table of contents.
 The release notes source file is a mandatory source file (that does not need to be listed in contents.json). Use it to
 summarize the change history for each version of the product.
 
-# Plain text
+## Plain text
 
 The simplest input format is just to write in plain text. Here is an example of the source and output:
 
@@ -111,7 +111,7 @@ Example paragraph.
 
 <p class="dg-forceBreak"></p>
 
-# Markdown
+## Markdown
 
 [Markdown](https://www.markdownguide.org/) is a human-friendly plain text markup format. The source format is easy
 to read and write, and the CommonMark parser translates it into HTML. DocGen uses the [CommonMark](http://commonmark.org/)
@@ -149,7 +149,7 @@ Here is an [example link](http://www.google.com).
 
 For more examples, see the [CommonMark reference](commonmark.html).
 
-# HTML
+## HTML
 
 For more complex pages not covered by CommonMark's syntax, simply use inline HTML:
 
@@ -178,7 +178,7 @@ For more examples, see [writing advanced content](advanced-content.html).
 possible to bypass the CommonMark parser altogether and specify a pure HTML input page, by setting 
 <code class="w-inline-code">"html": true</code> in a page object in *contents.json*.
 
-# Embedding images
+## Embedding images
 
 Diagrams (in image form, e.g. JPEG, PNG, GIF etc.) should be put the *files/images* directory, and embedded as image
 links.
@@ -190,7 +190,7 @@ links.
 <img src="files/images/logo.svg" />
 </div><br class="w-clear"/>
 
-# Attaching files
+## Attaching files
 
 Other files you want to attach should go into *files* directory.
 
@@ -201,7 +201,7 @@ Other files you want to attach should go into *files* directory.
 <a href="user_guide.pdf">attachment</a>
 </div><br class="w-clear"/>
 
-# Mathematical Expressions
+## Mathematical Expressions
 
 [LaTeX](http://en.wikipedia.org/wiki/LaTeX) is the most common markup format for mathematical expressions.
 
@@ -215,7 +215,7 @@ The document author decides which one (or both) to use.
 
 <p class="dg-forceBreak"></p>
 
-## Mathematics using KaTeX
+### Mathematics using KaTeX
 
 KaTeX is the recommended choice. It is bundled with DocGen but must be enabled by passing the 
 **-m** option.
@@ -235,7 +235,7 @@ f(x) = \int_{-\infty}^\infty
 </div>
 </div><br class="w-clear"/>
 
-## Mathematics using MathJax
+### Mathematics using MathJax
 
 MathJax is the fallback choice for expressions not yet supported by KaTex. When required, MathJax can be enabled by 
 passing the **-n** option.
