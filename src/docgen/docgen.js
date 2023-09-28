@@ -703,8 +703,11 @@ function DocGen(process) {
       //support for MathJax (only supported via CDN due to very large size)
       //MathJax configuration is the same as used by math.stackexchange.com
       //Note - wkhtmlpdf //cdn urls - see https://github.com/wkhtmltopdf/wkhtmltopdf/issues/1634
+      //Note - later than version 2 doesn't work with wkhtmltodpf
       $('head').append(
-        '<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>',
+        `<script type="text/javascript" id="MathJax-script" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>`,
       );
     }
   };

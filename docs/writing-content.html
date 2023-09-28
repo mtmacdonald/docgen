@@ -51,7 +51,8 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 });
 </script>
 
-<link rel="stylesheet" href="require/katex/katex.min.css" type="text/css"><script type="text/javascript" src="require/katex/katex.min.js"></script><script type="text/javascript" src="require/katexInjector.js"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script></head>
+<link rel="stylesheet" href="require/katex/katex.min.css" type="text/css"><script type="text/javascript" src="require/katex/katex.min.js"></script><script type="text/javascript" src="require/katexInjector.js"></script><script type="text/javascript" id="MathJax-script" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script></head>
 
 <body>
 
@@ -63,7 +64,7 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
     <div class="header-title">
       <a id="dg-homelink" href="index.html">
         <div id="dg-logo" style="background-image: url(files/images/logo.svg); height: 42px; line-height: 42px; padding-left: 90px;">
-          <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(3.2.11)</span>
+          <span id="dg-title">DocGen - a documentation tool</span> <span id="dg-web-title-version" style="font-weight:normal;">(3.2.12)</span>
         </div>
       </a>
     </div>
@@ -117,7 +118,7 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 (e.g. headings, bullet points etc).</p>
 <p>Image files can be embedded (via links), and other files can be attached (the website will link to these).</p>
 <p>Additionally, some website metadata is configured via <a href="http://json.org">JSON</a> files.</p>
-<h1 id="overview">Overview</h1>
+<h2 id="overview">Overview</h2>
 <p>DocGen transforms source files from an input directory into output files in an output directory.</p>
 <p>It takes every source file (plain text) specified in <strong>contents.json</strong> and converts it. Each source file becomes a
 separate page in the website and a separate chapter in the PDF.</p>
@@ -126,7 +127,7 @@ directory to the output.</p>
 <blockquote>
 <p>Always save input files with <strong>UTF-8</strong> encoding. This makes non-standard characters (ø © é etc.) work.</p>
 </blockquote>
-<h1 id="metadata">Metadata</h1>
+<h2 id="metadata">Metadata</h2>
 <p><strong>parameters.json</strong></p>
 <p>The parameters file is used to specify metadata describing the product.</p>
 <ul>
@@ -154,7 +155,7 @@ the web and PDF table of contents.</p>
 <p><strong>release-notes.md</strong></p>
 <p>The release notes source file is a mandatory source file (that does not need to be listed in contents.json). Use it to
 summarize the change history for each version of the product.</p>
-<h1 id="plain-text">Plain text</h1>
+<h2 id="plain-text">Plain text</h2>
 <p>The simplest input format is just to write in plain text. Here is an example of the source and output:</p>
 <div class="container codeContainer">
 <pre><code>Example paragraph.
@@ -164,7 +165,7 @@ summarize the change history for each version of the product.</p>
 <p>Example paragraph.</p>
 </div><br class="w-clear">
 <p class="dg-forceBreak"></p>
-<h1 id="markdown">Markdown</h1>
+<h2 id="markdown">Markdown</h2>
 <p><a href="https://www.markdownguide.org/">Markdown</a> is a human-friendly plain text markup format. The source format is easy
 to read and write, and the CommonMark parser translates it into HTML. DocGen uses the <a href="http://commonmark.org/">CommonMark</a>
 standard via a package called <a href="https://markdown-it.github.io">markdown-it</a>. Here is an example of the source and output:</p>
@@ -194,7 +195,7 @@ Here is an [example link](http://www.google.com).
 </code></pre>
 </div><br class="w-clear">
 <p>For more examples, see the <a href="commonmark.html">CommonMark reference</a>.</p>
-<h1 id="html">HTML</h1>
+<h2 id="html">HTML</h2>
 <p>For more complex pages not covered by CommonMark's syntax, simply use inline HTML:</p>
 <div class="container codeContainer">
 <pre><code>&lt;table&gt;
@@ -220,7 +221,7 @@ Here is an [example link](http://www.google.com).
 possible to bypass the CommonMark parser altogether and specify a pure HTML input page, by setting
 <code class="w-inline-code">"html": true</code> in a page object in <em>contents.json</em>.</p>
 </blockquote>
-<h1 id="embedding-images">Embedding images</h1>
+<h2 id="embedding-images">Embedding images</h2>
 <p>Diagrams (in image form, e.g. JPEG, PNG, GIF etc.) should be put the <em>files/images</em> directory, and embedded as image
 links.</p>
 <div class="container codeContainer">
@@ -229,7 +230,7 @@ links.</p>
 <div class="container exampleContainer">
 <img src="files/images/logo.svg">
 </div><br class="w-clear">
-<h1 id="attaching-files">Attaching files</h1>
+<h2 id="attaching-files">Attaching files</h2>
 <p>Other files you want to attach should go into <em>files</em> directory.</p>
 <div class="container codeContainer">
 <pre><code>[attachment](user_guide.pdf)</code></pre>
@@ -237,7 +238,7 @@ links.</p>
 <div class="container exampleContainer">
 <a href="user_guide.pdf">attachment</a>
 </div><br class="w-clear">
-<h1 id="mathematical-expressions">Mathematical Expressions</h1>
+<h2 id="mathematical-expressions">Mathematical Expressions</h2>
 <p><a href="http://en.wikipedia.org/wiki/LaTeX">LaTeX</a> is the most common markup format for mathematical expressions.</p>
 <p>Modern web browsers do not yet consistently support a common standard for authoring mathematical expressions. For this
 reason, extra libraries are needed. DocGen supports two widely-used web mathematics libraries out-the-box:</p>
@@ -247,7 +248,7 @@ reason, extra libraries are needed. DocGen supports two widely-used web mathemat
 </ul>
 <p>The document author decides which one (or both) to use.</p>
 <p class="dg-forceBreak"></p>
-<h2 id="mathematics-using-katex">Mathematics using KaTeX</h2>
+<h3 id="mathematics-using-katex">Mathematics using KaTeX</h3>
 <p>KaTeX is the recommended choice. It is bundled with DocGen but must be enabled by passing the
 <strong>-m</strong> option.</p>
 <div class="container codeContainer">
@@ -264,7 +265,7 @@ f(x) = \int_{-\infty}^\infty
     \,d\xi
 </div>
 </div><br class="w-clear">
-<h2 id="mathematics-using-mathjax">Mathematics using MathJax</h2>
+<h3 id="mathematics-using-mathjax">Mathematics using MathJax</h3>
 <p>MathJax is the fallback choice for expressions not yet supported by KaTex. When required, MathJax can be enabled by
 passing the <strong>-n</strong> option.</p>
 <blockquote>
@@ -297,13 +298,13 @@ $$
 </div></div></section>
 
  <footer>
-  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.2.11 released on 27/09/2023.</span></p></div>
+  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.2.12 released on 28/09/2023.</span></p></div>
   <div class="w-fixed-width">
     <p><span id="dg-copyright">© 2023 <a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p>
     <p>
       <span id="dg-marking">MIT License.</span>
       <span id="dg-legalese"></span>
-      <span id="dg-attribution">Created by DocGen 3.2.11 on 28/09/2023 at 16:29:54.</span>
+      <span id="dg-attribution">Created by DocGen 3.2.12 on 28/09/2023 at 17:51:23.</span>
     </p>
   </div>
  </footer>
