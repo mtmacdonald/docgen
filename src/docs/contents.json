@@ -11,10 +11,6 @@
       {
         "title": "Installation",
         "source": "installation.md"
-      },
-      {
-        "title": "Upgrading",
-        "source": "upgrading.md"
       }
     ]
   },
