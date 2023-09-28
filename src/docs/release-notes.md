@@ -1,4 +1,4 @@
-﻿## DocGen 3.2.10 28/09/2023
+﻿## DocGen 3.2.10 - 3.2.11 28/09/2023
 
 - improve and modernise docs (website)
 
