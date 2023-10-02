@@ -62,16 +62,35 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 
 <header>
   <div class="w-fixed-width header-container">
-    <div class="header-title">
-      <a id="dg-homelink" href="#">
-        <div id="dg-logo" style="background-image:url('docs/images/logo.svg');">
-          <span id="dg-title"></span> <span id="dg-web-title-version" style="font-weight:normal;"></span>
+    <div class="header">
+      <div class="left-block">
+        <a class="dg-homelink" href="#">
+          <img src="files/images/logo.svg" alt="Logo">
+        </a>
+        <div class="text">
+          <a class="dg-homelink" href="#">
+            <span id="dg-title"></span> <span id="dg-web-title-version" style="font-weight:normal;"></span>
+          </a>
+          <p>
+            <span>Sponsored by</span>
+            <img id="sponsorLogo" src="files/images/inkit-logo-small.svg" alt="Inkit logo">
+          </p>
         </div>
-      </a>
+      </div>
+      <div class="right-block">
+        <a href="#">Link</a>
+      </div>
     </div>
-    <div class="header-extra">
-      <span id="dg-backlink"></span>
-    </div>
+<!--    <div class="header-title">-->
+<!--      <a id="dg-homelink" href="#">-->
+<!--        <div id="dg-logo" style="background-image:url('docs/images/logo.svg');">-->
+
+<!--        </div>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--    <div class="header-extra">-->
+<!--      <span id="dg-backlink"></span>-->
+<!--    </div>-->
   </div>
 </header>
 

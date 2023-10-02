@@ -655,18 +655,18 @@ function DocGen(process) {
       if (templates.hasOwnProperty(key)) {
         let $ = templates[key];
         //logo
-        if (hasLogo === true) {
-          let logoUrl = logoPath;
-          $('#dg-logo').css('background-image', 'url(' + logoUrl + ')');
-          $('#dg-logo').css('height', logoHeight + 'px');
-          $('#dg-logo').css('line-height', logoHeight + 'px');
-          $('#dg-logo').css('padding-left', logoWidth + 25 + 'px');
-        } else {
-          $('#dg-logo').css('padding-left', '0');
-        }
+        // if (hasLogo === true) {
+        //   let logoUrl = logoPath;
+        //   //$('#dg-logo').css('background-image', 'url(' + logoUrl + ')');
+        //   //$('#dg-logo').css('height', logoHeight + 'px');
+        //   //$('#dg-logo').css('line-height', logoHeight + 'px');
+        //   //$('#dg-logo').css('padding-left', logoWidth + 25 + 'px');
+        // } else {
+        //   $('#dg-logo').css('padding-left', '0');
+        // }
         //parameters
         $('title').text(meta.parameters.title);
-        $('#dg-homelink').attr('href', homelink);
+        $('.dg-homelink').attr('href', homelink);
         $('#dg-title').text(meta.parameters.title);
         $('#dg-owner').html(owner);
         $('#dg-version').text(releaseVersion);

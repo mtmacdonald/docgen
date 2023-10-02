@@ -27,40 +27,90 @@ html
 
 header
 {
-	@include fixed-color-text();
-
 	background-color: $content-background;
 	border-top: 2px solid $brand-primary-color;
 	border-bottom: 2px solid $brand-primary-color;
 
-	//.header-container {
-	//	display: table;
-	//}
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 102px;
+	}
 
-	.header-title {
+	.left-block {
+		display: flex;
+		align-items: center;
+	}
 
-		display: table-cell;
-		vertical-align: middle;
-		padding: 30px 0 30px 0;
+	.left-block > a > img {
+		display: flex;
+		align-items: center;
+		height: 42px;
+		margin-right: 26px;
+	}
 
-		> a {
-			text-decoration:none;
-			font-weight: bold;
-			font-size: 16px;
+	.text {
+		display: flex;
+		flex-direction: column;
 
-			div {
-				background-repeat: no-repeat;
-				height: $logo-height; line-height: $logo-height; //'vertical center'
-				padding-left: $logo-width + 25;
-			}
+		font-weight: bold;
+		font-size: 16px;
+
+		a {
+			text-decoration: none;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		#sponsorLogo {
+			height: 12px;
 		}
 	}
 
-	.header-extra {
-		display: table-cell;
-		vertical-align: middle;
-		text-align: right;
+	.right-block {
+		margin-left: auto; /* Pushes the right block to the right edge */
 	}
+
+	.right-block a {
+		text-decoration: none;
+		color: #fff;
+		padding: 5px 10px;
+		background-color: #007bff;
+		border-radius: 5px;
+		transition: background-color 0.3s;
+	}
+
+	.right-block a:hover {
+		background-color: #0056b3;
+	}
+
+	//.header-title {
+	//
+	//	display: table-cell;
+	//	vertical-align: middle;
+	//	padding: 30px 0 30px 0;
+	//
+	//	> a {
+	//		text-decoration:none;
+	//		font-weight: bold;
+	//		font-size: 16px;
+	//
+	//		div {
+	//			background-repeat: no-repeat;
+	//			height: $logo-height; line-height: $logo-height; //'vertical center'
+	//			padding-left: $logo-width + 25;
+	//		}
+	//	}
+	//}
+	//
+	//.header-extra {
+	//	display: table-cell;
+	//	vertical-align: middle;
+	//	text-align: right;
+	//}
 
 	&::after {
 		@extend .w-clear
