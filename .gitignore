@@ -3,4 +3,5 @@
 *.deb
 /node_modules
 /dist
+/docs
 /src/__test__/test-run-output

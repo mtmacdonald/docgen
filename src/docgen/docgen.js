@@ -276,6 +276,15 @@ function DocGen(process) {
             url: { type: 'string' },
           },
         },
+        sponsorLink: {
+          type: 'object',
+          required: ['name', 'url', 'logo'],
+          properties: {
+            name: { type: 'string' },
+            url: { type: 'string' },
+            logo: { type: 'string' },
+          },
+        },
         backlink: {
           type: 'object',
           required: ['name', 'url'],
@@ -624,13 +633,25 @@ function DocGen(process) {
     let backlink = '';
     if (meta.parameters.backlink.url !== '') {
       backlink +=
-        '<a href="' +
+        '<a class="button inverted" href="' +
         meta.parameters.backlink.url +
         '">' +
         meta.parameters.backlink.name +
         '</a>';
     } else {
       backlink += meta.parameters.backlink.name;
+    }
+
+    let sponsorLink = '';
+    if (meta.parameters.sponsorLink) {
+      sponsorLink = `
+        <div id="headerSponsor">
+          <span>${meta.parameters.sponsorLink.name}</span>
+            <a href="${meta.parameters.sponsorLink.url}">
+             <img id="sponsorLogo" src="${meta.parameters.sponsorLink.logo}" alt="sponsor logo">
+            </a>
+        </div>
+      `;
     }
 
     let contributors = '';
@@ -659,14 +680,13 @@ function DocGen(process) {
           let logoUrl = logoPath;
           $('#dg-logo').css('background-image', 'url(' + logoUrl + ')');
           $('#dg-logo').css('height', logoHeight + 'px');
-          $('#dg-logo').css('line-height', logoHeight + 'px');
           $('#dg-logo').css('padding-left', logoWidth + 25 + 'px');
         } else {
           $('#dg-logo').css('padding-left', '0');
         }
         //parameters
         $('title').text(meta.parameters.title);
-        $('#dg-homelink').attr('href', homelink);
+        $('.dg-homelink').attr('href', homelink);
         $('#dg-title').text(meta.parameters.title);
         $('#dg-owner').html(owner);
         $('#dg-version').text(releaseVersion);
@@ -679,6 +699,7 @@ function DocGen(process) {
         $('#dg-id').html(meta.parameters.id);
         $('#dg-website').html(website);
         $('#dg-backlink').html(backlink);
+        $('#headerLeftText').append(sponsorLink);
         $('#dg-summary').text(meta.parameters.summary);
         $('#dg-copyright').html(copyright);
         $('#dg-marking').text(meta.parameters.marking);

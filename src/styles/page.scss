@@ -33,39 +33,60 @@ header
 	border-top: 2px solid $brand-primary-color;
 	border-bottom: 2px solid $brand-primary-color;
 
-	//.header-container {
-	//	display: table;
-	//}
+	.header {
+		display: flex;
+		align-items: center;
+		height: 102px;
+		padding-right: 40px;
+	}
 
-	.header-title {
+	.headerLeftBlock {
+		display: flex;
+		align-items: center;
+	}
 
-		display: table-cell;
-		vertical-align: middle;
-		padding: 30px 0 30px 0;
+	#dg-logo {
+		background-repeat: no-repeat;
+	}
 
-		> a {
-			text-decoration:none;
-			font-weight: bold;
-			font-size: 16px;
+	#headerLeftText {
+		display: flex;
+		flex-direction: column;
 
-			div {
-				background-repeat: no-repeat;
-				height: $logo-height; line-height: $logo-height; //'vertical center'
-				padding-left: $logo-width + 25;
+		font-weight: bold;
+		font-size: 16px;
+
+		a {
+			text-decoration: none;
+		}
+
+		#headerSponsor {
+			display: flex;
+			align-items: center;
+			font-weight: normal;
+			font-size: 11px;
+			margin: 5px 0 0 0;
+			opacity: 0.6;
+
+			span {
+				margin-right: 6px;
+			}
+
+			#sponsorLogo {
+				height: 12px;
+				margin: 0 auto;
+				display: block;
 			}
 		}
 	}
 
-	.header-extra {
-		display: table-cell;
-		vertical-align: middle;
-		text-align: right;
-	}
+	#headerRightBlock {
+		margin-left: auto;
 
-	&::after {
-		@extend .w-clear
+		a {
+			padding: 5px 10px;
+		}
 	}
-
 }
 
 /*
