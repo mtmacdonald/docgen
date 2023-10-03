@@ -62,15 +62,20 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 
 <header>
   <div class="w-fixed-width header-container">
-    <div class="header-title">
-      <a id="dg-homelink" href="#">
-        <div id="dg-logo" style="background-image:url('docs/images/logo.svg');">
-          <span id="dg-title"></span> <span id="dg-web-title-version" style="font-weight:normal;"></span>
+    <div class="header">
+      <div class="headerLeftBlock">
+        <a class="dg-homelink" href="#">
+          <div id="dg-logo"></div>
+        </a>
+        <div id="headerLeftText">
+          <a class="dg-homelink" href="#">
+            <span id="dg-title"></span> <span id="dg-web-title-version" style="font-weight:normal;"></span>
+          </a>
         </div>
-      </a>
-    </div>
-    <div class="header-extra">
-      <span id="dg-backlink"></span>
+      </div>
+      <div id="headerRightBlock">
+        <span id="dg-backlink"></span>
+      </div>
     </div>
   </div>
 </header>

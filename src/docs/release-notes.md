@@ -1,4 +1,8 @@
-﻿## DocGen 3.2.12 28/09/2023
+﻿## DocGen 3.2.13 03/10/2023
+
+- docs website: add Inkit sponsorship links to header
+
+## DocGen 3.2.12 28/09/2023
 
 - fix deprecated MathJax CDN ([#77](https://github.com/mtmacdonald/docgen/issues/77))
 
