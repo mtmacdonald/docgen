@@ -468,7 +468,7 @@ header #headerLeftText #headerSponsor {
   font-weight: normal;
   font-size: 11px;
   margin: 5px 0 0 0;
-  opacity: 0.65;
+  opacity: 0.6;
 }
 header #headerLeftText #headerSponsor span {
   margin-right: 6px;
@@ -478,10 +478,10 @@ header #headerLeftText #headerSponsor #sponsorLogo {
   margin: 0 auto;
   display: block;
 }
-header .right-block {
+header #headerRightBlock {
   margin-left: auto; /* Pushes the right block to the right edge */
 }
-header .right-block a {
+header #headerRightBlock a {
   text-decoration: none;
   color: #fff;
   padding: 5px 10px;
@@ -489,7 +489,7 @@ header .right-block a {
   border-radius: 5px;
   transition: background-color 0.3s;
 }
-header .right-block a:hover {
+header #headerRightBlock a:hover {
   background-color: #0056b3;
 }
 /*
