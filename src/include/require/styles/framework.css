@@ -446,11 +446,8 @@ header .headerLeftBlock {
   display: flex;
   align-items: center;
 }
-header #headerLogo {
-  display: flex;
-  align-items: center;
-  height: 42px;
-  margin-right: 26px;
+header #dg-logo {
+  background-repeat: no-repeat;
 }
 header #headerLeftText {
   display: flex;
