@@ -624,7 +624,7 @@ function DocGen(process) {
     let backlink = '';
     if (meta.parameters.backlink.url !== '') {
       backlink +=
-        '<a href="' +
+        '<a class="button inverted" href="' +
         meta.parameters.backlink.url +
         '">' +
         meta.parameters.backlink.name +
