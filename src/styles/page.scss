@@ -35,9 +35,9 @@ header
 
 	.header {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 		height: 102px;
+		padding-right: 40px;
 	}
 
 	.headerLeftBlock {
@@ -84,24 +84,11 @@ header
 	}
 
 	#headerRightBlock {
-		margin-left: auto; /* Pushes the right block to the right edge */
+		margin-left: auto;
 
 		a {
-			text-decoration: none;
-			color: #fff;
 			padding: 5px 10px;
-			background-color: #007bff;
-			border-radius: 5px;
-			transition: background-color 0.3s;
 		}
-
-		a:hover {
-			background-color: #0056b3;
-		}
-	}
-
-	&::after {
-		@extend .w-clear
 	}
 }
 
