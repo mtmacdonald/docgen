@@ -1,4 +1,7 @@
 ﻿<style>
+header {
+  border-bottom: 2px solid transparent;
+}
 h1 {
   font-size: 32px;
   border-bottom: none;
