@@ -63,18 +63,20 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 <header>
   <div class="w-fixed-width header-container">
     <div class="header">
-      <div class="left-block">
+      <div class="headerLeftBlock">
         <a class="dg-homelink" href="#">
-          <img src="files/images/logo.svg" alt="Logo">
+          <img id="headerLogo" src="files/images/logo.svg" alt="Logo">
         </a>
-        <div class="text">
+        <div id="headerLeftText">
           <a class="dg-homelink" href="#">
             <span id="dg-title"></span> <span id="dg-web-title-version" style="font-weight:normal;"></span>
           </a>
-          <p>
+          <div id="headerSponsor">
             <span>Sponsored by</span>
-            <img id="sponsorLogo" src="files/images/inkit-logo-small.svg" alt="Inkit logo">
-          </p>
+            <a href="https://www.inkit.com">
+              <img id="sponsorLogo" src="files/images/inkit-logo-small.svg" alt="Inkit logo">
+            </a>
+          </div>
         </div>
       </div>
       <div class="right-block">

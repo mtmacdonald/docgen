@@ -27,6 +27,8 @@ html
 
 header
 {
+	@include fixed-color-text();
+
 	background-color: $content-background;
 	border-top: 2px solid $brand-primary-color;
 	border-bottom: 2px solid $brand-primary-color;
@@ -38,19 +40,19 @@ header
 		height: 102px;
 	}
 
-	.left-block {
+	.headerLeftBlock {
 		display: flex;
 		align-items: center;
 	}
 
-	.left-block > a > img {
+	#headerLogo {
 		display: flex;
 		align-items: center;
 		height: 42px;
 		margin-right: 26px;
 	}
 
-	.text {
+	#headerLeftText {
 		display: flex;
 		flex-direction: column;
 
@@ -61,12 +63,23 @@ header
 			text-decoration: none;
 		}
 
-		p {
-			margin: 0;
-		}
+		#headerSponsor {
+			display: flex;
+			align-items: center;
+			font-weight: normal;
+			font-size: 11px;
+			margin: 5px 0 0 0;
+			opacity: 0.65;
 
-		#sponsorLogo {
-			height: 12px;
+			span {
+				margin-right: 6px;
+			}
+
+			#sponsorLogo {
+				height: 12px;
+				margin: 0 auto;
+				display: block;
+			}
 		}
 	}
 

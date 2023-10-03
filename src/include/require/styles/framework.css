@@ -424,9 +424,18 @@ html body .w-fixed-width {
  header
 */
 header {
+  color: rgb(1, 3, 4);
   background-color: #fff;
   border-top: 2px solid rgb(1, 3, 4);
   border-bottom: 2px solid rgb(1, 3, 4);
+}
+header a,
+header a:hover,
+header a:active,
+header a:visited,
+header .w-false-link,
+header .w-false-link:hover {
+  color: rgb(1, 3, 4);
 }
 header .header {
   display: flex;
@@ -434,30 +443,40 @@ header .header {
   align-items: center;
   height: 102px;
 }
-header .left-block {
+header .headerLeftBlock {
   display: flex;
   align-items: center;
 }
-header .left-block > a > img {
+header #headerLogo {
   display: flex;
   align-items: center;
   height: 42px;
   margin-right: 26px;
 }
-header .text {
+header #headerLeftText {
   display: flex;
   flex-direction: column;
   font-weight: bold;
   font-size: 16px;
 }
-header .text a {
+header #headerLeftText a {
   text-decoration: none;
 }
-header .text p {
-  margin: 0;
+header #headerLeftText #headerSponsor {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  font-size: 11px;
+  margin: 5px 0 0 0;
+  opacity: 0.65;
 }
-header .text #sponsorLogo {
+header #headerLeftText #headerSponsor span {
+  margin-right: 6px;
+}
+header #headerLeftText #headerSponsor #sponsorLogo {
   height: 12px;
+  margin: 0 auto;
+  display: block;
 }
 header .right-block {
   margin-left: auto; /* Pushes the right block to the right edge */
