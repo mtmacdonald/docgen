@@ -276,6 +276,15 @@ function DocGen(process) {
             url: { type: 'string' },
           },
         },
+        sponsorLink: {
+          type: 'object',
+          required: ['name', 'url', 'logo'],
+          properties: {
+            name: { type: 'string' },
+            url: { type: 'string' },
+            logo: { type: 'string' },
+          },
+        },
         backlink: {
           type: 'object',
           required: ['name', 'url'],
@@ -633,6 +642,18 @@ function DocGen(process) {
       backlink += meta.parameters.backlink.name;
     }
 
+    let sponsorLink = '';
+    if (meta.parameters.sponsorLink) {
+      sponsorLink = `
+        <div id="headerSponsor">
+          <span>${meta.parameters.sponsorLink.name}</span>
+            <a href="${meta.parameters.sponsorLink.url}">
+             <img id="sponsorLogo" src="${meta.parameters.sponsorLink.logo}" alt="sponsor logo">
+            </a>
+        </div>
+      `;
+    }
+
     let contributors = '';
     meta.parameters.contributors.forEach((contributor) => {
       if (contributor.url !== '') {
@@ -678,6 +699,7 @@ function DocGen(process) {
         $('#dg-id').html(meta.parameters.id);
         $('#dg-website').html(website);
         $('#dg-backlink').html(backlink);
+        $('#headerLeftText').append(sponsorLink);
         $('#dg-summary').text(meta.parameters.summary);
         $('#dg-copyright').html(copyright);
         $('#dg-marking').text(meta.parameters.marking);

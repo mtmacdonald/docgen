@@ -25,6 +25,11 @@
     "name": "Github",
     "url": "https://github.com/mtmacdonald/docgen"
   },
+  "sponsorLink": {
+    "name": "Sponsored by",
+    "url": "https://www.inkit.com",
+    "logo": "files/images/inkit-logo-small.svg"
+  },
   "backlink": {
     "name": "Contact Inkit",
     "url": "https://www.inkit.com/contact-us"
