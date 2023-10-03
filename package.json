@@ -1,6 +1,6 @@
 {
   "name": "docgen-tool",
-  "version": "3.2.12",
+  "version": "3.2.13",
   "description": "A tool for creating HTML and PDF documentation",
   "main": "dist/docgen.js",
   "bin": {

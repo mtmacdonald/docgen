@@ -1,8 +1,8 @@
 {
   "title": "DocGen - a documentation tool",
   "name": "DocGen",
-  "version": "3.2.12",
-  "date": "28/09/2023",
+  "version": "3.2.13",
+  "date": "03/10/2023",
   "organization": {
     "name": "Inkit Inc. and contributors",
     "url": "https://www.inkit.com"
@@ -25,9 +25,14 @@
     "name": "Github",
     "url": "https://github.com/mtmacdonald/docgen"
   },
+  "sponsorLink": {
+    "name": "Sponsored by",
+    "url": "https://www.inkit.com",
+    "logo": "files/images/inkit-logo-small.svg"
+  },
   "backlink": {
-    "name": "",
-    "url": ""
+    "name": "Contact Inkit",
+    "url": "https://www.inkit.com/contact-us"
   },
   "module": "",
   "id": "",
