@@ -477,9 +477,6 @@ header #headerLeftText #headerSponsor #sponsorLogo {
 header #headerRightBlock {
   margin-left: auto;
 }
-header #headerRightBlock a {
-  padding: 5px 10px;
-}
 
 /*
  footer
