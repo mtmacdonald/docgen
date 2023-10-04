@@ -1,4 +1,8 @@
-﻿## DocGen 3.2.13 03/10/2023
+﻿## DocGen 3.2.14 04/10/2023
+
+- rebrand actions (button style updates)
+
+## DocGen 3.2.13 03/10/2023
 
 - docs website: add Inkit sponsorship links to header
 

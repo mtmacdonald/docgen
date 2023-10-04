@@ -477,9 +477,6 @@ header #headerLeftText #headerSponsor #sponsorLogo {
 header #headerRightBlock {
   margin-left: auto;
 }
-header #headerRightBlock a {
-  padding: 5px 10px;
-}
 
 /*
  footer
@@ -858,7 +855,7 @@ button,
   border: 2px solid rgb(46, 113, 225);
   background: rgb(46, 113, 225);
   color: white !important;
-  padding: 12px 26px;
+  padding: 12px 18px;
   text-transform: none;
   text-shadow: none;
   line-height: 1em;
@@ -897,7 +894,7 @@ button:active,
 }
 button .icon,
 .button .icon {
-  margin: 0 0 0 38px;
+  margin: 0 0 0 10px;
 }
 button .icon svg,
 .button .icon svg {
