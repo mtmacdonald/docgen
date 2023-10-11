@@ -10,7 +10,7 @@ const chalk = require('chalk');
 const spawnArgs = require('spawn-args');
 const cliSpinner = require('cli-spinner').Spinner;
 const imageSizeOf = require('image-size');
-import { readFile, writeFile } from './fs/fs';
+import { readFile, writeFile, copyDirectory } from './fs/fs';
 import { version } from '../../package.json';
 
 //Allow CommonMark links that use other protocols, such as file:///
@@ -57,9 +57,9 @@ function DocGen(process) {
     copy the example src files (template) to any directory, when scaffold command is invoked
   */
 
-  this.scaffold = () => {
+  this.scaffold = async () => {
     console.log(chalk.green('Creating scaffold template directory'));
-    copyDirSync(__dirname + '/../include/example', options.output);
+    await copyDirectory(__dirname + '/../include/example', options.output);
   };
 
   this.run = () => {
@@ -72,27 +72,6 @@ function DocGen(process) {
   /*
         copy any directory (sync)
     */
-
-  let copyDirSync = (source, destination) => {
-    const normalizedSource = path.normalize(source);
-    const normalizedDestination = path.normalize(destination);
-    try {
-      fs.copySync(normalizedSource, normalizedDestination);
-    } catch (error) {
-      console.log(
-        chalk.red(
-          'Error copying directory: ' +
-            normalizedSource +
-            ' to ' +
-            normalizedDestination,
-        ),
-      );
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-        mainProcess.exit(1);
-      }
-    }
-  };
 
   /*
         remake a directory (sync) ... remove and then mkdir in one operation
@@ -781,7 +760,7 @@ function DocGen(process) {
     write each html page
   */
 
-  let writePages = () => {
+  let writePages = async () => {
     console.log(chalk.green('Writing the web page files'));
     let promises = {};
     meta.contents.forEach((section) => {
@@ -816,14 +795,14 @@ function DocGen(process) {
     }
     rsvp
       .hash(promises)
-      .then(() => {
-        copyDirSync(
+      .then(async () => {
+        await copyDirectory(
           __dirname + '/../include/require',
           options.output + 'require',
         ); //CSS, JavaScript
-        copyDirSync(options.input + '/files', options.output + 'files'); //user-attached files and images
+        await copyDirectory(options.input + '/files', options.output + 'files'); //user-attached files and images
         if (options.mathKatex === true) {
-          copyDirSync(
+          await copyDirectory(
             __dirname + '/../include/optional/katex',
             options.output + 'require/katex',
           );

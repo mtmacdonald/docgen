@@ -1,11 +1,12 @@
 import path from 'path';
 import chalk from 'chalk';
-import { promises as fs } from 'fs';
+import { promises as fsp } from 'fs';
+const fs = require('fs-extra');
 
 export const readFile = async (filePath: string) => {
   const normalized = path.normalize(filePath);
   try {
-    return (await fs.readFile(
+    return (await fsp.readFile(
       normalized,
       { encoding: 'utf8' },
     ))?.replace(/^\uFEFF/, ''); //remove the BOM (byte-order-mark) from UTF-8 files, if present
@@ -17,12 +18,32 @@ export const readFile = async (filePath: string) => {
 export const writeFile = async (filePath: string, data: string) => {
   const normalized = path.normalize(filePath);
   try {
-     await fs.writeFile(
+     await fsp.writeFile(
       normalized,
       data,
       { encoding: 'utf8' },
     ); //remove the BOM (byte-order-mark) from UTF-8 files, if present
   } catch (error) {
     console.log(chalk.red('Error writing file: ' + normalized));
+  }
+};
+
+export const copyDirectory = async (source, destination, verbose) => {
+  const normalizedSource = path.normalize(source);
+  const normalizedDestination = path.normalize(destination);
+  try {
+    await fs.copySync(normalizedSource, normalizedDestination);
+  } catch (error) {
+    console.log(
+      chalk.red(
+        'Error copying directory: ' +
+        normalizedSource +
+        ' to ' +
+        normalizedDestination,
+      ),
+    );
+    if (verbose === true) {
+      console.log(chalk.red(error));
+    }
   }
 };
