@@ -10,6 +10,7 @@ const chalk = require('chalk');
 const spawnArgs = require('spawn-args');
 const cliSpinner = require('cli-spinner').Spinner;
 const imageSizeOf = require('image-size');
+import { readFile } from './fs/fs';
 import { version } from '../../package.json';
 
 //Allow CommonMark links that use other protocols, such as file:///
@@ -66,25 +67,6 @@ function DocGen(process) {
     //delete and recreate the output directory
     remakeDirSync(options.output);
     loadTemplates();
-  };
-
-  /*
-        read any file (async)
-    */
-
-  const readFile = (filePath) => {
-    const normalized = path.normalize(filePath);
-    return new rsvp.Promise((resolve, reject) => {
-      fs.readFile(normalized, 'utf8', (error, data) => {
-        if (error) {
-          console.log(chalk.red('Error reading file: ' + normalized));
-          reject(error);
-        } else {
-          data = data.replace(/^\uFEFF/, ''); //remove the BOM (byte-order-mark) from UTF-8 files, if present
-          resolve(data);
-        }
-      });
-    });
   };
 
   /*
@@ -169,15 +151,25 @@ function DocGen(process) {
         load all HTML template files
     */
 
-  let loadTemplates = () => {
+  let loadTemplates = async () => {
     console.log(chalk.green('Loading templates'));
     let files = {
-      main: readFile(__dirname + '/../include/templates/main.html'),
-      redirect: readFile(__dirname + '/../include/templates/redirect.html'),
-      webCover: readFile(__dirname + '/../include/templates/webCover.html'),
-      pdfCover: readFile(__dirname + '/../include/templates/pdfCover.html'),
-      pdfHeader: readFile(__dirname + '/../include/templates/pdfHeader.html'),
-      pdfFooter: readFile(__dirname + '/../include/templates/pdfFooter.html'),
+      main: await readFile(__dirname + '/../include/templates/main.html'),
+      redirect: await readFile(
+        __dirname + '/../include/templates/redirect.html',
+      ),
+      webCover: await readFile(
+        __dirname + '/../include/templates/webCover.html',
+      ),
+      pdfCover: await readFile(
+        __dirname + '/../include/templates/pdfCover.html',
+      ),
+      pdfHeader: await readFile(
+        __dirname + '/../include/templates/pdfHeader.html',
+      ),
+      pdfFooter: await readFile(
+        __dirname + '/../include/templates/pdfFooter.html',
+      ),
     };
     rsvp
       .hash(files)
@@ -357,11 +349,11 @@ function DocGen(process) {
     load all metadata files (JSON)
   */
 
-  let loadMeta = () => {
+  let loadMeta = async () => {
     console.log(chalk.green('Loading required JSON metadata files'));
     let files = {
-      parameters: readFile(options.input + '/parameters.json'),
-      contents: readFile(options.input + '/contents.json'),
+      parameters: await readFile(options.input + '/parameters.json'),
+      contents: await readFile(options.input + '/contents.json'),
     };
     rsvp
       .hash(files)
