@@ -10,7 +10,7 @@ const chalk = require('chalk');
 const spawnArgs = require('spawn-args');
 const cliSpinner = require('cli-spinner').Spinner;
 const imageSizeOf = require('image-size');
-import { readFile } from './fs/fs';
+import { readFile, writeFile } from './fs/fs';
 import { version } from '../../package.json';
 
 //Allow CommonMark links that use other protocols, such as file:///
@@ -67,24 +67,6 @@ function DocGen(process) {
     //delete and recreate the output directory
     remakeDirSync(options.output);
     loadTemplates();
-  };
-
-  /*
-        write any file (async)
-    */
-
-  let writeFile = (filePath, data) => {
-    const normalized = path.normalize(filePath);
-    return new rsvp.Promise((resolve, reject) => {
-      fs.writeFile(normalized, data, (error) => {
-        if (error) {
-          console.log(chalk.red('Error writing file: ' + normalized));
-          reject(error);
-        } else {
-          resolve(true);
-        }
-      });
-    });
   };
 
   /*
