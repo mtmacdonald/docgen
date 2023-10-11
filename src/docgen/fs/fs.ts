@@ -1,7 +1,7 @@
 import path from 'path';
 import chalk from 'chalk';
 import { promises as fsp } from 'fs';
-const fs = require('fs-extra');
+import fs from 'fs-extra';
 
 export const readFile = async (filePath: string) => {
   const normalized = path.normalize(filePath);
@@ -64,6 +64,8 @@ export const cleanDirectory = async (directoryPath: string, verbose: boolean) =>
     }
   }
 };
+
+export const makeDirectory = async (path: string) => await fs.mkdirsSync(path);
 
 export const removeDirectory = async (directoryPath: string, verbose: boolean) => {
   const normalized = path.normalize(directoryPath);

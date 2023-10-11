@@ -1,5 +1,4 @@
 const rsvp = require('rsvp');
-const fs = require('fs-extra');
 const path = require('path');
 const cheerio = require('cheerio');
 const markdown = require('markdown-it')('commonmark').enable('table');
@@ -16,6 +15,7 @@ import {
   copyDirectory,
   removeDirectory,
   cleanDirectory,
+  makeDirectory,
 } from './fs/fs';
 import { version } from '../../package.json';
 
@@ -750,7 +750,7 @@ function DocGen(process) {
     );
     if (options.pdf === true) {
       let pdfTempDir = options.output + 'temp/';
-      fs.mkdirsSync(pdfTempDir);
+      await makeDirectory(pdfTempDir);
       promises['docgenPdfCover'] = writeFile(
         pdfTempDir + 'pdfCover.html',
         templates.pdfCover.html(),
@@ -930,7 +930,7 @@ function DocGen(process) {
     });
   };
 
-  let createRedirect = () => {
+  let createRedirect = async () => {
     if (options.redirect) {
       let parent = options.output.replace(/\/$/, ''); //trim any trailing slash
       parent = parent.split(path.sep).slice(-1).pop(); //get name of final directory in the path
@@ -943,7 +943,7 @@ function DocGen(process) {
       $('meta[http-equiv=REFRESH]').attr('content', '0;url=' + redirectLink);
       let file = options.output + '../' + 'index.html';
       try {
-        fs.outputFileSync(file, $.html(), 'utf-8');
+        await writeFile(file, $.html());
       } catch (error) {
         console.log(chalk.red('Error writing redirect file: ' + file));
         if (options.verbose === true) {
