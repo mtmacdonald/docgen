@@ -28,7 +28,11 @@ export const writeFile = async (filePath: string, data: string) => {
   }
 };
 
-export const copyDirectory = async (source, destination, verbose) => {
+export const copyDirectory = async (
+  source: string,
+  destination: string,
+  verbose: boolean
+) => {
   const normalizedSource = path.normalize(source);
   const normalizedDestination = path.normalize(destination);
   try {
@@ -42,6 +46,31 @@ export const copyDirectory = async (source, destination, verbose) => {
         normalizedDestination,
       ),
     );
+    if (verbose === true) {
+      console.log(chalk.red(error));
+    }
+  }
+};
+
+export const cleanDirectory = async (directoryPath: string, verbose: boolean) => {
+  const normalized = path.normalize(directoryPath);
+  try {
+    await fs.removeSync(normalized);
+    await fs.mkdirpSync(normalized);
+  } catch (error) {
+    console.log(chalk.red('Error recreating directory: ' + normalized));
+    if (verbose === true) {
+      console.log(chalk.red(error));
+    }
+  }
+};
+
+export const removeDirectory = async (directoryPath: string, verbose: boolean) => {
+  const normalized = path.normalize(directoryPath);
+  try {
+    await fs.removeSync(normalized);
+  } catch (error) {
+    console.log(chalk.red('Error removing directory: ' + normalized));
     if (verbose === true) {
       console.log(chalk.red(error));
     }

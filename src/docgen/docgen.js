@@ -10,7 +10,13 @@ const chalk = require('chalk');
 const spawnArgs = require('spawn-args');
 const cliSpinner = require('cli-spinner').Spinner;
 const imageSizeOf = require('image-size');
-import { readFile, writeFile, copyDirectory } from './fs/fs';
+import {
+  readFile,
+  writeFile,
+  copyDirectory,
+  removeDirectory,
+  cleanDirectory,
+} from './fs/fs';
 import { version } from '../../package.json';
 
 //Allow CommonMark links that use other protocols, such as file:///
@@ -59,53 +65,18 @@ function DocGen(process) {
 
   this.scaffold = async () => {
     console.log(chalk.green('Creating scaffold template directory'));
-    await copyDirectory(__dirname + '/../include/example', options.output);
+    await copyDirectory(
+      __dirname + '/../include/example',
+      options.output,
+      options.verbose === true,
+    );
   };
 
-  this.run = () => {
+  this.run = async () => {
     console.log(chalk.green.bold('DocGen version ' + version));
     //delete and recreate the output directory
-    remakeDirSync(options.output);
+    await cleanDirectory(options.output);
     loadTemplates();
-  };
-
-  /*
-        copy any directory (sync)
-    */
-
-  /*
-        remake a directory (sync) ... remove and then mkdir in one operation
-    */
-
-  let remakeDirSync = (directoryPath) => {
-    const normalized = path.normalize(directoryPath);
-    try {
-      fs.removeSync(normalized);
-      fs.mkdirpSync(normalized);
-    } catch (error) {
-      console.log(chalk.red('Error recreating directory: ' + normalized));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-        mainProcess.exit(1);
-      }
-    }
-  };
-
-  /*
-        remove any directory (sync)
-    */
-
-  let removeDirSync = (directoryPath) => {
-    const normalized = path.normalize(directoryPath);
-    try {
-      fs.removeSync(normalized);
-    } catch (error) {
-      console.log(chalk.red('Error removing directory: ' + normalized));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-        mainProcess.exit(1);
-      }
-    }
   };
 
   /*
@@ -799,12 +770,18 @@ function DocGen(process) {
         await copyDirectory(
           __dirname + '/../include/require',
           options.output + 'require',
+          options.verbose === true,
         ); //CSS, JavaScript
-        await copyDirectory(options.input + '/files', options.output + 'files'); //user-attached files and images
+        await copyDirectory(
+          options.input + '/files',
+          options.output + 'files',
+          options.verbose === true,
+        ); //user-attached files and images
         if (options.mathKatex === true) {
           await copyDirectory(
             __dirname + '/../include/optional/katex',
             options.output + 'require/katex',
+            options.verbose === true,
           );
         }
         checkPdfVersion();
@@ -981,11 +958,11 @@ function DocGen(process) {
     cleanup
   */
 
-  let cleanUp = () => {
+  let cleanUp = async () => {
     createRedirect();
     //remove temp files
     if (options.pdf === true) {
-      removeDirSync(options.output + 'temp');
+      await removeDirectory(options.output + 'temp');
     }
     console.log(chalk.green.bold('Done!'));
   };
