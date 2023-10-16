@@ -1,27 +1,27 @@
 {
   "name": "docgen-tool",
-  "version": "3.2.14",
+  "version": "3.3.0",
   "description": "A tool for creating HTML and PDF documentation",
-  "main": "dist/docgen.js",
+  "main": "dist/docgen.ts",
   "bin": {
-    "docgen": "dist/docgen.js"
+    "docgen": "dist/docgen.ts"
   },
   "files": [
     "dist/*"
   ],
   "scripts": {
     "copy:files": "ncp src/include dist/include",
-    "dev": "ts-node src/docgen.js run",
+    "dev": "ts-node src/docgen.ts run",
     "build": "rimraf dist && tsc -p tsconfig.json && yarn copy:files",
-    "run:build": "dist/docgen.js",
-    "build:docs": "ts-node src/docgen.js run -i src/docs -o ./docs -p -m -n -d 40000",
-    "build:docs:nopdf": "ts-node src/docgen.js run -i src/docs -m -n -o ./docs",
+    "run:build": "dist/docgen.ts",
+    "build:docs": "ts-node src/docgen.ts run -i src/docs -o ./docs -p -m -n -d 40000",
+    "build:docs:nopdf": "ts-node src/docgen.ts run -i src/docs -m -n -o ./docs",
     "build:styles": "sass --no-source-map src/styles/main.scss src/include/require/styles/framework.css",
     "test": "npm run prettier:check",
-    "test:run": "rimraf src/__test__/test-run-output && ts-node src/docgen.js run -i src/__test__/test-run -o src/__test__/test-run-output -p -m -n -d 40000",
-    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p -m -n -d 40000",
-    "prettier:check": "prettier --check 'src/docgen.js' '*.{js,json,css,less}'",
-    "prettier:fix": "prettier --write 'src/docgen.js' '*.{js,json,css,less}'"
+    "test:run": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p -m -n -d 40000",
+    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.ts run -i src/__test__/test-run -o ../source/__test__/test-run-output -p -m -n -d 40000",
+    "prettier:check": "prettier --check 'src/docgen.ts' '*.{js,json,css,less}'",
+    "prettier:fix": "prettier --write 'src/docgen.ts' '*.{js,json,css,less}'"
   },
   "husky": {
     "hooks": {
