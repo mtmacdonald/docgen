@@ -1,4 +1,8 @@
-﻿## DocGen 3.2.14 04/10/2023
+﻿## DocGen 3.3.0 16/10/2023
+
+- start refactoring to TypeScript
+
+## DocGen 3.2.14 04/10/2023
 
 - rebrand actions (button style updates)
 

@@ -1,16 +1,25 @@
-const rsvp = require('rsvp');
-const fs = require('fs-extra');
-const path = require('path');
-const cheerio = require('cheerio');
-const markdown = require('markdown-it')('commonmark').enable('table');
-const moment = require('moment');
+import chalk from 'chalk';
+import path from 'path';
+import cheerio from 'cheerio';
+import rsvp from 'rsvp';
+import moment from 'moment';
+import schemaValidator from 'z-schema';
 import { spawn, exec } from 'child_process';
-const schemaValidator = require('z-schema');
-const chalk = require('chalk');
-const spawnArgs = require('spawn-args');
-const cliSpinner = require('cli-spinner').Spinner;
-const imageSizeOf = require('image-size');
+import spawnArgs from 'spawn-args';
+import MarkdownIt from 'markdown-it';
+import imageSizeOf from 'image-size';
+import { Spinner as cliSpinner } from 'cli-spinner';
+import {
+  readFile,
+  writeFile,
+  copyDirectory,
+  removeDirectory,
+  cleanDirectory,
+  makeDirectory,
+} from './fs/fs';
 import { version } from '../../package.json';
+
+const markdown = new MarkdownIt('commonmark').enable('table');
 
 //Allow CommonMark links that use other protocols, such as file:///
 //The markdown-it implementation is more restrictive than the CommonMark spec
@@ -19,11 +28,7 @@ markdown.validateLink = () => {
   return true;
 };
 
-/**
- * DocGen class
- */
-
-function DocGen(process) {
+export function DocGen(process) {
   let mainProcess = process;
   let wkhtmltopdfVersion = 'wkhtmltopdf 0.12.6 (with patched qt)'; //output from wkhtmltopdf -V
   let options;
@@ -56,128 +61,45 @@ function DocGen(process) {
     copy the example src files (template) to any directory, when scaffold command is invoked
   */
 
-  this.scaffold = () => {
+  this.scaffold = async () => {
     console.log(chalk.green('Creating scaffold template directory'));
-    copyDirSync(__dirname + '/../include/example', options.output);
+    await copyDirectory(
+      __dirname + '/../include/example',
+      options.output,
+      options.verbose === true,
+    );
   };
 
-  this.run = () => {
+  this.run = async () => {
     console.log(chalk.green.bold('DocGen version ' + version));
     //delete and recreate the output directory
-    remakeDirSync(options.output);
+    await cleanDirectory(options.output);
     loadTemplates();
-  };
-
-  /*
-        read any file (async)
-    */
-
-  const readFile = (filePath) => {
-    const normalized = path.normalize(filePath);
-    return new rsvp.Promise((resolve, reject) => {
-      fs.readFile(normalized, 'utf8', (error, data) => {
-        if (error) {
-          console.log(chalk.red('Error reading file: ' + normalized));
-          reject(error);
-        } else {
-          data = data.replace(/^\uFEFF/, ''); //remove the BOM (byte-order-mark) from UTF-8 files, if present
-          resolve(data);
-        }
-      });
-    });
-  };
-
-  /*
-        write any file (async)
-    */
-
-  let writeFile = (filePath, data) => {
-    const normalized = path.normalize(filePath);
-    return new rsvp.Promise((resolve, reject) => {
-      fs.writeFile(normalized, data, (error) => {
-        if (error) {
-          console.log(chalk.red('Error writing file: ' + normalized));
-          reject(error);
-        } else {
-          resolve(true);
-        }
-      });
-    });
-  };
-
-  /*
-        copy any directory (sync)
-    */
-
-  let copyDirSync = (source, destination) => {
-    const normalizedSource = path.normalize(source);
-    const normalizedDestination = path.normalize(destination);
-    try {
-      fs.copySync(normalizedSource, normalizedDestination);
-    } catch (error) {
-      console.log(
-        chalk.red(
-          'Error copying directory: ' +
-            normalizedSource +
-            ' to ' +
-            normalizedDestination,
-        ),
-      );
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-        mainProcess.exit(1);
-      }
-    }
-  };
-
-  /*
-        remake a directory (sync) ... remove and then mkdir in one operation
-    */
-
-  let remakeDirSync = (directoryPath) => {
-    const normalized = path.normalize(directoryPath);
-    try {
-      fs.removeSync(normalized);
-      fs.mkdirpSync(normalized);
-    } catch (error) {
-      console.log(chalk.red('Error recreating directory: ' + normalized));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-        mainProcess.exit(1);
-      }
-    }
-  };
-
-  /*
-        remove any directory (sync)
-    */
-
-  let removeDirSync = (directoryPath) => {
-    const normalized = path.normalize(directoryPath);
-    try {
-      fs.removeSync(normalized);
-    } catch (error) {
-      console.log(chalk.red('Error removing directory: ' + normalized));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-        mainProcess.exit(1);
-      }
-    }
   };
 
   /*
         load all HTML template files
     */
 
-  let loadTemplates = () => {
+  let loadTemplates = async () => {
     console.log(chalk.green('Loading templates'));
     let files = {
-      main: readFile(__dirname + '/../include/templates/main.html'),
-      redirect: readFile(__dirname + '/../include/templates/redirect.html'),
-      webCover: readFile(__dirname + '/../include/templates/webCover.html'),
-      pdfCover: readFile(__dirname + '/../include/templates/pdfCover.html'),
-      pdfHeader: readFile(__dirname + '/../include/templates/pdfHeader.html'),
-      pdfFooter: readFile(__dirname + '/../include/templates/pdfFooter.html'),
+      main: await readFile(__dirname + '/../include/templates/main.html'),
+      redirect: await readFile(
+        __dirname + '/../include/templates/redirect.html',
+      ),
+      webCover: await readFile(
+        __dirname + '/../include/templates/webCover.html',
+      ),
+      pdfCover: await readFile(
+        __dirname + '/../include/templates/pdfCover.html',
+      ),
+      pdfHeader: await readFile(
+        __dirname + '/../include/templates/pdfHeader.html',
+      ),
+      pdfFooter: await readFile(
+        __dirname + '/../include/templates/pdfFooter.html',
+      ),
     };
     rsvp
       .hash(files)
@@ -357,11 +279,11 @@ function DocGen(process) {
     load all metadata files (JSON)
   */
 
-  let loadMeta = () => {
+  let loadMeta = async () => {
     console.log(chalk.green('Loading required JSON metadata files'));
     let files = {
-      parameters: readFile(options.input + '/parameters.json'),
-      contents: readFile(options.input + '/contents.json'),
+      parameters: await readFile(options.input + '/parameters.json'),
+      contents: await readFile(options.input + '/contents.json'),
     };
     rsvp
       .hash(files)
@@ -807,7 +729,7 @@ function DocGen(process) {
     write each html page
   */
 
-  let writePages = () => {
+  let writePages = async () => {
     console.log(chalk.green('Writing the web page files'));
     let promises = {};
     meta.contents.forEach((section) => {
@@ -826,7 +748,7 @@ function DocGen(process) {
     );
     if (options.pdf === true) {
       let pdfTempDir = options.output + 'temp/';
-      fs.mkdirsSync(pdfTempDir);
+      await makeDirectory(pdfTempDir);
       promises['docgenPdfCover'] = writeFile(
         pdfTempDir + 'pdfCover.html',
         templates.pdfCover.html(),
@@ -842,16 +764,22 @@ function DocGen(process) {
     }
     rsvp
       .hash(promises)
-      .then(() => {
-        copyDirSync(
+      .then(async () => {
+        await copyDirectory(
           __dirname + '/../include/require',
           options.output + 'require',
+          options.verbose === true,
         ); //CSS, JavaScript
-        copyDirSync(options.input + '/files', options.output + 'files'); //user-attached files and images
+        await copyDirectory(
+          options.input + '/files',
+          options.output + 'files',
+          options.verbose === true,
+        ); //user-attached files and images
         if (options.mathKatex === true) {
-          copyDirSync(
+          await copyDirectory(
             __dirname + '/../include/optional/katex',
             options.output + 'require/katex',
+            options.verbose === true,
           );
         }
         checkPdfVersion();
@@ -1000,7 +928,7 @@ function DocGen(process) {
     });
   };
 
-  let createRedirect = () => {
+  let createRedirect = async () => {
     if (options.redirect) {
       let parent = options.output.replace(/\/$/, ''); //trim any trailing slash
       parent = parent.split(path.sep).slice(-1).pop(); //get name of final directory in the path
@@ -1013,7 +941,7 @@ function DocGen(process) {
       $('meta[http-equiv=REFRESH]').attr('content', '0;url=' + redirectLink);
       let file = options.output + '../' + 'index.html';
       try {
-        fs.outputFileSync(file, $.html(), 'utf-8');
+        await writeFile(file, $.html());
       } catch (error) {
         console.log(chalk.red('Error writing redirect file: ' + file));
         if (options.verbose === true) {
@@ -1028,14 +956,12 @@ function DocGen(process) {
     cleanup
   */
 
-  let cleanUp = () => {
+  let cleanUp = async () => {
     createRedirect();
     //remove temp files
     if (options.pdf === true) {
-      removeDirSync(options.output + 'temp');
+      await removeDirectory(options.output + 'temp');
     }
     console.log(chalk.green.bold('Done!'));
   };
 }
-
-module.exports = DocGen;
