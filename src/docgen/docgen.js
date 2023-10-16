@@ -28,11 +28,7 @@ markdown.validateLink = () => {
   return true;
 };
 
-/**
- * DocGen class
- */
-
-function DocGen(process) {
+export function DocGen(process) {
   let mainProcess = process;
   let wkhtmltopdfVersion = 'wkhtmltopdf 0.12.6 (with patched qt)'; //output from wkhtmltopdf -V
   let options;
@@ -969,5 +965,3 @@ function DocGen(process) {
     console.log(chalk.green.bold('Done!'));
   };
 }
-
-module.exports = DocGen;

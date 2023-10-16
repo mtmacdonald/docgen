@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-let docgen = require('./docgen/docgen.js');
-let program = require('commander');
+import program from 'commander';
+import { DocGen } from './docgen/docgen.js';
 
-let generator = new docgen(process);
+const generator = new DocGen(process);
 
 const scaffold = (command) => {
   generator.setOptions(command);
