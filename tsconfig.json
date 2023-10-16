@@ -5,5 +5,5 @@
     "target": "es5",
     "esModuleInterop": true
   },
-  "files": ["./src/docgen.js"]
+  "files": ["./src/docgen.ts"]
 }
