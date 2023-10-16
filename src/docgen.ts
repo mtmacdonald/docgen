@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import { DocGen } from './docgen/docgen.js';
+import { DocGen } from './docgen/docgen';
 
 const generator = new DocGen(process);
 
