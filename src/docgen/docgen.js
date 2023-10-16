@@ -1,14 +1,14 @@
-const rsvp = require('rsvp');
-const path = require('path');
-const cheerio = require('cheerio');
-const markdown = require('markdown-it')('commonmark').enable('table');
-const moment = require('moment');
+import chalk from 'chalk';
+import path from 'path';
+import cheerio from 'cheerio';
+import rsvp from 'rsvp';
+import moment from 'moment';
+import schemaValidator from 'z-schema';
 import { spawn, exec } from 'child_process';
-const schemaValidator = require('z-schema');
-const chalk = require('chalk');
-const spawnArgs = require('spawn-args');
-const cliSpinner = require('cli-spinner').Spinner;
-const imageSizeOf = require('image-size');
+import spawnArgs from 'spawn-args';
+import MarkdownIt from 'markdown-it';
+import imageSizeOf from 'image-size';
+import { Spinner as cliSpinner } from 'cli-spinner';
 import {
   readFile,
   writeFile,
@@ -18,6 +18,8 @@ import {
   makeDirectory,
 } from './fs/fs';
 import { version } from '../../package.json';
+
+const markdown = new MarkdownIt('commonmark').enable('table');
 
 //Allow CommonMark links that use other protocols, such as file:///
 //The markdown-it implementation is more restrictive than the CommonMark spec
