@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import path from 'path';
 import cheerio from 'cheerio';
-import rsvp from 'rsvp';
 import moment from 'moment';
 import schemaValidator from 'z-schema';
 import { spawn, exec } from 'child_process';
@@ -83,43 +82,40 @@ export function DocGen(process) {
 
   let loadTemplates = async () => {
     console.log(chalk.green('Loading templates'));
-    let files = {
-      main: await readFile(__dirname + '/../include/templates/main.html'),
-      redirect: await readFile(
-        __dirname + '/../include/templates/redirect.html',
-      ),
-      webCover: await readFile(
-        __dirname + '/../include/templates/webCover.html',
-      ),
-      pdfCover: await readFile(
-        __dirname + '/../include/templates/pdfCover.html',
-      ),
-      pdfHeader: await readFile(
-        __dirname + '/../include/templates/pdfHeader.html',
-      ),
-      pdfFooter: await readFile(
-        __dirname + '/../include/templates/pdfFooter.html',
-      ),
-    };
-    rsvp
-      .hash(files)
-      .then((files) => {
-        for (let key in files) {
-          if (files.hasOwnProperty(key)) {
-            let file = files[key];
-            let dom = cheerio.load(file);
-            templates[key] = dom;
-          }
+    try {
+      let files = {
+        main: await readFile(__dirname + '/../include/templates/main.html'),
+        redirect: await readFile(
+          __dirname + '/../include/templates/redirect.html',
+        ),
+        webCover: await readFile(
+          __dirname + '/../include/templates/webCover.html',
+        ),
+        pdfCover: await readFile(
+          __dirname + '/../include/templates/pdfCover.html',
+        ),
+        pdfHeader: await readFile(
+          __dirname + '/../include/templates/pdfHeader.html',
+        ),
+        pdfFooter: await readFile(
+          __dirname + '/../include/templates/pdfFooter.html',
+        ),
+      };
+      for (let key in files) {
+        if (files.hasOwnProperty(key)) {
+          let file = files[key];
+          let dom = cheerio.load(file);
+          templates[key] = dom;
         }
-        loadMeta();
-      })
-      .catch((error) => {
-        console.log(chalk.red('Error loading templates'));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        mainProcess.exit(1);
-      });
+      }
+    } catch (error) {
+      console.log(chalk.red('Error loading templates'));
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
+    }
+    await loadMeta();
   };
 
   /*
@@ -281,107 +277,98 @@ export function DocGen(process) {
 
   let loadMeta = async () => {
     console.log(chalk.green('Loading required JSON metadata files'));
-    let files = {
-      parameters: await readFile(options.input + '/parameters.json'),
-      contents: await readFile(options.input + '/contents.json'),
-    };
-    rsvp
-      .hash(files)
-      .then((files) => {
-        for (let key in files) {
-          if (files.hasOwnProperty(key)) {
-            //ignore prototype
-            try {
-              let file = JSON.parse(files[key]);
-              if (validateJSON(key, file)) {
-                meta[key] = file;
-              } else {
-                mainProcess.exit(1);
-              }
-            } catch (error) {
-              console.log(
-                chalk.red(
-                  'Error parsing required file: ' +
-                    key +
-                    '.json (invalid JSON)',
-                ),
-              );
-              if (options.verbose === true) {
-                console.log(chalk.red(error));
-              }
-              mainProcess.exit(1);
-            }
-          }
-        }
-        //add the release notes to the contents list
-        let extra = {
-          heading: 'Extra',
-          column: 5,
-          pages: [{ title: 'Release notes', source: 'release-notes.md' }],
-        };
-        meta.contents.push(extra);
-        loadMarkdown();
-      })
-      .catch((error) => {
-        console.log(chalk.red('Error loading required JSON metadata files'));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        mainProcess.exit(1);
-      });
-  };
-
-  /*
-    load all markdown files (src)
-  */
-
-  let loadMarkdown = () => {
-    console.log(chalk.green('Loading src files'));
-    let keys = [];
-    let files = [];
-    meta.contents.forEach((section) => {
-      section.pages.forEach((page) => {
-        keys.push(page);
-        files.push(options.input + '/' + page.source);
-      });
-    });
-    //add the release notes page
-    keys.push('ownership');
-    files.push(options.input + '/release-notes.md');
-    rsvp
-      .all(files.map(readFile))
-      .then((files) => {
-        files.forEach((page, index) => {
+    try {
+      let files = {
+        parameters: await readFile(options.input + '/parameters.json'),
+        contents: await readFile(options.input + '/contents.json'),
+      };
+      for (let key in files) {
+        if (files.hasOwnProperty(key)) {
+          //ignore prototype
           try {
-            let key = keys[index];
-            if (key.html === true) {
-              //allow raw HTML input pages
-              pages[key.source] = page;
+            let file = JSON.parse(files[key]);
+            if (validateJSON(key, file)) {
+              meta[key] = file;
             } else {
-              //otherwise parse input from Markdown into HTML
-              let html = markdown.render(page);
-              pages[key.source] = html;
+              mainProcess.exit(1);
             }
           } catch (error) {
             console.log(
-              chalk.red('Error parsing Markdown file: ' + file.source),
+              chalk.red(
+                'Error parsing required file: ' + key + '.json (invalid JSON)',
+              ),
             );
             if (options.verbose === true) {
               console.log(chalk.red(error));
             }
             mainProcess.exit(1);
           }
-        });
-        processContent();
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(chalk.red('Error loading src files'));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
         }
-        mainProcess.exit(1);
+      }
+      //add the release notes to the contents list
+      let extra = {
+        heading: 'Extra',
+        column: 5,
+        pages: [{ title: 'Release notes', source: 'release-notes.md' }],
+      };
+      meta.contents.push(extra);
+    } catch (error) {
+      console.log(chalk.red('Error loading required JSON metadata files'));
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
+    }
+    await loadMarkdown();
+  };
+
+  /*
+    load all markdown files (src)
+  */
+
+  let loadMarkdown = async () => {
+    console.log(chalk.green('Loading src files'));
+    try {
+      let keys = [];
+      let files = [];
+      meta.contents.forEach((section) => {
+        section.pages.forEach((page) => {
+          keys.push(page);
+          files.push(options.input + '/' + page.source);
+        });
       });
+      //add the release notes page
+      keys.push('ownership');
+      files.push(options.input + '/release-notes.md');
+      files = await Promise.all(files.map((f) => readFile(f)));
+      files.forEach((page, index) => {
+        try {
+          let key = keys[index];
+          if (key.html === true) {
+            //allow raw HTML input pages
+            pages[key.source] = page;
+          } else {
+            //otherwise parse input from Markdown into HTML
+            let html = markdown.render(page);
+            pages[key.source] = html;
+          }
+        } catch (error) {
+          console.log(chalk.red('Error parsing Markdown file: ' + file.source));
+          if (options.verbose === true) {
+            console.log(chalk.red(error));
+          }
+          mainProcess.exit(1);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      console.log(chalk.red('Error loading src files'));
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
+    }
+    await processContent();
   };
 
   let sortPages = () => {
@@ -659,7 +646,7 @@ export function DocGen(process) {
     process each input into an output
   */
 
-  let processContent = () => {
+  let processContent = async () => {
     console.log(chalk.green('Generating the static web content'));
     webToc();
     insertParameters();
@@ -722,7 +709,7 @@ export function DocGen(process) {
     );
     $('#dg-innerContent').html(templates.webCover.html());
     templates.webCover = $;
-    writePages();
+    await writePages();
   };
 
   /*
@@ -731,66 +718,63 @@ export function DocGen(process) {
 
   let writePages = async () => {
     console.log(chalk.green('Writing the web page files'));
-    let promises = {};
-    meta.contents.forEach((section) => {
-      section.pages.forEach((page) => {
-        let key = page.source;
-        let name = key.substr(0, page.source.lastIndexOf('.'));
-        let path = options.output + name + '.html';
-        let html = pages[key].html();
-        promises[key] = writeFile(path, html);
+    try {
+      let promises = {};
+      meta.contents.forEach((section) => {
+        section.pages.forEach((page) => {
+          let key = page.source;
+          let name = key.substr(0, page.source.lastIndexOf('.'));
+          let path = options.output + name + '.html';
+          let html = pages[key].html();
+          promises[key] = writeFile(path, html);
+        });
       });
-    });
-    //add extra files
-    promises['ownership'] = writeFile(
-      options.output + 'ownership.html',
-      templates.webCover.html(),
-    );
-    if (options.pdf === true) {
-      let pdfTempDir = options.output + 'temp/';
-      await makeDirectory(pdfTempDir);
-      promises['docgenPdfCover'] = writeFile(
-        pdfTempDir + 'pdfCover.html',
-        templates.pdfCover.html(),
+      //add extra files
+      promises['ownership'] = writeFile(
+        options.output + 'ownership.html',
+        templates.webCover.html(),
       );
-      promises['docgenPdfHeader'] = writeFile(
-        pdfTempDir + 'pdfHeader.html',
-        templates.pdfHeader.html(),
-      );
-      promises['docgenPdfFooter'] = writeFile(
-        pdfTempDir + 'pdfFooter.html',
-        templates.pdfFooter.html(),
-      );
+      if (options.pdf === true) {
+        let pdfTempDir = options.output + 'temp/';
+        await makeDirectory(pdfTempDir);
+        promises['docgenPdfCover'] = writeFile(
+          pdfTempDir + 'pdfCover.html',
+          templates.pdfCover.html(),
+        );
+        promises['docgenPdfHeader'] = writeFile(
+          pdfTempDir + 'pdfHeader.html',
+          templates.pdfHeader.html(),
+        );
+        promises['docgenPdfFooter'] = writeFile(
+          pdfTempDir + 'pdfFooter.html',
+          templates.pdfFooter.html(),
+        );
+      }
+      await copyDirectory(
+        __dirname + '/../include/require',
+        options.output + 'require',
+        options.verbose === true,
+      ); //CSS, JavaScript
+      await copyDirectory(
+        options.input + '/files',
+        options.output + 'files',
+        options.verbose === true,
+      ); //user-attached files and images
+      if (options.mathKatex === true) {
+        await copyDirectory(
+          __dirname + '/../include/optional/katex',
+          options.output + 'require/katex',
+          options.verbose === true,
+        );
+      }
+    } catch (error) {
+      console.log(chalk.red('Error writing the web page files'));
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
     }
-    rsvp
-      .hash(promises)
-      .then(async () => {
-        await copyDirectory(
-          __dirname + '/../include/require',
-          options.output + 'require',
-          options.verbose === true,
-        ); //CSS, JavaScript
-        await copyDirectory(
-          options.input + '/files',
-          options.output + 'files',
-          options.verbose === true,
-        ); //user-attached files and images
-        if (options.mathKatex === true) {
-          await copyDirectory(
-            __dirname + '/../include/optional/katex',
-            options.output + 'require/katex',
-            options.verbose === true,
-          );
-        }
-        checkPdfVersion();
-      })
-      .catch((error) => {
-        console.log(chalk.red('Error writing the web page files'));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        mainProcess.exit(1);
-      });
+    await checkPdfVersion();
   };
 
   /*
@@ -844,7 +828,7 @@ export function DocGen(process) {
     return spawnArgs(args);
   };
 
-  let checkPdfVersion = () => {
+  let checkPdfVersion = async () => {
     if (options.pdf === true) {
       //first check that wkhtmltopdf is installed
       exec(options.wkhtmltopdfPath + ' -V', (error, stdout, stderr) => {
@@ -875,7 +859,7 @@ export function DocGen(process) {
         }
       });
     } else {
-      cleanUp();
+      await cleanUp();
     }
   };
 
@@ -883,7 +867,7 @@ export function DocGen(process) {
     call wkhtmltopdf as an external executable
   */
 
-  let generatePdf = () => {
+  let generatePdf = async () => {
     console.log(chalk.green('Creating the PDF copy (may take some time)'));
     let args = getPdfArguments();
     let wkhtmltopdf = spawn(options.wkhtmltopdfPath, args);
@@ -914,7 +898,7 @@ export function DocGen(process) {
       //do nothing
     });
 
-    wkhtmltopdf.on('close', (code) => {
+    wkhtmltopdf.on('close', async (code) => {
       if (options.verbose !== true) {
         spinner.stop();
         console.log(''); //newline after spinner stops
@@ -924,7 +908,7 @@ export function DocGen(process) {
           'wkhtmltopdf exited with a warning or error: try the -v option for details';
         console.log(chalk.yellow(warning));
       }
-      cleanUp();
+      await cleanUp();
     });
   };
 
@@ -957,7 +941,7 @@ export function DocGen(process) {
   */
 
   let cleanUp = async () => {
-    createRedirect();
+    await createRedirect();
     //remove temp files
     if (options.pdf === true) {
       await removeDirectory(options.output + 'temp');

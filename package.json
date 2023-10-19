@@ -1,6 +1,6 @@
 {
   "name": "docgen-tool",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "A tool for creating HTML and PDF documentation",
   "main": "dist/docgen.ts",
   "bin": {
@@ -19,7 +19,7 @@
     "build:styles": "sass --no-source-map src/styles/main.scss src/include/require/styles/framework.css",
     "test": "npm run prettier:check",
     "test:run": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p -m -n -d 40000",
-    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.ts run -i src/__test__/test-run -o ../source/__test__/test-run-output -p -m -n -d 40000",
+    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p -m -n -d 40000",
     "prettier:check": "prettier --check 'src/docgen.ts' '*.{js,json,css,less}'",
     "prettier:fix": "prettier --write 'src/docgen.ts' '*.{js,json,css,less}'"
   },
@@ -43,7 +43,6 @@
     "lint-staged": "^10.5.1",
     "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
-    "rsvp": "^4.8.5",
     "spawn-args": "^0.2.0",
     "z-schema": "^6.0.1"
   },
