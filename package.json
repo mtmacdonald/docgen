@@ -43,7 +43,6 @@
     "lint-staged": "^10.5.1",
     "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
-    "rsvp": "^4.8.5",
     "spawn-args": "^0.2.0",
     "z-schema": "^6.0.1"
   },

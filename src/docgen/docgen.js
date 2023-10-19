@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import path from 'path';
 import cheerio from 'cheerio';
-import rsvp from 'rsvp';
 import moment from 'moment';
 import schemaValidator from 'z-schema';
 import { spawn, exec } from 'child_process';
@@ -329,51 +328,46 @@ export function DocGen(process) {
 
   let loadMarkdown = () => {
     console.log(chalk.green('Loading src files'));
-    let keys = [];
-    let files = [];
-    meta.contents.forEach((section) => {
-      section.pages.forEach((page) => {
-        keys.push(page);
-        files.push(options.input + '/' + page.source);
-      });
-    });
-    //add the release notes page
-    keys.push('ownership');
-    files.push(options.input + '/release-notes.md');
-    rsvp
-      .all(files.map(readFile))
-      .then((files) => {
-        files.forEach((page, index) => {
-          try {
-            let key = keys[index];
-            if (key.html === true) {
-              //allow raw HTML input pages
-              pages[key.source] = page;
-            } else {
-              //otherwise parse input from Markdown into HTML
-              let html = markdown.render(page);
-              pages[key.source] = html;
-            }
-          } catch (error) {
-            console.log(
-              chalk.red('Error parsing Markdown file: ' + file.source),
-            );
-            if (options.verbose === true) {
-              console.log(chalk.red(error));
-            }
-            mainProcess.exit(1);
-          }
+    try {
+      let keys = [];
+      let files = [];
+      meta.contents.forEach((section) => {
+        section.pages.forEach((page) => {
+          keys.push(page);
+          files.push(options.input + '/' + page.source);
         });
-        processContent();
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(chalk.red('Error loading src files'));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        mainProcess.exit(1);
       });
+      //add the release notes page
+      keys.push('ownership');
+      files.push(options.input + '/release-notes.md');
+      files.forEach((page, index) => {
+        try {
+          let key = keys[index];
+          if (key.html === true) {
+            //allow raw HTML input pages
+            pages[key.source] = page;
+          } else {
+            //otherwise parse input from Markdown into HTML
+            let html = markdown.render(page);
+            pages[key.source] = html;
+          }
+        } catch (error) {
+          console.log(chalk.red('Error parsing Markdown file: ' + file.source));
+          if (options.verbose === true) {
+            console.log(chalk.red(error));
+          }
+          mainProcess.exit(1);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      console.log(chalk.red('Error loading src files'));
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
+    }
+    processContent();
   };
 
   let sortPages = () => {
@@ -723,66 +717,63 @@ export function DocGen(process) {
 
   let writePages = async () => {
     console.log(chalk.green('Writing the web page files'));
-    let promises = {};
-    meta.contents.forEach((section) => {
-      section.pages.forEach((page) => {
-        let key = page.source;
-        let name = key.substr(0, page.source.lastIndexOf('.'));
-        let path = options.output + name + '.html';
-        let html = pages[key].html();
-        promises[key] = writeFile(path, html);
+    try {
+      let promises = {};
+      meta.contents.forEach((section) => {
+        section.pages.forEach((page) => {
+          let key = page.source;
+          let name = key.substr(0, page.source.lastIndexOf('.'));
+          let path = options.output + name + '.html';
+          let html = pages[key].html();
+          promises[key] = writeFile(path, html);
+        });
       });
-    });
-    //add extra files
-    promises['ownership'] = writeFile(
-      options.output + 'ownership.html',
-      templates.webCover.html(),
-    );
-    if (options.pdf === true) {
-      let pdfTempDir = options.output + 'temp/';
-      await makeDirectory(pdfTempDir);
-      promises['docgenPdfCover'] = writeFile(
-        pdfTempDir + 'pdfCover.html',
-        templates.pdfCover.html(),
+      //add extra files
+      promises['ownership'] = writeFile(
+        options.output + 'ownership.html',
+        templates.webCover.html(),
       );
-      promises['docgenPdfHeader'] = writeFile(
-        pdfTempDir + 'pdfHeader.html',
-        templates.pdfHeader.html(),
-      );
-      promises['docgenPdfFooter'] = writeFile(
-        pdfTempDir + 'pdfFooter.html',
-        templates.pdfFooter.html(),
-      );
+      if (options.pdf === true) {
+        let pdfTempDir = options.output + 'temp/';
+        await makeDirectory(pdfTempDir);
+        promises['docgenPdfCover'] = writeFile(
+          pdfTempDir + 'pdfCover.html',
+          templates.pdfCover.html(),
+        );
+        promises['docgenPdfHeader'] = writeFile(
+          pdfTempDir + 'pdfHeader.html',
+          templates.pdfHeader.html(),
+        );
+        promises['docgenPdfFooter'] = writeFile(
+          pdfTempDir + 'pdfFooter.html',
+          templates.pdfFooter.html(),
+        );
+      }
+      await copyDirectory(
+        __dirname + '/../include/require',
+        options.output + 'require',
+        options.verbose === true,
+      ); //CSS, JavaScript
+      await copyDirectory(
+        options.input + '/files',
+        options.output + 'files',
+        options.verbose === true,
+      ); //user-attached files and images
+      if (options.mathKatex === true) {
+        await copyDirectory(
+          __dirname + '/../include/optional/katex',
+          options.output + 'require/katex',
+          options.verbose === true,
+        );
+      }
+    } catch (error) {
+      console.log(chalk.red('Error writing the web page files'));
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
     }
-    rsvp
-      .hash(promises)
-      .then(async () => {
-        await copyDirectory(
-          __dirname + '/../include/require',
-          options.output + 'require',
-          options.verbose === true,
-        ); //CSS, JavaScript
-        await copyDirectory(
-          options.input + '/files',
-          options.output + 'files',
-          options.verbose === true,
-        ); //user-attached files and images
-        if (options.mathKatex === true) {
-          await copyDirectory(
-            __dirname + '/../include/optional/katex',
-            options.output + 'require/katex',
-            options.verbose === true,
-          );
-        }
-        checkPdfVersion();
-      })
-      .catch((error) => {
-        console.log(chalk.red('Error writing the web page files'));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        mainProcess.exit(1);
-      });
+    checkPdfVersion();
   };
 
   /*
