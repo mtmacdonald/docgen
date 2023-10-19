@@ -19,7 +19,7 @@
     "build:styles": "sass --no-source-map src/styles/main.scss src/include/require/styles/framework.css",
     "test": "npm run prettier:check",
     "test:run": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p -m -n -d 40000",
-    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.ts run -i src/__test__/test-run -o ../source/__test__/test-run-output -p -m -n -d 40000",
+    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p -m -n -d 40000",
     "prettier:check": "prettier --check 'src/docgen.ts' '*.{js,json,css,less}'",
     "prettier:fix": "prettier --write 'src/docgen.ts' '*.{js,json,css,less}'"
   },
