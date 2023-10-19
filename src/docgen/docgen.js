@@ -83,43 +83,40 @@ export function DocGen(process) {
 
   let loadTemplates = async () => {
     console.log(chalk.green('Loading templates'));
-    let files = {
-      main: await readFile(__dirname + '/../include/templates/main.html'),
-      redirect: await readFile(
-        __dirname + '/../include/templates/redirect.html',
-      ),
-      webCover: await readFile(
-        __dirname + '/../include/templates/webCover.html',
-      ),
-      pdfCover: await readFile(
-        __dirname + '/../include/templates/pdfCover.html',
-      ),
-      pdfHeader: await readFile(
-        __dirname + '/../include/templates/pdfHeader.html',
-      ),
-      pdfFooter: await readFile(
-        __dirname + '/../include/templates/pdfFooter.html',
-      ),
-    };
-    rsvp
-      .hash(files)
-      .then((files) => {
-        for (let key in files) {
-          if (files.hasOwnProperty(key)) {
-            let file = files[key];
-            let dom = cheerio.load(file);
-            templates[key] = dom;
-          }
+    try {
+      let files = {
+        main: await readFile(__dirname + '/../include/templates/main.html'),
+        redirect: await readFile(
+          __dirname + '/../include/templates/redirect.html',
+        ),
+        webCover: await readFile(
+          __dirname + '/../include/templates/webCover.html',
+        ),
+        pdfCover: await readFile(
+          __dirname + '/../include/templates/pdfCover.html',
+        ),
+        pdfHeader: await readFile(
+          __dirname + '/../include/templates/pdfHeader.html',
+        ),
+        pdfFooter: await readFile(
+          __dirname + '/../include/templates/pdfFooter.html',
+        ),
+      };
+      for (let key in files) {
+        if (files.hasOwnProperty(key)) {
+          let file = files[key];
+          let dom = cheerio.load(file);
+          templates[key] = dom;
         }
-        loadMeta();
-      })
-      .catch((error) => {
-        console.log(chalk.red('Error loading templates'));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        mainProcess.exit(1);
-      });
+      }
+    } catch (error) {
+      console.log(chalk.red('Error loading templates'));
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
+    }
+    loadMeta();
   };
 
   /*
@@ -281,54 +278,49 @@ export function DocGen(process) {
 
   let loadMeta = async () => {
     console.log(chalk.green('Loading required JSON metadata files'));
-    let files = {
-      parameters: await readFile(options.input + '/parameters.json'),
-      contents: await readFile(options.input + '/contents.json'),
-    };
-    rsvp
-      .hash(files)
-      .then((files) => {
-        for (let key in files) {
-          if (files.hasOwnProperty(key)) {
-            //ignore prototype
-            try {
-              let file = JSON.parse(files[key]);
-              if (validateJSON(key, file)) {
-                meta[key] = file;
-              } else {
-                mainProcess.exit(1);
-              }
-            } catch (error) {
-              console.log(
-                chalk.red(
-                  'Error parsing required file: ' +
-                    key +
-                    '.json (invalid JSON)',
-                ),
-              );
-              if (options.verbose === true) {
-                console.log(chalk.red(error));
-              }
+    try {
+      let files = {
+        parameters: await readFile(options.input + '/parameters.json'),
+        contents: await readFile(options.input + '/contents.json'),
+      };
+      for (let key in files) {
+        if (files.hasOwnProperty(key)) {
+          //ignore prototype
+          try {
+            let file = JSON.parse(files[key]);
+            if (validateJSON(key, file)) {
+              meta[key] = file;
+            } else {
               mainProcess.exit(1);
             }
+          } catch (error) {
+            console.log(
+              chalk.red(
+                'Error parsing required file: ' + key + '.json (invalid JSON)',
+              ),
+            );
+            if (options.verbose === true) {
+              console.log(chalk.red(error));
+            }
+            mainProcess.exit(1);
           }
         }
-        //add the release notes to the contents list
-        let extra = {
-          heading: 'Extra',
-          column: 5,
-          pages: [{ title: 'Release notes', source: 'release-notes.md' }],
-        };
-        meta.contents.push(extra);
-        loadMarkdown();
-      })
-      .catch((error) => {
-        console.log(chalk.red('Error loading required JSON metadata files'));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        mainProcess.exit(1);
-      });
+      }
+      //add the release notes to the contents list
+      let extra = {
+        heading: 'Extra',
+        column: 5,
+        pages: [{ title: 'Release notes', source: 'release-notes.md' }],
+      };
+      meta.contents.push(extra);
+    } catch (error) {
+      console.log(chalk.red('Error loading required JSON metadata files'));
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
+    }
+    loadMarkdown();
   };
 
   /*
