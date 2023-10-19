@@ -115,7 +115,7 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    loadMeta();
+    await loadMeta();
   };
 
   /*
@@ -319,14 +319,14 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    loadMarkdown();
+    await loadMarkdown();
   };
 
   /*
     load all markdown files (src)
   */
 
-  let loadMarkdown = () => {
+  let loadMarkdown = async () => {
     console.log(chalk.green('Loading src files'));
     try {
       let keys = [];
@@ -340,6 +340,7 @@ export function DocGen(process) {
       //add the release notes page
       keys.push('ownership');
       files.push(options.input + '/release-notes.md');
+      files = await Promise.all(files.map((f) => readFile(f)));
       files.forEach((page, index) => {
         try {
           let key = keys[index];
@@ -367,7 +368,7 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    processContent();
+    await processContent();
   };
 
   let sortPages = () => {
@@ -645,7 +646,7 @@ export function DocGen(process) {
     process each input into an output
   */
 
-  let processContent = () => {
+  let processContent = async () => {
     console.log(chalk.green('Generating the static web content'));
     webToc();
     insertParameters();
@@ -708,7 +709,7 @@ export function DocGen(process) {
     );
     $('#dg-innerContent').html(templates.webCover.html());
     templates.webCover = $;
-    writePages();
+    await writePages();
   };
 
   /*
@@ -773,7 +774,7 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    checkPdfVersion();
+    await checkPdfVersion();
   };
 
   /*
@@ -827,7 +828,7 @@ export function DocGen(process) {
     return spawnArgs(args);
   };
 
-  let checkPdfVersion = () => {
+  let checkPdfVersion = async () => {
     if (options.pdf === true) {
       //first check that wkhtmltopdf is installed
       exec(options.wkhtmltopdfPath + ' -V', (error, stdout, stderr) => {
@@ -858,7 +859,7 @@ export function DocGen(process) {
         }
       });
     } else {
-      cleanUp();
+      await cleanUp();
     }
   };
 
@@ -866,7 +867,7 @@ export function DocGen(process) {
     call wkhtmltopdf as an external executable
   */
 
-  let generatePdf = () => {
+  let generatePdf = async () => {
     console.log(chalk.green('Creating the PDF copy (may take some time)'));
     let args = getPdfArguments();
     let wkhtmltopdf = spawn(options.wkhtmltopdfPath, args);
@@ -897,7 +898,7 @@ export function DocGen(process) {
       //do nothing
     });
 
-    wkhtmltopdf.on('close', (code) => {
+    wkhtmltopdf.on('close', async (code) => {
       if (options.verbose !== true) {
         spinner.stop();
         console.log(''); //newline after spinner stops
@@ -907,7 +908,7 @@ export function DocGen(process) {
           'wkhtmltopdf exited with a warning or error: try the -v option for details';
         console.log(chalk.yellow(warning));
       }
-      cleanUp();
+      await cleanUp();
     });
   };
 
@@ -940,7 +941,7 @@ export function DocGen(process) {
   */
 
   let cleanUp = async () => {
-    createRedirect();
+    await createRedirect();
     //remove temp files
     if (options.pdf === true) {
       await removeDirectory(options.output + 'temp');
