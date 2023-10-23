@@ -75,6 +75,8 @@ export function DocGen(process) {
     await cleanDirectory(options.output);
     await loadTemplates();
     await loadMeta();
+    await loadMarkdown();
+    await processContent();
   };
 
   /*
@@ -166,7 +168,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    await loadMarkdown();
   };
 
   /*
@@ -215,7 +216,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    await processContent();
   };
 
   let sortPages = () => {
