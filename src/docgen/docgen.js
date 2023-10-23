@@ -77,6 +77,8 @@ export function DocGen(process) {
     await loadMeta();
     await loadMarkdown();
     await processContent();
+    await writePages();
+    await checkPdfVersion();
   };
 
   /*
@@ -556,7 +558,6 @@ export function DocGen(process) {
     );
     $('#dg-innerContent').html(templates.webCover.html());
     templates.webCover = $;
-    await writePages();
   };
 
   /*
@@ -621,7 +622,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    await checkPdfVersion();
   };
 
   /*
