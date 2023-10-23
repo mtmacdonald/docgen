@@ -74,11 +74,12 @@ export function DocGen(process) {
     //delete and recreate the output directory
     await cleanDirectory(options.output);
     await loadTemplates();
+    await loadMeta();
   };
 
   /*
-        load all HTML template files
-    */
+    Load all HTML template files
+  */
 
   let loadTemplates = async () => {
     console.log(chalk.green('Loading templates'));
@@ -115,7 +116,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    await loadMeta();
   };
 
   /*
