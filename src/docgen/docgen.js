@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import path from 'path';
 import cheerio from 'cheerio';
 import moment from 'moment';
-import schemaValidator from 'z-schema';
 import { spawn, exec } from 'child_process';
 import spawnArgs from 'spawn-args';
 import MarkdownIt from 'markdown-it';
@@ -16,6 +15,7 @@ import {
   cleanDirectory,
   makeDirectory,
 } from './fs/fs';
+import { validateJSON } from './validation/validation';
 import { version } from '../../package.json';
 
 const markdown = new MarkdownIt('commonmark').enable('table');
@@ -73,12 +73,17 @@ export function DocGen(process) {
     console.log(chalk.green.bold('DocGen version ' + version));
     //delete and recreate the output directory
     await cleanDirectory(options.output);
-    loadTemplates();
+    await loadTemplates();
+    await loadMeta();
+    await loadMarkdown();
+    await processContent();
+    await writePages();
+    await checkPdfVersion();
   };
 
   /*
-        load all HTML template files
-    */
+    Load all HTML template files
+  */
 
   let loadTemplates = async () => {
     console.log(chalk.green('Loading templates'));
@@ -115,160 +120,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    await loadMeta();
-  };
-
-  /*
-    JSON schema validation
-  */
-
-  let schemas = {
-    parameters: {
-      title: 'DocGen Parameters Schema',
-      type: 'object',
-      required: [
-        'title',
-        'name',
-        'version',
-        'date',
-        'organization',
-        'author',
-        'owner',
-        'contributors',
-        'website',
-        'module',
-        'id',
-        'summary',
-        'marking',
-        'legalese',
-      ],
-      properties: {
-        title: { type: 'string' },
-        name: { type: 'string' },
-        version: { type: 'string' },
-        date: { type: 'string' },
-        organization: {
-          type: 'object',
-          required: ['name', 'url'],
-          properties: {
-            name: { type: 'string' },
-            url: { type: 'string' },
-          },
-        },
-        author: {
-          type: 'object',
-          required: ['name', 'url'],
-          properties: {
-            name: { type: 'string' },
-            url: { type: 'string' },
-          },
-        },
-        owner: {
-          type: 'object',
-          required: ['name', 'url'],
-          properties: {
-            name: { type: 'string' },
-            url: { type: 'string' },
-          },
-        },
-        contributors: {
-          type: 'array',
-          items: {
-            oneOf: [
-              {
-                type: 'object',
-                required: ['name', 'url'],
-                properties: {
-                  name: { type: 'string' },
-                  url: { type: 'string' },
-                },
-              },
-            ],
-          },
-        },
-        website: {
-          type: 'object',
-          required: ['name', 'url'],
-          properties: {
-            name: { type: 'string' },
-            url: { type: 'string' },
-          },
-        },
-        sponsorLink: {
-          type: 'object',
-          required: ['name', 'url', 'logo'],
-          properties: {
-            name: { type: 'string' },
-            url: { type: 'string' },
-            logo: { type: 'string' },
-          },
-        },
-        backlink: {
-          type: 'object',
-          required: ['name', 'url'],
-          properties: {
-            name: { type: 'string' },
-            url: { type: 'string' },
-          },
-        },
-        module: { type: 'string' },
-        id: { type: 'string' },
-        summary: { type: 'string' },
-        marking: { type: 'string' },
-        legalese: { type: 'string' },
-      },
-    },
-    contents: {
-      title: 'DocGen Table of Contents Schema',
-      type: 'array',
-      items: {
-        oneOf: [
-          {
-            type: 'object',
-            required: ['heading', 'column', 'pages'],
-            properties: {
-              name: { type: 'string' },
-              column: { type: 'integer', minimum: 1, maximum: 4 },
-              pages: {
-                type: 'array',
-                items: {
-                  oneOf: [
-                    {
-                      type: 'object',
-                      required: ['title', 'source'],
-                      properties: {
-                        title: { type: 'string' },
-                        source: { type: 'string' },
-                        html: { type: 'boolean' },
-                      },
-                    },
-                  ],
-                },
-              },
-            },
-          },
-        ],
-      },
-    },
-  };
-
-  let validateJSON = (key, data) => {
-    let schema = schemas[key];
-    let validator = new schemaValidator();
-    let valid = validator.validate(data, schema);
-    if (!valid) {
-      console.log(
-        chalk.red(
-          'Error parsing required file: ' +
-            key +
-            '.json (failed schema validation)',
-        ),
-      );
-      if (options.verbose === true) {
-        console.log(chalk.red(validator.getLastError()));
-      }
-    }
-    return valid;
   };
 
   /*
@@ -287,7 +138,7 @@ export function DocGen(process) {
           //ignore prototype
           try {
             let file = JSON.parse(files[key]);
-            if (validateJSON(key, file)) {
+            if (validateJSON({ key, data: file, verbose: options.verbose })) {
               meta[key] = file;
             } else {
               mainProcess.exit(1);
@@ -319,7 +170,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    await loadMarkdown();
   };
 
   /*
@@ -368,7 +218,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    await processContent();
   };
 
   let sortPages = () => {
@@ -709,7 +558,6 @@ export function DocGen(process) {
     );
     $('#dg-innerContent').html(templates.webCover.html());
     templates.webCover = $;
-    await writePages();
   };
 
   /*
@@ -774,7 +622,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-    await checkPdfVersion();
   };
 
   /*
