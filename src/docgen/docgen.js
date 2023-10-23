@@ -73,7 +73,7 @@ export function DocGen(process) {
     console.log(chalk.green.bold('DocGen version ' + version));
     //delete and recreate the output directory
     await cleanDirectory(options.output);
-    loadTemplates();
+    await loadTemplates();
   };
 
   /*
