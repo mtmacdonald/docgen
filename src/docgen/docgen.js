@@ -79,8 +79,12 @@ export function DocGen(process) {
     await loadMarkdown();
     await processContent();
     await writePages();
-    await checkPdfVersion();
-    await generatePdf();
+    await createRedirect();
+    if (options.pdf === true) {
+      await checkPdfVersion();
+      await generatePdf();
+    }
+    console.log(chalk.green.bold('Done!'));
   };
 
   /*
@@ -677,35 +681,31 @@ export function DocGen(process) {
     return spawnArgs(args);
   };
 
-  let checkPdfVersion = async () => {
-    if (options.pdf === true) {
-      try {
-        const stdout = await execute(options.wkhtmltopdfPath + ' -V');
-        //warn if the version of wkhtmltopdf is not an expected version
-        let actualWkhtmltopdfVersion = stdout.trim();
-        if (actualWkhtmltopdfVersion !== wkhtmltopdfVersion) {
-          let warning =
-            'Warning: unexpected version of wkhtmltopdf, which may work but is not tested or supported';
-          let expectedVersion = '   expected version: ' + wkhtmltopdfVersion;
-          let detectedVersion =
-            '   detected version: ' + actualWkhtmltopdfVersion;
-          console.log(chalk.yellow(warning));
-          console.log(chalk.yellow(expectedVersion));
-          console.log(chalk.yellow(detectedVersion));
-        }
-      } catch (error) {
-        console.log(
-          chalk.red(
-            'Unable to call wkhtmltopdf. Is it installed and in path? See http://wkhtmltopdf.org',
-          ),
-        );
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        mainProcess.exit(1);
+  const checkPdfVersion = async () => {
+    try {
+      const stdout = await execute(options.wkhtmltopdfPath + ' -V');
+      //warn if the version of wkhtmltopdf is not an expected version
+      const actualWkhtmltopdfVersion = stdout.trim();
+      if (actualWkhtmltopdfVersion !== wkhtmltopdfVersion) {
+        const warning =
+          'Warning: unexpected version of wkhtmltopdf, which may work but is not tested or supported';
+        const expectedVersion = '   expected version: ' + wkhtmltopdfVersion;
+        const detectedVersion =
+          '   detected version: ' + actualWkhtmltopdfVersion;
+        console.log(chalk.yellow(warning));
+        console.log(chalk.yellow(expectedVersion));
+        console.log(chalk.yellow(detectedVersion));
       }
-    } else {
-      await cleanUp();
+    } catch (error) {
+      console.log(
+        chalk.red(
+          'Unable to call wkhtmltopdf. Is it installed and in path? See http://wkhtmltopdf.org',
+        ),
+      );
+      if (options.verbose === true) {
+        console.log(chalk.red(error));
+      }
+      mainProcess.exit(1);
     }
   };
 
@@ -754,7 +754,7 @@ export function DocGen(process) {
           'wkhtmltopdf exited with a warning or error: try the -v option for details';
         console.log(chalk.yellow(warning));
       }
-      await cleanUp();
+      await removeDirectory(options.output + 'temp');
     });
   };
 
@@ -780,18 +780,5 @@ export function DocGen(process) {
         //don't exit because redirect error is not a fatal error
       }
     }
-  };
-
-  /*
-    cleanup
-  */
-
-  let cleanUp = async () => {
-    await createRedirect();
-    //remove temp files
-    if (options.pdf === true) {
-      await removeDirectory(options.output + 'temp');
-    }
-    console.log(chalk.green.bold('Done!'));
   };
 }
