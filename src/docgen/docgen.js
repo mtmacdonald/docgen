@@ -80,6 +80,7 @@ export function DocGen(process) {
     await processContent();
     await writePages();
     await checkPdfVersion();
+    await generatePdf();
   };
 
   /*
@@ -703,8 +704,6 @@ export function DocGen(process) {
         }
         mainProcess.exit(1);
       }
-      //first check that wkhtmltopdf is installed
-      await generatePdf();
     } else {
       await cleanUp();
     }
