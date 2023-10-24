@@ -16,6 +16,7 @@ import {
   makeDirectory,
 } from './fs/fs';
 import { validateJSON } from './validation/validation';
+import { execute } from './execute/execute';
 import { version } from '../../package.json';
 
 const markdown = new MarkdownIt('commonmark').enable('table');
@@ -677,34 +678,33 @@ export function DocGen(process) {
 
   let checkPdfVersion = async () => {
     if (options.pdf === true) {
-      //first check that wkhtmltopdf is installed
-      exec(options.wkhtmltopdfPath + ' -V', (error, stdout, stderr) => {
-        if (error) {
-          console.log(
-            chalk.red(
-              'Unable to call wkhtmltopdf. Is it installed and in path? See http://wkhtmltopdf.org',
-            ),
-          );
-          if (options.verbose === true) {
-            console.log(chalk.red(error));
-          }
-          mainProcess.exit(1);
-        } else {
-          //warn if the version of wkhtmltopdf is not an expected version
-          let actualWkhtmltopdfVersion = stdout.trim();
-          if (actualWkhtmltopdfVersion !== wkhtmltopdfVersion) {
-            let warning =
-              'Warning: unexpected version of wkhtmltopdf, which may work but is not tested or supported';
-            let expectedVersion = '   expected version: ' + wkhtmltopdfVersion;
-            let detectedVersion =
-              '   detected version: ' + actualWkhtmltopdfVersion;
-            console.log(chalk.yellow(warning));
-            console.log(chalk.yellow(expectedVersion));
-            console.log(chalk.yellow(detectedVersion));
-          }
-          generatePdf();
+      try {
+        const stdout = await execute(options.wkhtmltopdfPath + ' -V');
+        //warn if the version of wkhtmltopdf is not an expected version
+        let actualWkhtmltopdfVersion = stdout.trim();
+        if (actualWkhtmltopdfVersion !== wkhtmltopdfVersion) {
+          let warning =
+            'Warning: unexpected version of wkhtmltopdf, which may work but is not tested or supported';
+          let expectedVersion = '   expected version: ' + wkhtmltopdfVersion;
+          let detectedVersion =
+            '   detected version: ' + actualWkhtmltopdfVersion;
+          console.log(chalk.yellow(warning));
+          console.log(chalk.yellow(expectedVersion));
+          console.log(chalk.yellow(detectedVersion));
         }
-      });
+      } catch (error) {
+        console.log(
+          chalk.red(
+            'Unable to call wkhtmltopdf. Is it installed and in path? See http://wkhtmltopdf.org',
+          ),
+        );
+        if (options.verbose === true) {
+          console.log(chalk.red(error));
+        }
+        mainProcess.exit(1);
+      }
+      //first check that wkhtmltopdf is installed
+      await generatePdf();
     } else {
       await cleanUp();
     }
