@@ -5,10 +5,8 @@ const execPromise = promisify(exec);
 export async function execute(command) {
   try {
     const { stdout, stderr } = await execPromise(command);
-    return stdout;
-    //console.log('stdout:', stdout);
-    //console.log('stderr:', stderr);
+    return {stdout, stderr}
   } catch (e) {
-    console.error(e); // should contain code (exit code) and signal (that caused the termination).
+    console.error(e);
   }
 }
