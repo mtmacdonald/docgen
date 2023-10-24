@@ -78,8 +78,9 @@ export function DocGen(process) {
     if (options.pdf === true) {
       await checkPdfVersion({ options, mainProcess });
       await generatePdf({ options, meta, sortedPages, mainProcess });
+    } else {
+      console.log(chalk.green.bold('Done!'));
     }
-    console.log(chalk.green.bold('Done!'));
   };
 
   /*

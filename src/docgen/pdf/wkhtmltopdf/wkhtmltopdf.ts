@@ -23,7 +23,6 @@ const pdfOptions = [
 ];
 
 const getPdfArguments = ({meta, options, sortedPages}) => {
-  console.log(__dirname + '/../include/pdf-contents.xsl');
   let pdfName = meta.parameters.name.toLowerCase() + '.pdf';
   pdfOptions.push(' --enable-local-file-access');
   pdfOptions.push(' --javascript-delay ' + options.pdfDelay); //code syntax highlight in wkhtmltopdf 0.12.2.1 fails without a delay (but why doesn't --no-stop-slow-scripts work?)
@@ -129,5 +128,6 @@ export const generatePdf = async ({options, meta, sortedPages, mainProcess}) => 
       console.log(chalk.yellow(warning));
     }
     await removeDirectory(options.output + 'temp', options.verbose);
+    console.log(chalk.green.bold('Done!'));
   });
 };
