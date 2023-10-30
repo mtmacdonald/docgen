@@ -13,6 +13,11 @@ import {
 } from './fs/fs';
 import { validateJSON } from './validation/validation';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
+import { scaffold } from './scaffold/scaffold';
+import { sortPages } from './meta/sort-pages';
+import { generateWebTableOfContents } from './html/web-table-of-contents';
+import { processPages } from './html/process-pages';
+import { createRedirect } from './html/redirect';
 import { version } from '../../package.json';
 
 const markdown = new MarkdownIt('commonmark').enable('table');
@@ -56,14 +61,11 @@ export function DocGen(process) {
     copy the example src files (template) to any directory, when scaffold command is invoked
   */
 
-  this.scaffold = async () => {
-    console.log(chalk.green('Creating scaffold template directory'));
-    await copyDirectory(
-      __dirname + '/../include/example',
-      options.output,
-      options.verbose === true,
-    );
-  };
+  this.scaffold = async () =>
+    scaffold({
+      outputDirectory: options.output,
+      verbose: options.verbose === true,
+    });
 
   this.run = async () => {
     console.log(chalk.green.bold('DocGen version ' + version));
@@ -71,10 +73,17 @@ export function DocGen(process) {
     await cleanDirectory(options.output);
     await loadTemplates();
     await loadMeta();
+    sortedPages = sortPages({ tableOfContents: meta.contents });
     await loadMarkdown();
     await processContent();
     await writePages();
-    await createRedirect();
+    await createRedirect({
+      isRedirectEnabled: options.redirect,
+      outputDirectory: options.output,
+      redirectTemplate: templates.redirect,
+      homePage: meta.contents[0].pages[0],
+      verbose: options.verbose,
+    });
     if (options.pdf === true) {
       await checkPdfVersion({ options, mainProcess });
       await generatePdf({ options, meta, sortedPages, mainProcess });
@@ -220,71 +229,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-  };
-
-  let sortPages = () => {
-    //sort the contents by heading
-    let headings = { 1: [], 2: [], 3: [], 4: [], 5: [] };
-    meta.contents.forEach((section) => {
-      if (headings.hasOwnProperty(section.column)) {
-        headings[section.column].push(section);
-      }
-    });
-    sortedPages = headings;
-  };
-
-  /*
-    build the HTML for the table of contents
-  */
-
-  let webToc = () => {
-    sortPages();
-    let pdfName = meta.parameters.name.toLowerCase() + '.pdf';
-    let $ = templates.main;
-    let html = [],
-      i = -1;
-    html[++i] = '<div><table class="unstyled"><tr>';
-    //build the contents HTML
-    for (let key in sortedPages) {
-      if (sortedPages.hasOwnProperty(key)) {
-        if (key != 5) {
-          //skip the extra column
-          html[++i] = '<td class="dg-tocGroup">';
-          sortedPages[key].forEach((section) => {
-            html[++i] =
-              '<ul><li class="dg-tocHeading">' + section.heading + '</li>';
-            section.pages.forEach((page) => {
-              let name = page.source.substr(0, page.source.lastIndexOf('.'));
-              let path = name + '.html';
-              html[++i] =
-                '<li><a href="' + path + '">' + page.title + '</a></li>';
-            });
-            html[++i] = '</li></ul>';
-          });
-          html[++i] = '</td>';
-        }
-      }
-    }
-
-    //fixed-width column at end
-    html[++i] = '<td class="dg-tocGroup" id="dg-tocFixedColumn"><ul>';
-    html[++i] =
-      '<li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li>';
-    html[++i] =
-      '<li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li>';
-    html[++i] = '</ul><div>';
-    if (options.pdf) {
-      html[++i] =
-        '<button class="whiteInverted" onclick="window.location=\'' +
-        pdfName +
-        '\';">';
-      html[++i] = '<span>PDF</span>';
-      html[++i] = '</button>';
-    }
-    html[++i] = '</div></td>';
-    html[++i] = '</tr></table></div>';
-    $('#dg-toc').html(html.join(''));
-    templates.main = $;
   };
 
   /*
@@ -498,68 +442,20 @@ export function DocGen(process) {
   */
 
   let processContent = async () => {
-    console.log(chalk.green('Generating the static web content'));
-    webToc();
-    insertParameters();
-    meta.contents.forEach((section) => {
-      section.pages.forEach((page) => {
-        let $ = cheerio.load(templates.main.html()); //clone
-        let key = page.source;
-        let content = pages[key];
-        //add relevant container
-        if (page.html === true) {
-          //raw HTML pages should not be confined to the fixed width
-          $('#dg-content').html('<div id="dg-innerContent"></div>');
-        } else {
-          //Markdown pages should be confined to the fixed width
-          $('#dg-content').html(
-            '<div class="w-fixed-width"><div id="dg-innerContent"></div></div>',
-          );
-        }
-        $('#dg-innerContent').html(content);
-        //------------------------------------------------------------------------------------------------------
-        //insert permalinks for every page heading
-        //when pageToc is enabled, also insert a page-level table of contents
-        let html = [],
-          i = -1;
-        let headings = $('h1, h2, h3, h4, h5, h6');
-        if (headings.length > 0) {
-          html[++i] = '<ul class="dg-pageToc">';
-        }
-        headings.each(function () {
-          let label = $(this).text();
-          let anchor = label.toLowerCase().replace(/\s+/g, '-');
-          $(this).attr('id', anchor);
-          html[++i] = '<li><a href="#' + anchor + '">' + label + '</a></li>';
-        });
-        if (headings.length > 0) {
-          html[++i] = '</ul>';
-        }
-        if (options.pageToc === true && page.html !== true) {
-          $('#dg-innerContent').prepend(html.join(''));
-        }
-        //------------------------------------------------------------------------------------------------------
-        //prepend the auto heading (which makes the PDF table of contents match the web TOC)
-        $('#dg-innerContent').prepend(
-          '<h1 id="dg-autoTitle">' + page.title + '</h1>',
-        );
-        if (page.html === true) {
-          $('#dg-autoTitle').addClass('dg-hiddenTitle');
-        }
-        //------------------------------------------------------------------------------------------------------
-        //apply the w-table class
-        $('table:not(.unstyled)').addClass('w-table w-fixed w-stripe');
-        //------------------------------------------------------------------------------------------------------
-        pages[key] = $;
-      });
+    templates.main = generateWebTableOfContents({
+      sortedPages,
+      name: meta.parameters.name,
+      mainTemplate: templates.main,
+      pdfEnabled: options.pdf,
     });
-    //add web ownership page
-    let $ = cheerio.load(templates.main.html()); //clone
-    $('#dg-content').html(
-      '<div class="w-fixed-width"><div id="dg-innerContent"></div></div>',
-    );
-    $('#dg-innerContent').html(templates.webCover.html());
-    templates.webCover = $;
+    insertParameters();
+    templates.webCover = await processPages({
+      pages,
+      pageTableOfContentsEnabled: options.pageToc,
+      tableOfContents: meta.contents,
+      mainTemplate: templates.main,
+      webCover: templates.webCover,
+    });
   };
 
   /*
@@ -623,30 +519,6 @@ export function DocGen(process) {
         console.log(chalk.red(error));
       }
       mainProcess.exit(1);
-    }
-  };
-
-  let createRedirect = async () => {
-    if (options.redirect) {
-      let parent = options.output.replace(/\/$/, ''); //trim any trailing slash
-      parent = parent.split(path.sep).slice(-1).pop(); //get name of final directory in the path
-      let homepage = meta.contents[0].pages[0];
-      homepage =
-        homepage.source.substr(0, homepage.source.lastIndexOf('.')) + '.html';
-      let redirectLink = parent + '/' + homepage;
-      let $ = templates.redirect;
-      $('a').attr('href', redirectLink);
-      $('meta[http-equiv=REFRESH]').attr('content', '0;url=' + redirectLink);
-      let file = options.output + '../' + 'index.html';
-      try {
-        await writeFile(file, $.html());
-      } catch (error) {
-        console.log(chalk.red('Error writing redirect file: ' + file));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        //don't exit because redirect error is not a fatal error
-      }
     }
   };
 }
