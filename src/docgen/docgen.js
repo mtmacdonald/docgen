@@ -17,6 +17,7 @@ import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
 import { generateWebTableOfContents } from './html/web-table-of-contents';
 import { processPages } from './html/process-pages';
+import { createRedirect } from './html/redirect';
 import { version } from '../../package.json';
 
 const markdown = new MarkdownIt('commonmark').enable('table');
@@ -76,7 +77,13 @@ export function DocGen(process) {
     await loadMarkdown();
     await processContent();
     await writePages();
-    await createRedirect();
+    await createRedirect({
+      isRedirectEnabled: options.redirect,
+      outputDirectory: options.output,
+      redirectTemplate: templates.redirect,
+      homePage: meta.contents[0].pages[0],
+      verbose: options.verbose,
+    });
     if (options.pdf === true) {
       await checkPdfVersion({ options, mainProcess });
       await generatePdf({ options, meta, sortedPages, mainProcess });
@@ -512,30 +519,6 @@ export function DocGen(process) {
         console.log(chalk.red(error));
       }
       mainProcess.exit(1);
-    }
-  };
-
-  let createRedirect = async () => {
-    if (options.redirect) {
-      let parent = options.output.replace(/\/$/, ''); //trim any trailing slash
-      parent = parent.split(path.sep).slice(-1).pop(); //get name of final directory in the path
-      let homepage = meta.contents[0].pages[0];
-      homepage =
-        homepage.source.substr(0, homepage.source.lastIndexOf('.')) + '.html';
-      let redirectLink = parent + '/' + homepage;
-      let $ = templates.redirect;
-      $('a').attr('href', redirectLink);
-      $('meta[http-equiv=REFRESH]').attr('content', '0;url=' + redirectLink);
-      let file = options.output + '../' + 'index.html';
-      try {
-        await writeFile(file, $.html());
-      } catch (error) {
-        console.log(chalk.red('Error writing redirect file: ' + file));
-        if (options.verbose === true) {
-          console.log(chalk.red(error));
-        }
-        //don't exit because redirect error is not a fatal error
-      }
     }
   };
 }
