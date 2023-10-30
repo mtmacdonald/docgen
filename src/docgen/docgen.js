@@ -13,6 +13,7 @@ import {
 } from './fs/fs';
 import { validateJSON } from './validation/validation';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
+import { scaffold } from './scaffold/scaffold';
 import { version } from '../../package.json';
 
 const markdown = new MarkdownIt('commonmark').enable('table');
@@ -56,14 +57,11 @@ export function DocGen(process) {
     copy the example src files (template) to any directory, when scaffold command is invoked
   */
 
-  this.scaffold = async () => {
-    console.log(chalk.green('Creating scaffold template directory'));
-    await copyDirectory(
-      __dirname + '/../include/example',
-      options.output,
-      options.verbose === true,
-    );
-  };
+  this.scaffold = async () =>
+    scaffold({
+      outputDirectory: options.output,
+      verbose: options.verbose === true,
+    });
 
   this.run = async () => {
     console.log(chalk.green.bold('DocGen version ' + version));
