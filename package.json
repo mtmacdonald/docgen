@@ -21,8 +21,8 @@
     "test:run": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p -m -n -d 40000",
     "test:scaffold": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p -m -n -d 40000",
-    "prettier:check": "prettier --check 'src/docgen.ts' '*.{js,json,css,less}'",
-    "prettier:fix": "prettier --write 'src/docgen.ts' '*.{js,json,css,less}'"
+    "prettier:check": "prettier --check 'src/docgen.ts' '*.{ts,js,json,css,less}'",
+    "prettier:fix": "prettier --write 'src/docgen.ts' '*.{ts,js,json,css,less}'"
   },
   "husky": {
     "hooks": {
