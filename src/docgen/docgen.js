@@ -14,7 +14,9 @@ import {
 import { validateJSON } from './validation/validation';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
+import { sortPages } from './meta/sort-pages';
 import { version } from '../../package.json';
+import { generateWebTableOfContents } from './html/web-table-of-contents';
 
 const markdown = new MarkdownIt('commonmark').enable('table');
 
@@ -69,6 +71,7 @@ export function DocGen(process) {
     await cleanDirectory(options.output);
     await loadTemplates();
     await loadMeta();
+    sortedPages = sortPages({ tableOfContents: meta.contents });
     await loadMarkdown();
     await processContent();
     await writePages();
@@ -218,71 +221,6 @@ export function DocGen(process) {
       }
       mainProcess.exit(1);
     }
-  };
-
-  let sortPages = () => {
-    //sort the contents by heading
-    let headings = { 1: [], 2: [], 3: [], 4: [], 5: [] };
-    meta.contents.forEach((section) => {
-      if (headings.hasOwnProperty(section.column)) {
-        headings[section.column].push(section);
-      }
-    });
-    sortedPages = headings;
-  };
-
-  /*
-    build the HTML for the table of contents
-  */
-
-  let webToc = () => {
-    sortPages();
-    let pdfName = meta.parameters.name.toLowerCase() + '.pdf';
-    let $ = templates.main;
-    let html = [],
-      i = -1;
-    html[++i] = '<div><table class="unstyled"><tr>';
-    //build the contents HTML
-    for (let key in sortedPages) {
-      if (sortedPages.hasOwnProperty(key)) {
-        if (key != 5) {
-          //skip the extra column
-          html[++i] = '<td class="dg-tocGroup">';
-          sortedPages[key].forEach((section) => {
-            html[++i] =
-              '<ul><li class="dg-tocHeading">' + section.heading + '</li>';
-            section.pages.forEach((page) => {
-              let name = page.source.substr(0, page.source.lastIndexOf('.'));
-              let path = name + '.html';
-              html[++i] =
-                '<li><a href="' + path + '">' + page.title + '</a></li>';
-            });
-            html[++i] = '</li></ul>';
-          });
-          html[++i] = '</td>';
-        }
-      }
-    }
-
-    //fixed-width column at end
-    html[++i] = '<td class="dg-tocGroup" id="dg-tocFixedColumn"><ul>';
-    html[++i] =
-      '<li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li>';
-    html[++i] =
-      '<li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li>';
-    html[++i] = '</ul><div>';
-    if (options.pdf) {
-      html[++i] =
-        '<button class="whiteInverted" onclick="window.location=\'' +
-        pdfName +
-        '\';">';
-      html[++i] = '<span>PDF</span>';
-      html[++i] = '</button>';
-    }
-    html[++i] = '</div></td>';
-    html[++i] = '</tr></table></div>';
-    $('#dg-toc').html(html.join(''));
-    templates.main = $;
   };
 
   /*
@@ -497,7 +435,12 @@ export function DocGen(process) {
 
   let processContent = async () => {
     console.log(chalk.green('Generating the static web content'));
-    webToc();
+    templates.main = generateWebTableOfContents({
+      sortedPages,
+      name: meta.parameters.name,
+      mainTemplate: templates.main,
+      pdfEnabled: options.pdf,
+    });
     insertParameters();
     meta.contents.forEach((section) => {
       section.pages.forEach((page) => {
