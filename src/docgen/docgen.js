@@ -11,7 +11,7 @@ import {
   cleanDirectory,
   makeDirectory,
 } from './fs/fs';
-import { validateJSON } from './validation/validation';
+import { loadMeta } from './fs/meta';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
@@ -72,7 +72,10 @@ export function DocGen(process) {
     //delete and recreate the output directory
     await cleanDirectory(options.output);
     await loadTemplates();
-    await loadMeta();
+    meta = await loadMeta({
+      inputPath: options.input,
+      verbose: options.verbose,
+    });
     sortedPages = sortPages({ tableOfContents: meta.contents });
     await loadMarkdown();
     await processContent();
@@ -126,56 +129,6 @@ export function DocGen(process) {
       }
     } catch (error) {
       console.log(chalk.red('Error loading templates'));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-      }
-      mainProcess.exit(1);
-    }
-  };
-
-  /*
-    load all metadata files (JSON)
-  */
-
-  let loadMeta = async () => {
-    console.log(chalk.green('Loading required JSON metadata files'));
-    try {
-      let files = {
-        parameters: await readFile(options.input + '/parameters.json'),
-        contents: await readFile(options.input + '/contents.json'),
-      };
-      for (let key in files) {
-        if (files.hasOwnProperty(key)) {
-          //ignore prototype
-          try {
-            let file = JSON.parse(files[key]);
-            if (validateJSON({ key, data: file, verbose: options.verbose })) {
-              meta[key] = file;
-            } else {
-              mainProcess.exit(1);
-            }
-          } catch (error) {
-            console.log(
-              chalk.red(
-                'Error parsing required file: ' + key + '.json (invalid JSON)',
-              ),
-            );
-            if (options.verbose === true) {
-              console.log(chalk.red(error));
-            }
-            mainProcess.exit(1);
-          }
-        }
-      }
-      //add the release notes to the contents list
-      let extra = {
-        heading: 'Extra',
-        column: 5,
-        pages: [{ title: 'Release notes', source: 'release-notes.md' }],
-      };
-      meta.contents.push(extra);
-    } catch (error) {
-      console.log(chalk.red('Error loading required JSON metadata files'));
       if (options.verbose === true) {
         console.log(chalk.red(error));
       }
