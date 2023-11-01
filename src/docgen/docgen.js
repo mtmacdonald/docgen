@@ -77,7 +77,20 @@ export function DocGen(process) {
       inputPath: options.input,
       mainProcess,
     });
-    await processContent();
+    templates.main = generateWebTableOfContents({
+      sortedPages,
+      name: meta.parameters.name,
+      mainTemplate: templates.main,
+      pdfEnabled: options.pdf,
+    });
+    insertParameters();
+    templates.webCover = await processPages({
+      pages,
+      pageTableOfContentsEnabled: options.pageToc,
+      tableOfContents: meta.contents,
+      mainTemplate: templates.main,
+      webCover: templates.webCover,
+    });
     await writePages();
     await createRedirect({
       isRedirectEnabled: options.redirect,
@@ -298,27 +311,6 @@ export function DocGen(process) {
         </script>`,
       );
     }
-  };
-
-  /*
-    process each input into an output
-  */
-
-  let processContent = async () => {
-    templates.main = generateWebTableOfContents({
-      sortedPages,
-      name: meta.parameters.name,
-      mainTemplate: templates.main,
-      pdfEnabled: options.pdf,
-    });
-    insertParameters();
-    templates.webCover = await processPages({
-      pages,
-      pageTableOfContentsEnabled: options.pageToc,
-      tableOfContents: meta.contents,
-      mainTemplate: templates.main,
-      webCover: templates.webCover,
-    });
   };
 
   /*
