@@ -1,33 +1,19 @@
 import chalk from 'chalk';
 import path from 'path';
-import cheerio from 'cheerio';
 import moment from 'moment';
-import MarkdownIt from 'markdown-it';
 import imageSizeOf from 'image-size';
-import {
-  readFile,
-  writeFile,
-  copyDirectory,
-  cleanDirectory,
-  makeDirectory,
-} from './fs/fs';
-import { validateJSON } from './validation/validation';
+import { cleanDirectory } from './fs/fs';
+import { loadMeta } from './fs/meta';
+import { loadTemplates } from './fs/templates';
+import { loadMarkdown } from './fs/markdown';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
 import { generateWebTableOfContents } from './html/web-table-of-contents';
 import { processPages } from './html/process-pages';
+import { writePages } from './fs/write-pages';
 import { createRedirect } from './html/redirect';
 import { version } from '../../package.json';
-
-const markdown = new MarkdownIt('commonmark').enable('table');
-
-//Allow CommonMark links that use other protocols, such as file:///
-//The markdown-it implementation is more restrictive than the CommonMark spec
-//See https://github.com/markdown-it/markdown-it/issues/108
-markdown.validateLink = () => {
-  return true;
-};
 
 export function DocGen(process) {
   let mainProcess = process;
@@ -71,12 +57,47 @@ export function DocGen(process) {
     console.log(chalk.green.bold('DocGen version ' + version));
     //delete and recreate the output directory
     await cleanDirectory(options.output);
-    await loadTemplates();
-    await loadMeta();
+    templates = await loadTemplates({
+      verbose: options.verbose,
+      mainProcess,
+    });
+    meta = await loadMeta({
+      inputPath: options.input,
+      verbose: options.verbose,
+      mainProcess,
+    });
     sortedPages = sortPages({ tableOfContents: meta.contents });
-    await loadMarkdown();
-    await processContent();
-    await writePages();
+    pages = await loadMarkdown({
+      verbose: options.verbose,
+      contents: meta.contents,
+      inputPath: options.input,
+      mainProcess,
+    });
+    templates.main = generateWebTableOfContents({
+      sortedPages,
+      name: meta.parameters.name,
+      mainTemplate: templates.main,
+      pdfEnabled: options.pdf,
+    });
+    insertParameters();
+    templates.webCover = await processPages({
+      pages,
+      pageTableOfContentsEnabled: options.pageToc,
+      tableOfContents: meta.contents,
+      mainTemplate: templates.main,
+      webCover: templates.webCover,
+    });
+    await writePages({
+      inputPath: options.input,
+      outputPath: options.output,
+      contents: meta.contents,
+      templates,
+      pages,
+      pdfEnabled: options.pdf,
+      mathKatex: options.mathKatex,
+      verbose: options.verbose,
+      mainProcess,
+    });
     await createRedirect({
       isRedirectEnabled: options.redirect,
       outputDirectory: options.output,
@@ -89,145 +110,6 @@ export function DocGen(process) {
       await generatePdf({ options, meta, sortedPages, mainProcess });
     } else {
       console.log(chalk.green.bold('Done!'));
-    }
-  };
-
-  /*
-    Load all HTML template files
-  */
-
-  let loadTemplates = async () => {
-    console.log(chalk.green('Loading templates'));
-    try {
-      let files = {
-        main: await readFile(__dirname + '/../include/templates/main.html'),
-        redirect: await readFile(
-          __dirname + '/../include/templates/redirect.html',
-        ),
-        webCover: await readFile(
-          __dirname + '/../include/templates/webCover.html',
-        ),
-        pdfCover: await readFile(
-          __dirname + '/../include/templates/pdfCover.html',
-        ),
-        pdfHeader: await readFile(
-          __dirname + '/../include/templates/pdfHeader.html',
-        ),
-        pdfFooter: await readFile(
-          __dirname + '/../include/templates/pdfFooter.html',
-        ),
-      };
-      for (let key in files) {
-        if (files.hasOwnProperty(key)) {
-          let file = files[key];
-          let dom = cheerio.load(file);
-          templates[key] = dom;
-        }
-      }
-    } catch (error) {
-      console.log(chalk.red('Error loading templates'));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-      }
-      mainProcess.exit(1);
-    }
-  };
-
-  /*
-    load all metadata files (JSON)
-  */
-
-  let loadMeta = async () => {
-    console.log(chalk.green('Loading required JSON metadata files'));
-    try {
-      let files = {
-        parameters: await readFile(options.input + '/parameters.json'),
-        contents: await readFile(options.input + '/contents.json'),
-      };
-      for (let key in files) {
-        if (files.hasOwnProperty(key)) {
-          //ignore prototype
-          try {
-            let file = JSON.parse(files[key]);
-            if (validateJSON({ key, data: file, verbose: options.verbose })) {
-              meta[key] = file;
-            } else {
-              mainProcess.exit(1);
-            }
-          } catch (error) {
-            console.log(
-              chalk.red(
-                'Error parsing required file: ' + key + '.json (invalid JSON)',
-              ),
-            );
-            if (options.verbose === true) {
-              console.log(chalk.red(error));
-            }
-            mainProcess.exit(1);
-          }
-        }
-      }
-      //add the release notes to the contents list
-      let extra = {
-        heading: 'Extra',
-        column: 5,
-        pages: [{ title: 'Release notes', source: 'release-notes.md' }],
-      };
-      meta.contents.push(extra);
-    } catch (error) {
-      console.log(chalk.red('Error loading required JSON metadata files'));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-      }
-      mainProcess.exit(1);
-    }
-  };
-
-  /*
-    load all markdown files (src)
-  */
-
-  let loadMarkdown = async () => {
-    console.log(chalk.green('Loading src files'));
-    try {
-      let keys = [];
-      let files = [];
-      meta.contents.forEach((section) => {
-        section.pages.forEach((page) => {
-          keys.push(page);
-          files.push(options.input + '/' + page.source);
-        });
-      });
-      //add the release notes page
-      keys.push('ownership');
-      files.push(options.input + '/release-notes.md');
-      files = await Promise.all(files.map((f) => readFile(f)));
-      files.forEach((page, index) => {
-        try {
-          let key = keys[index];
-          if (key.html === true) {
-            //allow raw HTML input pages
-            pages[key.source] = page;
-          } else {
-            //otherwise parse input from Markdown into HTML
-            let html = markdown.render(page);
-            pages[key.source] = html;
-          }
-        } catch (error) {
-          console.log(chalk.red('Error parsing Markdown file: ' + file.source));
-          if (options.verbose === true) {
-            console.log(chalk.red(error));
-          }
-          mainProcess.exit(1);
-        }
-      });
-    } catch (error) {
-      console.log(error);
-      console.log(chalk.red('Error loading src files'));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-      }
-      mainProcess.exit(1);
     }
   };
 
@@ -434,91 +316,6 @@ export function DocGen(process) {
           src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>`,
       );
-    }
-  };
-
-  /*
-    process each input into an output
-  */
-
-  let processContent = async () => {
-    templates.main = generateWebTableOfContents({
-      sortedPages,
-      name: meta.parameters.name,
-      mainTemplate: templates.main,
-      pdfEnabled: options.pdf,
-    });
-    insertParameters();
-    templates.webCover = await processPages({
-      pages,
-      pageTableOfContentsEnabled: options.pageToc,
-      tableOfContents: meta.contents,
-      mainTemplate: templates.main,
-      webCover: templates.webCover,
-    });
-  };
-
-  /*
-    write each html page
-  */
-
-  let writePages = async () => {
-    console.log(chalk.green('Writing the web page files'));
-    try {
-      let promises = {};
-      meta.contents.forEach((section) => {
-        section.pages.forEach((page) => {
-          let key = page.source;
-          let name = key.substr(0, page.source.lastIndexOf('.'));
-          let path = options.output + name + '.html';
-          let html = pages[key].html();
-          promises[key] = writeFile(path, html);
-        });
-      });
-      //add extra files
-      promises['ownership'] = writeFile(
-        options.output + 'ownership.html',
-        templates.webCover.html(),
-      );
-      if (options.pdf === true) {
-        let pdfTempDir = options.output + 'temp/';
-        await makeDirectory(pdfTempDir);
-        promises['docgenPdfCover'] = writeFile(
-          pdfTempDir + 'pdfCover.html',
-          templates.pdfCover.html(),
-        );
-        promises['docgenPdfHeader'] = writeFile(
-          pdfTempDir + 'pdfHeader.html',
-          templates.pdfHeader.html(),
-        );
-        promises['docgenPdfFooter'] = writeFile(
-          pdfTempDir + 'pdfFooter.html',
-          templates.pdfFooter.html(),
-        );
-      }
-      await copyDirectory(
-        __dirname + '/../include/require',
-        options.output + 'require',
-        options.verbose === true,
-      ); //CSS, JavaScript
-      await copyDirectory(
-        options.input + '/files',
-        options.output + 'files',
-        options.verbose === true,
-      ); //user-attached files and images
-      if (options.mathKatex === true) {
-        await copyDirectory(
-          __dirname + '/../include/optional/katex',
-          options.output + 'require/katex',
-          options.verbose === true,
-        );
-      }
-    } catch (error) {
-      console.log(chalk.red('Error writing the web page files'));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-      }
-      mainProcess.exit(1);
     }
   };
 }
