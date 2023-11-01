@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import path from 'path';
 import cheerio from 'cheerio';
 import moment from 'moment';
-import MarkdownIt from 'markdown-it';
 import imageSizeOf from 'image-size';
 import {
   readFile,
@@ -12,6 +11,7 @@ import {
   makeDirectory,
 } from './fs/fs';
 import { loadMeta } from './fs/meta';
+import { loadMarkdown } from './fs/markdown';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
@@ -19,15 +19,6 @@ import { generateWebTableOfContents } from './html/web-table-of-contents';
 import { processPages } from './html/process-pages';
 import { createRedirect } from './html/redirect';
 import { version } from '../../package.json';
-
-const markdown = new MarkdownIt('commonmark').enable('table');
-
-//Allow CommonMark links that use other protocols, such as file:///
-//The markdown-it implementation is more restrictive than the CommonMark spec
-//See https://github.com/markdown-it/markdown-it/issues/108
-markdown.validateLink = () => {
-  return true;
-};
 
 export function DocGen(process) {
   let mainProcess = process;
@@ -75,9 +66,15 @@ export function DocGen(process) {
     meta = await loadMeta({
       inputPath: options.input,
       verbose: options.verbose,
+      mainProcess,
     });
     sortedPages = sortPages({ tableOfContents: meta.contents });
-    await loadMarkdown();
+    pages = await loadMarkdown({
+      verbose: options.verbose,
+      contents: meta.contents,
+      inputPath: options.input,
+      mainProcess,
+    });
     await processContent();
     await writePages();
     await createRedirect({
@@ -129,54 +126,6 @@ export function DocGen(process) {
       }
     } catch (error) {
       console.log(chalk.red('Error loading templates'));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-      }
-      mainProcess.exit(1);
-    }
-  };
-
-  /*
-    load all markdown files (src)
-  */
-
-  let loadMarkdown = async () => {
-    console.log(chalk.green('Loading src files'));
-    try {
-      let keys = [];
-      let files = [];
-      meta.contents.forEach((section) => {
-        section.pages.forEach((page) => {
-          keys.push(page);
-          files.push(options.input + '/' + page.source);
-        });
-      });
-      //add the release notes page
-      keys.push('ownership');
-      files.push(options.input + '/release-notes.md');
-      files = await Promise.all(files.map((f) => readFile(f)));
-      files.forEach((page, index) => {
-        try {
-          let key = keys[index];
-          if (key.html === true) {
-            //allow raw HTML input pages
-            pages[key.source] = page;
-          } else {
-            //otherwise parse input from Markdown into HTML
-            let html = markdown.render(page);
-            pages[key.source] = html;
-          }
-        } catch (error) {
-          console.log(chalk.red('Error parsing Markdown file: ' + file.source));
-          if (options.verbose === true) {
-            console.log(chalk.red(error));
-          }
-          mainProcess.exit(1);
-        }
-      });
-    } catch (error) {
-      console.log(error);
-      console.log(chalk.red('Error loading src files'));
       if (options.verbose === true) {
         console.log(chalk.red(error));
       }
