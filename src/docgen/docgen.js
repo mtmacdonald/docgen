@@ -1,16 +1,15 @@
 import chalk from 'chalk';
 import path from 'path';
-import cheerio from 'cheerio';
 import moment from 'moment';
 import imageSizeOf from 'image-size';
 import {
-  readFile,
   writeFile,
   copyDirectory,
   cleanDirectory,
   makeDirectory,
 } from './fs/fs';
 import { loadMeta } from './fs/meta';
+import { loadTemplates } from './fs/templates';
 import { loadMarkdown } from './fs/markdown';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
@@ -62,7 +61,10 @@ export function DocGen(process) {
     console.log(chalk.green.bold('DocGen version ' + version));
     //delete and recreate the output directory
     await cleanDirectory(options.output);
-    await loadTemplates();
+    templates = await loadTemplates({
+      verbose: options.verbose,
+      mainProcess,
+    });
     meta = await loadMeta({
       inputPath: options.input,
       verbose: options.verbose,
@@ -89,47 +91,6 @@ export function DocGen(process) {
       await generatePdf({ options, meta, sortedPages, mainProcess });
     } else {
       console.log(chalk.green.bold('Done!'));
-    }
-  };
-
-  /*
-    Load all HTML template files
-  */
-
-  let loadTemplates = async () => {
-    console.log(chalk.green('Loading templates'));
-    try {
-      let files = {
-        main: await readFile(__dirname + '/../include/templates/main.html'),
-        redirect: await readFile(
-          __dirname + '/../include/templates/redirect.html',
-        ),
-        webCover: await readFile(
-          __dirname + '/../include/templates/webCover.html',
-        ),
-        pdfCover: await readFile(
-          __dirname + '/../include/templates/pdfCover.html',
-        ),
-        pdfHeader: await readFile(
-          __dirname + '/../include/templates/pdfHeader.html',
-        ),
-        pdfFooter: await readFile(
-          __dirname + '/../include/templates/pdfFooter.html',
-        ),
-      };
-      for (let key in files) {
-        if (files.hasOwnProperty(key)) {
-          let file = files[key];
-          let dom = cheerio.load(file);
-          templates[key] = dom;
-        }
-      }
-    } catch (error) {
-      console.log(chalk.red('Error loading templates'));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-      }
-      mainProcess.exit(1);
     }
   };
 
