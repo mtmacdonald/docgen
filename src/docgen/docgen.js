@@ -2,12 +2,7 @@ import chalk from 'chalk';
 import path from 'path';
 import moment from 'moment';
 import imageSizeOf from 'image-size';
-import {
-  writeFile,
-  copyDirectory,
-  cleanDirectory,
-  makeDirectory,
-} from './fs/fs';
+import { cleanDirectory } from './fs/fs';
 import { loadMeta } from './fs/meta';
 import { loadTemplates } from './fs/templates';
 import { loadMarkdown } from './fs/markdown';
@@ -16,6 +11,7 @@ import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
 import { generateWebTableOfContents } from './html/web-table-of-contents';
 import { processPages } from './html/process-pages';
+import { writePages } from './fs/write-pages';
 import { createRedirect } from './html/redirect';
 import { version } from '../../package.json';
 
@@ -91,7 +87,17 @@ export function DocGen(process) {
       mainTemplate: templates.main,
       webCover: templates.webCover,
     });
-    await writePages();
+    await writePages({
+      inputPath: options.input,
+      outputPath: options.output,
+      contents: meta.contents,
+      templates,
+      pages,
+      pdfEnabled: options.pdf,
+      mathKatex: options.mathKatex,
+      verbose: options.verbose,
+      mainProcess,
+    });
     await createRedirect({
       isRedirectEnabled: options.redirect,
       outputDirectory: options.output,
@@ -310,70 +316,6 @@ export function DocGen(process) {
           src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>`,
       );
-    }
-  };
-
-  /*
-    write each html page
-  */
-
-  let writePages = async () => {
-    console.log(chalk.green('Writing the web page files'));
-    try {
-      let promises = {};
-      meta.contents.forEach((section) => {
-        section.pages.forEach((page) => {
-          let key = page.source;
-          let name = key.substr(0, page.source.lastIndexOf('.'));
-          let path = options.output + name + '.html';
-          let html = pages[key].html();
-          promises[key] = writeFile(path, html);
-        });
-      });
-      //add extra files
-      promises['ownership'] = writeFile(
-        options.output + 'ownership.html',
-        templates.webCover.html(),
-      );
-      if (options.pdf === true) {
-        let pdfTempDir = options.output + 'temp/';
-        await makeDirectory(pdfTempDir);
-        promises['docgenPdfCover'] = writeFile(
-          pdfTempDir + 'pdfCover.html',
-          templates.pdfCover.html(),
-        );
-        promises['docgenPdfHeader'] = writeFile(
-          pdfTempDir + 'pdfHeader.html',
-          templates.pdfHeader.html(),
-        );
-        promises['docgenPdfFooter'] = writeFile(
-          pdfTempDir + 'pdfFooter.html',
-          templates.pdfFooter.html(),
-        );
-      }
-      await copyDirectory(
-        __dirname + '/../include/require',
-        options.output + 'require',
-        options.verbose === true,
-      ); //CSS, JavaScript
-      await copyDirectory(
-        options.input + '/files',
-        options.output + 'files',
-        options.verbose === true,
-      ); //user-attached files and images
-      if (options.mathKatex === true) {
-        await copyDirectory(
-          __dirname + '/../include/optional/katex',
-          options.output + 'require/katex',
-          options.verbose === true,
-        );
-      }
-    } catch (error) {
-      console.log(chalk.red('Error writing the web page files'));
-      if (options.verbose === true) {
-        console.log(chalk.red(error));
-      }
-      mainProcess.exit(1);
     }
   };
 }
