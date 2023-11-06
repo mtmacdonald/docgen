@@ -1,11 +1,12 @@
 import chalk from 'chalk';
 import cheerio from 'cheerio';
-import { readFile } from "./fs";
+import { readFile } from './fs';
+import type { Templates } from '../types';
 
 export const loadTemplates = async ({
   verbose,
   mainProcess
-}) => {
+}): Promise<Templates> => {
   const templates = {};
   console.log(chalk.green('Loading templates'));
   try {
