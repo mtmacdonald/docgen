@@ -1,4 +1,8 @@
-﻿## DocGen 3.3.1 19/10/2023
+﻿## DocGen 3.4.0 06/11/2023
+
+- modernise code (convert to TypeScript and split into modules)
+
+## DocGen 3.3.1 19/10/2023
 
 - remove legacy rsvp package that's not needed in modern JavaScript/TypeScript
 
