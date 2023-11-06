@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import path from 'path';
-import { cleanDirectory } from './fs/fs';
+import { cleanDirectory } from "./fs/fs";
 import { loadMeta } from './fs/meta';
 import { loadTemplates } from './fs/templates';
 import { loadMarkdown } from './fs/markdown';
@@ -13,11 +13,24 @@ import { writePages } from './fs/write-pages';
 import { createRedirect } from './html/redirect';
 import { version } from '../../package.json';
 
+import type {
+  Options,
+  Templates,
+  Meta
+} from './types';
+
 export function DocGen(process) {
   let mainProcess = process;
   let options;
-  let templates = {};
-  let meta = {};
+  let templates: Templates = {
+    main: '',
+    redirect: '',
+    webCover: '',
+    pdfCover: '',
+    pdfHeader: '',
+    pdfFooter: '',
+  };
+  let meta: Meta = {};
   let pages = {};
   let sortedPages = {};
 
@@ -25,7 +38,7 @@ export function DocGen(process) {
     return version;
   };
 
-  this.setOptions = (userOptions) => {
+  this.setOptions = (userOptions: Options) => {
     options = userOptions;
     //all user-specified paths must be normalized
     if (options.input) {
@@ -54,7 +67,7 @@ export function DocGen(process) {
   this.run = async () => {
     console.log(chalk.green.bold('DocGen version ' + version));
     //delete and recreate the output directory
-    await cleanDirectory(options.output);
+    await cleanDirectory(options.output, options.verbose);
     templates = await loadTemplates({
       verbose: options.verbose,
       mainProcess,

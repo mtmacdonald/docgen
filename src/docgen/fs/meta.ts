@@ -1,15 +1,16 @@
 import chalk from 'chalk';
 import { readFile } from "./fs";
 import { validateJSON } from "../validation/validation";
+import type { Meta } from '../types';
 
 export const loadMeta = async ({
   inputPath,
   verbose,
   mainProcess
-}) => {
+}): Promise<Meta> => {
   const meta = {
-    parameters: [],
-    contents: [],
+    parameters: null,
+    contents: null,
   };
   console.log(chalk.green('Loading required JSON metadata files'));
   try {
@@ -40,7 +41,7 @@ export const loadMeta = async ({
       }
     }
     //add the release notes to the contents list
-    let extra = {
+    const extra = {
       heading: 'Extra',
       column: 5,
       pages: [{ title: 'Release notes', source: 'release-notes.md' }],
