@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import { readFile } from "./fs";
 import MarkdownIt from 'markdown-it';
 
@@ -17,7 +17,7 @@ export const loadMarkdown = async ({
   verbose,
   mainProcess,
 }) => {
-  console.log(chalk.green('Loading src files'));
+  console.log(pico.green('Loading src files'));
   const pages = {};
   try {
     let keys = [];
@@ -44,9 +44,9 @@ export const loadMarkdown = async ({
           pages[key.source] = html;
         }
       } catch (error) {
-        console.log(chalk.red('Error parsing Markdown file: ' + key.source));
+        console.log(pico.red('Error parsing Markdown file: ' + key.source));
         if (verbose === true) {
-          console.log(chalk.red(error));
+          console.log(pico.red(error));
         }
         mainProcess.exit(1);
       }
@@ -54,9 +54,9 @@ export const loadMarkdown = async ({
     return pages;
   } catch (error) {
     console.log(error);
-    console.log(chalk.red('Error loading src files'));
+    console.log(pico.red('Error loading src files'));
     if (verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error));
     }
     mainProcess.exit(1);
   }

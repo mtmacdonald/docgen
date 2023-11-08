@@ -1,5 +1,5 @@
 import path from 'path';
-import chalk from 'chalk';
+import pico from 'picocolors'
 import { promises as fsp } from 'fs';
 import fs from 'fs-extra';
 
@@ -11,7 +11,7 @@ export const readFile = async (filePath: string) => {
       { encoding: 'utf8' },
     ))?.replace(/^\uFEFF/, ''); //remove the BOM (byte-order-mark) from UTF-8 files, if present
   } catch (error) {
-    console.log(chalk.red('Error reading file: ' + normalized));
+    console.log(pico.red('Error reading file: ' + normalized));
   }
 };
 
@@ -24,7 +24,7 @@ export const writeFile = async (filePath: string, data: string) => {
       { encoding: 'utf8' },
     ); //remove the BOM (byte-order-mark) from UTF-8 files, if present
   } catch (error) {
-    console.log(chalk.red('Error writing file: ' + normalized));
+    console.log(pico.red('Error writing file: ' + normalized));
   }
 };
 
@@ -39,7 +39,7 @@ export const copyDirectory = async (
     await fs.copySync(normalizedSource, normalizedDestination);
   } catch (error) {
     console.log(
-      chalk.red(
+      pico.red(
         'Error copying directory: ' +
         normalizedSource +
         ' to ' +
@@ -47,7 +47,7 @@ export const copyDirectory = async (
       ),
     );
     if (verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error));
     }
   }
 };
@@ -58,9 +58,9 @@ export const cleanDirectory = async (directoryPath: string, verbose: boolean) =>
     await fs.removeSync(normalized);
     await fs.mkdirpSync(normalized);
   } catch (error) {
-    console.log(chalk.red('Error recreating directory: ' + normalized));
+    console.log(pico.red('Error recreating directory: ' + normalized));
     if (verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error));
     }
   }
 };
@@ -72,9 +72,9 @@ export const removeDirectory = async (directoryPath: string, verbose: boolean) =
   try {
     await fs.removeSync(normalized);
   } catch (error) {
-    console.log(chalk.red('Error removing directory: ' + normalized));
+    console.log(pico.red('Error removing directory: ' + normalized));
     if (verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error));
     }
   }
 };

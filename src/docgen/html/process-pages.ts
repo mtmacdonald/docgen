@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import cheerio from 'cheerio';
 import imageSizeOf from 'image-size';
 
@@ -223,7 +223,7 @@ export const processPages = async ({
   mainTemplate,
   webCover
 }) => {
-  console.log(chalk.green('Generating the static web content'));
+  console.log(pico.green('Generating the static web content'));
   tableOfContents.forEach((section) => {
     section.pages.forEach((page) => {
       let $ = cheerio.load(mainTemplate.html()); //clone

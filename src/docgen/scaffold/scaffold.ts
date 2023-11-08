@@ -1,11 +1,11 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import { copyDirectory } from "../fs/fs";
 
 export const scaffold = async ({
   outputDirectory,
   verbose
 }) => {
-  console.log(chalk.green('Creating scaffold template directory'));
+  console.log(pico.green('Creating scaffold template directory'));
   await copyDirectory(
     __dirname + '/../../include/example',
     outputDirectory,

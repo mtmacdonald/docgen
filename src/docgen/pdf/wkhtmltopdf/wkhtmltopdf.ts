@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import { Spinner as cliSpinner } from 'cli-spinner';
 import { execute } from "../../execute/execute";
 import { spawn } from "child_process";
@@ -65,18 +65,18 @@ export const checkPdfVersion = async ({options, mainProcess}) => {
       const expectedVersion = '   expected version: ' + wkhtmltopdfVersion;
       const detectedVersion =
         '   detected version: ' + actualWkhtmltopdfVersion;
-      console.log(chalk.yellow(warning));
-      console.log(chalk.yellow(expectedVersion));
-      console.log(chalk.yellow(detectedVersion));
+      console.log(pico.yellow(warning));
+      console.log(pico.yellow(expectedVersion));
+      console.log(pico.yellow(detectedVersion));
     }
   } catch (error) {
     console.log(
-      chalk.red(
+      pico.red(
         'Unable to call wkhtmltopdf. Is it installed and in path? See http://wkhtmltopdf.org',
       ),
     );
     if (options.verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error));
     }
     mainProcess.exit(1);
   }
@@ -87,16 +87,16 @@ export const checkPdfVersion = async ({options, mainProcess}) => {
 */
 
 export const generatePdf = async ({options, meta, sortedPages, mainProcess}) => {
-  console.log(chalk.green('Creating the PDF copy (may take some time)'));
+  console.log(pico.green('Creating the PDF copy (may take some time)'));
   let args = getPdfArguments({options, meta, sortedPages});
   let wkhtmltopdf = spawn(options.wkhtmltopdfPath, args);
-  let spinner = new cliSpinner(chalk.green('   Processing... %s'));
+  let spinner = new cliSpinner(pico.green('   Processing... %s'));
   spinner.setSpinnerString('|/-\\');
 
   wkhtmltopdf.on('error', (error) => {
-    console.log(chalk.red('Error calling wkhtmltopdf to generate the PDF'));
+    console.log(pico.red('Error calling wkhtmltopdf to generate the PDF'));
     if (options.verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error.message));
     }
   });
 
@@ -125,9 +125,9 @@ export const generatePdf = async ({options, meta, sortedPages, mainProcess}) => 
     if (code !== 0) {
       let warning =
         'wkhtmltopdf exited with a warning or error: try the -v option for details';
-      console.log(chalk.yellow(warning));
+      console.log(pico.yellow(warning));
     }
     await removeDirectory(options.output + 'temp', options.verbose);
-    console.log(chalk.green.bold('Done!'));
+    console.log(pico.green(pico.bold('Done!')));
   });
 };

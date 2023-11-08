@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import { copyDirectory, makeDirectory, writeFile } from "./fs";
 
 export const writePages = async ({
@@ -12,7 +12,7 @@ export const writePages = async ({
   verbose,
   mainProcess
 }) => {
-  console.log(chalk.green('Writing the web page files'));
+  console.log(pico.green('Writing the web page files'));
   try {
     let promises = {};
     contents.forEach((section) => {
@@ -63,9 +63,9 @@ export const writePages = async ({
       );
     }
   } catch (error) {
-    console.log(chalk.red('Error writing the web page files'));
+    console.log(pico.red('Error writing the web page files'));
     if (verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error));
     }
     mainProcess.exit(1);
   }

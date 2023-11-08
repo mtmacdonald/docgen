@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import path from 'path';
 import { cleanDirectory } from "./fs/fs";
 import { loadMeta } from './fs/meta';
@@ -65,7 +65,7 @@ export function DocGen(process) {
     });
 
   this.run = async () => {
-    console.log(chalk.green.bold('DocGen version ' + version));
+    console.log(pico.green(pico.bold('DocGen version ' + version)));
     //delete and recreate the output directory
     await cleanDirectory(options.output, options.verbose);
     templates = await loadTemplates({
@@ -130,7 +130,7 @@ export function DocGen(process) {
       await checkPdfVersion({ options, mainProcess });
       await generatePdf({ options, meta, sortedPages, mainProcess });
     } else {
-      console.log(chalk.green.bold('Done!'));
+      console.log(pico.green(pico.bold('Done!')));
     }
   };
 }
