@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import cheerio from 'cheerio';
 import { readFile } from './fs';
 import type { Templates } from '../types';
@@ -8,7 +8,7 @@ export const loadTemplates = async ({
   mainProcess
 }): Promise<Templates> => {
   const templates = {};
-  console.log(chalk.green('Loading templates'));
+  console.log(pico.green('Loading templates'));
   try {
     let files = {
       main: await readFile(__dirname + '/../../include/templates/main.html'),
@@ -37,9 +37,9 @@ export const loadTemplates = async ({
     }
     return templates;
   } catch (error) {
-    console.log(chalk.red('Error loading templates'));
+    console.log(pico.red('Error loading templates'));
     if (verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error));
     }
     mainProcess.exit(1);
   }

@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import path from 'path';
 import { writeFile } from '../fs/fs';
 
@@ -23,9 +23,9 @@ export let createRedirect = async ({
     try {
       await writeFile(file, $.html());
     } catch (error) {
-      console.log(chalk.red('Error writing redirect file: ' + file));
+      console.log(pico.red('Error writing redirect file: ' + file));
       if (verbose === true) {
-        console.log(chalk.red(error));
+        console.log(pico.red(error));
       }
       //don't exit because redirect error is not a fatal error
     }

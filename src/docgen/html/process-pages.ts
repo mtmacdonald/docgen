@@ -1,6 +1,5 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import cheerio from 'cheerio';
-import moment from 'moment';
 import imageSizeOf from 'image-size';
 
 export const insertParameters = ({
@@ -49,9 +48,10 @@ export const insertParameters = ({
   homelink =
     homelink.source.substr(0, homelink.source.lastIndexOf('.')) + '.html';
 
-  let date = moment().format('DD/MM/YYYY');
-  let time = moment().format('HH:mm:ss');
-  let year = moment().format('YYYY');
+  const currentDate = new Date();
+  const date = currentDate.toLocaleDateString('en-GB'); // 'DD/MM/YYYY'
+  const time = currentDate.toLocaleTimeString('en-US', { hour12: false }); // 'HH:mm:ss'
+  const year = currentDate.getFullYear().toString(); // 'YYYY'
   let attribution =
     'Created by DocGen ' + version + ' on ' + date + ' at ' + time + '.';
 
@@ -223,7 +223,7 @@ export const processPages = async ({
   mainTemplate,
   webCover
 }) => {
-  console.log(chalk.green('Generating the static web content'));
+  console.log(pico.green('Generating the static web content'));
   tableOfContents.forEach((section) => {
     section.pages.forEach((page) => {
       let $ = cheerio.load(mainTemplate.html()); //clone
