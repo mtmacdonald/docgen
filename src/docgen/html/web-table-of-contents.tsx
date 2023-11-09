@@ -56,7 +56,8 @@ const TableOfContents = ({
           <div>
             {pdfEnabled && (
               <a
-                className="button inverted"
+                className="button whiteInverted"
+                style={{textDecoration: 'none'}}
                 href={pdfName}
               >
                 PDF
