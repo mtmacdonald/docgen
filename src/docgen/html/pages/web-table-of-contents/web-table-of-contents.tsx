@@ -1,5 +1,4 @@
 import React from 'react';
-import { toHTML } from '../../html';
 
 const Page = ({page}) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
@@ -68,22 +67,4 @@ export const TableOfContents = ({
       </table>
     </div>
   );
-}
-
-export const generateWebTableOfContents = ({
-  sortedPages,
-  mainTemplate,
-  name,
-  pdfEnabled,
-}) => {
-  let $ = mainTemplate;
-  const html = toHTML(
-    <TableOfContents
-      sortedPages={sortedPages}
-      name={name}
-      pdfEnabled={pdfEnabled}
-    />
-  );
-  $('#dg-toc').html(html);
-  return $;
 };

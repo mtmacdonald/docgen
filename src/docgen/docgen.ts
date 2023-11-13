@@ -7,7 +7,6 @@ import { loadMarkdown } from './fs/markdown';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
-import { generateWebTableOfContents } from './html/pages/web-table-of-contents/web-table-of-contents';
 import { insertParameters, processPages } from './html/pages/process-pages';
 import { writePages } from './fs/write-pages';
 import { createRedirect } from './html/redirect';
@@ -83,12 +82,6 @@ export function DocGen(process) {
       contents: meta.contents,
       inputPath: options.input,
       mainProcess,
-    });
-    templates.main = generateWebTableOfContents({
-      sortedPages,
-      name: meta.parameters.name,
-      mainTemplate: templates.main,
-      pdfEnabled: options.pdf,
     });
     insertParameters({
       inputPath: options.input,
