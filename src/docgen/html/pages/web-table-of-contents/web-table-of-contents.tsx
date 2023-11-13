@@ -30,7 +30,7 @@ const Section = ({section}) => {
   )
 };
 
-const TableOfContents = ({
+export const TableOfContents = ({
   sortedPages,
   name,
   pdfEnabled,

@@ -23,6 +23,7 @@
 <script type="text/javascript">
 
 $(document).ready( function () {
+  console.log('got here');
   $("#dg-toc").hide(); //hide the table of contents
 
   //instantiate an svg injector to show SVG icons
@@ -37,6 +38,7 @@ $(document).ready( function () {
   //toggle visibility of table of contents
   $("#dg-navigator").click(function()
   {
+    console.log('navigator click');
     $("#dg-toc").slideToggle("fast");
     $(this).toggleClass("active");
   });

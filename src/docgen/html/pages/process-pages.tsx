@@ -1,6 +1,9 @@
+import React from 'react';
 import pico from 'picocolors'
 import cheerio from 'cheerio';
 import imageSizeOf from 'image-size';
+import { Main } from './main/main';
+import { toHTML } from "../html";
 
 export const insertParameters = ({
   inputPath,
@@ -218,15 +221,27 @@ export const insertParameters = ({
 
 export const processPages = async ({
   pages,
+  parameters,
   pageTableOfContentsEnabled,
   tableOfContents,
   mainTemplate,
-  webCover
+  webCover,
+  sortedPages,
+  pdfEnabled
 }) => {
   console.log(pico.green('Generating the static web content'));
   tableOfContents.forEach((section) => {
     section.pages.forEach((page) => {
       let $ = cheerio.load(mainTemplate.html()); //clone
+      const htmlPage = toHTML(
+        <Main
+          parameters={parameters}
+          sortedPages={sortedPages}
+          pdfEnabled={pdfEnabled}
+        />
+      );
+      $('body').html(htmlPage);
+      //let $ = cheerio.load(htmlPage); //clone
       let key = page.source;
       let content = pages[key];
       //add relevant container

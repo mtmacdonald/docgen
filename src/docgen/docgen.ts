@@ -103,10 +103,13 @@ export function DocGen(process) {
     });
     templates.webCover = await processPages({
       pages,
+      parameters: meta.parameters,
       pageTableOfContentsEnabled: options.pageToc,
       tableOfContents: meta.contents,
       mainTemplate: templates.main,
       webCover: templates.webCover,
+      sortedPages,
+      pdfEnabled: options.pdf,
     });
     await writePages({
       inputPath: options.input,
