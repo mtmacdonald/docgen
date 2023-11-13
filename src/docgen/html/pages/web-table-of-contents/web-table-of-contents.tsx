@@ -1,5 +1,5 @@
 import React from 'react';
-import { toHTML } from './html';
+import { toHTML } from '../../html';
 
 const Page = ({page}) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
