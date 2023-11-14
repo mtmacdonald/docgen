@@ -7,7 +7,7 @@ import { loadMarkdown } from './fs/markdown';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
-import { insertParameters, processPages } from './html/pages/process-pages';
+import { deriveParameters, processPages } from './html/pages/process-pages';
 import { writePages } from './fs/write-pages';
 import { createRedirect } from './html/redirect';
 import { version } from '../../package.json';
@@ -83,7 +83,7 @@ export function DocGen(process) {
       inputPath: options.input,
       mainProcess,
     });
-    insertParameters({
+    const derivedParameters = deriveParameters({
       inputPath: options.input,
       parameters: meta.parameters,
       setVersion: options.setVersion,
@@ -96,13 +96,11 @@ export function DocGen(process) {
     });
     templates.webCover = await processPages({
       pages,
-      parameters: meta.parameters,
-      pageTableOfContentsEnabled: options.pageToc,
-      tableOfContents: meta.contents,
-      mainTemplate: templates.main,
-      webCover: templates.webCover,
       sortedPages,
-      pdfEnabled: options.pdf,
+      parameters: derivedParameters,
+      options,
+      contents: meta.contents,
+      templates
     });
     await writePages({
       inputPath: options.input,

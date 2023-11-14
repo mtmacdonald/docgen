@@ -5,7 +5,7 @@ import imageSizeOf from 'image-size';
 import { Main } from './main/main';
 import { toHTML } from "../html";
 
-export const insertParameters = ({
+export const deriveParameters = ({
   inputPath,
   parameters,
   setVersion,
@@ -91,17 +91,17 @@ export const insertParameters = ({
     owner += parameters.owner.name;
   }
 
-  let organization = '';
-  if (parameters.organization.url !== '') {
-    organization +=
-      '<a href="' +
-      parameters.organization.url +
-      '">' +
-      parameters.organization.name +
-      '</a>';
-  } else {
-    organization += parameters.organization.name;
-  }
+  //let organization = '';
+  // if (parameters.organization.url !== '') {
+  //   organization +=
+  //     '<a href="' +
+  //     parameters.organization.url +
+  //     '">' +
+  //     parameters.organization.name +
+  //     '</a>';
+  // } else {
+  //   organization += parameters.organization.name;
+  // }
 
   let website = '';
   if (parameters.website.url !== '') {
@@ -127,17 +127,17 @@ export const insertParameters = ({
     backlink += parameters.backlink.name;
   }
 
-  let sponsorLink = '';
-  if (parameters.sponsorLink) {
-    sponsorLink = `
-        <div id="headerSponsor">
-          <span>${parameters.sponsorLink.name}</span>
-            <a href="${parameters.sponsorLink.url}">
-             <img id="sponsorLogo" src="${parameters.sponsorLink.logo}" alt="sponsor logo">
-            </a>
-        </div>
-      `;
-  }
+  // let sponsorLink = '';
+  // if (parameters.sponsorLink) {
+  //   sponsorLink = `
+  //       <div id="headerSponsor">
+  //         <span>${parameters.sponsorLink.name}</span>
+  //           <a href="${parameters.sponsorLink.url}">
+  //            <img id="sponsorLogo" src="${parameters.sponsorLink.logo}" alt="sponsor logo">
+  //           </a>
+  //       </div>
+  //     `;
+  // }
 
   let contributors = '';
   parameters.contributors.forEach((contributor) => {
@@ -150,7 +150,7 @@ export const insertParameters = ({
   });
   contributors = contributors.replace(/,\s*$/, ''); //remove trailing commas
 
-  let copyright = '&copy; ' + year + ' ' + organization;
+  //let copyright = '&copy; ' + year + ' ' + organization;
 
   let webTitle = parameters.title;
 
@@ -172,24 +172,24 @@ export const insertParameters = ({
       //parameters
       $('title').text(parameters.title);
       $('.dg-homelink').attr('href', homelink);
-      $('#dg-title').text(parameters.title);
-      $('#dg-owner').html(owner);
+      //$('#dg-title').text(parameters.title);
+      //$('#dg-owner').html(owner);
       $('#dg-version').text(releaseVersion);
       $('#dg-web-title-version').text('(' + releaseVersion + ')');
       $('#dg-release-date').text(releaseDate);
       $('#dg-web-footer').text(webFooter);
       $('#dg-author').html(author);
       $('#dg-contributors').html(contributors);
-      $('#dg-module').text(parameters.module);
-      $('#dg-id').html(parameters.id);
+      //$('#dg-module').text(parameters.module);
+      //$('#dg-id').html(parameters.id);
       $('#dg-website').html(website);
       $('#dg-backlink').html(backlink);
-      $('#headerLeftText').append(sponsorLink);
-      $('#dg-summary').text(parameters.summary);
-      $('#dg-copyright').html(copyright);
-      $('#dg-marking').text(parameters.marking);
-      $('#dg-legalese').text(parameters.legalese);
-      $('#dg-attribution').text(attribution);
+      //+ $('#headerLeftText').append(sponsorLink);
+      //$('#dg-summary').text(parameters.summary);
+      //+ $('#dg-copyright').html(copyright);
+      //$('#dg-marking').text(parameters.marking);
+      //+ $('#dg-legalese').text(parameters.legalese);
+      //+ $('#dg-attribution').text(attribution);
     }
   }
   if (mathKatex === true) {
@@ -217,18 +217,29 @@ export const insertParameters = ({
         </script>`,
     );
   }
+  return {
+    ...parameters,
+    //homelink,
+    owner,
+    attribution,
+    year,
+    webFooter
+  }
 };
 
 export const processPages = async ({
   pages,
-  parameters,
-  pageTableOfContentsEnabled,
-  tableOfContents,
-  mainTemplate,
-  webCover,
   sortedPages,
-  pdfEnabled
+  parameters,
+  options,
+  contents,
+  templates
 }) => {
+  const pageTableOfContentsEnabled = options.pageToc;
+  const tableOfContents = contents;
+  const mainTemplate = templates.main;
+  const webCover = templates.webCover;
+  const pdfEnabled = options.pdf;
   console.log(pico.green('Generating the static web content'));
   tableOfContents.forEach((section) => {
     section.pages.forEach((page) => {

@@ -58,6 +58,11 @@ export type Parameters = {
   legalese?: string
 };
 
+export type DerivedParameters = Parameters & {
+  attribution: string,
+  year: string
+};
+
 export type Content = {
   name: string,
   column: number,

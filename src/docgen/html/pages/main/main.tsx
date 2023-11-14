@@ -19,6 +19,12 @@ const Header = ({parameters}) => {
                   {title}
                 </span> <span id="dg-web-title-version" style={{fontWeight: 'normal'}}></span>
               </a>
+              <div id="headerSponsor">
+                <span>{parameters.sponsorLink.name}</span>
+                <a href={parameters.sponsorLink.url}>
+                  <img id="sponsorLogo" src={parameters.sponsorLink.logo} alt="sponsor logo" />
+                </a>
+              </div>
             </div>
           </div>
           <div id="headerRightBlock">
@@ -31,18 +37,24 @@ const Header = ({parameters}) => {
 };
 
 const Footer = ({parameters}) => {
-  const {
-    legalese
-  } = parameters;
   return (
     <footer>
       <div><p className="w-fixed-width"><span id="dg-web-footer">.</span></p></div>
       <div className="w-fixed-width">
-        <p><span id="dg-copyright"></span></p>
         <p>
-          <span id="dg-marking"></span>
-          <span id="dg-legalese">{legalese}</span>
-          <span id="dg-attribution"></span>
+          <span id="dg-copyright">
+            &copy; {parameters.year} &nbsp;
+            {parameters?.organization?.url ? (
+              <a href={parameters.organization.url}>{parameters.organization.name}</a>
+            ) : parameters?.organization?.nmee ? (
+              <span>parameters.organization.name</span>
+            ) : null}
+          </span>
+        </p>
+        <p>
+          <span id="dg-marking">{parameters.marking}</span>
+          <span id="dg-legalese">{parameters.legalese}</span>
+          <span id="dg-attribution">{parameters.attribution}</span>
         </p>
       </div>
     </footer>
