@@ -56,6 +56,7 @@ export type Parameters = {
   summary: string,
   marking?: string,
   legalese?: string
+  logoPath?: string
 };
 
 export type DerivedParameters = Parameters & {

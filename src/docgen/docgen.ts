@@ -84,7 +84,6 @@ export function DocGen(process) {
       mainProcess,
     });
     const derivedParameters = deriveParameters({
-      inputPath: options.input,
       parameters: meta.parameters,
       setVersion: options.setVersion,
       setReleaseDate: options.setReleaseDate,

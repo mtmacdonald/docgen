@@ -1,22 +1,36 @@
 import React from 'react';
 import { TableOfContents } from '../web-table-of-contents/web-table-of-contents';
 
+const Logo = ({
+  parameters,
+}) => {
+  return (
+    parameters?.logoPath && (
+      <img
+        style={{
+          marginRight: '25px',
+        }}
+        src={parameters?.logoPath}
+      />
+    )
+  )
+};
+
 const Header = ({parameters}) => {
-  const {
-    title
-  } = parameters;
   return (
     <header>
       <div className="w-fixed-width header-container">
         <div className="header">
           <div className="headerLeftBlock">
             <a className="dg-homelink" href="#">
-              <div id="dg-logo"></div>
+              <Logo
+                parameters={parameters}
+              />
             </a>
             <div id="headerLeftText">
               <a className="dg-homelink" href="#">
                 <span id="dg-title">
-                  {title}
+                  {parameters.title}
                 </span> <span id="dg-web-title-version" style={{fontWeight: 'normal'}}></span>
               </a>
               <div id="headerSponsor">
@@ -39,7 +53,13 @@ const Header = ({parameters}) => {
 const Footer = ({parameters}) => {
   return (
     <footer>
-      <div><p className="w-fixed-width"><span id="dg-web-footer">.</span></p></div>
+      <div>
+        <p className="w-fixed-width">
+          <span id="dg-web-footer">
+            {parameters.webFooter}
+          </span>
+        </p>
+      </div>
       <div className="w-fixed-width">
         <p>
           <span id="dg-copyright">

@@ -1,12 +1,11 @@
 import React from 'react';
 import pico from 'picocolors'
 import cheerio from 'cheerio';
-import imageSizeOf from 'image-size';
 import { Main } from './main/main';
 import { toHTML } from "../html";
 
 export const deriveParameters = ({
-  inputPath,
+  //inputPath,
   parameters,
   setVersion,
   setReleaseDate,
@@ -18,31 +17,31 @@ export const deriveParameters = ({
 }) => {
   //------------------------------------------------------------------------------------------------------
   //logo dimensions
-  let hasLogo = false;
-  let logoWidth = 0;
-  let logoHeight = 0;
-  let logoPath;
-  try {
-    logoPath = 'files/images/logo.svg';
-    let logo = imageSizeOf(`${inputPath}/${logoPath}`);
-    logoWidth = logo.width;
-    logoHeight = logo.height;
-    hasLogo = true;
-  } catch (error) {
-    //do nothing. If logo file cannot be read, logo is simply not shown
-  }
-  if (!hasLogo) {
-    //PNG fallback
-    try {
-      logoPath = 'files/images/logo.png';
-      let logo = imageSizeOf(`${inputPath}/${logoPath}`);
-      logoWidth = logo.width;
-      logoHeight = logo.height;
-      hasLogo = true;
-    } catch (error) {
-      //do nothing. If logo file cannot be read, logo is simply not shown
-    }
-  }
+  // let hasLogo = false;
+  // let logoWidth = 0;
+  // let logoHeight = 0;
+  // let logoPath;
+  // try {
+  //   logoPath = 'files/images/logo.svg';
+  //   let logo = imageSizeOf(`${inputPath}/${logoPath}`);
+  //   logoWidth = logo.width;
+  //   logoHeight = logo.height;
+  //   hasLogo = true;
+  // } catch (error) {
+  //   //do nothing. If logo file cannot be read, logo is simply not shown
+  // }
+  // if (!hasLogo) {
+  //   //PNG fallback
+  //   try {
+  //     logoPath = 'files/images/logo.png';
+  //     let logo = imageSizeOf(`${inputPath}/${logoPath}`);
+  //     logoWidth = logo.width;
+  //     logoHeight = logo.height;
+  //     hasLogo = true;
+  //   } catch (error) {
+  //     //do nothing. If logo file cannot be read, logo is simply not shown
+  //   }
+  // }
 
   //------------------------------------------------------------------------------------------------------
 
@@ -154,21 +153,21 @@ export const deriveParameters = ({
 
   let webTitle = parameters.title;
 
-  let webFooter =
+  const webFooter =
     'Version ' + releaseVersion + ' released on ' + releaseDate + '.';
 
   for (let key in templates) {
     if (templates.hasOwnProperty(key)) {
       let $ = templates[key];
       //logo
-      if (hasLogo === true) {
-        let logoUrl = logoPath;
-        $('#dg-logo').css('background-image', 'url(' + logoUrl + ')');
-        $('#dg-logo').css('height', logoHeight + 'px');
-        $('#dg-logo').css('padding-left', logoWidth + 25 + 'px');
-      } else {
-        $('#dg-logo').css('padding-left', '0');
-      }
+      // if (hasLogo === true) {
+      //   let logoUrl = logoPath;
+      //   $('#dg-logo').css('background-image', 'url(' + logoUrl + ')');
+      //   $('#dg-logo').css('height', logoHeight + 'px');
+      //   $('#dg-logo').css('padding-left', logoWidth + 25 + 'px');
+      // } else {
+      //   $('#dg-logo').css('padding-left', '0');
+      // }
       //parameters
       $('title').text(parameters.title);
       $('.dg-homelink').attr('href', homelink);
@@ -177,7 +176,7 @@ export const deriveParameters = ({
       $('#dg-version').text(releaseVersion);
       $('#dg-web-title-version').text('(' + releaseVersion + ')');
       $('#dg-release-date').text(releaseDate);
-      $('#dg-web-footer').text(webFooter);
+      //$('#dg-web-footer').text(webFooter);
       $('#dg-author').html(author);
       $('#dg-contributors').html(contributors);
       //$('#dg-module').text(parameters.module);
@@ -219,7 +218,6 @@ export const deriveParameters = ({
   }
   return {
     ...parameters,
-    //homelink,
     owner,
     attribution,
     year,
