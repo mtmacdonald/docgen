@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { TableOfContents } from '../web-table-of-contents/web-table-of-contents';
+import type { DerivedParameters } from '../../../types';
 
 const Logo = ({
   parameters,
@@ -81,11 +82,19 @@ const Footer = ({parameters}) => {
   )
 };
 
+type MainProps = {
+  parameters: DerivedParameters;
+  sortedPages: any;
+  pdfEnabled: boolean;
+  children?: ReactNode;
+};
+
 export const Main = ({
   parameters,
   sortedPages,
   pdfEnabled,
-}) => {
+  children,
+}: MainProps) => {
   const {
     name
   } = parameters;
@@ -101,6 +110,7 @@ export const Main = ({
       <div id="dg-navigator">Table of contents</div>
       <Header parameters={parameters} />
       <section id="dg-content">
+        {children}
       </section>
       <Footer parameters={parameters} />
     </>

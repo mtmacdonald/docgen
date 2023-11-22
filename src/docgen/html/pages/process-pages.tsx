@@ -2,6 +2,7 @@ import React from 'react';
 import pico from 'picocolors'
 import cheerio from 'cheerio';
 import { Main } from './main/main';
+import { WebCover } from './web-cover/web-cover';
 import { toHTML } from "../html";
 
 export const deriveParameters = ({
@@ -250,7 +251,6 @@ export const processPages = async ({
         />
       );
       $('body').html(htmlPage);
-      //let $ = cheerio.load(htmlPage); //clone
       let key = page.source;
       let content = pages[key];
       //add relevant container
@@ -301,10 +301,18 @@ export const processPages = async ({
     });
   });
   //add web ownership page
-  let $ = cheerio.load(mainTemplate.html()); //clone
-  $('#dg-content').html(
-    '<div class="w-fixed-width"><div id="dg-innerContent"></div></div>',
+  const webCoverHtml = toHTML(
+    <Main
+      parameters={parameters}
+      sortedPages={sortedPages}
+      pdfEnabled={pdfEnabled}
+    >
+      <WebCover />
+    </Main>
   );
-  $('#dg-innerContent').html(webCover.html());
+  let $ = cheerio.load(mainTemplate.html());
+  let webCoverStyles = cheerio.load(webCover.html());
+  $('head').append(webCoverStyles('head').html());
+  $('body').html(webCoverHtml);
   return $;
 };
