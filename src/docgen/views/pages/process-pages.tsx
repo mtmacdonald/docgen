@@ -16,9 +16,7 @@ export const deriveParameters = ({
   homeLink
 }) => {
   //the homepage is the first link in the first heading
-  let homelink = homeLink;
-  homelink =
-    homelink.source.substr(0, homelink.source.lastIndexOf('.')) + '.html';
+  const homePagePath = `${homeLink.source.slice(0, homeLink.source.lastIndexOf('.'))}.html`;
 
   const currentDate = new Date();
   const date = currentDate.toLocaleDateString('en-GB'); // 'DD/MM/YYYY'
@@ -55,7 +53,6 @@ export const deriveParameters = ({
     if (templates.hasOwnProperty(key)) {
       let $ = templates[key];
       $('title').text(parameters.title);
-      $('.dg-homelink').attr('href', homelink);
       $('#dg-version').text(releaseVersion);
       $('#dg-web-title-version').text('(' + releaseVersion + ')');
       $('#dg-release-date').text(releaseDate);
@@ -92,7 +89,8 @@ export const deriveParameters = ({
     attribution,
     year,
     webFooter,
-    releaseDate
+    releaseDate,
+    homePagePath
   }
 };
 

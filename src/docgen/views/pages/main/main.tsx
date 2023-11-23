@@ -23,13 +23,13 @@ const Header = ({parameters}) => {
       <div className="w-fixed-width header-container">
         <div className="header">
           <div className="headerLeftBlock">
-            <a className="dg-homelink" href="#">
+            <a className="dg-homelink" href={parameters.homePagePath}>
               <Logo
                 parameters={parameters}
               />
             </a>
             <div id="headerLeftText">
-              <a className="dg-homelink" href="#">
+              <a className="dg-homelink" href={parameters.homePagePath}>
                 <span id="dg-title">
                   {parameters.title}
                 </span> <span id="dg-web-title-version" style={{fontWeight: 'normal'}}></span>
