@@ -6,7 +6,6 @@ import { WebCover } from './web-cover/web-cover';
 import { toHTML } from "../html";
 
 export const deriveParameters = ({
-  //inputPath,
   parameters,
   setVersion,
   setReleaseDate,
@@ -16,36 +15,6 @@ export const deriveParameters = ({
   version,
   homeLink
 }) => {
-  //------------------------------------------------------------------------------------------------------
-  //logo dimensions
-  // let hasLogo = false;
-  // let logoWidth = 0;
-  // let logoHeight = 0;
-  // let logoPath;
-  // try {
-  //   logoPath = 'files/images/logo.svg';
-  //   let logo = imageSizeOf(`${inputPath}/${logoPath}`);
-  //   logoWidth = logo.width;
-  //   logoHeight = logo.height;
-  //   hasLogo = true;
-  // } catch (error) {
-  //   //do nothing. If logo file cannot be read, logo is simply not shown
-  // }
-  // if (!hasLogo) {
-  //   //PNG fallback
-  //   try {
-  //     logoPath = 'files/images/logo.png';
-  //     let logo = imageSizeOf(`${inputPath}/${logoPath}`);
-  //     logoWidth = logo.width;
-  //     logoHeight = logo.height;
-  //     hasLogo = true;
-  //   } catch (error) {
-  //     //do nothing. If logo file cannot be read, logo is simply not shown
-  //   }
-  // }
-
-  //------------------------------------------------------------------------------------------------------
-
   //the homepage is the first link in the first heading
   let homelink = homeLink;
   homelink =
@@ -67,54 +36,6 @@ export const deriveParameters = ({
     releaseDate = setReleaseDate;
   }
 
-  let author = '';
-  if (parameters.author.url !== '') {
-    author +=
-      '<a href="' +
-      parameters.author.url +
-      '">' +
-      parameters.author.name +
-      '</a>';
-  } else {
-    author += parameters.author.name;
-  }
-
-  let owner = '';
-  if (parameters.owner.url !== '') {
-    owner +=
-      '<a href="' +
-      parameters.owner.url +
-      '">' +
-      parameters.owner.name +
-      '</a>';
-  } else {
-    owner += parameters.owner.name;
-  }
-
-  //let organization = '';
-  // if (parameters.organization.url !== '') {
-  //   organization +=
-  //     '<a href="' +
-  //     parameters.organization.url +
-  //     '">' +
-  //     parameters.organization.name +
-  //     '</a>';
-  // } else {
-  //   organization += parameters.organization.name;
-  // }
-
-  let website = '';
-  if (parameters.website.url !== '') {
-    website +=
-      '<a href="' +
-      parameters.website.url +
-      '">' +
-      parameters.website.name +
-      '</a>';
-  } else {
-    website += parameters.website.name;
-  }
-
   let backlink = '';
   if (parameters.backlink.url !== '') {
     backlink +=
@@ -127,69 +48,18 @@ export const deriveParameters = ({
     backlink += parameters.backlink.name;
   }
 
-  // let sponsorLink = '';
-  // if (parameters.sponsorLink) {
-  //   sponsorLink = `
-  //       <div id="headerSponsor">
-  //         <span>${parameters.sponsorLink.name}</span>
-  //           <a href="${parameters.sponsorLink.url}">
-  //            <img id="sponsorLogo" src="${parameters.sponsorLink.logo}" alt="sponsor logo">
-  //           </a>
-  //       </div>
-  //     `;
-  // }
-
-  let contributors = '';
-  parameters.contributors.forEach((contributor) => {
-    if (contributor.url !== '') {
-      contributors +=
-        '<a href="' + contributor.url + '">' + contributor.name + '</a>, ';
-    } else {
-      contributors += contributor.name + ', ';
-    }
-  });
-  contributors = contributors.replace(/,\s*$/, ''); //remove trailing commas
-
-  //let copyright = '&copy; ' + year + ' ' + organization;
-
-  let webTitle = parameters.title;
-
   const webFooter =
     'Version ' + releaseVersion + ' released on ' + releaseDate + '.';
 
   for (let key in templates) {
     if (templates.hasOwnProperty(key)) {
       let $ = templates[key];
-      //logo
-      // if (hasLogo === true) {
-      //   let logoUrl = logoPath;
-      //   $('#dg-logo').css('background-image', 'url(' + logoUrl + ')');
-      //   $('#dg-logo').css('height', logoHeight + 'px');
-      //   $('#dg-logo').css('padding-left', logoWidth + 25 + 'px');
-      // } else {
-      //   $('#dg-logo').css('padding-left', '0');
-      // }
-      //parameters
       $('title').text(parameters.title);
       $('.dg-homelink').attr('href', homelink);
-      //$('#dg-title').text(parameters.title);
-      //$('#dg-owner').html(owner);
       $('#dg-version').text(releaseVersion);
       $('#dg-web-title-version').text('(' + releaseVersion + ')');
       $('#dg-release-date').text(releaseDate);
-      //$('#dg-web-footer').text(webFooter);
-      $('#dg-author').html(author);
-      $('#dg-contributors').html(contributors);
-      //$('#dg-module').text(parameters.module);
-      //$('#dg-id').html(parameters.id);
-      $('#dg-website').html(website);
       $('#dg-backlink').html(backlink);
-      //+ $('#headerLeftText').append(sponsorLink);
-      //$('#dg-summary').text(parameters.summary);
-      //+ $('#dg-copyright').html(copyright);
-      //$('#dg-marking').text(parameters.marking);
-      //+ $('#dg-legalese').text(parameters.legalese);
-      //+ $('#dg-attribution').text(attribution);
     }
   }
   if (mathKatex === true) {
@@ -219,10 +89,10 @@ export const deriveParameters = ({
   }
   return {
     ...parameters,
-    owner,
     attribution,
     year,
-    webFooter
+    webFooter,
+    releaseDate
   }
 };
 
@@ -307,7 +177,9 @@ export const processPages = async ({
       sortedPages={sortedPages}
       pdfEnabled={pdfEnabled}
     >
-      <WebCover />
+      <WebCover
+        parameters={parameters}
+      />
     </Main>
   );
   let $ = cheerio.load(mainTemplate.html());
