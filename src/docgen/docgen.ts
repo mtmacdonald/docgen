@@ -7,9 +7,9 @@ import { loadMarkdown } from './fs/markdown';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
-import { deriveParameters, processPages } from './html/pages/process-pages';
+import { deriveParameters, processPages } from './views/pages/process-pages';
 import { writePages } from './fs/write-pages';
-import { createRedirect } from './html/redirect';
+import { createRedirect } from './views/redirect';
 import { version } from '../../package.json';
 
 import type {

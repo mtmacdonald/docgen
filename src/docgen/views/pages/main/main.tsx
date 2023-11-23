@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { TableOfContents } from '../web-table-of-contents/web-table-of-contents';
+import { TableOfContents } from '../../components/web-table-of-contents/web-table-of-contents';
 import type { DerivedParameters } from '../../../types';
 
 const Logo = ({
