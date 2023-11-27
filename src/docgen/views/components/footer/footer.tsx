@@ -1,4 +1,5 @@
 import React from 'react';
+import { Copyright } from "../copyright/copyright";
 
 export const Footer = ({
   parameters
@@ -6,14 +7,7 @@ export const Footer = ({
   return (
     <>
       <p>
-        <span id="dg-copyright">
-          &copy; {parameters.year} &nbsp;
-          {parameters?.organization?.url ? (
-            <a href={parameters.organization.url}>{parameters.organization.name}</a>
-          ) : parameters?.organization?.nmee ? (
-            <span>parameters.organization.name</span>
-          ) : null}
-        </span>
+        <Copyright parameters={parameters} />
       </p>
       <p>
         <span id="dg-marking">{parameters.marking}</span>

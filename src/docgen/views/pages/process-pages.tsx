@@ -2,9 +2,10 @@ import React from 'react';
 import pico from 'picocolors'
 import cheerio from 'cheerio';
 import { Main } from './main/main';
-import { Cover } from './web-cover/cover';
+import { Cover } from './cover/cover';
 import { toHTML } from "../html";
-import { PdfCover } from "./web-cover/pdf-cover";
+import { PdfCover } from "./cover/pdf-cover";
+import { PdfFooter } from "../components/pdf-footer/pdf-footer";
 
 export const deriveParameters = ({
   parameters,
@@ -91,6 +92,7 @@ export const deriveParameters = ({
     year,
     webFooter,
     releaseDate,
+    releaseVersion,
     homePagePath
   }
 };
@@ -107,6 +109,7 @@ export const processPages = async ({
   const tableOfContents = contents;
   const mainTemplate = templates.main;
   const pdfCoverTemplate = templates.pdfCover;
+  const pdfFooterTemplate = templates.pdfFooter;
   const webCover = templates.webCover;
   const pdfEnabled = options.pdf;
   console.log(pico.green('Generating the static web content'));
@@ -170,7 +173,6 @@ export const processPages = async ({
       pages[key] = $;
     });
   });
-  //add web ownership page
   const webCoverHtml = toHTML(
     <Main
       parameters={parameters}
@@ -187,7 +189,6 @@ export const processPages = async ({
   $('head').append(webCoverStyles('head').html());
   $('body').html(webCoverHtml);
 
-  //add PDF ownership page
   const pdfCoverHtml = toHTML(
     <PdfCover parameters={parameters} />
   );
@@ -195,8 +196,18 @@ export const processPages = async ({
   let pdfCoverStyles = cheerio.load(pdfCoverTemplate.html());
   $Pdf('head').append(pdfCoverStyles('head').html());
   $Pdf('body').html(pdfCoverHtml);
+
+  const pdfFooterHtml = toHTML(
+    <PdfFooter parameters={parameters} />
+  );
+  let $PdfFooter = cheerio.load(pdfFooterTemplate.html());
+  let pdfFooterStyles = cheerio.load(pdfFooterTemplate.html());
+  $PdfFooter('head').append(pdfFooterStyles('head').html());
+  $PdfFooter('body').html(pdfFooterHtml);
+
   return {
     webCover: $.html(),
     pdfCover: $Pdf.html(),
+    pdfFooter: $PdfFooter.html(),
   };
 };

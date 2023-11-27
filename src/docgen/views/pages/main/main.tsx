@@ -33,7 +33,10 @@ const Header = ({parameters}) => {
               <a className="dg-homelink" href={parameters.homePagePath}>
                 <span id="dg-title">
                   {parameters.title}
-                </span> <span id="dg-web-title-version" style={{fontWeight: 'normal'}}></span>
+                </span>
+                <span id="dg-web-title-version" style={{fontWeight: 'normal'}}>
+                  {parameters.releaseVersion}
+                </span>
               </a>
               <div id="headerSponsor">
                 <span>{parameters.sponsorLink.name}</span>

@@ -43,7 +43,7 @@ export const writePages = async ({
       );
       promises['docgenPdfFooter'] = writeFile(
         pdfTempDir + 'pdfFooter.html',
-        templates.pdfFooter.html(),
+        templateHtml.pdfFooter,
       );
     }
     await copyDirectory(
