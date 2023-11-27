@@ -2,8 +2,9 @@ import React from 'react';
 import pico from 'picocolors'
 import cheerio from 'cheerio';
 import { Main } from './main/main';
-import { WebCover } from './web-cover/web-cover';
+import { Cover } from './web-cover/cover';
 import { toHTML } from "../html";
+import { PdfCover } from "./web-cover/pdf-cover";
 
 export const deriveParameters = ({
   parameters,
@@ -105,6 +106,7 @@ export const processPages = async ({
   const pageTableOfContentsEnabled = options.pageToc;
   const tableOfContents = contents;
   const mainTemplate = templates.main;
+  const pdfCoverTemplate = templates.pdfCover;
   const webCover = templates.webCover;
   const pdfEnabled = options.pdf;
   console.log(pico.green('Generating the static web content'));
@@ -175,7 +177,7 @@ export const processPages = async ({
       sortedPages={sortedPages}
       pdfEnabled={pdfEnabled}
     >
-      <WebCover
+      <Cover
         parameters={parameters}
       />
     </Main>
@@ -184,5 +186,17 @@ export const processPages = async ({
   let webCoverStyles = cheerio.load(webCover.html());
   $('head').append(webCoverStyles('head').html());
   $('body').html(webCoverHtml);
-  return $;
+
+  //add PDF ownership page
+  const pdfCoverHtml = toHTML(
+    <PdfCover parameters={parameters} />
+  );
+  let $Pdf = cheerio.load(pdfCoverTemplate.html());
+  let pdfCoverStyles = cheerio.load(pdfCoverTemplate.html());
+  $Pdf('head').append(pdfCoverStyles('head').html());
+  $Pdf('body').html(pdfCoverHtml);
+  return {
+    webCover: $.html(),
+    pdfCover: $Pdf.html(),
+  };
 };

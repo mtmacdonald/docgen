@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { TableOfContents } from '../../components/web-table-of-contents/web-table-of-contents';
+import { Footer } from '../../components/footer/footer';
 import type { DerivedParameters } from '../../../types';
 
 const Logo = ({
@@ -51,7 +52,7 @@ const Header = ({parameters}) => {
   )
 };
 
-const Footer = ({parameters}) => {
+const WebFooter = ({parameters}) => {
   return (
     <footer>
       <div>
@@ -62,21 +63,7 @@ const Footer = ({parameters}) => {
         </p>
       </div>
       <div className="w-fixed-width">
-        <p>
-          <span id="dg-copyright">
-            &copy; {parameters.year} &nbsp;
-            {parameters?.organization?.url ? (
-              <a href={parameters.organization.url}>{parameters.organization.name}</a>
-            ) : parameters?.organization?.nmee ? (
-              <span>parameters.organization.name</span>
-            ) : null}
-          </span>
-        </p>
-        <p>
-          <span id="dg-marking">{parameters.marking}</span>
-          <span id="dg-legalese">{parameters.legalese}</span>
-          <span id="dg-attribution">{parameters.attribution}</span>
-        </p>
+        <Footer parameters={parameters} />
       </div>
     </footer>
   )
@@ -112,7 +99,7 @@ export const Main = ({
       <section id="dg-content">
         {children}
       </section>
-      <Footer parameters={parameters} />
+      <WebFooter parameters={parameters} />
     </>
   );
 };

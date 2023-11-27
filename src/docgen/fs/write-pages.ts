@@ -10,7 +10,8 @@ export const writePages = async ({
   pdfEnabled,
   mathKatex,
   verbose,
-  mainProcess
+  mainProcess,
+  templateHtml
 }) => {
   console.log(pico.green('Writing the web page files'));
   try {
@@ -27,14 +28,14 @@ export const writePages = async ({
     //add extra files
     promises['ownership'] = writeFile(
       outputPath + 'ownership.html',
-      templates.webCover.html(),
+      templateHtml.webCover,
     );
     if (pdfEnabled) {
       let pdfTempDir = outputPath + 'temp/';
       await makeDirectory(pdfTempDir);
       promises['docgenPdfCover'] = writeFile(
         pdfTempDir + 'pdfCover.html',
-        templates.pdfCover.html(),
+        templateHtml.pdfCover,
       );
       promises['docgenPdfHeader'] = writeFile(
         pdfTempDir + 'pdfHeader.html',

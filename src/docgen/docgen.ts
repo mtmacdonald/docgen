@@ -93,7 +93,7 @@ export function DocGen(process) {
       version,
       homeLink: meta.contents[0].pages[0],
     });
-    templates.webCover = await processPages({
+    const templateHtml = await processPages({
       pages,
       sortedPages,
       parameters: derivedParameters,
@@ -111,6 +111,7 @@ export function DocGen(process) {
       mathKatex: options.mathKatex,
       verbose: options.verbose,
       mainProcess,
+      templateHtml
     });
     await createRedirect({
       isRedirectEnabled: options.redirect,

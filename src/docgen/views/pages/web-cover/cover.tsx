@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-export const WebCover = ({
+export const Cover = ({
   parameters,
 }) => {
   return (
