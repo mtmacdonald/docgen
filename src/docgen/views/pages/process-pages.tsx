@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash';
 import React from 'react';
 import pico from 'picocolors'
 import cheerio from 'cheerio';
@@ -11,8 +12,10 @@ export const processTemplates = ({
   parameters,
   mathMathjax,
   mathKatex,
-  templates,
+  templates: rawTemplates,
 }) => {
+  //Todo: rewrite in non-mutating style (for now just clone)
+  const templates = cloneDeep(rawTemplates);
   //Todo: better way of dynamically setting template <head>
   for (let key in templates) {
     if (templates.hasOwnProperty(key)) {
@@ -45,22 +48,31 @@ export const processTemplates = ({
         </script>`,
     );
   }
+  return templates;
 };
 
 export const processPages = async ({
-  pages,
+  templates,
+  pages: rawPages,
   sortedPages,
   parameters,
   options,
   contents,
-  templates
 }) => {
+  const hydratedTemplates = processTemplates({
+    parameters,
+    templates,
+    mathMathjax: options.mathMathjax,
+    mathKatex: options.mathKatex,
+  });
+  //Todo: rewrite in non-mutating style (for now just clone)
+  const pages = cloneDeep(rawPages);
   const pageTableOfContentsEnabled = options.pageToc;
   const tableOfContents = contents;
-  const mainTemplate = templates.main;
-  const pdfCoverTemplate = templates.pdfCover;
-  const pdfFooterTemplate = templates.pdfFooter;
-  const webCover = templates.webCover;
+  const mainTemplate = hydratedTemplates.main;
+  const pdfCoverTemplate = hydratedTemplates.pdfCover;
+  const pdfFooterTemplate = hydratedTemplates.pdfFooter;
+  const webCover = hydratedTemplates.webCover;
   const pdfEnabled = options.pdf;
   console.log(pico.green('Generating the static web content'));
   tableOfContents.forEach((section) => {
@@ -120,7 +132,7 @@ export const processPages = async ({
       //apply the w-table class
       $('table:not(.unstyled)').addClass('w-table w-fixed w-stripe');
       //------------------------------------------------------------------------------------------------------
-      pages[key] = $;
+      pages[key] = $.html();
     });
   });
   const webCoverHtml = toHTML(
@@ -156,8 +168,11 @@ export const processPages = async ({
   $PdfFooter('body').html(pdfFooterHtml);
 
   return {
+    pages,
+    redirect: hydratedTemplates.redirect,
     webCover: $.html(),
     pdfCover: $Pdf.html(),
+    pdfHeader: hydratedTemplates.pdfHeader.html(),
     pdfFooter: $PdfFooter.html(),
   };
 };

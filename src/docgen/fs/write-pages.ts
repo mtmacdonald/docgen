@@ -4,14 +4,12 @@ import { copyDirectory, makeDirectory, writeFile } from "./fs";
 export const writePages = async ({
   inputPath,
   outputPath,
-  templates,
-  pages,
+  hydratedPages,
   contents,
   pdfEnabled,
   mathKatex,
   verbose,
   mainProcess,
-  templateHtml
 }) => {
   console.log(pico.green('Writing the web page files'));
   try {
@@ -21,29 +19,29 @@ export const writePages = async ({
         let key = page.source;
         let name = key.substr(0, page.source.lastIndexOf('.'));
         let path = outputPath + name + '.html';
-        let html = pages[key].html();
+        let html = hydratedPages.pages[key];
         promises[key] = writeFile(path, html);
       });
     });
     //add extra files
     promises['ownership'] = writeFile(
       outputPath + 'ownership.html',
-      templateHtml.webCover,
+      hydratedPages.webCover,
     );
     if (pdfEnabled) {
       let pdfTempDir = outputPath + 'temp/';
       await makeDirectory(pdfTempDir);
       promises['docgenPdfCover'] = writeFile(
         pdfTempDir + 'pdfCover.html',
-        templateHtml.pdfCover,
+        hydratedPages.pdfCover,
       );
       promises['docgenPdfHeader'] = writeFile(
         pdfTempDir + 'pdfHeader.html',
-        templates.pdfHeader.html(),
+        hydratedPages.pdfHeader,
       );
       promises['docgenPdfFooter'] = writeFile(
         pdfTempDir + 'pdfFooter.html',
-        templateHtml.pdfFooter,
+        hydratedPages.pdfFooter,
       );
     }
     await copyDirectory(

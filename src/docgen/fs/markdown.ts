@@ -13,8 +13,7 @@ markdown.validateLink = () => {
 
 export const loadMarkdown = async ({
   contents,
-  inputPath,
-  verbose,
+  options,
   mainProcess,
 }) => {
   console.log(pico.green('Loading src files'));
@@ -25,12 +24,12 @@ export const loadMarkdown = async ({
     contents.forEach((section) => {
       section.pages.forEach((page) => {
         keys.push(page);
-        files.push(inputPath + '/' + page.source);
+        files.push(options.input + '/' + page.source);
       });
     });
     //add the release notes page
     keys.push('ownership');
-    files.push(inputPath + '/release-notes.md');
+    files.push(options.input + '/release-notes.md');
     files = await Promise.all(files.map((f) => readFile(f)));
     files.forEach((page, index) => {
       let key = keys[index];
@@ -45,7 +44,7 @@ export const loadMarkdown = async ({
         }
       } catch (error) {
         console.log(pico.red('Error parsing Markdown file: ' + key.source));
-        if (verbose === true) {
+        if (options.verbose === true) {
           console.log(pico.red(error));
         }
         mainProcess.exit(1);
@@ -55,7 +54,7 @@ export const loadMarkdown = async ({
   } catch (error) {
     console.log(error);
     console.log(pico.red('Error loading src files'));
-    if (verbose === true) {
+    if (options.verbose === true) {
       console.log(pico.red(error));
     }
     mainProcess.exit(1);

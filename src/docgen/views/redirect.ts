@@ -5,7 +5,7 @@ import { writeFile } from '../fs/fs';
 export let createRedirect = async ({
   isRedirectEnabled,
   outputDirectory,
-  redirectTemplate,
+  redirectPage,
   homePage,
   verbose
 }) => {
@@ -16,7 +16,7 @@ export let createRedirect = async ({
     homepage =
       homepage.source.substr(0, homepage.source.lastIndexOf('.')) + '.html';
     let redirectLink = parent + '/' + homepage;
-    let $ = redirectTemplate;
+    let $ = redirectPage;
     $('a').attr('href', redirectLink);
     $('meta[http-equiv=REFRESH]').attr('content', '0;url=' + redirectLink);
     let file = outputDirectory + '../' + 'index.html';

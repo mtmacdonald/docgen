@@ -15,8 +15,6 @@ import { version } from '../../package.json';
 
 import type {
   Options,
-  Templates,
-  Meta
 } from './types';
 
 export function DocGen(process) {
@@ -74,41 +72,32 @@ export function DocGen(process) {
       homeLink: contents[0].pages[0],
     });
     const pages = await loadMarkdown({
-      verbose: options.verbose,
+      options,
       contents,
-      inputPath: options.input,
       mainProcess,
     });
-    processTemplates({
-      parameters: parameters,
+    const hydratedPages = await processPages({
       templates,
-      mathMathjax: options.mathMathjax,
-      mathKatex: options.mathKatex,
-    });
-    const templateHtml = await processPages({
       pages,
       sortedPages,
       parameters: derivedParameters,
       options,
       contents,
-      templates
     });
     await writePages({
       inputPath: options.input,
       outputPath: options.output,
       contents,
-      templates,
-      pages,
+      hydratedPages,
       pdfEnabled: options.pdf,
       mathKatex: options.mathKatex,
       verbose: options.verbose,
       mainProcess,
-      templateHtml
     });
     await createRedirect({
       isRedirectEnabled: options.redirect,
       outputDirectory: options.output,
-      redirectTemplate: templates.redirect,
+      redirectPage: hydratedPages.redirect,
       homePage: contents[0].pages[0],
       verbose: options.verbose,
     });
