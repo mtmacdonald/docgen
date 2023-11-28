@@ -36,18 +36,6 @@ export const deriveParameters = ({
     releaseDate = setReleaseDate;
   }
 
-  let backlink = '';
-  if (parameters.backlink.url !== '') {
-    backlink +=
-      '<a class="button inverted" href="' +
-      parameters.backlink.url +
-      '">' +
-      parameters.backlink.name +
-      '</a>';
-  } else {
-    backlink += parameters.backlink.name;
-  }
-
   const webFooter =
     'Version ' + releaseVersion + ' released on ' + releaseDate + '.';
 
@@ -58,7 +46,6 @@ export const deriveParameters = ({
       $('#dg-version').text(releaseVersion);
       $('#dg-web-title-version').text('(' + releaseVersion + ')');
       $('#dg-release-date').text(releaseDate);
-      $('#dg-backlink').html(backlink);
     }
   }
   if (mathKatex === true) {

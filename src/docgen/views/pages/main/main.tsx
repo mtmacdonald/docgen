@@ -35,7 +35,7 @@ const Header = ({parameters}) => {
                   {parameters.title}
                 </span>
                 <span id="dg-web-title-version" style={{fontWeight: 'normal'}}>
-                  {parameters.releaseVersion}
+                  &nbsp;({parameters.releaseVersion})
                 </span>
               </a>
               <div id="headerSponsor">
@@ -47,7 +47,13 @@ const Header = ({parameters}) => {
             </div>
           </div>
           <div id="headerRightBlock">
-            <span id="dg-backlink"></span>
+            <span id="dg-backlink">
+              {parameters.backlink.url && (
+                <a className="button inverted" href={parameters.backlink.url}>
+                  {parameters.backlink.name}
+                </a>
+              )}
+            </span>
           </div>
         </div>
       </div>
