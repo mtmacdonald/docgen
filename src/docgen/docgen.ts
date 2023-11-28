@@ -66,7 +66,7 @@ export function DocGen(process) {
       verbose: options.verbose,
       mainProcess,
     });
-    const sortedPages = sortPages({ tableOfContents: contents });
+    const sortedPages = sortPages({ contents });
     const derivedParameters = deriveParameters({
       parameters: parameters,
       setVersion: options.setVersion,
