@@ -21,15 +21,6 @@ import type {
 export function DocGen(process) {
   let mainProcess = process;
   let options;
-  let templates: Templates = {
-    main: '',
-    redirect: '',
-    webCover: '',
-    pdfCover: '',
-    pdfHeader: '',
-    pdfFooter: '',
-  };
-  let meta: Meta = {};
   let pages = {};
   let sortedPages = {};
 
@@ -67,43 +58,43 @@ export function DocGen(process) {
     console.log(pico.green(pico.bold('DocGen version ' + version)));
     //delete and recreate the output directory
     await cleanDirectory(options.output, options.verbose);
-    templates = await loadTemplates({
-      verbose: options.verbose,
+    const templates = await loadTemplates({
+      options,
       mainProcess,
     });
-    meta = await loadMeta({
+    const {contents, parameters} = await loadMeta({
       inputPath: options.input,
       verbose: options.verbose,
       mainProcess,
     });
-    sortedPages = sortPages({ tableOfContents: meta.contents });
+    sortedPages = sortPages({ tableOfContents: contents });
     pages = await loadMarkdown({
       verbose: options.verbose,
-      contents: meta.contents,
+      contents,
       inputPath: options.input,
       mainProcess,
     });
     const derivedParameters = deriveParameters({
-      parameters: meta.parameters,
+      parameters: parameters,
       setVersion: options.setVersion,
       setReleaseDate: options.setReleaseDate,
       templates,
       mathMathjax: options.mathMathjax,
       mathKatex: options.mathKatex,
-      homeLink: meta.contents[0].pages[0],
+      homeLink: contents[0].pages[0],
     });
     const templateHtml = await processPages({
       pages,
       sortedPages,
       parameters: derivedParameters,
       options,
-      contents: meta.contents,
+      contents,
       templates
     });
     await writePages({
       inputPath: options.input,
       outputPath: options.output,
-      contents: meta.contents,
+      contents,
       templates,
       pages,
       pdfEnabled: options.pdf,
@@ -116,12 +107,17 @@ export function DocGen(process) {
       isRedirectEnabled: options.redirect,
       outputDirectory: options.output,
       redirectTemplate: templates.redirect,
-      homePage: meta.contents[0].pages[0],
+      homePage: contents[0].pages[0],
       verbose: options.verbose,
     });
     if (options.pdf === true) {
       await checkPdfVersion({ options, mainProcess });
-      await generatePdf({ options, meta, sortedPages, mainProcess });
+      await generatePdf({
+        options,
+        parameters,
+        sortedPages,
+        mainProcess
+      });
     } else {
       console.log(pico.green(pico.bold('Done!')));
     }
