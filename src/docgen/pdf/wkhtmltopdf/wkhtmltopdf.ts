@@ -25,7 +25,8 @@ const pdfOptions = [
 const getPdfArguments = ({
   parameters,
   options,
-  sortedPages}) => {
+  sortedPages
+}) => {
   let pdfName = parameters.name.toLowerCase() + '.pdf';
   pdfOptions.push(' --enable-local-file-access');
   pdfOptions.push(' --javascript-delay ' + options.pdfDelay); //code syntax highlight in wkhtmltopdf 0.12.2.1 fails without a delay (but why doesn't --no-stop-slow-scripts work?)

@@ -34,7 +34,7 @@ export const TableOfContents = ({
   name,
   pdfEnabled,
 }) => {
-  let pdfName = name.toLowerCase() + '.pdf';
+  const pdfName = name.toLowerCase() + '.pdf';
   return (
     <div>
       <table className="unstyled">
