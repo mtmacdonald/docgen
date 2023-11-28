@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { TableOfContents } from '../../components/web-table-of-contents/web-table-of-contents';
 import { Footer } from '../../components/footer/footer';
-import type { DerivedParameters } from '../../../types';
+import type { Parameters } from '../../../types';
 
 const Logo = ({
   parameters,
@@ -79,7 +79,7 @@ const WebFooter = ({parameters}) => {
 };
 
 type MainProps = {
-  parameters: DerivedParameters;
+  parameters: Parameters;
   sortedPages: any;
   pdfEnabled: boolean;
   children?: ReactNode;

@@ -15,7 +15,7 @@ export type Options = {
   redirect: boolean;
 };
 
-export type Parameters = {
+export type rawParameters = {
   title: string,
   name: string,
   version: string,
@@ -59,7 +59,7 @@ export type Parameters = {
   logoPath?: string
 };
 
-export type DerivedParameters = Parameters & {
+export type Parameters = rawParameters & {
   attribution: string,
   year: string
 };
@@ -78,7 +78,7 @@ export type Content = {
 
 export type Meta = {
   contents?: Content[];
-  parameters?: Parameters;
+  rawParameters?: Parameters;
 };
 
 export type Templates = {

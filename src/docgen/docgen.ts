@@ -8,7 +8,7 @@ import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
 import { deriveParameters } from './meta/derive-parameters';
-import { processTemplates, processPages } from './views/pages/process-pages';
+import { processPages } from './views/pages/process-pages';
 import { writePages } from './fs/write-pages';
 import { createRedirect } from './views/redirect';
 import { version } from '../../package.json';
@@ -59,14 +59,14 @@ export function DocGen(process) {
       options,
       mainProcess,
     });
-    const {contents, parameters} = await loadMeta({
+    const {contents, rawParameters} = await loadMeta({
       inputPath: options.input,
       verbose: options.verbose,
       mainProcess,
     });
     const sortedPages = sortPages({ contents });
-    const derivedParameters = deriveParameters({
-      parameters: parameters,
+    const parameters = deriveParameters({
+      rawParameters,
       setVersion: options.setVersion,
       setReleaseDate: options.setReleaseDate,
       homeLink: contents[0].pages[0],
@@ -80,7 +80,7 @@ export function DocGen(process) {
       templates,
       pages,
       sortedPages,
-      derivedParameters,
+      parameters,
       options,
       contents,
     });
@@ -91,11 +91,9 @@ export function DocGen(process) {
       mainProcess,
     });
     await createRedirect({
-      isRedirectEnabled: options.redirect,
-      outputDirectory: options.output,
+      options,
       redirectPage: hydratedPages.redirect,
       homePage: contents[0].pages[0],
-      verbose: options.verbose,
     });
     if (options.pdf === true) {
       await checkPdfVersion({ options, mainProcess });

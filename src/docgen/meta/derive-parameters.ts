@@ -1,11 +1,11 @@
 export const deriveParameters = ({
-  parameters,
+  rawParameters,
   setVersion,
   setReleaseDate,
   homeLink
 }) => {
-  const version = setVersion || parameters.version;
-  const releaseDate = setReleaseDate || parameters.date;
+  const version = setVersion || rawParameters.version;
+  const releaseDate = setReleaseDate || rawParameters.date;
   //the homepage is the first link in the first heading
   const homePagePath = `${homeLink.source.slice(0, homeLink.source.lastIndexOf('.'))}.html`;
   const currentDate = new Date();
@@ -15,7 +15,7 @@ export const deriveParameters = ({
   const attribution = `Created by DocGen ${version} on ${date} at ${time}.`;
   const webFooter = `Version ${version} released on ${releaseDate}`;
   return {
-    ...parameters,
+    ...rawParameters,
     attribution,
     year,
     webFooter,

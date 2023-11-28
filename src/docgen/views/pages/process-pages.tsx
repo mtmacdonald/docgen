@@ -9,7 +9,7 @@ import { PdfCover } from "./cover/pdf-cover";
 import { PdfFooter } from "../components/pdf-footer/pdf-footer";
 
 export const processTemplates = ({
-                                   derivedParameters,
+  parameters,
   mathMathjax,
   mathKatex,
   templates: rawTemplates,
@@ -20,7 +20,7 @@ export const processTemplates = ({
   for (let key in templates) {
     if (templates.hasOwnProperty(key)) {
       let $ = templates[key];
-      $('title').text(derivedParameters.title);
+      $('title').text(parameters.title);
     }
   }
   if (mathKatex === true) {
@@ -55,12 +55,12 @@ export const processPages = async ({
   templates,
   pages: rawPages,
   sortedPages,
-  derivedParameters,
+  parameters,
   options,
   contents,
 }) => {
   const hydratedTemplates = processTemplates({
-    derivedParameters,
+    parameters,
     templates,
     mathMathjax: options.mathMathjax,
     mathKatex: options.mathKatex,
@@ -80,7 +80,7 @@ export const processPages = async ({
       let $ = cheerio.load(mainTemplate.html()); //clone
       const htmlPage = toHTML(
         <Main
-          parameters={derivedParameters}
+          parameters={parameters}
           sortedPages={sortedPages}
           pdfEnabled={pdfEnabled}
         />
@@ -137,12 +137,12 @@ export const processPages = async ({
   });
   const webCoverHtml = toHTML(
     <Main
-      parameters={derivedParameters}
+      parameters={parameters}
       sortedPages={sortedPages}
       pdfEnabled={pdfEnabled}
     >
       <Cover
-        parameters={derivedParameters}
+        parameters={parameters}
       />
     </Main>
   );
@@ -152,7 +152,7 @@ export const processPages = async ({
   $('body').html(webCoverHtml);
 
   const pdfCoverHtml = toHTML(
-    <PdfCover parameters={derivedParameters} />
+    <PdfCover parameters={parameters} />
   );
   let $Pdf = cheerio.load(pdfCoverTemplate.html());
   let pdfCoverStyles = cheerio.load(pdfCoverTemplate.html());
@@ -160,7 +160,7 @@ export const processPages = async ({
   $Pdf('body').html(pdfCoverHtml);
 
   const pdfFooterHtml = toHTML(
-    <PdfFooter parameters={derivedParameters} />
+    <PdfFooter parameters={parameters} />
   );
   let $PdfFooter = cheerio.load(pdfFooterTemplate.html());
   let pdfFooterStyles = cheerio.load(pdfFooterTemplate.html());
