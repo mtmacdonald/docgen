@@ -7,7 +7,8 @@ import { loadMarkdown } from './fs/markdown';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
-import { deriveParameters, processPages } from './views/pages/process-pages';
+import { deriveParameters } from './meta/derive-parameters';
+import { processTemplates, processPages } from './views/pages/process-pages';
 import { writePages } from './fs/write-pages';
 import { createRedirect } from './views/redirect';
 import { version } from '../../package.json';
@@ -21,8 +22,6 @@ import type {
 export function DocGen(process) {
   let mainProcess = process;
   let options;
-  let pages = {};
-  let sortedPages = {};
 
   this.getVersion = () => {
     return version;
@@ -67,21 +66,24 @@ export function DocGen(process) {
       verbose: options.verbose,
       mainProcess,
     });
-    sortedPages = sortPages({ tableOfContents: contents });
-    pages = await loadMarkdown({
+    const sortedPages = sortPages({ tableOfContents: contents });
+    const derivedParameters = deriveParameters({
+      parameters: parameters,
+      setVersion: options.setVersion,
+      setReleaseDate: options.setReleaseDate,
+      homeLink: contents[0].pages[0],
+    });
+    const pages = await loadMarkdown({
       verbose: options.verbose,
       contents,
       inputPath: options.input,
       mainProcess,
     });
-    const derivedParameters = deriveParameters({
+    processTemplates({
       parameters: parameters,
-      setVersion: options.setVersion,
-      setReleaseDate: options.setReleaseDate,
       templates,
       mathMathjax: options.mathMathjax,
       mathKatex: options.mathKatex,
-      homeLink: contents[0].pages[0],
     });
     const templateHtml = await processPages({
       pages,

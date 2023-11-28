@@ -7,27 +7,12 @@ import { toHTML } from "../html";
 import { PdfCover } from "./cover/pdf-cover";
 import { PdfFooter } from "../components/pdf-footer/pdf-footer";
 
-export const deriveParameters = ({
+export const processTemplates = ({
   parameters,
-  setVersion,
-  setReleaseDate,
   mathMathjax,
   mathKatex,
   templates,
-  homeLink
 }) => {
-  const version = setVersion || parameters.version;
-  const releaseDate = setReleaseDate || parameters.date;
-  //the homepage is the first link in the first heading
-  const homePagePath = `${homeLink.source.slice(0, homeLink.source.lastIndexOf('.'))}.html`;
-
-  const currentDate = new Date();
-  const date = currentDate.toLocaleDateString('en-GB'); // 'DD/MM/YYYY'
-  const time = currentDate.toLocaleTimeString('en-US', { hour12: false }); // 'HH:mm:ss'
-  const year = currentDate.getFullYear().toString(); // 'YYYY'
-  const attribution = `Created by DocGen ${version} on ${date} at ${time}.`;
-  const webFooter = `Version ${version} released on ${releaseDate}`;
-
   //Todo: better way of dynamically setting template <head>
   for (let key in templates) {
     if (templates.hasOwnProperty(key)) {
@@ -59,15 +44,6 @@ export const deriveParameters = ({
           src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>`,
     );
-  }
-  return {
-    ...parameters,
-    attribution,
-    year,
-    webFooter,
-    version,
-    releaseDate,
-    homePagePath
   }
 };
 
