@@ -35,7 +35,7 @@ const Header = ({parameters}) => {
                   {parameters.title}
                 </span>
                 <span id="dg-web-title-version" style={{fontWeight: 'normal'}}>
-                  &nbsp;({parameters.releaseVersion})
+                  &nbsp;({parameters.version})
                 </span>
               </a>
               <div id="headerSponsor">

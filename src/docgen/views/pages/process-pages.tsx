@@ -14,9 +14,10 @@ export const deriveParameters = ({
   mathMathjax,
   mathKatex,
   templates,
-  version,
   homeLink
 }) => {
+  const version = setVersion || parameters.version;
+  const releaseDate = setReleaseDate || parameters.date;
   //the homepage is the first link in the first heading
   const homePagePath = `${homeLink.source.slice(0, homeLink.source.lastIndexOf('.'))}.html`;
 
@@ -24,21 +25,10 @@ export const deriveParameters = ({
   const date = currentDate.toLocaleDateString('en-GB'); // 'DD/MM/YYYY'
   const time = currentDate.toLocaleTimeString('en-US', { hour12: false }); // 'HH:mm:ss'
   const year = currentDate.getFullYear().toString(); // 'YYYY'
-  let attribution =
-    'Created by DocGen ' + version + ' on ' + date + ' at ' + time + '.';
+  const attribution = `Created by DocGen ${version} on ${date} at ${time}.`;
+  const webFooter = `Version ${version} released on ${releaseDate}`;
 
-  let releaseVersion = parameters.version;
-  if (setVersion !== false) {
-    releaseVersion = setVersion;
-  }
-  let releaseDate = parameters.date;
-  if (setReleaseDate !== false) {
-    releaseDate = setReleaseDate;
-  }
-
-  const webFooter =
-    'Version ' + releaseVersion + ' released on ' + releaseDate + '.';
-
+  //Todo: better way of dynamically setting template <head>
   for (let key in templates) {
     if (templates.hasOwnProperty(key)) {
       let $ = templates[key];
@@ -75,8 +65,8 @@ export const deriveParameters = ({
     attribution,
     year,
     webFooter,
+    version,
     releaseDate,
-    releaseVersion,
     homePagePath
   }
 };

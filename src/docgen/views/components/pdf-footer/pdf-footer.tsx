@@ -13,7 +13,7 @@ export const PdfFooter = ({
         <tr>
           <td>
             <span id="dg-title">{parameters.title}</span>&nbsp;
-            (<span id="dg-web-title-version">{parameters.releaseVersion}</span>)
+            (<span id="dg-web-title-version">{parameters.version}</span>)
           </td>
           <td>
             <Copyright parameters={parameters} />

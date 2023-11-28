@@ -90,7 +90,6 @@ export function DocGen(process) {
       templates,
       mathMathjax: options.mathMathjax,
       mathKatex: options.mathKatex,
-      version,
       homeLink: meta.contents[0].pages[0],
     });
     const templateHtml = await processPages({
