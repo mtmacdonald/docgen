@@ -80,18 +80,14 @@ export function DocGen(process) {
       templates,
       pages,
       sortedPages,
-      parameters: derivedParameters,
+      derivedParameters,
       options,
       contents,
     });
     await writePages({
-      inputPath: options.input,
-      outputPath: options.output,
+      options,
       contents,
       hydratedPages,
-      pdfEnabled: options.pdf,
-      mathKatex: options.mathKatex,
-      verbose: options.verbose,
       mainProcess,
     });
     await createRedirect({

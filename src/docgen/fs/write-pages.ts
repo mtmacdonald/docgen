@@ -2,13 +2,9 @@ import pico from 'picocolors'
 import { copyDirectory, makeDirectory, writeFile } from "./fs";
 
 export const writePages = async ({
-  inputPath,
-  outputPath,
+  options,
   hydratedPages,
   contents,
-  pdfEnabled,
-  mathKatex,
-  verbose,
   mainProcess,
 }) => {
   console.log(pico.green('Writing the web page files'));
@@ -18,18 +14,18 @@ export const writePages = async ({
       section.pages.forEach((page) => {
         let key = page.source;
         let name = key.substr(0, page.source.lastIndexOf('.'));
-        let path = outputPath + name + '.html';
+        let path = options.output + name + '.html';
         let html = hydratedPages.pages[key];
         promises[key] = writeFile(path, html);
       });
     });
     //add extra files
     promises['ownership'] = writeFile(
-      outputPath + 'ownership.html',
+      options.output + 'ownership.html',
       hydratedPages.webCover,
     );
-    if (pdfEnabled) {
-      let pdfTempDir = outputPath + 'temp/';
+    if (options.pdfEnabled) {
+      let pdfTempDir = options.output + 'temp/';
       await makeDirectory(pdfTempDir);
       promises['docgenPdfCover'] = writeFile(
         pdfTempDir + 'pdfCover.html',
@@ -46,24 +42,24 @@ export const writePages = async ({
     }
     await copyDirectory(
       __dirname + '/../../include/require',
-      outputPath + 'require',
-      verbose,
+      options.output + 'require',
+      options.verbose,
     ); //CSS, JavaScript
     await copyDirectory(
-      inputPath + 'files',
-      outputPath + 'files',
-      verbose,
+      options.input + 'files',
+      options.output + 'files',
+      options.verbose,
     ); //user-attached files and images
-    if (mathKatex === true) {
+    if (options.mathKatex === true) {
       await copyDirectory(
         __dirname + '/../../include/optional/katex',
-        outputPath + 'require/katex',
-        verbose,
+        options.output + 'require/katex',
+        options.verbose,
       );
     }
   } catch (error) {
     console.log(pico.red('Error writing the web page files'));
-    if (verbose === true) {
+    if (options.verbose === true) {
       console.log(pico.red(error));
     }
     mainProcess.exit(1);
