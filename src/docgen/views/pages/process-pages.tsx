@@ -43,9 +43,6 @@ export const deriveParameters = ({
     if (templates.hasOwnProperty(key)) {
       let $ = templates[key];
       $('title').text(parameters.title);
-      $('#dg-version').text(releaseVersion);
-      $('#dg-web-title-version').text('(' + releaseVersion + ')');
-      $('#dg-release-date').text(releaseDate);
     }
   }
   if (mathKatex === true) {
