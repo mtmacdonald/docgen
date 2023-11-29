@@ -24,7 +24,7 @@ export const writePages = async ({
       options.output + 'ownership.html',
       hydratedPages.webCover,
     );
-    if (options.pdfEnabled) {
+    if (options.pdf) {
       let pdfTempDir = options.output + 'temp/';
       await makeDirectory(pdfTempDir);
       await writeFile(
