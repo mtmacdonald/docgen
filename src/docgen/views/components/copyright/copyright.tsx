@@ -5,7 +5,7 @@ export const Copyright = ({
 }) => {
   return (
     <span id="dg-copyright">
-          &copy; {parameters.year} &nbsp;
+      &copy; {parameters.year}&nbsp;
       {parameters?.organization?.url ? (
         <a href={parameters.organization.url}>{parameters.organization.name}</a>
       ) : parameters?.organization?.nmee ? (
