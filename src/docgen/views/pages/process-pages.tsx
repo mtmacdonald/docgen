@@ -78,26 +78,18 @@ export const processPages = async ({
   tableOfContents.forEach((section) => {
     section.pages.forEach((page) => {
       let $ = cheerio.load(mainTemplate.html()); //clone
+      let key = page.source;
       const htmlPage = toHTML(
         <Main
           parameters={parameters}
           sortedPages={sortedPages}
           pdfEnabled={pdfEnabled}
+          fixedWidth={page.html !== true}
         />
       );
       $('body').html(htmlPage);
-      let key = page.source;
-      let content = pages[key];
-      //add relevant container
-      if (page.html === true) {
-        //raw HTML pages should not be confined to the fixed width
-        $('#dg-content').html('<div id="dg-innerContent"></div>');
-      } else {
-        //Markdown pages should be confined to the fixed width
-        $('#dg-content').html(
-          '<div class="w-fixed-width"><div id="dg-innerContent"></div></div>',
-        );
-      }
+      //Todo: render the Markdown directly inside the React component
+      const content = pages[key];
       $('#dg-innerContent').html(content);
       //------------------------------------------------------------------------------------------------------
       //insert permalinks for every page heading

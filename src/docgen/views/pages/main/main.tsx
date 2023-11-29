@@ -82,6 +82,7 @@ type MainProps = {
   parameters: Parameters;
   sortedPages: any;
   pdfEnabled: boolean;
+  fixedWidth?: boolean;
   children?: ReactNode;
 };
 
@@ -89,6 +90,7 @@ export const Main = ({
   parameters,
   sortedPages,
   pdfEnabled,
+  fixedWidth,
   children,
 }: MainProps) => {
   const {
@@ -106,7 +108,17 @@ export const Main = ({
       <div id="dg-navigator">Table of contents</div>
       <Header parameters={parameters} />
       <section id="dg-content">
-        {children}
+        {fixedWidth ? (
+          <div className="w-fixed-width">
+            <div id="dg-innerContent">
+            {children}
+            </div>
+          </div>
+        ) : (
+          <div id="dg-innerContent">
+            {children}
+          </div>
+        )}
       </section>
       <WebFooter parameters={parameters} />
     </>
