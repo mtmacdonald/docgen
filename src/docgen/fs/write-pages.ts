@@ -9,33 +9,33 @@ export const writePages = async ({
 }) => {
   console.log(pico.green('Writing the web page files'));
   try {
-    let promises = {};
-    contents.forEach((section) => {
-      section.pages.forEach((page) => {
-        let key = page.source;
-        let name = key.substr(0, page.source.lastIndexOf('.'));
-        let path = options.output + name + '.html';
-        let html = hydratedPages.pages[key];
-        promises[key] = writeFile(path, html);
-      });
-    });
+    const promises = contents.flatMap((section) =>
+      section.pages.map((page) => {
+        const key = page.source;
+        const name = key.substr(0, page.source.lastIndexOf('.'));
+        const path = options.output + name + '.html';
+        const html = hydratedPages.pages[key];
+        return writeFile(path, html);
+      })
+    );
+    await Promise.all(promises);
     //add extra files
-    promises['ownership'] = writeFile(
+    await writeFile(
       options.output + 'ownership.html',
       hydratedPages.webCover,
     );
     if (options.pdfEnabled) {
       let pdfTempDir = options.output + 'temp/';
       await makeDirectory(pdfTempDir);
-      promises['docgenPdfCover'] = writeFile(
+      await writeFile(
         pdfTempDir + 'pdfCover.html',
         hydratedPages.pdfCover,
       );
-      promises['docgenPdfHeader'] = writeFile(
+      await writeFile(
         pdfTempDir + 'pdfHeader.html',
         hydratedPages.pdfHeader,
       );
-      promises['docgenPdfFooter'] = writeFile(
+      await writeFile(
         pdfTempDir + 'pdfFooter.html',
         hydratedPages.pdfFooter,
       );
