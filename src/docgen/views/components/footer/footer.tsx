@@ -10,9 +10,9 @@ export const Footer = ({
         <Copyright parameters={parameters} />
       </p>
       <p>
-        <span id="dg-marking">{parameters.marking}</span>
-        <span id="dg-legalese">{parameters.legalese}</span>
-        <span id="dg-attribution">{parameters.attribution}</span>
+        <span>
+          {parameters.marking} {parameters.legalese} {parameters.attribution}
+        </span>
       </p>
     </>
   );
