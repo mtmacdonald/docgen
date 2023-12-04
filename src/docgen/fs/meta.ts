@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import { readFile } from "./fs";
 import { validateJSON } from "../validation/validation";
 import type { Meta } from '../types';
@@ -12,7 +12,7 @@ export const loadMeta = async ({
     parameters: null,
     contents: null,
   };
-  console.log(chalk.green('Loading required JSON metadata files'));
+  console.log(pico.green('Loading required JSON metadata files'));
   try {
     let files = {
       parameters: await readFile(inputPath + '/parameters.json'),
@@ -29,12 +29,12 @@ export const loadMeta = async ({
           }
         } catch (error) {
           console.log(
-            chalk.red(
+            pico.red(
               'Error parsing required file: ' + key + '.json (invalid JSON)',
             ),
           );
           if (verbose === true) {
-            console.log(chalk.red(error));
+            console.log(pico.red(error));
           }
           mainProcess.exit(1);
         }
@@ -47,11 +47,14 @@ export const loadMeta = async ({
       pages: [{ title: 'Release notes', source: 'release-notes.md' }],
     };
     meta.contents.push(extra);
-    return meta;
+    return {
+      rawParameters: meta.parameters,
+      contents: meta.contents
+    };
   } catch (error) {
-    console.log(chalk.red('Error loading required JSON metadata files'));
+    console.log(pico.red('Error loading required JSON metadata files'));
     if (verbose === true) {
-      console.log(chalk.red(error));
+      console.log(pico.red(error));
     }
     mainProcess.exit(1);
   }

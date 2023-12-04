@@ -1,5 +1,5 @@
 import schemaValidator from 'z-schema';
-import chalk from 'chalk';
+import pico from 'picocolors'
 
 const schemas = {
   parameters: {
@@ -95,6 +95,7 @@ const schemas = {
       summary: { type: 'string' },
       marking: { type: 'string' },
       legalese: { type: 'string' },
+      logoPath: { type: 'string' },
     },
   },
   contents: {
@@ -137,12 +138,12 @@ export const validateJSON = ({key, data, verbose}) => {
   let valid = validator.validate(data, schema);
   if (!valid) {
     console.log(
-      chalk.red(
+      pico.red(
         `Error parsing required file: ${key}.json (failed schema validation)`
       ),
     );
     if (verbose === true) {
-      console.log(chalk.red(validator.getLastError()));
+      console.log(pico.red(validator.getLastError().message));
     }
   }
   return valid;

@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pico from 'picocolors'
 import path from 'path';
 import { cleanDirectory } from "./fs/fs";
 import { loadMeta } from './fs/meta';
@@ -7,32 +7,19 @@ import { loadMarkdown } from './fs/markdown';
 import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
-import { generateWebTableOfContents } from './html/web-table-of-contents';
-import { insertParameters, processPages } from './html/process-pages';
+import { deriveParameters } from './meta/derive-parameters';
+import { processPages } from './views/pages/process-pages';
 import { writePages } from './fs/write-pages';
-import { createRedirect } from './html/redirect';
+import { createRedirect } from './views/redirect';
 import { version } from '../../package.json';
 
 import type {
   Options,
-  Templates,
-  Meta
 } from './types';
 
 export function DocGen(process) {
   let mainProcess = process;
   let options;
-  let templates: Templates = {
-    main: '',
-    redirect: '',
-    webCover: '',
-    pdfCover: '',
-    pdfHeader: '',
-    pdfFooter: '',
-  };
-  let meta: Meta = {};
-  let pages = {};
-  let sortedPages = {};
 
   this.getVersion = () => {
     return version;
@@ -65,72 +52,59 @@ export function DocGen(process) {
     });
 
   this.run = async () => {
-    console.log(chalk.green.bold('DocGen version ' + version));
+    console.log(pico.green(pico.bold('DocGen version ' + version)));
     //delete and recreate the output directory
     await cleanDirectory(options.output, options.verbose);
-    templates = await loadTemplates({
-      verbose: options.verbose,
+    const templates = await loadTemplates({
+      options,
       mainProcess,
     });
-    meta = await loadMeta({
+    const {contents, rawParameters} = await loadMeta({
       inputPath: options.input,
       verbose: options.verbose,
       mainProcess,
     });
-    sortedPages = sortPages({ tableOfContents: meta.contents });
-    pages = await loadMarkdown({
-      verbose: options.verbose,
-      contents: meta.contents,
-      inputPath: options.input,
-      mainProcess,
-    });
-    templates.main = generateWebTableOfContents({
-      sortedPages,
-      name: meta.parameters.name,
-      mainTemplate: templates.main,
-      pdfEnabled: options.pdf,
-    });
-    insertParameters({
-      inputPath: options.input,
-      parameters: meta.parameters,
+    const sortedPages = sortPages({ contents });
+    const parameters = deriveParameters({
+      rawParameters,
       setVersion: options.setVersion,
       setReleaseDate: options.setReleaseDate,
-      templates,
-      mathMathjax: options.mathMathjax,
-      mathKatex: options.mathKatex,
-      version,
-      homeLink: meta.contents[0].pages[0],
+      homeLink: contents[0].pages[0],
     });
-    templates.webCover = await processPages({
+    const pages = await loadMarkdown({
+      options,
+      contents,
+      mainProcess,
+    });
+    const hydratedPages = await processPages({
+      templates,
       pages,
-      pageTableOfContentsEnabled: options.pageToc,
-      tableOfContents: meta.contents,
-      mainTemplate: templates.main,
-      webCover: templates.webCover,
+      sortedPages,
+      parameters,
+      options,
+      contents,
     });
     await writePages({
-      inputPath: options.input,
-      outputPath: options.output,
-      contents: meta.contents,
-      templates,
-      pages,
-      pdfEnabled: options.pdf,
-      mathKatex: options.mathKatex,
-      verbose: options.verbose,
+      options,
+      contents,
+      hydratedPages,
       mainProcess,
     });
     await createRedirect({
-      isRedirectEnabled: options.redirect,
-      outputDirectory: options.output,
-      redirectTemplate: templates.redirect,
-      homePage: meta.contents[0].pages[0],
-      verbose: options.verbose,
+      options,
+      redirectPage: hydratedPages.redirect,
+      homePage: contents[0].pages[0],
     });
     if (options.pdf === true) {
       await checkPdfVersion({ options, mainProcess });
-      await generatePdf({ options, meta, sortedPages, mainProcess });
+      await generatePdf({
+        options,
+        parameters,
+        sortedPages,
+        mainProcess
+      });
     } else {
-      console.log(chalk.green.bold('Done!'));
+      console.log(pico.green(pico.bold('Done!')));
     }
   };
 }

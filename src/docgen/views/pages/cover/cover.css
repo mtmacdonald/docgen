@@ -1,16 +1,14 @@
-<style>
-
-#dg-coverInfo {
+.dgCoverInfo {
   margin-top: 100px;
   margin-bottom: 50px;
   width: 100%;
 }
 
-#dg-coverInfo {
+.dgCoverInfo {
   border-collapse: separate; /*http://stackoverflow.com/questions/7625586/*/
 }
 
-#dg-coverInfo th {
+.dgCoverInfo th {
   background-color: rgb(46, 113, 225);
   color: white;
   font-size: 34px;
@@ -19,7 +17,7 @@
   border-radius: 10px 10px 0 0;
 }
 
-#dg-coverInfo tr td {
+.dgCoverInfo tr td {
   border-top: 2px solid rgb(46, 113, 225);
   border-left: 2px solid rgb(46, 113, 225);
   border-bottom: none;
@@ -28,16 +26,14 @@
   padding-bottom: 20px;
 }
 
-#dg-coverInfo td:last-child {
+.dgCoverInfo td:last-child {
   border-right: 2px solid rgb(46, 113, 225);
 }
 
-#dg-coverInfo .dg-finalRow td {
+.dgCoverInfo .dgFinalRow td {
   border-bottom: 2px solid rgb(46, 113, 225);
 }
 
-#dg-summary {
+.dgSummary {
   margin-bottom: 100px;
 }
-
-</style>
