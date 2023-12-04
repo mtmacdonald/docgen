@@ -1,4 +1,8 @@
-﻿## DocGen 3.4.0 06/11/2023
+﻿## DocGen 3.5.0 04/12/2023
+
+- modernise view code (use React templates)
+
+## DocGen 3.4.0 06/11/2023
 
 - modernise code (convert to TypeScript and split into modules)
 
