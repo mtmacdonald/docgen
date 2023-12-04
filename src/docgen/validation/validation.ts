@@ -95,6 +95,7 @@ const schemas = {
       summary: { type: 'string' },
       marking: { type: 'string' },
       legalese: { type: 'string' },
+      logoPath: { type: 'string' },
     },
   },
   contents: {

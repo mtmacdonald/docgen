@@ -2,69 +2,64 @@ import pico from 'picocolors'
 import { copyDirectory, makeDirectory, writeFile } from "./fs";
 
 export const writePages = async ({
-  inputPath,
-  outputPath,
-  templates,
-  pages,
+  options,
+  hydratedPages,
   contents,
-  pdfEnabled,
-  mathKatex,
-  verbose,
-  mainProcess
+  mainProcess,
 }) => {
   console.log(pico.green('Writing the web page files'));
   try {
-    let promises = {};
-    contents.forEach((section) => {
-      section.pages.forEach((page) => {
-        let key = page.source;
-        let name = key.substr(0, page.source.lastIndexOf('.'));
-        let path = outputPath + name + '.html';
-        let html = pages[key].html();
-        promises[key] = writeFile(path, html);
-      });
-    });
-    //add extra files
-    promises['ownership'] = writeFile(
-      outputPath + 'ownership.html',
-      templates.webCover.html(),
+    const promises = contents.flatMap((section) =>
+      section.pages.map((page) => {
+        const key = page.source;
+        const name = key.substr(0, page.source.lastIndexOf('.'));
+        const path = options.output + name + '.html';
+        const html = hydratedPages.pages[key];
+        return writeFile(path, html);
+      })
     );
-    if (pdfEnabled) {
-      let pdfTempDir = outputPath + 'temp/';
+    await Promise.all(promises);
+    //add extra files
+    await writeFile(
+      options.output + 'ownership.html',
+      hydratedPages.webCover,
+    );
+    if (options.pdf) {
+      let pdfTempDir = options.output + 'temp/';
       await makeDirectory(pdfTempDir);
-      promises['docgenPdfCover'] = writeFile(
+      await writeFile(
         pdfTempDir + 'pdfCover.html',
-        templates.pdfCover.html(),
+        hydratedPages.pdfCover,
       );
-      promises['docgenPdfHeader'] = writeFile(
+      await writeFile(
         pdfTempDir + 'pdfHeader.html',
-        templates.pdfHeader.html(),
+        hydratedPages.pdfHeader,
       );
-      promises['docgenPdfFooter'] = writeFile(
+      await writeFile(
         pdfTempDir + 'pdfFooter.html',
-        templates.pdfFooter.html(),
+        hydratedPages.pdfFooter,
       );
     }
     await copyDirectory(
       __dirname + '/../../include/require',
-      outputPath + 'require',
-      verbose,
+      options.output + 'require',
+      options.verbose,
     ); //CSS, JavaScript
     await copyDirectory(
-      inputPath + 'files',
-      outputPath + 'files',
-      verbose,
+      options.input + 'files',
+      options.output + 'files',
+      options.verbose,
     ); //user-attached files and images
-    if (mathKatex === true) {
+    if (options.mathKatex === true) {
       await copyDirectory(
         __dirname + '/../../include/optional/katex',
-        outputPath + 'require/katex',
-        verbose,
+        options.output + 'require/katex',
+        options.verbose,
       );
     }
   } catch (error) {
     console.log(pico.red('Error writing the web page files'));
-    if (verbose === true) {
+    if (options.verbose === true) {
       console.log(pico.red(error));
     }
     mainProcess.exit(1);

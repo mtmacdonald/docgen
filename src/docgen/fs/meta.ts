@@ -47,7 +47,10 @@ export const loadMeta = async ({
       pages: [{ title: 'Release notes', source: 'release-notes.md' }],
     };
     meta.contents.push(extra);
-    return meta;
+    return {
+      rawParameters: meta.parameters,
+      contents: meta.contents
+    };
   } catch (error) {
     console.log(pico.red('Error loading required JSON metadata files'));
     if (verbose === true) {

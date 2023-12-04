@@ -4,7 +4,7 @@ import { readFile } from './fs';
 import type { Templates } from '../types';
 
 export const loadTemplates = async ({
-  verbose,
+  options,
   mainProcess
 }): Promise<Templates> => {
   const templates = {};
@@ -38,7 +38,7 @@ export const loadTemplates = async ({
     return templates;
   } catch (error) {
     console.log(pico.red('Error loading templates'));
-    if (verbose === true) {
+    if (options.verbose === true) {
       console.log(pico.red(error));
     }
     mainProcess.exit(1);

@@ -22,8 +22,12 @@ const pdfOptions = [
   ' --no-stop-slow-scripts',
 ];
 
-const getPdfArguments = ({meta, options, sortedPages}) => {
-  let pdfName = meta.parameters.name.toLowerCase() + '.pdf';
+const getPdfArguments = ({
+  parameters,
+  options,
+  sortedPages
+}) => {
+  let pdfName = parameters.name.toLowerCase() + '.pdf';
   pdfOptions.push(' --enable-local-file-access');
   pdfOptions.push(' --javascript-delay ' + options.pdfDelay); //code syntax highlight in wkhtmltopdf 0.12.2.1 fails without a delay (but why doesn't --no-stop-slow-scripts work?)
   pdfOptions.push(
@@ -86,9 +90,14 @@ export const checkPdfVersion = async ({options, mainProcess}) => {
   call wkhtmltopdf as an external executable
 */
 
-export const generatePdf = async ({options, meta, sortedPages, mainProcess}) => {
+export const generatePdf = async ({
+  options,
+  parameters,
+  sortedPages,
+  mainProcess
+}) => {
   console.log(pico.green('Creating the PDF copy (may take some time)'));
-  let args = getPdfArguments({options, meta, sortedPages});
+  let args = getPdfArguments({options, parameters, sortedPages});
   let wkhtmltopdf = spawn(options.wkhtmltopdfPath, args);
   let spinner = new cliSpinner(pico.green('   Processing... %s'));
   spinner.setSpinnerString('|/-\\');

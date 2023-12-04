@@ -27,7 +27,7 @@ a {
 
 </style>
 
-<script> /*from wkhtmltopdf documenation - substitutes in parameters like page numbers at runtime*/
+<script> /*from wkhtmltopdf documentation - substitutes in parameters like page numbers at runtime*/
 function subst() {
   var vars={};
   var x=document.location.search.substring(1).split('&');
@@ -42,18 +42,5 @@ function subst() {
 
 </head>
 <body onload="subst()">
-
-<div id="dg-footer">
- <table><thead></thead><tfoot></tfoot><tbody>
-  <tr>
-   <td><span id="dg-title"></span> <span id="dg-web-title-version"></span></td>
-   <td><span id="dg-copyright"></span></td>
-   <td>Page <span class="page"></span> of <span class="topage"></span></td>
-  </tr>
- </tbody></table>
-</div>
-
 </body>
 </html>
-
-
