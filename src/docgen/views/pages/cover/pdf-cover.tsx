@@ -25,7 +25,7 @@ export const PdfCover = ({
         </div>
       </div>
       <Cover parameters={parameters} />
-      <div id="dg-footer">
+      <div id="dg-pdf-cover-footer">
         <Footer parameters={parameters} />
       </div>
     </>

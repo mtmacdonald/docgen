@@ -37,3 +37,20 @@
 #dg-summary {
   margin-bottom: 100px;
 }
+
+/*---------*/
+
+html {
+  background: none;
+  min-height: 100%;
+}
+
+#dg-pdfLogo {
+  display: inline-block;
+  float: right;
+}
+
+#dg-pdf-cover-footer {
+  width: 100%;
+  text-align: center;
+}
