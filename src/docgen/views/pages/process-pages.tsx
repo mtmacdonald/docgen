@@ -72,7 +72,6 @@ export const processPages = async ({
   const mainTemplate = hydratedTemplates.main;
   const pdfCoverTemplate = hydratedTemplates.pdfCover;
   const pdfFooterTemplate = hydratedTemplates.pdfFooter;
-  const webCover = hydratedTemplates.webCover;
   const pdfEnabled = options.pdf;
   console.log(pico.green('Generating the static web content'));
   tableOfContents.forEach((section) => {
@@ -139,8 +138,6 @@ export const processPages = async ({
     </Main>
   );
   let $ = cheerio.load(mainTemplate.html());
-  let webCoverStyles = cheerio.load(webCover.html());
-  $('head').append(webCoverStyles('head').html());
   $('body').html(webCoverHtml);
 
   const pdfCoverHtml = toHTML(
