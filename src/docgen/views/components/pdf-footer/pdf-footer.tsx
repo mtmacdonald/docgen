@@ -5,7 +5,7 @@ export const PdfFooter = ({
   parameters
 }) => {
   return (
-    <div id="dg-footer">
+    <div id="dg-pdf-footer">
       <table>
         <thead></thead>
         <tfoot></tfoot>
