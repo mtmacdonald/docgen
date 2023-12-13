@@ -6,6 +6,7 @@ import { Main } from './main/main';
 import { Cover } from './cover/cover';
 import { toHTML } from "../html";
 import { PdfCover } from "./cover/pdf-cover";
+import { PdfHeader } from "../components/pdf-header/pdf-header";
 import { PdfFooter } from "../components/pdf-footer/pdf-footer";
 
 export const processTemplates = ({
@@ -71,6 +72,7 @@ export const processPages = async ({
   const tableOfContents = contents;
   const mainTemplate = hydratedTemplates.main;
   const pdfCoverTemplate = hydratedTemplates.pdfCover;
+  const pdfHeaderTemplate = hydratedTemplates.pdfHeader;
   const pdfFooterTemplate = hydratedTemplates.pdfFooter;
   const pdfEnabled = options.pdf;
   console.log(pico.green('Generating the static web content'));
@@ -144,16 +146,18 @@ export const processPages = async ({
     <PdfCover parameters={parameters} />
   );
   let $Pdf = cheerio.load(pdfCoverTemplate.html());
-  let pdfCoverStyles = cheerio.load(pdfCoverTemplate.html());
-  $Pdf('head').append(pdfCoverStyles('head').html());
   $Pdf('body').html(pdfCoverHtml);
+
+  const pdfHeaderHtml = toHTML(
+    <PdfHeader parameters={parameters} />
+  );
+  let $PdfHeader = cheerio.load(pdfHeaderTemplate.html());
+  $PdfHeader('body').html(pdfHeaderHtml);
 
   const pdfFooterHtml = toHTML(
     <PdfFooter parameters={parameters} />
   );
   let $PdfFooter = cheerio.load(pdfFooterTemplate.html());
-  let pdfFooterStyles = cheerio.load(pdfFooterTemplate.html());
-  $PdfFooter('head').append(pdfFooterStyles('head').html());
   $PdfFooter('body').html(pdfFooterHtml);
 
   return {
@@ -161,7 +165,7 @@ export const processPages = async ({
     redirect: hydratedTemplates.redirect,
     webCover: $.html(),
     pdfCover: $Pdf.html(),
-    pdfHeader: hydratedTemplates.pdfHeader.html(),
+    pdfHeader: $PdfHeader.html(),
     pdfFooter: $PdfFooter.html(),
   };
 };
