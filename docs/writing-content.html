@@ -1,47 +1,14 @@
 <!DOCTYPE html><html><head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--Prevent IE using compatibility mode on local or intranet pages. Do not put scripts before this line.-->
-  <meta name="viewport" content="width=device-width, user-scalable=yes"><!--Mobile device scaling-->
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
   <title>DocGen - a documentation tool</title>
 
-  <!--load stylesheets first (rationale: https://developers.google.com/speed/docs/best-practices/rtt#PutStylesBeforeScripts)-->
   <link rel="stylesheet" href="require/styles/framework.css" type="text/css">
   <link rel="stylesheet" href="require/styles/highlight.min.css" type="text/css">
-  <link rel="stylesheet" href="require/docgen.css" type="text/css">
   <link rel="stylesheet" href="require/print.css" media="print">
-
-  <!--load scripts second-->
-
   <script src="require/styles/framework.js"></script>
   <script src="require/styles/framework.icons.js"></script>
   <script src="require/styles/highlight.min.js"></script>
-
-  <!--inline scripts last-->
-
-<script type="text/javascript">
-
-$(document).ready( function () {
-  $("#dg-toc").hide(); //hide the table of contents
-
-  //instantiate an svg injector to show SVG icons
-  var injector = new svgInject();
-  injector.inject();
-
-  //code syntax highlighting
-  $('pre code, .w-inline-code').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
-
-  //toggle visibility of table of contents
-  $("#dg-navigator").click(function()
-  {
-    console.log('navigator click');
-    $("#dg-toc").slideToggle("fast");
-    $(this).toggleClass("active");
-  });
-
-});
-</script>
 
 <script type="text/x-mathjax-config">
 //MathJax configuration is the same as used by math.stackexchange.com
@@ -54,7 +21,7 @@ MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX",
 
 <link rel="stylesheet" href="require/katex/katex.min.css" type="text/css"><script type="text/javascript" src="require/katex/katex.min.js"></script><script type="text/javascript" src="require/katexInjector.js"></script><script type="text/javascript" id="MathJax-script" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
         </script></head>
-<body><div id="dg-toc"><div><table class="unstyled"><tbody><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="markdown.html">Markdown reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><a class="button whiteInverted" style="text-decoration:none" href="docgen.pdf">PDF</a></div></td></tr></tbody></table></div></div><div id="dg-navigator">Table of contents</div><header><div class="w-fixed-width header-container"><div class="header"><div class="headerLeftBlock"><a class="dg-homelink" href="index.html"><img style="margin-right:25px" src="files/images/logo.svg"></a><div id="headerLeftText"><a class="dg-homelink" href="index.html"><span id="dg-title">DocGen - a documentation tool</span><span id="dg-web-title-version" style="font-weight:normal">&nbsp;(3.5.0)</span></a><div id="headerSponsor"><span>Sponsored by</span><a href="https://www.inkit.com"><img id="sponsorLogo" src="files/images/inkit-logo-small.svg" alt="sponsor logo"></a></div></div></div><div id="headerRightBlock"><span id="dg-backlink"><a class="button inverted" href="https://www.inkit.com/contact-us">Contact Inkit</a></span></div></div></div></header><section id="dg-content"><div class="w-fixed-width"><div id="dg-innerContent"><h1 id="dg-autoTitle">Writing content</h1><style>
+<body><div id="dg-toc"><div><table class="unstyled"><tbody><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li><li><a href="installation.html">Installation</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">User Guide</li><li><a href="running.html">Running DocGen</a></li><li><a href="writing-content.html">Writing content</a></li><li><a href="markdown.html">Markdown reference</a></li><li><a href="advanced-content.html">Advanced content</a></li></ul></td><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Help</li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="version-control.html">Using with version control</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div><a class="button whiteInverted" style="text-decoration:none" href="docgen.pdf">PDF</a></div></td></tr></tbody></table></div></div><div id="dg-navigator">Table of contents</div><header><div class="w-fixed-width header-container"><div class="header"><div class="headerLeftBlock"><a class="dg-homelink" href="index.html"><img style="margin-right:25px" src="files/images/logo.svg"></a><div id="headerLeftText"><a class="dg-homelink" href="index.html"><span id="dg-title">DocGen - a documentation tool</span><span id="dg-web-title-version" style="font-weight:normal">&nbsp;(3.6.0)</span></a><div id="headerSponsor"><span>Sponsored by</span><a href="https://www.inkit.com"><img id="sponsorLogo" src="files/images/inkit-logo-small.svg" alt="sponsor logo"></a></div></div></div><div id="headerRightBlock"><span id="dg-backlink"><a class="button inverted" href="https://www.inkit.com/contact-us">Contact Inkit</a></span></div></div></div></header><section id="dg-content"><div class="w-fixed-width"><div id="dg-innerContent"><h1 id="dg-autoTitle">Writing content</h1><style>
 .container {
   box-sizing: border-box;
   float:left;
@@ -275,4 +242,4 @@ f(n) = \begin{cases}
     \end{cases}
 $$
 </div><br class="w-clear">
-</div></div></section><footer><div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.5.0 released on 04/12/2023</span></p></div><div class="w-fixed-width"><p><span id="dg-copyright">© 2023&nbsp;<a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p><p><span>MIT License.  Created by DocGen 3.5.0 on 04/12/2023 at 18:43:52.</span></p></div></footer></body></html>
+</div></div></section><footer><div><p class="w-fixed-width"><span id="dg-web-footer">Version 3.6.0 released on 14/12/2023</span></p></div><div class="w-fixed-width"><p><span id="dg-copyright">© 2023&nbsp;<a href="https://www.inkit.com">Inkit Inc. and contributors</a></span></p><p><span>MIT License.  Created by DocGen 3.6.0 on 14/12/2023 at 17:41:38.</span></p></div></footer></body></html>

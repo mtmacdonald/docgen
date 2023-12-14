@@ -84,7 +84,6 @@ export type Meta = {
 export type Templates = {
   main?: string|TCheerioAPI,
   redirect?: string|TCheerioAPI,
-  webCover?: string|TCheerioAPI,
   pdfCover?: string|TCheerioAPI,
   pdfHeader?: string|TCheerioAPI,
   pdfFooter?: string|TCheerioAPI,
