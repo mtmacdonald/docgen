@@ -15,9 +15,6 @@ export const loadTemplates = async ({
       redirect: await readFile(
         __dirname + '/../../include/templates/redirect.html',
       ),
-      webCover: await readFile(
-        __dirname + '/../../include/templates/webCover.html',
-      ),
       pdfCover: await readFile(
         __dirname + '/../../include/templates/pdfCover.html',
       ),

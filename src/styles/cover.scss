@@ -1,5 +1,3 @@
-<style>
-
 #dg-coverInfo {
   margin-top: 100px;
   margin-bottom: 50px;
@@ -40,4 +38,45 @@
   margin-bottom: 100px;
 }
 
-</style>
+/*
+  PDF header
+*/
+
+#dg-pdf-header {
+  text-align:right;
+}
+
+/*
+  PDF cover
+*/
+
+#dg-pdfLogo {
+  display: inline-block;
+  float: right;
+}
+
+#dg-pdf-cover-footer {
+  width: 100%;
+  text-align: center;
+}
+
+/*
+  PDF footer
+*/
+
+#dg-pdf-footer {
+  border-top: 1px solid #385691;
+  padding-top: 10px;
+}
+
+#dg-pdf-footer table {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+#dg-pdf-footer a {
+  text-decoration: none;
+  color: #444;
+}

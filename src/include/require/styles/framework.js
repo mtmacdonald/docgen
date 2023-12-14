@@ -5418,3 +5418,22 @@ function svgInject() {
     });
   };
 }
+
+$(document).ready(() => {
+  $('#dg-toc').hide(); //hide the table of contents
+
+  //instantiate svg injector to show SVG icons
+  const injector = new svgInject();
+  injector.inject();
+
+  //code syntax highlighting
+  $('pre code, .w-inline-code').each((i, block) => {
+    hljs.highlightBlock(block);
+  });
+
+  //toggle visibility of table of contents
+  $('#dg-navigator').click(() => {
+    $('#dg-toc').slideToggle('fast');
+    $(this).toggleClass('active');
+  });
+});
