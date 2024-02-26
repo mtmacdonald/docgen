@@ -12,7 +12,7 @@
 
 .w-icon svg {
 	margin: 0;
-  	fill: $brand-primary-color;
+  	//fill: $brand-primary-color;
 }
 
 /*table icons*/
@@ -34,9 +34,9 @@
 		padding: 0;
 		margin:0;
 
-		> svg {
-			fill: $text;
-		}
+		//> svg {
+		//	fill: $text;
+		//}
 	}
 
 	span:nth-child(2) {
