@@ -1,4 +1,8 @@
-﻿## DocGen 3.6.0 14/12/2023
+﻿## DocGen 3.7.0 28/02/2024
+
+- modernize icons (ship with [Tabler Icons](https://tablericons.com) built-in)
+
+## DocGen 3.6.0 14/12/2023
 
 - simplify and improve styles layer
 
