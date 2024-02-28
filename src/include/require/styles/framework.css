@@ -972,6 +972,27 @@ button .icon svg,
 /*
  icons
 */
+.dgIcon.small svg {
+  width: 20px;
+  height: 20px;
+}
+.dgIcon.large svg {
+  width: 36px;
+  height: 36px;
+}
+.dgIcon.success svg {
+  color: #3c8039;
+}
+.dgIcon.warning svg {
+  color: #987924;
+}
+.dgIcon.error svg {
+  color: #922429;
+}
+.dgIcon.info svg {
+  color: #296995;
+}
+
 .w-icon {
   width: 25px;
   height: 25px;
