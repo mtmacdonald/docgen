@@ -993,68 +993,12 @@ button .icon svg,
   color: #296995;
 }
 
-.w-icon {
-  width: 25px;
-  height: 25px;
-  display: inline-block;
-  margin: 0;
-  overflow: hidden;
-}
-
-.w-icon svg {
-  margin: 0;
-}
-
 /*table icons*/
-.w-table td > .w-icon {
+.w-table td > .dgIcon {
   vertical-align: middle;
 }
 
-/*button icons*/
-.w-icon-button {
-  padding-left: 2px;
-}
-.w-icon-button .w-icon {
-  display: inline-block;
-  float: left;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  margin: 0;
-}
-.w-icon-button span:nth-child(2) {
-  display: inline-block;
-  padding: 4px 0 0 2px;
-}
-.w-icon-button.w-large {
-  padding-left: 8px;
-}
-
-/*message icons*/
-.w-message > .w-icon {
-  width: 21px;
-  height: 21px;
-  float: left;
-  margin-right: 5px;
-}
-
-.w-success > .w-icon svg {
-  fill: #218900;
-}
-
-.w-warning > .w-icon svg {
-  fill: #8a6b00;
-}
-
-.w-error > .w-icon svg {
-  fill: #b30000;
-}
-
-.w-information > .w-icon svg {
-  fill: #0e3d9a;
-}
-
-td.center {
+.w-table td.center {
   display: table-cell;
 }
 

@@ -117,12 +117,12 @@ Regular HTML can also be used for tables, allowing full custom styling (includin
  <tr>
   <td><strong>Example</strong></td>
   <td class="w-success-text">Example</td>
-  <td><span class="w-icon" data-name="check"></span></td>
+  <td><span class="dgIcon" data-name="check"></span></td>
  </tr>
  <tr>
   <td><strong>Example</strong></td>
   <td class="w-error-text">Example</td>
-  <td><span class="w-icon" data-name="x"></td>
+  <td><span class="dgIcon" data-name="x"></span></td>
  </tr>
 </table>
 </div><br class="w-clear"/>
