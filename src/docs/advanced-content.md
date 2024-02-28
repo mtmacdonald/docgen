@@ -93,12 +93,12 @@ Regular HTML can also be used for tables, allowing full custom styling (includin
  &lt;tr&gt;
   &lt;td&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/td&gt;
   &lt;td class=&quot;w-success-text&quot;&gt;Example&lt;/td&gt;
-  &lt;td&gt;&lt;span class=&quot;w-icon&quot; data-name=&quot;check&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;span class=&quot;dgIcon&quot; data-name=&quot;check&quot;&gt;&lt;/span&gt;&lt;/td&gt;
  &lt;/tr&gt;
  &lt;tr&gt;
   &lt;td&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/td&gt;
   &lt;td class=&quot;w-error-text&quot;&gt;Example&lt;/td&gt;
-  &lt;td&gt;&lt;span class=&quot;w-icon&quot; data-name=&quot;x&quot;&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;span class=&quot;dgIcon&quot; data-name=&quot;x&quot;&gt;&lt;/td&gt;
  &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
 </div>

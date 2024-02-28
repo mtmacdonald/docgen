@@ -87,13 +87,19 @@ section li p {
   font-size: 16px;
 }
 
-.dg-tocIcon {
-  width: 18px;
-  height: 18px;
-  float: left;
-}
-.dg-tocIcon svg {
-  fill: white;
+.dgWebTocAttribution {
+  li {
+    display: flex;
+    align-items: center;
+  }
+  .dgIcon {
+    width: 18px;
+    height: 18px;
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
 }
 
 /*

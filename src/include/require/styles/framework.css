@@ -1169,14 +1169,17 @@ section li p {
   font-size: 16px;
 }
 
-.dg-tocIcon {
+.dgWebTocAttribution li {
+  display: flex;
+  align-items: center;
+}
+.dgWebTocAttribution .dgIcon {
   width: 18px;
   height: 18px;
-  float: left;
 }
-
-.dg-tocIcon svg {
-  fill: white;
+.dgWebTocAttribution .dgIcon svg {
+  width: 18px;
+  height: 18px;
 }
 
 /*

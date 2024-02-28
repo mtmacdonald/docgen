@@ -41,14 +41,14 @@ export const TableOfContents = ({
         {Object.values(sortedPages).map((section, i) => (
           <Section key={i} section={section?.[0]} />
         ))}
-        <td className="dg-tocGroup" id="dg-tocFixedColumn">
+        <td className="dg-tocGroup dgWebTocAttribution" id="dg-tocFixedColumn">
           <ul>
             <li>
-              <span className="w-icon dg-tocIcon" data-name="person_group" title="archive"></span>
+              <span className="dgIcon" data-name="users" title="ownership"></span>
               <a href="ownership.html">Ownership</a>
             </li>
             <li>
-              <span className="w-icon dg-tocIcon" data-name="refresh" title="archive"></span>
+              <span className="dgIcon" data-name="refresh" title="release notes"></span>
               <a href="release-notes.html">Release Notes</a>
             </li>
           </ul>
