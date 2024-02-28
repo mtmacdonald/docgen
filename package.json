@@ -1,6 +1,6 @@
 {
   "name": "docgen-tool",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "description": "A tool for creating HTML and PDF documentation",
   "main": "dist/docgen.ts",
   "bin": {
@@ -17,6 +17,7 @@
     "build:docs": "ts-node src/docgen.ts run -m -n -r -p -d 40000 -i src/docs -o ./docs",
     "build:docs:nopdf": "ts-node src/docgen.ts run -m -n -r -i src/docs -o ./docs",
     "build:styles": "sass --no-source-map src/styles/main.scss src/include/require/styles/framework.css",
+    "build:icons": "ts-node src/build-scripts/build-scripts.ts build-icons",
     "test": "npm run prettier:check",
     "test:run": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p -m -n -d 40000",
     "test:scaffold": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts scaffold -o src/__test__/test-run-output",
@@ -49,6 +50,7 @@
     "z-schema": "^6.0.1"
   },
   "devDependencies": {
+    "@tabler/icons": "^2.47.0",
     "@types/node": "^20.3.1",
     "@types/react": "^18.2.37",
     "eslint": "^8.43.0",
