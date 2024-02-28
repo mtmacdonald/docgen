@@ -190,6 +190,39 @@ links.
 <img src="files/images/logo.svg" />
 </div><br class="w-clear"/>
 
+## Icons
+
+DocGen ships with [Tabler Icons](https://tablericons.com/) built-in (a modern, open-source SVG icons library). You can
+insert icons in content pages by adding an HTML span tag with the dgIcon class, and the name of the icon in data-name
+attribute. You can also add optional classes to customize the icon styles.
+
+**Example:**
+
+<pre><code>&lt;span class=&quot;dgIcon&quot; data-name=&quot;graph-filled&quot;&gt;&lt;/span&gt;</code></pre>
+
+<span class="dgIcon" data-name="graph-filled"></span>
+
+You can use built-in classes to customize icon styles (small, large, info, warning, success, error).
+
+**Size:**
+
+<span class="dgIcon small" data-name="file-description"></span>
+<span class="dgIcon" data-name="file-database"></span>
+<span class="dgIcon large" data-name="file-diff"></span>
+
+**Color:**
+
+<span class="dgIcon large info" data-name="info-circle"></span>
+<span class="dgIcon large warning" data-name="alert-triangle"></span>
+<span class="dgIcon large success" data-name="circle-check"></span>
+<span class="dgIcon large error" data-name="circle-x"></span>
+
+**Custom colors:**
+
+You can apply custom colors with a style attribute.
+
+<span class="dgIcon" data-name="headphones-filled" style="color: purple"></span>
+
 ## Attaching files
 
 Other files you want to attach should go into *files* directory.

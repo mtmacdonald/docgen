@@ -972,72 +972,33 @@ button .icon svg,
 /*
  icons
 */
-.w-icon {
-  width: 25px;
-  height: 25px;
-  display: inline-block;
-  margin: 0;
-  overflow: hidden;
+.dgIcon.small svg {
+  width: 20px;
+  height: 20px;
 }
-
-.w-icon svg {
-  margin: 0;
-  fill: rgb(1, 3, 4);
+.dgIcon.large svg {
+  width: 36px;
+  height: 36px;
+}
+.dgIcon.success svg {
+  color: #3c8039;
+}
+.dgIcon.warning svg {
+  color: #987924;
+}
+.dgIcon.error svg {
+  color: #922429;
+}
+.dgIcon.info svg {
+  color: #296995;
 }
 
 /*table icons*/
-.w-table td > .w-icon {
+.w-table td > .dgIcon {
   vertical-align: middle;
 }
 
-/*button icons*/
-.w-icon-button {
-  padding-left: 2px;
-}
-.w-icon-button .w-icon {
-  display: inline-block;
-  float: left;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  margin: 0;
-}
-.w-icon-button .w-icon > svg {
-  fill: #444;
-}
-.w-icon-button span:nth-child(2) {
-  display: inline-block;
-  padding: 4px 0 0 2px;
-}
-.w-icon-button.w-large {
-  padding-left: 8px;
-}
-
-/*message icons*/
-.w-message > .w-icon {
-  width: 21px;
-  height: 21px;
-  float: left;
-  margin-right: 5px;
-}
-
-.w-success > .w-icon svg {
-  fill: #218900;
-}
-
-.w-warning > .w-icon svg {
-  fill: #8a6b00;
-}
-
-.w-error > .w-icon svg {
-  fill: #b30000;
-}
-
-.w-information > .w-icon svg {
-  fill: #0e3d9a;
-}
-
-td.center {
+.w-table td.center {
   display: table-cell;
 }
 
@@ -1208,14 +1169,17 @@ section li p {
   font-size: 16px;
 }
 
-.dg-tocIcon {
+.dgWebTocAttribution li {
+  display: flex;
+  align-items: center;
+}
+.dgWebTocAttribution .dgIcon {
   width: 18px;
   height: 18px;
-  float: left;
 }
-
-.dg-tocIcon svg {
-  fill: white;
+.dgWebTocAttribution .dgIcon svg {
+  width: 18px;
+  height: 18px;
 }
 
 /*

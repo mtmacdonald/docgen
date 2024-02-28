@@ -5410,10 +5410,10 @@
 */
 
 function svgInject() {
-  this.inject = function (container) {
+  this.inject = (container) => {
     container = typeof container !== 'undefined' ? container : ''; //default value
-    $(container + ' .w-icon').each(function () {
-      var name = $(this).data('name');
+    $(container + ' .dgIcon').each(function () {
+      const name = $(this).data('name');
       $(this).html(w_icons[name]);
     });
   };
