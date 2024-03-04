@@ -1082,6 +1082,61 @@ button .icon svg,
   color: #444;
 }
 
+.menu-btn {
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  width: 25px;
+  background-color: #333;
+  margin: 5px 0;
+  transition: transform 0.3s ease;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle:checked + .menu-btn span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+#menu-toggle:checked + .menu-btn span:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-toggle:checked + .menu-btn span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.menu {
+  display: none;
+  border: 1px solid red;
+}
+
+#menu-toggle:checked + .menu-btn + .menu {
+  display: block;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu ul li {
+  margin-bottom: 10px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
 pre {
   font-size: 12px; /*todo - move to base styles*/
 }

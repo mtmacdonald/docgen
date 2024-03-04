@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { TableOfContents } from '../../components/web-table-of-contents/web-table-of-contents';
+import { Hamburger } from '../../components/hamburger/hamburger';
 import { Footer } from '../../components/footer/footer';
 import type { Parameters } from '../../../types';
 
@@ -108,6 +109,7 @@ export const Main = ({
       <div id="dg-navigator">Table of contents</div>
       <Header parameters={parameters} />
       <section id="dg-content">
+        <Hamburger />
         {fixedWidth ? (
           <div className="w-fixed-width">
             <div id="dg-innerContent">
