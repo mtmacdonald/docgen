@@ -2,6 +2,12 @@
   display: block;
   cursor: pointer;
   padding: 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
 }
 
 .menu-btn span {
@@ -31,7 +37,18 @@
 
 .menu {
   display: none;
-  border: 1px solid red;
+  background-color: #eee;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+  z-index: 1;
+
+  .dg-hamburger-menu-content {
+    margin-top: 60px;
+    padding: 10px;
+  }
 }
 
 #menu-toggle:checked + .menu-btn + .menu {
