@@ -5,10 +5,7 @@ export const Hamburger = ({
   sortedPages,
   pdfEnabled
 }) => {
-
   const pages = Object.values(sortedPages).flat();
-  console.log(pages);
-
   return (
     <>
       <input type="checkbox" id="menu-toggle" />
