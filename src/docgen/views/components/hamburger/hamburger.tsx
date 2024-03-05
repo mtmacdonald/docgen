@@ -1,4 +1,13 @@
+// @ts-nocheck
 import React from 'react';
+
+const Page = ({page}) => {
+  const name = page.source.substring(0, page.source.lastIndexOf('.'));
+  const path = name + '.html';
+  return (
+    <li><a href={path}>{page.title}</a></li>
+  );
+};
 
 export const Hamburger = ({
   name,
@@ -6,6 +15,7 @@ export const Hamburger = ({
   pdfEnabled
 }) => {
   const pages = Object.values(sortedPages).flat();
+
   return (
     <>
       <input type="checkbox" id="menu-toggle" />
@@ -16,12 +26,16 @@ export const Hamburger = ({
       </label>
       <nav className="menu">
         <div className="dg-hamburger-menu-content">
-          <ul>
-            {pages.map((p, i) => (
-              // @ts-ignore
-              <li key={i}><a href="#">{p?.heading}</a></li>
-            ))}
-          </ul>
+          {pages.map((page, i) => (
+            <div key={i}>
+              <h2>{page.heading}</h2>
+              <ul>
+                {page.pages.map((subPage, i) => (
+                  <Page key={i} page={subPage} />
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </nav>
     </>

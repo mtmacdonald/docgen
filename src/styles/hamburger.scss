@@ -44,10 +44,19 @@
   width: 200px;
   height: 100vh;
   z-index: 1;
+  overflow-y: auto;
 
   .dg-hamburger-menu-content {
     margin-top: 60px;
     padding: 10px;
+  }
+
+  .dg-hamburger-menu-content h2 {
+    margin-bottom: 10px;
+  }
+
+  .dg-hamburger-menu-content ul {
+    padding-left: 20px;
   }
 }
 

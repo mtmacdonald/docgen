@@ -1128,10 +1128,17 @@ button .icon svg,
   width: 200px;
   height: 100vh;
   z-index: 1;
+  overflow-y: auto;
 }
 .menu .dg-hamburger-menu-content {
   margin-top: 60px;
   padding: 10px;
+}
+.menu .dg-hamburger-menu-content h2 {
+  margin-bottom: 10px;
+}
+.menu .dg-hamburger-menu-content ul {
+  padding-left: 20px;
 }
 
 #menu-toggle:checked + .menu-btn + .menu {
