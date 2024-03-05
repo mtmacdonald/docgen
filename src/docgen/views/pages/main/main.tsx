@@ -109,7 +109,11 @@ export const Main = ({
       <div id="dg-navigator">Table of contents</div>
       <Header parameters={parameters} />
       <section id="dg-content">
-        <Hamburger />
+        <Hamburger
+          name={name}
+          sortedPages={sortedPages}
+          pdfEnabled={pdfEnabled}
+        />
         {fixedWidth ? (
           <div className="w-fixed-width">
             <div id="dg-innerContent">

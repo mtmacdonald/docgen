@@ -1,6 +1,14 @@
 import React from 'react';
 
-export const Hamburger = () => {
+export const Hamburger = ({
+  name,
+  sortedPages,
+  pdfEnabled
+}) => {
+
+  const pages = Object.values(sortedPages).flat();
+  console.log(pages);
+
   return (
     <>
       <input type="checkbox" id="menu-toggle" />
@@ -12,10 +20,10 @@ export const Hamburger = () => {
       <nav className="menu">
         <div className="dg-hamburger-menu-content">
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            {pages.map((p, i) => (
+              // @ts-ignore
+              <li key={i}><a href="#">{p?.heading}</a></li>
+            ))}
           </ul>
         </div>
       </nav>
