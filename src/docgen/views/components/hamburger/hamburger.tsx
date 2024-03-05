@@ -15,7 +15,7 @@ export const Hamburger = ({
   pdfEnabled
 }) => {
   const pages = Object.values(sortedPages).flat();
-
+  const pdfName = name.toLowerCase() + '.pdf';
   return (
     <>
       <input type="checkbox" id="menu-toggle" />
@@ -26,6 +26,17 @@ export const Hamburger = ({
       </label>
       <nav className="menu">
         <div className="dg-hamburger-menu-content">
+          <div>
+            {pdfEnabled && (
+              <a
+                className="button whiteInverted"
+                style={{textDecoration: 'none'}}
+                href={pdfName}
+              >
+                PDF
+              </a>
+            )}
+          </div>
           {pages.map((page, i) => (
             <div key={i}>
               <h2>{page.heading}</h2>
@@ -36,6 +47,19 @@ export const Hamburger = ({
               </ul>
             </div>
           ))}
+          <div>
+            <h2></h2>
+            <ul>
+              <li>
+                <span className="dgIcon" data-name="users" title="ownership"></span>
+                <a href="ownership.html">Ownership</a>
+              </li>
+              <li>
+                <span className="dgIcon" data-name="refresh" title="release notes"></span>
+                <a href="release-notes.html">Release Notes</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </>
