@@ -1119,6 +1119,10 @@ button .icon svg,
   transform: translateY(-8px) rotate(-45deg);
 }
 
+#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton + .dgHamburgerMenu {
+  display: block;
+}
+
 .dgHamburgerMenu {
   display: none;
   background-color: #eee;
@@ -1138,23 +1142,13 @@ button .icon svg,
   margin-bottom: 10px;
 }
 .dgHamburgerMenu .dgHamburgerMenuContent ul {
-  padding-left: 20px;
-}
-
-#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton + .dgHamburgerMenu {
-  display: block;
-}
-
-.dgHamburgerMenu ul {
   list-style-type: none;
-  padding: 0;
+  padding: 0 20px 0 0;
 }
-
-.dgHamburgerMenu ul li {
+.dgHamburgerMenu .dgHamburgerMenuContent ul li {
   margin-bottom: 10px;
 }
-
-.dgHamburgerMenu ul li a {
+.dgHamburgerMenu .dgHamburgerMenuContent ul li a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
