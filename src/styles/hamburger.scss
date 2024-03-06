@@ -5,10 +5,8 @@
   width: 100%;
   pointer-events: none;
   z-index: 1;
-  border: 1px solid red;
 }
 #nav-container .bg {
-  border: 1px solid green;
   position: absolute;
   top: 102px;
   left: 0;
@@ -74,8 +72,6 @@
 }
 
 #nav-content {
-  border: 1px solid purple;
-  margin-top: 70px;
   padding: 20px;
   width: 90%;
   max-width: 300px;
