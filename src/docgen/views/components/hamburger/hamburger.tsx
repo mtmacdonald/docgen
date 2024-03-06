@@ -19,7 +19,7 @@ export const Hamburger = ({
   return (
     <>
       <input type="checkbox" id="menu-toggle" />
-      <label htmlFor="menu-toggle" className="menu-btn">
+      <label htmlFor="menu-toggle" className="dgHamburgerMenuButton">
         <span></span>
         <span></span>
         <span></span>
