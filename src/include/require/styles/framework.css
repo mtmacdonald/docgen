@@ -1103,19 +1103,19 @@ button .icon svg,
   transition: transform 0.3s ease;
 }
 
-#menu-toggle {
+#dgHamburgerMenuToggle {
   display: none;
 }
 
-#menu-toggle:checked + .dgHamburgerMenuButton span:nth-child(1) {
+#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
 
-#menu-toggle:checked + .dgHamburgerMenuButton span:nth-child(2) {
+#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton span:nth-child(2) {
   opacity: 0;
 }
 
-#menu-toggle:checked + .dgHamburgerMenuButton span:nth-child(3) {
+#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
@@ -1141,7 +1141,7 @@ button .icon svg,
   padding-left: 20px;
 }
 
-#menu-toggle:checked + .dgHamburgerMenuButton + .dgHamburgerMenu {
+#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton + .dgHamburgerMenu {
   display: block;
 }
 

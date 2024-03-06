@@ -18,8 +18,8 @@ export const Hamburger = ({
   const pdfName = name.toLowerCase() + '.pdf';
   return (
     <>
-      <input type="checkbox" id="menu-toggle" />
-      <label htmlFor="menu-toggle" className="dgHamburgerMenuButton">
+      <input type="checkbox" id="dgHamburgerMenuToggle" />
+      <label htmlFor="dgHamburgerMenuToggle" className="dgHamburgerMenuButton">
         <span></span>
         <span></span>
         <span></span>
