@@ -36,11 +36,15 @@ header
 	.header {
 		display: flex;
 		align-items: center;
+		position: fixed;
 		height: 102px;
 		padding-right: 40px;
+		background: white;
+		width: 100%;
 	}
 
 	.headerLeftBlock {
+		margin-left: 80px;
 		display: flex;
 		align-items: center;
 	}
@@ -122,6 +126,7 @@ footer {
 section {
 
 	background-color: $content-background;
+	margin-top: 102px;
 	padding: 25px 0 25px 0;
 
 	> div p, > div div, > div pre, > div ul, > div ol, > div table, > div blockquote {

@@ -21,32 +21,36 @@ const Logo = ({
 const Header = ({parameters}) => {
   return (
     <header>
-      <div className="w-fixed-width header-container">
-        <div className="header">
-          <div className="headerLeftBlock">
+      <Hamburger
+        name={{}}
+        sortedPages={{}}
+        pdfEnabled={{}}
+      />
+      <div className="header">
+        <div className="headerLeftBlock">
+          <a className="dg-homelink" href={parameters.homePagePath}>
+            <Logo
+              parameters={parameters}
+            />
+          </a>
+          <div id="headerLeftText">
             <a className="dg-homelink" href={parameters.homePagePath}>
-              <Logo
-                parameters={parameters}
-              />
-            </a>
-            <div id="headerLeftText">
-              <a className="dg-homelink" href={parameters.homePagePath}>
                 <span id="dg-title">
                   {parameters.title}
                 </span>
-                <span id="dg-web-title-version" style={{fontWeight: 'normal'}}>
+              <span id="dg-web-title-version" style={{fontWeight: 'normal'}}>
                   &nbsp;({parameters.version})
                 </span>
+            </a>
+            <div id="headerSponsor">
+              <span>{parameters.sponsorLink.name}</span>
+              <a href={parameters.sponsorLink.url}>
+                <img id="sponsorLogo" src={parameters.sponsorLink.logo} alt="sponsor logo" />
               </a>
-              <div id="headerSponsor">
-                <span>{parameters.sponsorLink.name}</span>
-                <a href={parameters.sponsorLink.url}>
-                  <img id="sponsorLogo" src={parameters.sponsorLink.logo} alt="sponsor logo" />
-                </a>
-              </div>
             </div>
           </div>
-          <div id="headerRightBlock">
+        </div>
+        <div id="headerRightBlock">
             <span id="dg-backlink">
               {parameters.backlink.url && (
                 <a className="button inverted" href={parameters.backlink.url}>
@@ -54,7 +58,6 @@ const Header = ({parameters}) => {
                 </a>
               )}
             </span>
-          </div>
         </div>
       </div>
     </header>
@@ -100,11 +103,6 @@ export const Main = ({
     <>
       <Header parameters={parameters} />
       <section id="dg-content">
-        <Hamburger
-          name={name}
-          sortedPages={sortedPages}
-          pdfEnabled={pdfEnabled}
-        />
         {fixedWidth ? (
           <div className="w-fixed-width">
             <div id="dg-innerContent">

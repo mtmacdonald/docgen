@@ -439,10 +439,14 @@ header .w-false-link:hover {
 header .header {
   display: flex;
   align-items: center;
+  position: fixed;
   height: 102px;
   padding-right: 40px;
+  background: white;
+  width: 100%;
 }
 header .headerLeftBlock {
+  margin-left: 80px;
   display: flex;
   align-items: center;
 }
@@ -511,6 +515,7 @@ footer > div:nth-child(2) > p:nth-child(2) {
 */
 section {
   background-color: #fff;
+  margin-top: 102px;
   padding: 25px 0 25px 0;
 }
 section > div p,
@@ -1082,76 +1087,171 @@ button .icon svg,
   color: #444;
 }
 
-.dgHamburgerMenuButton {
-  display: block;
-  cursor: pointer;
-  padding: 10px;
+#nav-container {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  pointer-events: none;
+  z-index: 1;
+  border: 1px solid red;
+}
+
+#nav-container .bg {
+  border: 1px solid green;
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
+  top: 102px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 70px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+  background: #000;
+}
+
+#nav-container:focus-within .bg {
+  visibility: visible;
+  opacity: 0.6;
+}
+
+#nav-container * {
+  visibility: visible;
+}
+
+#nav-container .button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   z-index: 2;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  height: 102px;
+  width: 30px;
+  cursor: pointer;
+  pointer-events: auto;
+  margin-left: 25px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  padding: 0;
+  outline: none;
 }
 
-.dgHamburgerMenuButton span {
+.icon-bar {
   display: block;
+  width: 100%;
   height: 3px;
-  width: 25px;
-  background-color: #333;
-  margin: 5px 0;
-  transition: transform 0.3s ease;
+  background: #aaa;
+  transition: 0.3s;
 }
 
-#dgHamburgerMenuToggle {
-  display: none;
+.icon-bar + .icon-bar {
+  margin-top: 5px;
 }
 
-#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+#nav-container:focus-within .button {
+  pointer-events: none;
 }
 
-#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton span:nth-child(2) {
+#nav-container:focus-within .icon-bar:nth-of-type(1) {
+  transform: translate3d(0, 8px, 0) rotate(45deg);
+}
+
+#nav-container:focus-within .icon-bar:nth-of-type(2) {
   opacity: 0;
 }
 
-#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+#nav-container:focus-within .icon-bar:nth-of-type(3) {
+  transform: translate3d(0, -8px, 0) rotate(-45deg);
 }
 
-#dgHamburgerMenuToggle:checked + .dgHamburgerMenuButton + .dgHamburgerMenu {
+#nav-content {
+  border: 1px solid purple;
+  margin-top: 70px;
+  padding: 20px;
+  width: 90%;
+  max-width: 300px;
+  position: absolute;
+  left: 0;
+  height: calc(100% - 70px);
+  background: #ececec;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  will-change: transform;
+  contain: paint;
+}
+
+#nav-content ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#nav-content li a {
+  padding: 10px 5px;
   display: block;
+  text-transform: uppercase;
+  transition: color 0.1s;
 }
 
-.dgHamburgerMenu {
-  display: none;
-  background-color: #eee;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 200px;
-  height: 100vh;
-  z-index: 1;
-  overflow-y: auto;
+#nav-content li a:hover {
+  color: #bf7497;
 }
-.dgHamburgerMenu .dgHamburgerMenuContent {
-  margin-top: 60px;
-  padding: 10px;
+
+#nav-content li:not(.small) + .small {
+  margin-top: auto;
 }
-.dgHamburgerMenu .dgHamburgerMenuContent h2 {
-  margin-bottom: 10px;
+
+#nav-container:focus-within #nav-content {
+  transform: none;
 }
-.dgHamburgerMenu .dgHamburgerMenuContent ul {
-  list-style-type: none;
-  padding: 0 20px 0 0;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.dgHamburgerMenu .dgHamburgerMenuContent ul li {
-  margin-bottom: 10px;
+
+html,
+body {
+  height: 100%;
 }
-.dgHamburgerMenu .dgHamburgerMenuContent ul li a {
+
+a,
+a:visited,
+a:focus,
+a:active,
+a:link {
   text-decoration: none;
-  color: #333;
-  font-weight: bold;
+  outline: 0;
+}
+
+a {
+  color: currentColor;
+  transition: 0.2s ease-in-out;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  vertical-align: middle;
+  height: auto;
+  width: 100%;
 }
 
 pre {
