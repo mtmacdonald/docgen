@@ -1119,7 +1119,7 @@ button .icon svg,
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.menu {
+.dgHamburgerMenu {
   display: none;
   background-color: #eee;
   position: fixed;
@@ -1130,31 +1130,31 @@ button .icon svg,
   z-index: 1;
   overflow-y: auto;
 }
-.menu .dg-hamburger-menu-content {
+.dgHamburgerMenu .dg-hamburger-menu-content {
   margin-top: 60px;
   padding: 10px;
 }
-.menu .dg-hamburger-menu-content h2 {
+.dgHamburgerMenu .dg-hamburger-menu-content h2 {
   margin-bottom: 10px;
 }
-.menu .dg-hamburger-menu-content ul {
+.dgHamburgerMenu .dg-hamburger-menu-content ul {
   padding-left: 20px;
 }
 
-#menu-toggle:checked + .dgHamburgerMenuButton + .menu {
+#menu-toggle:checked + .dgHamburgerMenuButton + .dgHamburgerMenu {
   display: block;
 }
 
-.menu ul {
+.dgHamburgerMenu ul {
   list-style-type: none;
   padding: 0;
 }
 
-.menu ul li {
+.dgHamburgerMenu ul li {
   margin-bottom: 10px;
 }
 
-.menu ul li a {
+.dgHamburgerMenu ul li a {
   text-decoration: none;
   color: #333;
   font-weight: bold;

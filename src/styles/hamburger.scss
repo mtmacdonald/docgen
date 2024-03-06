@@ -35,7 +35,7 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.menu {
+.dgHamburgerMenu {
   display: none;
   background-color: #eee;
   position: fixed;
@@ -60,20 +60,20 @@
   }
 }
 
-#menu-toggle:checked + .dgHamburgerMenuButton + .menu {
+#menu-toggle:checked + .dgHamburgerMenuButton + .dgHamburgerMenu {
   display: block;
 }
 
-.menu ul {
+.dgHamburgerMenu ul {
   list-style-type: none;
   padding: 0;
 }
 
-.menu ul li {
+.dgHamburgerMenu ul li {
   margin-bottom: 10px;
 }
 
-.menu ul li a {
+.dgHamburgerMenu ul li a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
