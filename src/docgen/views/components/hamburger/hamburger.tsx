@@ -25,7 +25,7 @@ export const Hamburger = ({
         <span></span>
       </label>
       <nav className="dgHamburgerMenu">
-        <div className="dg-hamburger-menu-content">
+        <div className="dgHamburgerMenuContent">
           <div>
             {pdfEnabled && (
               <a

@@ -1130,14 +1130,14 @@ button .icon svg,
   z-index: 1;
   overflow-y: auto;
 }
-.dgHamburgerMenu .dg-hamburger-menu-content {
+.dgHamburgerMenu .dgHamburgerMenuContent {
   margin-top: 60px;
   padding: 10px;
 }
-.dgHamburgerMenu .dg-hamburger-menu-content h2 {
+.dgHamburgerMenu .dgHamburgerMenuContent h2 {
   margin-bottom: 10px;
 }
-.dgHamburgerMenu .dg-hamburger-menu-content ul {
+.dgHamburgerMenu .dgHamburgerMenuContent ul {
   padding-left: 20px;
 }
 
