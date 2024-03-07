@@ -18,13 +18,20 @@ const Logo = ({
   )
 };
 
-const Header = ({parameters}) => {
+const Header = ({
+  parameters,
+  sortedPages,
+  pdfEnabled
+}) => {
+  const {
+    name
+  } = parameters;
   return (
     <header>
       <Hamburger
-        name={{}}
-        sortedPages={{}}
-        pdfEnabled={{}}
+        name={name}
+        sortedPages={sortedPages}
+        pdfEnabled={pdfEnabled}
       />
       <div className="header">
         <div className="headerLeftBlock">
@@ -96,12 +103,13 @@ export const Main = ({
   fixedWidth,
   children,
 }: MainProps) => {
-  const {
-    name
-  } = parameters;
   return (
     <>
-      <Header parameters={parameters} />
+      <Header
+        parameters={parameters}
+        sortedPages={sortedPages}
+        pdfEnabled={pdfEnabled}
+      />
       <section id="dg-content">
         {fixedWidth ? (
           <div className="w-fixed-width">
