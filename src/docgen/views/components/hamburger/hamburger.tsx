@@ -19,10 +19,10 @@ export const Hamburger = ({
   return (
     <div id="dgHamburgerMenuContainer">
       <div className="dgHamburgerPageContentBackground"></div>
-      <div className="button" tabIndex="0">
-        <span className="icon-bar"></span>
-        <span className="icon-bar"></span>
-        <span className="icon-bar"></span>
+      <div className="dgHamburgerButton" tabIndex="0">
+        <span className="dgHamburgerIconBar"></span>
+        <span className="dgHamburgerIconBar"></span>
+        <span className="dgHamburgerIconBar"></span>
       </div>
       <div id="dgHamburgerMenuContent" tabIndex="0">
         <div>
@@ -38,7 +38,7 @@ export const Hamburger = ({
         </div>
         {pages.map((page, i) => (
           <div key={i}>
-            <h2>{page.heading}</h2>
+            <div className="dgHamburgerMenuHeading">{page.heading}</div>
             <ul>
               {page.pages.map((subPage, i) => (
                 <Page key={i} page={subPage} />
@@ -47,7 +47,6 @@ export const Hamburger = ({
           </div>
         ))}
         <div>
-          <h2></h2>
           <ul>
             <li>
               <span className="dgIcon" data-name="users" title="ownership"></span>
