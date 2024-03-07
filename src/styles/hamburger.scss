@@ -1,12 +1,12 @@
 
-#nav-container {
+#dgHamburgerMenuContainer {
   position: fixed;
   height: 100vh;
   width: 100%;
   pointer-events: none;
   z-index: 1;
 }
-#nav-container .bg {
+#dgHamburgerMenuContainer .bg {
   position: absolute;
   top: $header-height + 1px;
   left: 0;
@@ -17,15 +17,15 @@
   transition: .3s;
   background: #000;
 }
-#nav-container:focus-within .bg {
+#dgHamburgerMenuContainer:focus-within .bg {
   visibility: visible;
   opacity: .6;
 }
-#nav-container * {
+#dgHamburgerMenuContainer * {
   visibility: visible;
 }
 
-#nav-container .button {
+#dgHamburgerMenuContainer .button {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -58,16 +58,16 @@
   margin-top: 5px;
 }
 
-#nav-container:focus-within .button {
+#dgHamburgerMenuContainer:focus-within .button {
   pointer-events: none;
 }
-#nav-container:focus-within .icon-bar:nth-of-type(1) {
+#dgHamburgerMenuContainer:focus-within .icon-bar:nth-of-type(1) {
   transform: translate3d(0,8px,0) rotate(45deg);
 }
-#nav-container:focus-within .icon-bar:nth-of-type(2) {
+#dgHamburgerMenuContainer:focus-within .icon-bar:nth-of-type(2) {
   opacity: 0;
 }
-#nav-container:focus-within .icon-bar:nth-of-type(3) {
+#dgHamburgerMenuContainer:focus-within .icon-bar:nth-of-type(3) {
   transform: translate3d(0,-8px,0) rotate(-45deg);
 }
 
@@ -108,6 +108,6 @@
   margin-top: auto;
 }
 
-#nav-container:focus-within #nav-content {
+#dgHamburgerMenuContainer:focus-within #nav-content {
   transform: none;
 }

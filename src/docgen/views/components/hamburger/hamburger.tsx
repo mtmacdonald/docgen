@@ -20,7 +20,7 @@ export const Hamburger = ({
   const pages = Object.values(sortedPages).flat();
   const pdfName = name.toLowerCase() + '.pdf';
   return (
-    <div id="nav-container">
+    <div id="dgHamburgerMenuContainer">
       <div className="bg"></div>
       <div className="button" tabIndex="0">
         <span className="icon-bar"></span>
