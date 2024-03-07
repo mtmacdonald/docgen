@@ -408,7 +408,7 @@ input[type='submit']:focus {
  page
 */
 html {
-  background-color: rgb(1, 3, 4);
+  background-color: #fff;
   color: #444;
 }
 html body {
@@ -423,10 +423,15 @@ html body .w-fixed-width {
  header
 */
 header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid rgb(1, 3, 4);
   color: rgb(1, 3, 4);
   background-color: #fff;
-  border-top: 2px solid rgb(1, 3, 4);
-  border-bottom: 2px solid rgb(1, 3, 4);
 }
 header a,
 header a:hover,
@@ -439,11 +444,10 @@ header .w-false-link:hover {
 header .header {
   display: flex;
   align-items: center;
-  position: fixed;
-  height: 102px;
+  height: 90px;
   padding-right: 40px;
   background: white;
-  width: 100%;
+  width: 980px;
 }
 header .headerLeftBlock {
   margin-left: 80px;
@@ -485,6 +489,9 @@ header #headerRightBlock {
 /*
  footer
 */
+footer {
+  background-color: rgb(1, 3, 4);
+}
 footer div {
   padding: 15px 0 15px 0;
 }
@@ -515,7 +522,7 @@ footer > div:nth-child(2) > p:nth-child(2) {
 */
 section {
   background-color: #fff;
-  margin-top: 102px;
+  margin-top: 80px;
   padding: 25px 0 25px 0;
 }
 section > div p,
@@ -1097,7 +1104,7 @@ button .icon svg,
 
 #nav-container .bg {
   position: absolute;
-  top: 102px;
+  top: 91px;
   left: 0;
   width: 100%;
   height: calc(100% - 70px);
@@ -1126,7 +1133,7 @@ button .icon svg,
   border: none;
   background: transparent;
   border-radius: 0;
-  height: 102px;
+  height: 91px;
   width: 30px;
   cursor: pointer;
   pointer-events: auto;
