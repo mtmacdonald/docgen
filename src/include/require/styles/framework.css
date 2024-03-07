@@ -1187,24 +1187,20 @@ button .icon svg,
   will-change: transform;
   contain: paint;
 }
-
 #dgHamburgerMenuContent ul {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-
 #dgHamburgerMenuContent li a {
   padding: 10px 5px;
   display: block;
   text-transform: uppercase;
   transition: color 0.1s;
 }
-
 #dgHamburgerMenuContent li a:hover {
   color: #bf7497;
 }
-
 #dgHamburgerMenuContent li:not(.small) + .small {
   margin-top: auto;
 }
