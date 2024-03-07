@@ -1,3 +1,6 @@
+/*
+ Hamburger menu styles loosely based on https://codepen.io/dannievinther/embed/NvZjvz?height=316&theme-id=0&default-tab=result
+*/
 
 #dgHamburgerMenuContainer {
   position: fixed;
@@ -5,57 +8,61 @@
   width: 100%;
   pointer-events: none;
   z-index: 1;
-}
-#dgHamburgerMenuContainer .bg {
-  position: absolute;
-  top: $header-height + 1px;
-  left: 0;
-  width: 100%;
-  height: calc(100% - 70px);
-  visibility: hidden;
-  opacity: 0;
-  transition: .3s;
-  background: #000;
-}
-#dgHamburgerMenuContainer:focus-within .bg {
-  visibility: visible;
-  opacity: .6;
-}
-#dgHamburgerMenuContainer * {
-  visibility: visible;
+
+  * {
+    visibility: visible;
+  }
+
+  .dgHamburgerMenuContentBackground {
+    position: absolute;
+    top: $header-height + 1px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 70px);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    background: #000;
+  }
+
+  .button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    -webkit-appearance: none;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    height: $header-height + 1px;
+    width: 30px;
+    cursor: pointer;
+    pointer-events: auto;
+    margin-left: 25px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    box-sizing: border-box;
+    padding: 0;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .icon-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: $brand-primary-color;
+    transition: .3s;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 5px;
+  }
 }
 
-#dgHamburgerMenuContainer .button {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 2;
-  -webkit-appearance: none;
-  border: none;
-  background: transparent;
-  border-radius: 0;
-  height: $header-height + 1px;
-  width: 30px;
-  cursor: pointer;
-  pointer-events: auto;
-  margin-left: 25px;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  box-sizing: border-box;
-  padding: 0;
-  outline: none;
-  box-shadow: none;
-}
-.icon-bar {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: $brand-primary-color;
-  transition: .3s;
-}
-.icon-bar + .icon-bar {
-  margin-top: 5px;
+#dgHamburgerMenuContainer:focus-within .dgHamburgerMenuContentBackground {
+  visibility: visible;
+  opacity: .6;
 }
 
 #dgHamburgerMenuContainer:focus-within .button {

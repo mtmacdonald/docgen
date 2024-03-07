@@ -10,7 +10,7 @@ const Page = ({page}) => {
 };
 
 
-// Loosely based on https://codepen.io/dannievinther/embed/NvZjvz?height=316&theme-id=0&default-tab=result
+
 
 export const Hamburger = ({
   name,
@@ -21,7 +21,7 @@ export const Hamburger = ({
   const pdfName = name.toLowerCase() + '.pdf';
   return (
     <div id="dgHamburgerMenuContainer">
-      <div className="bg"></div>
+      <div className="dgHamburgerMenuContentBackground"></div>
       <div className="button" tabIndex="0">
         <span className="icon-bar"></span>
         <span className="icon-bar"></span>
