@@ -5,19 +5,15 @@
 
 html
 {
-	background-color: $brand-primary-color; //'make short pages appear to stretch to bottom'
+	background-color: $content-background;
 	color: $text;
-
 	body
 	{
-
 		min-width: $page-width + 40;
-
 		.w-fixed-width {
 			width: $page-width;
 			margin: 0 auto;
 		}
-
 	}
 }
 
@@ -27,20 +23,24 @@ html
 
 header
 {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	border-bottom: 1px solid $brand-primary-color;
 	@include fixed-color-text();
 
 	background-color: $content-background;
-	border-top: 2px solid $brand-primary-color;
-	border-bottom: 2px solid $brand-primary-color;
 
 	.header {
 		display: flex;
 		align-items: center;
-		position: fixed;
-		height: 102px;
+		height: $header-height;
 		padding-right: 40px;
 		background: white;
-		width: 100%;
+		width: $page-width;
 	}
 
 	.headerLeftBlock {
@@ -94,6 +94,7 @@ header
 */
 
 footer {
+	background-color: $brand-primary-color; //'make short pages appear to stretch to bottom'
 
 	div {
 		padding: 15px 0 15px 0;
@@ -126,7 +127,7 @@ footer {
 section {
 
 	background-color: $content-background;
-	margin-top: 102px;
+	margin-top: 80px;
 	padding: 25px 0 25px 0;
 
 	> div p, > div div, > div pre, > div ul, > div ol, > div table, > div blockquote {
