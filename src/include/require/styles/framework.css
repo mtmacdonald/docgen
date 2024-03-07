@@ -1156,19 +1156,15 @@ button .icon svg,
   visibility: visible;
   opacity: 0.6;
 }
-
 #dgHamburgerMenuContainer:focus-within .button {
   pointer-events: none;
 }
-
 #dgHamburgerMenuContainer:focus-within .icon-bar:nth-of-type(1) {
   transform: translate3d(0, 8px, 0) rotate(45deg);
 }
-
 #dgHamburgerMenuContainer:focus-within .icon-bar:nth-of-type(2) {
   opacity: 0;
 }
-
 #dgHamburgerMenuContainer:focus-within .icon-bar:nth-of-type(3) {
   transform: translate3d(0, -8px, 0) rotate(-45deg);
 }
