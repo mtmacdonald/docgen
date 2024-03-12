@@ -50,7 +50,7 @@ export const Hamburger = ({
           </ul>
         </div>
         <div className="dgHamburgerMenuPDFButton">
-          {true /*pdfEnabled*/ && (
+          {pdfEnabled && (
             <a
               className="button"
               style={{textDecoration: 'none'}}
