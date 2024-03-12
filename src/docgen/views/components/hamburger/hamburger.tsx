@@ -25,18 +25,9 @@ export const Hamburger = ({
         <span className="dgHamburgerIconBar"></span>
       </div>
       <div id="dgHamburgerMenuContent" tabIndex="0">
-        <div>
-          {pdfEnabled && (
-            <a
-              className="button whiteInverted"
-              style={{textDecoration: 'none'}}
-              href={pdfName}
-            >
-              PDF
-            </a>
-          )}
-        </div>
-        {pages.map((page, i) => (
+        {pages
+          .filter(p => p?.heading !== 'Extra')
+          .map((page, i) => (
           <div key={i}>
             <div className="dgHamburgerMenuHeading">{page.heading}</div>
             <ul>
@@ -46,7 +37,7 @@ export const Hamburger = ({
             </ul>
           </div>
         ))}
-        <div>
+        <div className="dgHamburgerMenuAttribution">
           <ul>
             <li>
               <span className="dgIcon" data-name="users" title="ownership"></span>
@@ -57,6 +48,17 @@ export const Hamburger = ({
               <a href="release-notes.html">Release Notes</a>
             </li>
           </ul>
+        </div>
+        <div className="dgHamburgerMenuPDFButton">
+          {true /*pdfEnabled*/ && (
+            <a
+              className="button"
+              style={{textDecoration: 'none'}}
+              href={pdfName}
+            >
+              PDF
+            </a>
+          )}
         </div>
       </div>
     </div>
