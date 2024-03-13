@@ -5437,3 +5437,17 @@ $(document).ready(() => {
     $(this).toggleClass('active');
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const sideBar = document.getElementById('dgSideBar');
+  const sideBarButton = document.getElementById('dgSideBarButton');
+  sideBarButton.addEventListener('click', function () {
+    if (sideBar.classList.contains('dgSideBarCollapsed')) {
+      sideBar.classList.remove('dgSideBarCollapsed');
+      sideBarButton.classList.remove('dgSideBarCollapsed');
+    } else {
+      sideBar.classList.add('dgSideBarCollapsed');
+      sideBarButton.classList.add('dgSideBarCollapsed');
+    }
+  });
+});

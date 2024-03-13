@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { TableOfContents } from '../../components/web-table-of-contents/web-table-of-contents';
 import { Footer } from '../../components/footer/footer';
+import { SideBar } from '../../components/sidebar/sidebar';
 import type { Parameters } from '../../../types';
 
 const Logo = ({
@@ -107,6 +108,7 @@ export const Main = ({
       </div>
       <div id="dg-navigator">Table of contents</div>
       <Header parameters={parameters} />
+      <SideBar />
       <section id="dg-content">
         {fixedWidth ? (
           <div className="w-fixed-width">
