@@ -18,7 +18,8 @@
     top: $header-height + 1px;
     left: 0;
     width: 100%;
-    height: calc(100% - 70px);
+    height: 100%;
+    min-height: 5000px; // hack for mobiles
     visibility: hidden;
     opacity: 0;
     transition: .3s;
@@ -87,7 +88,8 @@
   max-width: 300px;
   position: absolute;
   left: 0;
-  height: calc(100% - 70px);
+  height: 100%;
+  min-height: 5000px; // hack for mobiles
   background: #ececec;
   pointer-events: auto;
   -webkit-tap-highlight-color: rgba(0,0,0,0);

@@ -1113,7 +1113,8 @@ button .icon svg,
   top: 91px;
   left: 0;
   width: 100%;
-  height: calc(100% - 70px);
+  height: 100%;
+  min-height: 5000px;
   visibility: hidden;
   opacity: 0;
   transition: 0.3s;
@@ -1175,7 +1176,8 @@ button .icon svg,
   max-width: 300px;
   position: absolute;
   left: 0;
-  height: calc(100% - 70px);
+  height: 100%;
+  min-height: 5000px;
   background: #ececec;
   pointer-events: auto;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
