@@ -9,9 +9,6 @@ const Page = ({page}) => {
   );
 };
 
-
-
-
 export const Hamburger = ({
   name,
   sortedPages,
