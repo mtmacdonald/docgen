@@ -9,6 +9,9 @@ const Page = ({page}) => {
   );
 };
 
+
+
+
 export const Hamburger = ({
   name,
   sortedPages,
@@ -18,25 +21,25 @@ export const Hamburger = ({
   const pdfName = name.toLowerCase() + '.pdf';
   return (
     <div id="dgHamburgerMenuContainer">
-      <div className="dgHamburgerPageContentBackground"></div>
-      <div className="dgHamburgerButton" tabIndex="0">
-        <span className="dgHamburgerIconBar"></span>
-        <span className="dgHamburgerIconBar"></span>
-        <span className="dgHamburgerIconBar"></span>
+      <div className="dgHamburgerMenuContentBackground"></div>
+      <div className="button" tabIndex="0">
+        <span className="icon-bar"></span>
+        <span className="icon-bar"></span>
+        <span className="icon-bar"></span>
       </div>
       <div id="dgHamburgerMenuContent" tabIndex="0">
         {pages
           .filter(p => p?.heading !== 'Extra')
           .map((page, i) => (
-          <div key={i}>
-            <div className="dgHamburgerMenuHeading">{page.heading}</div>
-            <ul>
-              {page.pages.map((subPage, i) => (
-                <Page key={i} page={subPage} />
-              ))}
-            </ul>
-          </div>
-        ))}
+            <div key={i}>
+              <div className="dgHamburgerMenuHeading">{page.heading}</div>
+              <ul>
+                {page.pages.map((subPage, i) => (
+                  <Page key={i} page={subPage} />
+                ))}
+              </ul>
+            </div>
+          ))}
         <div className="dgHamburgerMenuAttribution">
           <ul>
             <li>

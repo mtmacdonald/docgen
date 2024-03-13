@@ -161,7 +161,6 @@ p.browserSupport {
   background-position: center;
   border-radius: 20px;
   color: white;
-  opacity: 0.9;
   padding-bottom: 10px;
   text-align: left;
 }
