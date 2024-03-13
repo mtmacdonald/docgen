@@ -1169,7 +1169,7 @@ button .icon svg,
   transform: translate3d(0, -8px, 0) rotate(-45deg);
 }
 
-#nav-content {
+#dgHamburgerMenuContent {
   padding: 20px;
   width: 90%;
   max-width: 300px;
@@ -1184,29 +1184,50 @@ button .icon svg,
   will-change: transform;
   contain: paint;
 }
-
-#nav-content ul {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-#nav-content li a {
-  padding: 10px 5px;
-  display: block;
+#dgHamburgerMenuContent .dgHamburgerMenuHeading {
   text-transform: uppercase;
-  transition: color 0.1s;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 32px 0 12px 0;
+  border: none;
+}
+#dgHamburgerMenuContent ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+#dgHamburgerMenuContent li {
+  padding: 2px 0 2px 0;
+}
+#dgHamburgerMenuContent li a {
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+#dgHamburgerMenuContent .dgHamburgerMenuAttribution {
+  margin: 32px 0 12px 0;
+}
+#dgHamburgerMenuContent .dgHamburgerMenuAttribution ul {
+  padding: 0;
+}
+#dgHamburgerMenuContent .dgHamburgerMenuAttribution li {
+  display: flex;
+  align-items: center;
+}
+#dgHamburgerMenuContent .dgHamburgerMenuAttribution .dgIcon {
+  padding: 0 5px 0 0;
+  width: 20px;
+  height: 20px;
+}
+#dgHamburgerMenuContent .dgHamburgerMenuAttribution .dgIcon svg {
+  width: 20px;
+  height: 20px;
+}
+#dgHamburgerMenuContent .dgHamburgerMenuPDFButton {
+  margin: 32px 0 12px 0;
 }
 
-#nav-content li a:hover {
-  color: #bf7497;
-}
-
-#nav-content li:not(.small) + .small {
-  margin-top: auto;
-}
-
-#dgHamburgerMenuContainer:focus-within #nav-content {
+#dgHamburgerMenuContainer:focus-within #dgHamburgerMenuContent {
   transform: none;
 }
 

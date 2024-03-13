@@ -27,22 +27,12 @@ export const Hamburger = ({
         <span className="icon-bar"></span>
         <span className="icon-bar"></span>
       </div>
-      <div id="nav-content" tabIndex="0">
-        <div className="dg-hamburger-menu-content">
-          <div>
-            {pdfEnabled && (
-              <a
-                className="button whiteInverted"
-                style={{textDecoration: 'none'}}
-                href={pdfName}
-              >
-                PDF
-              </a>
-            )}
-          </div>
-          {pages.map((page, i) => (
+      <div id="dgHamburgerMenuContent" tabIndex="0">
+        {pages
+          .filter(p => p?.heading !== 'Extra')
+          .map((page, i) => (
             <div key={i}>
-              <h2>{page.heading}</h2>
+              <div className="dgHamburgerMenuHeading">{page.heading}</div>
               <ul>
                 {page.pages.map((subPage, i) => (
                   <Page key={i} page={subPage} />
@@ -50,19 +40,28 @@ export const Hamburger = ({
               </ul>
             </div>
           ))}
-          <div>
-            <h2></h2>
-            <ul>
-              <li>
-                <span className="dgIcon" data-name="users" title="ownership"></span>
-                <a href="ownership.html">Ownership</a>
-              </li>
-              <li>
-                <span className="dgIcon" data-name="refresh" title="release notes"></span>
-                <a href="release-notes.html">Release Notes</a>
-              </li>
-            </ul>
-          </div>
+        <div className="dgHamburgerMenuAttribution">
+          <ul>
+            <li>
+              <span className="dgIcon" data-name="users" title="ownership"></span>
+              <a href="ownership.html">Ownership</a>
+            </li>
+            <li>
+              <span className="dgIcon" data-name="refresh" title="release notes"></span>
+              <a href="release-notes.html">Release Notes</a>
+            </li>
+          </ul>
+        </div>
+        <div className="dgHamburgerMenuPDFButton">
+          {pdfEnabled && (
+            <a
+              className="button"
+              style={{textDecoration: 'none'}}
+              href={pdfName}
+            >
+              PDF
+            </a>
+          )}
         </div>
       </div>
     </div>

@@ -81,7 +81,7 @@
   }
 }
 
-#nav-content {
+#dgHamburgerMenuContent {
   padding: 20px;
   width: 90%;
   max-width: 300px;
@@ -95,29 +95,77 @@
   transition: transform .3s;
   will-change: transform;
   contain: paint;
+
+  .dgHamburgerMenuHeading {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 32px 0 12px 0;
+    border: none;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+  }
+
+  li {
+    padding: 2px 0 2px 0;
+  }
+
+  li a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dgHamburgerMenuAttribution {
+    margin: 32px 0 12px 0;
+    ul {
+      padding: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+    }
+    .dgIcon {
+      padding: 0 5px 0 0;
+      width: 20px;
+      height: 20px;
+    }
+    .dgIcon svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .dgHamburgerMenuPDFButton {
+    margin: 32px 0 12px 0;
+  }
 }
 
-#nav-content ul {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+//#dgHamburgerMenuContent ul {
+//  height: 100%;
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//#dgHamburgerMenuContent li a {
+//  padding: 10px 5px;
+//  display: block;
+//  text-transform: uppercase;
+//  transition: color .1s;
+//}
+//
+//#dgHamburgerMenuContent li a:hover {
+//  color: #BF7497;
+//}
+//
+//#dgHamburgerMenuContent li:not(.small) + .small {
+//  margin-top: auto;
+//}
 
-#nav-content li a {
-  padding: 10px 5px;
-  display: block;
-  text-transform: uppercase;
-  transition: color .1s;
-}
-
-#nav-content li a:hover {
-  color: #BF7497;
-}
-
-#nav-content li:not(.small) + .small {
-  margin-top: auto;
-}
-
-#dgHamburgerMenuContainer:focus-within #nav-content {
+#dgHamburgerMenuContainer:focus-within #dgHamburgerMenuContent {
   transform: none;
 }
