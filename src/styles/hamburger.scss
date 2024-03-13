@@ -145,27 +145,6 @@
   }
 }
 
-//#dgHamburgerMenuContent ul {
-//  height: 100%;
-//  display: flex;
-//  flex-direction: column;
-//}
-//
-//#dgHamburgerMenuContent li a {
-//  padding: 10px 5px;
-//  display: block;
-//  text-transform: uppercase;
-//  transition: color .1s;
-//}
-//
-//#dgHamburgerMenuContent li a:hover {
-//  color: #BF7497;
-//}
-//
-//#dgHamburgerMenuContent li:not(.small) + .small {
-//  margin-top: auto;
-//}
-
 #dgHamburgerMenuContainer:focus-within #dgHamburgerMenuContent {
   transform: none;
 }
