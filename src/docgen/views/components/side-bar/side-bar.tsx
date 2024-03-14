@@ -24,7 +24,7 @@ export const SideBar = ({
         <span className="dgIcon" data-name="menu-2"></span>
       </button>
       <div id="dgSideBarInner">
-        <div id="dgSideBarContent" tabIndex="0">
+        <div id="dgSideBarContent">
           {pages
             .filter((p) => p?.heading !== 'Extra')
             .map((page, i) => (
