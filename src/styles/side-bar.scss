@@ -23,7 +23,7 @@ $sidebarPadding: 5px;
   }
 }
 
-.inner {
+#dgSideBarInner {
   position: absolute;
   left: 0;
   right: 0;
@@ -49,11 +49,11 @@ $sidebarPadding: 5px;
 
 // content
 
-#dgHamburgerMenuContent {
+#dgSideBarContent {
   padding: 20px;
   color: white;
 
-  .dgHamburgerMenuHeading {
+  .dgSideBarHeading {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px;
@@ -78,7 +78,7 @@ $sidebarPadding: 5px;
     color: white;
   }
 
-  .dgHamburgerMenuAttribution {
+  .dgSideBarAttribution {
     margin: 32px 0 12px 0;
     ul {
       padding: 0;
@@ -98,7 +98,7 @@ $sidebarPadding: 5px;
     }
   }
 
-  .dgHamburgerMenuPDFButton {
+  .dgSideBarPDFButton {
     margin: 32px 0 12px 0;
   }
 }

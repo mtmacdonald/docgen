@@ -23,13 +23,13 @@ export const SideBar = ({
       <button id="dgSideBarButton">
         <span className="dgIcon" data-name="menu-2"></span>
       </button>
-      <div className="inner">
-        <div id="dgHamburgerMenuContent" tabIndex="0">
+      <div id="dgSideBarInner">
+        <div id="dgSideBarContent" tabIndex="0">
           {pages
             .filter((p) => p?.heading !== 'Extra')
             .map((page, i) => (
               <div key={i}>
-                <div className="dgHamburgerMenuHeading">{page.heading}</div>
+                <div className="dgSideBarHeading">{page.heading}</div>
                 <ul>
                   {page.pages.map((subPage, i) => (
                     <Page key={i} page={subPage} />
@@ -37,7 +37,7 @@ export const SideBar = ({
                 </ul>
               </div>
             ))}
-          <div className="dgHamburgerMenuAttribution">
+          <div className="dgSideBarAttribution">
             <ul>
               <li>
                 <span
@@ -57,7 +57,7 @@ export const SideBar = ({
               </li>
             </ul>
           </div>
-          <div className="dgHamburgerMenuPDFButton">
+          <div className="dgSideBarPDFButton">
             {pdfEnabled && (
               <a
                 className="button"
