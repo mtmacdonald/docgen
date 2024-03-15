@@ -22,6 +22,10 @@ $sidebarPadding: 5px;
   }
 }
 
+#dgSideBarInnerWrapper {
+  overflow: hidden;
+}
+
 #dgSideBarInner {
   position: absolute;
   left: 0;
@@ -34,7 +38,6 @@ $sidebarPadding: 5px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   width: $sidebar_width;
-  max-width: 80%;
   transition: opacity 0.4s ease;
 
   .dgSideBarCollapsed & {

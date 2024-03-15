@@ -5442,7 +5442,6 @@ $(document).ready(() => {
   SideBar Toggle Button
 */
 document.addEventListener('DOMContentLoaded', function () {
-  const injector = new svgInject();
   const sideBar = document.getElementById('dgSideBar');
   const sideBarButton = document.getElementById('dgSideBarButton');
   const sideBarIcon = sideBarButton.querySelector('span.dgIcon');

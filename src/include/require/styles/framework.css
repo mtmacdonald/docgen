@@ -1114,6 +1114,10 @@ img {
   width: 40px;
 }
 
+#dgSideBarInnerWrapper {
+  overflow: hidden;
+}
+
 #dgSideBarInner {
   position: absolute;
   left: 0;
@@ -1126,7 +1130,6 @@ img {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   width: 330px;
-  max-width: 80%;
   transition: opacity 0.4s ease;
 }
 .dgSideBarCollapsed #dgSideBarInner {
