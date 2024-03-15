@@ -3,28 +3,17 @@
 */
 
 footer {
-  background-color: $brand-primary-color;
+  padding: 0;
+  margin: 0;
   width: 100%;
+  text-align: center;
+  font-size: 12px;
+
   div {
-    padding: 15px 0 15px 0;
+    margin: 0 30px 0 30px;
   }
-
   > div:first-child {
-    text-align: center;
-    background-color:$brand-secondary-color-light;
-  }
-
-  > div:nth-child(2) {
-
-    @include fixed-color-text($light-text);
-
-    text-align: center;
-    line-height: 35px;
-
-    > p:nth-child(2) {
-      font-size: 10px;
-      line-height: 12px;
-    }
+    border-top: 1px solid #ddd;
   }
 
   @media not print {
