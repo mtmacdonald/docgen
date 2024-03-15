@@ -194,7 +194,7 @@ p.browserSupport {
 }
 </style>
 
-<div id="banner"><div class="w-fixed-width w-center">
+<div id="banner"><div class="w-center">
   <h1>The Leading Open Source Documentation Tool</h1>
   <p class="heading-text">
    DocGen generates HTML websites and PDF documents from plain text for free.
@@ -202,7 +202,7 @@ p.browserSupport {
   <img class="w-center" src="files/images/overview.svg"  alt="overview" width="700px" />
 </div></div>
 
-<div id="banner-buttons"><div class="w-fixed-width">
+<div id="banner-buttons"><div>
   <span class="w-center">
   <a href="https://github.com/mtmacdonald/docgen/tags" class="button spaced">
     <span>Download</span>
@@ -221,7 +221,7 @@ p.browserSupport {
   </p>
 </div>
 
-<div class="segment" style="border-bottom: none; margin-bottom:0; padding-bottom:0;"><div class="w-fixed-width">
+<div class="segment" style="border-bottom: none; margin-bottom:0; padding-bottom:0;"><div>
 
 <h2 class="dg-hiddenTitle" id="features">Features</h2>
 
@@ -272,7 +272,7 @@ p.browserSupport {
 
 </div></div>
 
-<div><div class="w-fixed-width">
+<div><div>
 
 <h2>Sponsors</h2>
 
