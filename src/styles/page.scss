@@ -5,11 +5,13 @@
 
 html
 {
+	height: 100%;
 	background-color: white;
 	color: $text;
 
 	body
 	{
+		height: 100%;
 		min-width: $page-width + 40;
 
 		.w-fixed-width {
@@ -24,12 +26,14 @@ html
 	position: fixed;
 	right: 0;
 	bottom: 0;
-	//Probably not compatible with wkhtmltopdf?
-	//display: flex;
-	//flex-direction: column;
 	overflow: auto;
 	left: $sideBarMinWidth;
 	top: $topBarHeight;
+
+	@media not print {
+		display: flex;
+		flex-direction: column;
+	}
 
 	@media print {
 		background-color: white;
@@ -45,41 +49,14 @@ html
 }
 
 /*
- footer
-*/
-
-footer {
-	background-color: $brand-primary-color;
-	div {
-		padding: 15px 0 15px 0;
-	}
-
-	> div:first-child {
-		text-align: center;
-		background-color:$brand-secondary-color-light;
-	}
-
-	> div:nth-child(2) {
-
-		@include fixed-color-text($light-text);
-
-		text-align: center;
-		line-height: 35px;
-
-		> p:nth-child(2) {
-			font-size: 10px;
-			line-height: 12px;
-		}
-	}
-
-}
-
-/*
  page content
 */
 
 section {
-
+	@media not print {
+		//https://stackoverflow.com/a/50659635/942635
+		flex: 1 0 auto;
+	}
 	background-color: $content-background;
 	padding: 25px 0 25px 0;
 

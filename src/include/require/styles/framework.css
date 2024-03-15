@@ -408,10 +408,12 @@ input[type='submit']:focus {
  page
 */
 html {
+  height: 100%;
   background-color: white;
   color: #444;
 }
 html body {
+  height: 100%;
   min-width: 1020px;
 }
 html body .w-fixed-width {
@@ -428,6 +430,12 @@ html body .w-fixed-width {
   left: 40px;
   top: 80px;
 }
+@media not print {
+  .page {
+    display: flex;
+    flex-direction: column;
+  }
+}
 @media print {
   .page {
     background-color: white;
@@ -443,42 +451,16 @@ html body .w-fixed-width {
 }
 
 /*
- footer
-*/
-footer {
-  background-color: rgb(1, 3, 4);
-}
-footer div {
-  padding: 15px 0 15px 0;
-}
-footer > div:first-child {
-  text-align: center;
-  background-color: rgb(222, 232, 252);
-}
-footer > div:nth-child(2) {
-  color: #fff;
-  text-align: center;
-  line-height: 35px;
-}
-footer > div:nth-child(2) a,
-footer > div:nth-child(2) a:hover,
-footer > div:nth-child(2) a:active,
-footer > div:nth-child(2) a:visited,
-footer > div:nth-child(2) .w-false-link,
-footer > div:nth-child(2) .w-false-link:hover {
-  color: #fff;
-}
-footer > div:nth-child(2) > p:nth-child(2) {
-  font-size: 10px;
-  line-height: 12px;
-}
-
-/*
  page content
 */
 section {
   background-color: #fff;
   padding: 25px 0 25px 0;
+}
+@media not print {
+  section {
+    flex: 1 0 auto;
+  }
 }
 section > div p,
 section > div div,
@@ -1249,6 +1231,43 @@ button:active,
 }
 .dgSideBarCollapsed #dgSideBarButton {
   transform: scaleX(-1);
+}
+
+/*
+ footer
+*/
+footer {
+  background-color: rgb(1, 3, 4);
+  width: 100%;
+}
+footer div {
+  padding: 15px 0 15px 0;
+}
+footer > div:first-child {
+  text-align: center;
+  background-color: rgb(222, 232, 252);
+}
+footer > div:nth-child(2) {
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+}
+footer > div:nth-child(2) a,
+footer > div:nth-child(2) a:hover,
+footer > div:nth-child(2) a:active,
+footer > div:nth-child(2) a:visited,
+footer > div:nth-child(2) .w-false-link,
+footer > div:nth-child(2) .w-false-link:hover {
+  color: #fff;
+}
+footer > div:nth-child(2) > p:nth-child(2) {
+  font-size: 10px;
+  line-height: 12px;
+}
+@media not print {
+  footer {
+    flex-shrink: 0;
+  }
 }
 
 pre {

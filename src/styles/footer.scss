@@ -1,0 +1,34 @@
+/*
+ footer
+*/
+
+footer {
+  background-color: $brand-primary-color;
+  width: 100%;
+  div {
+    padding: 15px 0 15px 0;
+  }
+
+  > div:first-child {
+    text-align: center;
+    background-color:$brand-secondary-color-light;
+  }
+
+  > div:nth-child(2) {
+
+    @include fixed-color-text($light-text);
+
+    text-align: center;
+    line-height: 35px;
+
+    > p:nth-child(2) {
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+
+  @media not print {
+    //https://stackoverflow.com/a/50659635/942635
+    flex-shrink: 0;
+  }
+}

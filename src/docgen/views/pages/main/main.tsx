@@ -1,26 +1,11 @@
 import React, { ReactNode } from 'react';
-import { Footer } from '../../components/footer/footer';
+import { WebFooter } from '../../components/footer/footer';
 import { TopBar } from '../../components/top-bar/top-bar';
 import { SideBar } from '../../components/side-bar/side-bar';
 import { Page } from '../../components/page/page';
 import type { Parameters } from '../../../types';
 
-const WebFooter = ({parameters}) => {
-  return (
-    <footer>
-      <div>
-        <p className="w-fixed-width">
-          <span id="dg-web-footer">
-            {parameters.webFooter}
-          </span>
-        </p>
-      </div>
-      <div className="w-fixed-width">
-        <Footer parameters={parameters} />
-      </div>
-    </footer>
-  )
-};
+
 
 type MainProps = {
   parameters: Parameters;
