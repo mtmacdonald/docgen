@@ -45,6 +45,7 @@ h3 {
 }
 .subDescription {
   width: 500px;
+  max-width: 100%;
   display: inline-block;
 }
 
@@ -114,6 +115,7 @@ h3 {
 }
 p.browserSupport {
   width: 450px;
+  max-width: 100%;
   margin-bottom: 10px;
 }
 .browsers {
@@ -155,6 +157,7 @@ p.browserSupport {
 
 .inkitSponsor {
   width: 700px;
+  max-width: 100%;
   height: 250px;
   background-image: url('files/images/inkit-dark-background.png');
   background-size: cover;

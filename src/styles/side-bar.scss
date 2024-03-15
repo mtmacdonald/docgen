@@ -6,6 +6,7 @@ $sidebarPadding: 5px;
   color: white;
   transition: width 0.4s ease;
   width: $sidebar_width;
+  max-width: 80%;
   position: fixed;
   top: $topBarHeight;
   left: 0;
@@ -33,6 +34,7 @@ $sidebarPadding: 5px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   width: $sidebar_width;
+  max-width: 80%;
   transition: opacity 0.4s ease;
 
   .dgSideBarCollapsed & {

@@ -6,27 +6,21 @@
 html
 {
 	height: 100%;
-	background-color: white;
+	background-color: $brand-primary-color;
 	color: $text;
 
 	body
 	{
 		height: 100%;
-		min-width: $page-width + 40;
-
-		.w-fixed-width {
-			width: $page-width;
-			margin: 0 auto;
-		}
 	}
 }
 
 .page {
-	background-color: white;
+	background-color: $content-background;
 	position: fixed;
 	right: 0;
 	bottom: 0;
-	overflow: auto;
+	overflow: scroll;
 	left: $sideBarMinWidth;
 	top: $topBarHeight;
 
@@ -53,12 +47,14 @@ html
 */
 
 section {
+	margin: 20px;
+	overflow: hidden;
 	@media not print {
 		//https://stackoverflow.com/a/50659635/942635
 		flex: 1 0 auto;
 	}
 	background-color: $content-background;
-	padding: 25px 0 25px 0;
+	//padding: 25px 0 25px 0;
 
 	> div p, > div div, > div pre, > div ul, > div ol, > div table, > div blockquote {
 		margin: 20px 0 20px 0;
