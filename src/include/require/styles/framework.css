@@ -1145,6 +1145,7 @@ img {
 }
 .dgSideBarCollapsed #dgSideBarInner {
   opacity: 0;
+  pointer-events: none;
 }
 #dgSideBarInner::-webkit-scrollbar {
   width: 0px; /* Remove scrollbar space */
