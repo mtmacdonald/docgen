@@ -5,8 +5,6 @@ import { SideBar } from '../../components/side-bar/side-bar';
 import { Page } from '../../components/page/page';
 import type { Parameters } from '../../../types';
 
-
-
 type MainProps = {
   parameters: Parameters;
   sortedPages: any;

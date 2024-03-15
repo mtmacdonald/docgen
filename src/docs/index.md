@@ -19,6 +19,20 @@ h3 {
   padding-top: 0;
 }
 
+#pageWrapper {
+ width: 980px;
+ max-width: 100%;
+ //margin: 0 auto;
+ text-align: center;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+#pageWrapper > * {
+  text-align: left; /* Reset text alignment for child items */
+}
+
 #banner, #banner-buttons {
   margin: 0;
 }
@@ -194,6 +208,7 @@ p.browserSupport {
 }
 </style>
 
+<div id="pageWrapper">
 <div id="banner"><div class="w-center">
   <h1>The Leading Open Source Documentation Tool</h1>
   <p class="heading-text">
@@ -213,7 +228,7 @@ p.browserSupport {
 </div></div>
 
 <div class="w-center">
-  <h2>DocGen is a Static Website Generator</h2>
+  <h2 class="w-center">DocGen is a Static Website Generator</h2>
   <p class="heading-text">
   <span class="subDescription">
     DocGen is an open-source website generator that makes it easy to create high-quality documentation.
@@ -393,3 +408,4 @@ docgen run -o $HOME/docgen-example</code></pre>
 </p>
 
 </div></div>
+</div>
