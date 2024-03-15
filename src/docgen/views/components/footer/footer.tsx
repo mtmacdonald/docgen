@@ -17,3 +17,21 @@ export const Footer = ({
     </>
   );
 };
+
+
+export const WebFooter = ({parameters}) => {
+  return (
+    <footer>
+      <div>
+        <p>
+          <span id="dg-web-footer">
+            {parameters.webFooter}
+          </span>
+        </p>
+      </div>
+      <div>
+        <Footer parameters={parameters} />
+      </div>
+    </footer>
+  )
+};

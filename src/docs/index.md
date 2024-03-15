@@ -1,7 +1,4 @@
 ﻿<style>
-header {
-  border-bottom: 2px solid transparent;
-}
 h1 {
   font-size: 32px;
   border-bottom: none;
@@ -17,6 +14,17 @@ h3 {
 }
 #dg-content, #dg-innerContent {
   padding-top: 0;
+}
+
+#pageWrapper {
+ width: 980px;
+ max-width: 100%;
+ text-align: center;
+ margin: 0 auto;
+}
+
+#pageWrapper > * {
+  text-align: left; /* Reset text alignment for child items */
 }
 
 #banner, #banner-buttons {
@@ -45,6 +53,7 @@ h3 {
 }
 .subDescription {
   width: 500px;
+  max-width: 100%;
   display: inline-block;
 }
 
@@ -114,6 +123,7 @@ h3 {
 }
 p.browserSupport {
   width: 450px;
+  max-width: 100%;
   margin-bottom: 10px;
 }
 .browsers {
@@ -155,6 +165,7 @@ p.browserSupport {
 
 .inkitSponsor {
   width: 700px;
+  max-width: 100%;
   height: 250px;
   background-image: url('files/images/inkit-dark-background.png');
   background-size: cover;
@@ -191,7 +202,8 @@ p.browserSupport {
 }
 </style>
 
-<div id="banner"><div class="w-fixed-width w-center">
+<div id="pageWrapper">
+<div id="banner"><div class="w-center">
   <h1>The Leading Open Source Documentation Tool</h1>
   <p class="heading-text">
    DocGen generates HTML websites and PDF documents from plain text for free.
@@ -199,7 +211,7 @@ p.browserSupport {
   <img class="w-center" src="files/images/overview.svg"  alt="overview" width="700px" />
 </div></div>
 
-<div id="banner-buttons"><div class="w-fixed-width">
+<div id="banner-buttons"><div>
   <span class="w-center">
   <a href="https://github.com/mtmacdonald/docgen/tags" class="button spaced">
     <span>Download</span>
@@ -210,7 +222,7 @@ p.browserSupport {
 </div></div>
 
 <div class="w-center">
-  <h2>DocGen is a Static Website Generator</h2>
+  <h2 class="w-center">DocGen is a Static Website Generator</h2>
   <p class="heading-text">
   <span class="subDescription">
     DocGen is an open-source website generator that makes it easy to create high-quality documentation.
@@ -218,7 +230,7 @@ p.browserSupport {
   </p>
 </div>
 
-<div class="segment" style="border-bottom: none; margin-bottom:0; padding-bottom:0;"><div class="w-fixed-width">
+<div class="segment" style="border-bottom: none; margin-bottom:0; padding-bottom:0;"><div>
 
 <h2 class="dg-hiddenTitle" id="features">Features</h2>
 
@@ -269,7 +281,7 @@ p.browserSupport {
 
 </div></div>
 
-<div><div class="w-fixed-width">
+<div><div>
 
 <h2>Sponsors</h2>
 
@@ -390,3 +402,4 @@ docgen run -o $HOME/docgen-example</code></pre>
 </p>
 
 </div></div>
+</div>

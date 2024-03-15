@@ -85,7 +85,6 @@ export const processPages = async ({
           parameters={parameters}
           sortedPages={sortedPages}
           pdfEnabled={pdfEnabled}
-          fixedWidth={page.html !== true}
         />
       );
       $('body').html(htmlPage);
