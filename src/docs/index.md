@@ -1,7 +1,4 @@
 ﻿<style>
-header {
-  border-bottom: 2px solid transparent;
-}
 h1 {
   font-size: 32px;
   border-bottom: none;
@@ -22,11 +19,8 @@ h3 {
 #pageWrapper {
  width: 980px;
  max-width: 100%;
- //margin: 0 auto;
  text-align: center;
- display: block;
- margin-left: auto;
- margin-right: auto;
+ margin: 0 auto;
 }
 
 #pageWrapper > * {

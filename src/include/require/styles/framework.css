@@ -424,6 +424,7 @@ html body {
   overflow: scroll;
   left: 40px;
   top: 80px;
+  padding: 30px;
 }
 @media not print {
   .page {
@@ -449,9 +450,19 @@ html body {
  page content
 */
 section {
-  margin: 20px;
-  overflow: hidden;
   background-color: #fff;
+  /*
+  	Center content
+  	Note we need an old way because wkhtmltopdf doesn't support modern styles
+  */
+  width: 1200px;
+  max-width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+section > * {
+  text-align: left; /* Reset text alignment for child items */
 }
 @media not print {
   section {

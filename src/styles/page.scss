@@ -23,6 +23,7 @@ html
 	overflow: scroll;
 	left: $sideBarMinWidth;
 	top: $topBarHeight;
+	padding: 30px;
 
 	@media not print {
 		display: flex;
@@ -47,17 +48,28 @@ html
 */
 
 section {
-	margin: 20px;
-	overflow: hidden;
+	background-color: $content-background;
+	/*
+		Center content
+		Note we need an old way because wkhtmltopdf doesn't support modern styles
+	*/
+	width: 1200px;
+	max-width: 100%;
+	text-align: center;
+	margin: 0 auto;
+	> * {
+		text-align: left; /* Reset text alignment for child items */
+	}
+
 	@media not print {
 		//https://stackoverflow.com/a/50659635/942635
 		flex: 1 0 auto;
 	}
-	background-color: $content-background;
-	//padding: 25px 0 25px 0;
+
+	//expect responsive content (user-content that's not shouldn't break layout and scrolling)
+	overflow: hidden;
 
 	> div p, > div div, > div pre, > div ul, > div ol, > div table, > div blockquote {
 		margin: 20px 0 20px 0;
 	}
-
 }
