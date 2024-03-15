@@ -5437,3 +5437,23 @@ $(document).ready(() => {
     $(this).toggleClass('active');
   });
 });
+
+/*
+  SideBar Toggle Button
+*/
+document.addEventListener('DOMContentLoaded', function () {
+  const sideBar = document.getElementById('dgSideBar');
+  const sideBarButton = document.getElementById('dgSideBarButton');
+  const sideBarIcon = sideBarButton.querySelector('span.dgIcon');
+  sideBarButton.addEventListener('click', function () {
+    if (sideBar.classList.contains('dgSideBarCollapsed')) {
+      sideBar.classList.remove('dgSideBarCollapsed');
+      sideBarIcon.setAttribute('data-name', 'x');
+      sideBarIcon.innerHTML = w_icons['x'];
+    } else {
+      sideBar.classList.add('dgSideBarCollapsed');
+      sideBarIcon.setAttribute('data-name', 'menu-2');
+      sideBarIcon.innerHTML = w_icons['menu-2'];
+    }
+  });
+});

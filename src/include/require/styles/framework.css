@@ -408,102 +408,42 @@ input[type='submit']:focus {
  page
 */
 html {
+  height: 100%;
   background-color: rgb(1, 3, 4);
   color: #444;
 }
 html body {
-  min-width: 1020px;
-}
-html body .w-fixed-width {
-  width: 980px;
-  margin: 0 auto;
+  height: 100%;
 }
 
-/*
- header
-*/
-header {
-  color: rgb(1, 3, 4);
+.page {
   background-color: #fff;
-  border-top: 2px solid rgb(1, 3, 4);
-  border-bottom: 2px solid rgb(1, 3, 4);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  overflow: scroll;
+  left: 40px;
+  top: 80px;
+  padding: 30px;
 }
-header a,
-header a:hover,
-header a:active,
-header a:visited,
-header .w-false-link,
-header .w-false-link:hover {
-  color: rgb(1, 3, 4);
+@media not print {
+  .page {
+    display: flex;
+    flex-direction: column;
+  }
 }
-header .header {
-  display: flex;
-  align-items: center;
-  height: 102px;
-  padding-right: 40px;
-}
-header .headerLeftBlock {
-  display: flex;
-  align-items: center;
-}
-header #dg-logo {
-  background-repeat: no-repeat;
-}
-header #headerLeftText {
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: 16px;
-}
-header #headerLeftText a {
-  text-decoration: none;
-}
-header #headerLeftText #headerSponsor {
-  display: flex;
-  align-items: center;
-  font-weight: normal;
-  font-size: 11px;
-  margin: 5px 0 0 0;
-  opacity: 0.6;
-}
-header #headerLeftText #headerSponsor span {
-  margin-right: 6px;
-}
-header #headerLeftText #headerSponsor #sponsorLogo {
-  height: 12px;
-  margin: 0 auto;
-  display: block;
-}
-header #headerRightBlock {
-  margin-left: auto;
-}
-
-/*
- footer
-*/
-footer div {
-  padding: 15px 0 15px 0;
-}
-footer > div:first-child {
-  text-align: center;
-  background-color: rgb(222, 232, 252);
-}
-footer > div:nth-child(2) {
-  color: #fff;
-  text-align: center;
-  line-height: 35px;
-}
-footer > div:nth-child(2) a,
-footer > div:nth-child(2) a:hover,
-footer > div:nth-child(2) a:active,
-footer > div:nth-child(2) a:visited,
-footer > div:nth-child(2) .w-false-link,
-footer > div:nth-child(2) .w-false-link:hover {
-  color: #fff;
-}
-footer > div:nth-child(2) > p:nth-child(2) {
-  font-size: 10px;
-  line-height: 12px;
+@media print {
+  .page {
+    background-color: white;
+    color: black !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /*
@@ -511,7 +451,23 @@ footer > div:nth-child(2) > p:nth-child(2) {
 */
 section {
   background-color: #fff;
-  padding: 25px 0 25px 0;
+  /*
+  	Center content
+  	Note we need an old way because wkhtmltopdf doesn't support modern styles
+  */
+  width: 1200px;
+  max-width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+section > * {
+  text-align: left; /* Reset text alignment for child items */
+}
+@media not print {
+  section {
+    flex: 1 0 auto;
+  }
 }
 section > div p,
 section > div div,
@@ -883,24 +839,6 @@ button:active,
 .button:active {
   box-shadow: none;
 }
-button:hover,
-button:focus,
-button:active,
-.button:hover,
-.button:focus,
-.button:active {
-  position: relative;
-  z-index: 1;
-}
-button .icon,
-.button .icon {
-  margin: 0 0 0 10px;
-}
-button .icon svg,
-.button .icon svg {
-  height: 12px;
-  width: 12px;
-}
 
 .inverted {
   background-color: transparent;
@@ -922,6 +860,11 @@ button .icon svg,
   color: white !important;
   border: 2px solid white;
   box-shadow: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .w-image-shadow {
@@ -1082,6 +1025,254 @@ button .icon svg,
   color: #444;
 }
 
+.topbar {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 80px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  background: white;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  color: rgb(1, 3, 4);
+}
+@media print {
+  .topbar {
+    display: none !important;
+  }
+}
+.topbar .left,
+.topbar .right {
+  display: flex;
+  min-width: 0;
+}
+.topbar .left {
+  gap: 10px;
+  padding-left: 30px;
+}
+.topbar .right {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding-right: 30px;
+  gap: 10px;
+}
+.topbar a,
+.topbar a:hover,
+.topbar a:active,
+.topbar a:visited,
+.topbar .w-false-link,
+.topbar .w-false-link:hover {
+  color: rgb(1, 3, 4);
+}
+.topbar #dg-logo {
+  background-repeat: no-repeat;
+}
+.topbar #headerLeftText {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 16px;
+}
+.topbar #headerLeftText a {
+  text-decoration: none;
+}
+.topbar #headerLeftText #headerSponsor {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  font-size: 11px;
+  margin: 5px 0 0 0;
+  opacity: 0.6;
+}
+.topbar #headerLeftText #headerSponsor span {
+  margin-right: 6px;
+}
+.topbar #headerLeftText #headerSponsor #sponsorLogo {
+  height: 12px;
+  margin: 0 auto;
+  display: block;
+}
+@media only screen and (max-width: 600px) {
+  .topbar #headerLeftText {
+    display: none;
+  }
+}
+.topbar #headerRightBlock {
+  margin-left: auto;
+}
+
+#dgSideBar {
+  background-color: #1c1c1c;
+  color: white;
+  transition: width 0.4s ease;
+  width: 330px;
+  max-width: 80%;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+}
+@media print {
+  #dgSideBar {
+    display: none;
+  }
+}
+#dgSideBar.dgSideBarCollapsed {
+  width: 40px;
+}
+
+#dgSideBarInnerWrapper {
+  overflow: hidden;
+}
+
+#dgSideBarInner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 5px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  width: 330px;
+  transition: opacity 0.4s ease;
+}
+.dgSideBarCollapsed #dgSideBarInner {
+  opacity: 0;
+  pointer-events: none;
+}
+#dgSideBarInner::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+#dgSideBarContent {
+  padding: 20px;
+  color: white;
+}
+#dgSideBarContent .dgSideBarHeading {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 32px 0 12px 0;
+  border: none;
+}
+#dgSideBarContent ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+#dgSideBarContent li {
+  padding: 2px 0 2px 0;
+}
+#dgSideBarContent li a {
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+#dgSideBarContent .dgSideBarAttribution {
+  margin: 32px 0 12px 0;
+}
+#dgSideBarContent .dgSideBarAttribution ul {
+  padding: 0;
+}
+#dgSideBarContent .dgSideBarAttribution li {
+  display: flex;
+  align-items: center;
+}
+#dgSideBarContent .dgSideBarAttribution .dgIcon {
+  padding: 0 5px 0 0;
+  width: 20px;
+  height: 20px;
+}
+#dgSideBarContent .dgSideBarAttribution .dgIcon svg {
+  width: 20px;
+  height: 20px;
+}
+#dgSideBarContent .dgSideBarPDFButton {
+  margin: 32px 0 12px 0;
+}
+
+#dgSideBarButton {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -20px 0 0;
+  padding: 0;
+  vertical-align: baseline;
+  line-height: 1em;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  outline: 0;
+  border: 1px solid rgb(22, 71, 193);
+  background: rgb(46, 113, 225);
+  color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+  user-select: none;
+  will-change: '';
+  max-width: 100%;
+  min-height: 20px;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+#dgSideBarButton:hover,
+#dgSideBarButton:focus {
+  background-color: #1f64d7;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+}
+#dgSideBarButton:active,
+#dgSideBarButton.active {
+  background-color: #1c59c0;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.9);
+}
+#dgSideBarButton .dgIcon {
+  margin: 0;
+  color: white;
+}
+#dgSideBarButton .dgIcon svg {
+  height: 40px;
+}
+.dgSideBarCollapsed #dgSideBarButton {
+  transform: scaleX(-1);
+}
+
+/*
+ footer
+*/
+footer {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+footer div {
+  margin: 0 30px 0 30px;
+}
+footer > div:first-child {
+  border-top: 1px solid #ddd;
+}
+@media not print {
+  footer {
+    flex-shrink: 0;
+  }
+}
+
 pre {
   font-size: 12px; /*todo - move to base styles*/
 }
@@ -1093,93 +1284,6 @@ section li p {
 
 .w-table {
   width: 100%;
-}
-
-/******************************** TABLE OF CONTENTS ****************************/
-/*Table of contents button to initiate show/hide*/
-#dg-navigator {
-  float: right;
-  background-color: rgb(26, 34, 49);
-  color: white;
-  text-align: right;
-  padding: 10px 20px 10px 20px;
-  margin-right: 200px;
-  border-radius: 0 0 10px 10px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-/*Table of contents container*/
-#dg-toc {
-  color: white;
-  background-color: rgb(26, 34, 49);
-}
-
-#dg-toc table {
-  table-layout: auto;
-  width: 100%;
-}
-
-#dg-toc div {
-  padding: 15px 0 15px 0;
-}
-
-/*Columns in table of contents*/
-#dg-toc td {
-  border-right: 1px solid #666;
-  vertical-align: top;
-  text-align: left;
-  padding: 0 20px 0 20px;
-}
-
-#dg-toc ul {
-  padding: 0;
-  list-style-type: none;
-}
-
-#dg-toc li {
-  font-weight: bold;
-}
-
-#dg-toc table td a {
-  color: white;
-  font-weight: normal;
-  text-decoration: none;
-  margin-left: 10px;
-}
-
-#dg-toc table td a:hover {
-  text-decoration: underline;
-}
-
-#dg-tocFixedColumn {
-  border-right: none;
-}
-
-#dg-toc table #dg-tocFixedColumn a {
-  vertical-align: middle;
-  margin-left: 4px;
-}
-
-.dg-tocGroup {
-  width: 22%;
-}
-
-.dg-tocHeading {
-  font-size: 16px;
-}
-
-.dgWebTocAttribution li {
-  display: flex;
-  align-items: center;
-}
-.dgWebTocAttribution .dgIcon {
-  width: 18px;
-  height: 18px;
-}
-.dgWebTocAttribution .dgIcon svg {
-  width: 18px;
-  height: 18px;
 }
 
 /*

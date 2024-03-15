@@ -1,8 +1,8 @@
 {
   "title": "DocGen - a documentation tool",
   "name": "DocGen",
-  "version": "3.7.0",
-  "date": "28/02/2024",
+  "version": "4.0.0",
+  "date": "15/03/2024",
   "organization": {
     "name": "Inkit Inc. and contributors",
     "url": "https://www.inkit.com"

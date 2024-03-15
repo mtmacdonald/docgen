@@ -1,4 +1,8 @@
-﻿## DocGen 3.7.0 28/02/2024
+﻿## DocGen 4.0.0 15/03/2024
+
+- new mobile-friendly responsive design with sidebar menu
+
+## DocGen 3.7.0 28/02/2024
 
 - modernize icons (ship with [Tabler Icons](https://tablericons.com) built-in)
 
