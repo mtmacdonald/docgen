@@ -1,4 +1,8 @@
-﻿## DocGen 4.0.0 15/03/2024
+﻿## DocGen 4.1.0 05/04/2024
+
+- remove dependency on jQuery
+
+## DocGen 4.0.0 15/03/2024
 
 - new mobile-friendly responsive design with sidebar menu
 
