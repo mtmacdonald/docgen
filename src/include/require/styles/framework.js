@@ -5406,42 +5406,21 @@
 });
 
 /*
- SVG Injector class
+ SVG Injector
+ Instantiate svg injector to show SVG icons
 */
-
-function svgInject() {
-  this.inject = (container) => {
-    container = typeof container !== 'undefined' ? container : ''; //default value
-    $(container + ' .dgIcon').each(function () {
-      const name = $(this).data('name');
-      $(this).html(w_icons[name]);
-    });
-  };
-}
-
-$(document).ready(() => {
-  $('#dg-toc').hide(); //hide the table of contents
-
-  //instantiate svg injector to show SVG icons
-  const injector = new svgInject();
-  injector.inject();
-
-  //code syntax highlighting
-  $('pre code, .w-inline-code').each((i, block) => {
-    hljs.highlightBlock(block);
+const injectSVG = () => {
+  const dgIcons = document.querySelectorAll(' .dgIcon');
+  dgIcons.forEach((icon) => {
+    const { name } = icon.dataset;
+    icon.innerHTML = w_icons[name];
   });
-
-  //toggle visibility of table of contents
-  $('#dg-navigator').click(() => {
-    $('#dg-toc').slideToggle('fast');
-    $(this).toggleClass('active');
-  });
-});
+};
 
 /*
   SideBar Toggle Button
 */
-document.addEventListener('DOMContentLoaded', function () {
+const initSideBar = () => {
   const sideBar = document.getElementById('dgSideBar');
   const sideBarButton = document.getElementById('dgSideBarButton');
   const sideBarIcon = sideBarButton.querySelector('span.dgIcon');
@@ -5456,4 +5435,19 @@ document.addEventListener('DOMContentLoaded', function () {
       sideBarIcon.innerHTML = w_icons['menu-2'];
     }
   });
+};
+
+const initCodeHighlighting = () => {
+  document.querySelectorAll('pre code, .w-inline-code').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+};
+
+/*
+  Document Ready
+*/
+document.addEventListener('DOMContentLoaded', function () {
+  initSideBar();
+  injectSVG();
+  initCodeHighlighting();
 });
