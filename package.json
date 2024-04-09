@@ -1,6 +1,6 @@
 {
   "name": "docgen-tool",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "A tool for creating HTML and PDF documentation",
   "main": "dist/docgen.ts",
   "bin": {
