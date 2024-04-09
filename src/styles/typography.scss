@@ -40,13 +40,55 @@
 
 $default-font: 'montserrat', Arial, sans-serif;
 $code-font: 'droid-sans-mono', Courier, monospace;
-$default-font-size: 14px;
+$default-font-size: 16px;
+$default-line-height: 26px;
+
+html {
+  font-size: $default-font-size;
+}
 
 body {
 	font-family: $default-font;
 	font-size: $default-font-size;
-	line-height: 20px;
+    line-height: $default-line-height;
 }
+
+h1, h2, h3, h4 , h5, h6 {
+  text-decoration:none;
+  font-weight: bold;
+  color: $brand-primary-color;
+  padding-bottom: 5px;
+  line-height: 1.285714em;
+  margin: 0 0 1rem;
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5 { font-size: 0.875rem; }
+h6 { font-size: 0.75rem; }
+
+/*
+ lists
+*/
+
+p,
+ul,
+ol {
+  margin: 0 0 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+ul, ol {
+  padding-left: 15px;
+}
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
+li.list-heading { position: relative; left: -15px; list-style-type: none; font-weight: bold; }
+section > div ul ul, section > div ol ol {margin:0;} /*don't put margin on nested lists*/
+
 
 .w-small { font-size: 12px; }
 .w-large { font-size: 18px; }
@@ -89,27 +131,6 @@ a:visited { color: lighten($brand-primary-color, 26%); }
 /*
  headings
 */
-
-h1, h2, h3, h4 , h5, h6 { text-decoration:none; font-weight: bold; color: $brand-primary-color; padding-bottom: 5px; border-bottom: 1px solid $border;  margin: 20px 0 20px 0; }
-h1  { font-size: 20px; padding-bottom: 6px; }
-h2  { font-size: 18px; padding-bottom: 4px; }
-h3  { font-size: 16px; padding-bottom: 4px; }
-h4  { font-size: 14px; padding-bottom: 3px; }
-h5  { font-size: 13px; padding-bottom: 2px; }
-h6  { font-size: 12px; padding-bottom: 2px; }
-
-.w-no-underline { border-bottom: none; }
-
-/*
- lists
-*/
-
-ul , ol { padding-left: 15px; }
-ul { list-style-type: disc; }
-ol { list-style-type: decimal; }
-li.list-heading { position: relative; left: -15px; list-style-type: none; font-weight: bold; }
-
-section > div ul ul, section > div ol ol {margin:0;} /*don't put margin on nested lists*/
 
 /*
  blockquotes
