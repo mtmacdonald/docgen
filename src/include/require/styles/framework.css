@@ -670,9 +670,10 @@ a:visited {
 
 .w-success {
   background-color: #ccffbc;
-  border: 1px solid #218900;
-  padding: 10px;
-  color: #218900;
+  border-left: 5px solid #7eff56;
+  padding: 20px 30px;
+  color: #155600;
+  border-radius: 2px;
 }
 .w-success a,
 .w-success a:hover,
@@ -680,14 +681,15 @@ a:visited {
 .w-success a:visited,
 .w-success .w-false-link,
 .w-success .w-false-link:hover {
-  color: #218900;
+  color: #155600;
 }
 
 .w-warning {
   background-color: #fff0bd;
-  border: 1px solid #8a6b00;
-  padding: 10px;
-  color: #8a6b00;
+  border-left: 5px solid #ffd957;
+  padding: 20px 30px;
+  color: #574300;
+  border-radius: 2px;
 }
 .w-warning a,
 .w-warning a:hover,
@@ -695,14 +697,15 @@ a:visited {
 .w-warning a:visited,
 .w-warning .w-false-link,
 .w-warning .w-false-link:hover {
-  color: #8a6b00;
+  color: #574300;
 }
 
 .w-error {
   background-color: #ffe6e6;
-  border: 1px solid #b30000;
-  padding: 10px;
-  color: #b30000;
+  border-left: 5px solid #ff8080;
+  padding: 20px 30px;
+  color: maroon;
+  border-radius: 2px;
 }
 .w-error a,
 .w-error a:hover,
@@ -710,14 +713,15 @@ a:visited {
 .w-error a:visited,
 .w-error .w-false-link,
 .w-error .w-false-link:hover {
-  color: #b30000;
+  color: maroon;
 }
 
 .w-information {
   background-color: rgb(222, 232, 252);
-  border: 1px solid #0e3d9a;
-  padding: 10px;
-  color: #0e3d9a;
+  border-left: 5px solid #81a7f4;
+  padding: 20px 30px;
+  color: #0a2a6b;
+  border-radius: 2px;
 }
 .w-information a,
 .w-information a:hover,
@@ -725,20 +729,26 @@ a:visited {
 .w-information a:visited,
 .w-information .w-false-link,
 .w-information .w-false-link:hover {
-  color: #0e3d9a;
+  color: #0a2a6b;
 }
 
-/*
- headings
-*/
 /*
  blockquotes
 */
 blockquote {
-  padding: 20px 30px;
-  border-radius: 2px;
-  border-left: 5px solid rgb(46, 113, 225);
   background-color: rgb(222, 232, 252);
+  border-left: 5px solid #81a7f4;
+  padding: 20px 30px;
+  color: #0a2a6b;
+  border-radius: 2px;
+}
+blockquote a,
+blockquote a:hover,
+blockquote a:active,
+blockquote a:visited,
+blockquote .w-false-link,
+blockquote .w-false-link:hover {
+  color: #0a2a6b;
 }
 
 /*

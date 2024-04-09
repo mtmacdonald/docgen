@@ -112,35 +112,29 @@ a:visited { color: lighten($brand-primary-color, 26%); }
 
 .w-false-link, .w-link-button { text-decoration: underline; cursor: pointer; }
 
-@mixin special-text($color: $dark) {
-	background-color: $color;
-	border: 1px solid darken($color, 60%);
-	padding: 10px;
-	@include fixed-color-text(darken($color, 60%));
-}
-
 .w-message {
 	border-radius: 5px;
+}
+
+@mixin special-text($color: $brand-secondary-color-light) {
+  background-color: $color;
+  border-left: 5px solid darken($color, 20%);
+  padding: 20px 30px;
+  @include fixed-color-text(darken($color, 70%));
+  border-radius: 2px;
 }
 
 .w-success { @include special-text($success) }
 .w-warning { @include special-text($warning) }
 .w-error { @include special-text($error) }
-.w-information { @include special-text($information) }
-
-/*
- headings
-*/
+.w-information { @include special-text() }
 
 /*
  blockquotes
 */
 
 blockquote {
- padding: 20px 30px;
- border-radius: 2px;
- border-left: 5px solid $brand-secondary-color;
- background-color: $brand-secondary-color-light;
+  @include special-text()
 }
 
 /*
