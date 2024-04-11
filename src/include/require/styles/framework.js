@@ -32,7 +32,7 @@ const initSideBar = () => {
 
 const initCodeHighlighting = () => {
   document.querySelectorAll('pre code, .w-inline-code').forEach((block) => {
-    hljs.highlightBlock(block);
+    hljs.highlightElement(block);
   });
 };
 
