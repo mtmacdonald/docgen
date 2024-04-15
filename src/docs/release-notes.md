@@ -1,4 +1,8 @@
-﻿## DocGen 4.1.1 09/04/2024
+﻿## DocGen 4.2.0 15/04/2024
+
+- better mobile-friendly styles
+
+## DocGen 4.1.1 09/04/2024
 
 - fix Katex math rendering after removing jQuery
 
