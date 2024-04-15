@@ -3,21 +3,16 @@
   box-sizing: border-box;
   float:left;
   width: 480px;
-}
-.codeContainer {
-  margin: 0 20px 0 0;
+  margin: 0 0 1rem;
 }
 .codeContainer pre {
   margin: 0;
-}
-.codeContainer code {
 }
 .codeContainer p {
   margin: 0;
   padding: 0;
 }
 .exampleContainer {
-  margin: 0;
   border: 1px solid #666;
   border-radius: 6px;
   padding: 0 18px 0 18px;
@@ -27,9 +22,6 @@
 }
 #content table {
   width: 400px!important;
-}
-.hljs-change {
-  background-color: transparent!important;
 }
 </style>
 

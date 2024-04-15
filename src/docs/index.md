@@ -12,8 +12,16 @@ h3 {
   font-size: 24px;
   border-bottom: none;
 }
-#dg-content, #dg-innerContent {
-  padding-top: 0;
+
+#pageWrapper {
+ width: 980px;
+ max-width: 100%;
+ text-align: center;
+ margin: 0 auto;
+}
+
+#pageWrapper > * {
+  text-align: left; /* Reset text alignment for child items */
 }
 
 #pageWrapper {
