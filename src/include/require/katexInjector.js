@@ -1,18 +1,15 @@
-$(document).ready(function () {
-  //mathematical expressions using katex, if enabled
-  $('.dg-katexMath').each(function () {
-    var texTxt = $(this).text();
+document.addEventListener('DOMContentLoaded', function () {
+  // Mathematical expressions using katex
+  const elements = document.querySelectorAll('.dg-katexMath');
+  elements.forEach((element) => {
+    const tex = element.textContent.trim();
 
-    el = $(this).get(0);
-    if (el.tagName == 'DIV') {
-      addDisp = '\\displaystyle';
-    } else {
-      addDisp = '';
-    }
+    const displayStyle = element.tagName === 'DIV' ? '\\displaystyle' : '';
+    const preparedTex = `${displayStyle} ${tex}`;
     try {
-      katex.render(addDisp + texTxt, el);
+      katex.render(preparedTex, element);
     } catch (err) {
-      $(this).html("<span class='err'>" + err);
+      element.innerHTML = "<span class='err'>" + err;
     }
   });
 });

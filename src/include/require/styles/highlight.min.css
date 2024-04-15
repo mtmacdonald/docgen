@@ -1,153 +1,86 @@
-.hljs {
+/*!
+  Theme: Default
+  Description: Original highlight.js style
+  Author: (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+  Maintainer: @highlightjs/core-team
+  Website: https://highlightjs.org/
+  License: see project LICENSE
+  Touched: 2021
+*/
+pre code.hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
-  background: #232323;
-  color: #e6e1dc;
-  -webkit-text-size-adjust: none;
+  padding: 1em;
 }
-.hljs-comment,
-.hljs-javadoc,
-.hljs-shebang {
-  color: #bc9458;
-  font-style: italic;
+code.hljs {
+  padding: 3px 5px;
 }
-.hljs-keyword,
-.hljs-list .hljs-title,
-.hljs-request,
-.hljs-status,
-.method,
-.nginx .hljs-title,
-.ruby .hljs-function .hljs-keyword {
-  color: #c26230;
+.hljs {
+  background: #f3f3f3;
+  color: #444;
 }
-.apache .hljs-cbracket,
-.asciidoc .hljs-link_label,
-.hljs-attr_selector,
-.hljs-cdata,
-.hljs-date,
-.hljs-filter .hljs-argument,
-.hljs-number,
-.hljs-regexp,
-.hljs-string,
-.hljs-tag .hljs-value,
-.markdown .hljs-link_label,
-.tex .hljs-command {
-  color: #a5c261;
+.hljs-comment {
+  color: #697070;
 }
-.hljs-subst {
-  color: #519f50;
+.hljs-punctuation,
+.hljs-tag {
+  color: #444a;
 }
-.hljs-doctype,
-.hljs-pi,
-.hljs-sub .hljs-identifier,
-.hljs-tag,
-.hljs-tag .hljs-keyword,
-.hljs-tag .hljs-title,
-.input_number {
-  color: #e8bf6a;
+.hljs-tag .hljs-attr,
+.hljs-tag .hljs-name {
+  color: #444;
 }
-.hljs-identifier {
-  color: #d0d0ff;
-}
-.hljs-class .hljs-title,
-.hljs-dartdoc,
-.hljs-javadoctag,
-.hljs-phpdoc,
-.hljs-type,
-.hljs-yardoctag,
-.smalltalk .hljs-class {
-  text-decoration: none;
-}
-.hljs-constant {
-  color: #da4939;
-}
-.asciidoc .hljs-link_url,
 .hljs-attribute,
-.hljs-built_in,
-.hljs-symbol,
-.markdown .hljs-link_url,
-.ruby .hljs-symbol .hljs-identifier,
-.ruby .hljs-symbol .hljs-string {
-  color: #6d9cbe;
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-name,
+.hljs-selector-tag {
+  font-weight: 700;
 }
-.asciidoc .hljs-link_url,
-.markdown .hljs-link_url {
-  text-decoration: underline;
+.hljs-deletion,
+.hljs-number,
+.hljs-quote,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-string,
+.hljs-template-tag,
+.hljs-type {
+  color: #800;
 }
-.clojure .hljs-attribute,
-.hljs-params,
-.hljs-variable {
-  color: #d0d0ff;
-}
-.css .hljs-tag,
-.hljs-pseudo,
-.hljs-rules .hljs-property,
-.tex .hljs-special {
-  color: #cda869;
-}
-.css .hljs-class {
-  color: #9b703f;
-}
-.hljs-rules .hljs-keyword {
-  color: #c5af75;
-}
-.hljs-rules .hljs-value {
-  color: #cf6a4c;
-}
-.css .hljs-id {
-  color: #8b98ab;
-}
-.apache .hljs-sqbracket,
-.hljs-annotation,
-.nginx .hljs-built_in {
-  color: #9b859d;
-}
-.hljs-pragma,
-.hljs-preprocessor,
-.hljs-preprocessor * {
-  color: #8996a8 !important;
-}
-.css .hljs-value .hljs-number,
-.hljs-hexcolor {
-  color: #a5c261;
-}
-.css .hljs-function,
-.hljs-decorator,
+.hljs-section,
 .hljs-title {
-  color: #ffc66d;
+  color: #800;
+  font-weight: 700;
 }
-.diff .hljs-header,
-.hljs-chunk {
-  background-color: #2f33ab;
-  color: #e6e1dc;
-  display: inline-block;
-  width: 100%;
+.hljs-link,
+.hljs-operator,
+.hljs-regexp,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-symbol,
+.hljs-template-variable,
+.hljs-variable {
+  color: #ab5656;
 }
-.diff .hljs-change {
-  background-color: #4a410d;
-  color: #f8f8f8;
-  display: inline-block;
-  width: 100%;
+.hljs-literal {
+  color: #695;
 }
 .hljs-addition,
-.hljs-deletion {
-  color: #e6e1dc;
-  display: inline-block;
-  width: 100%;
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code {
+  color: #397300;
 }
-.hljs-addition {
-  background-color: #144212;
+.hljs-meta {
+  color: #1f7199;
 }
-.hljs-deletion {
-  background-color: #600;
+.hljs-meta .hljs-string {
+  color: #38a;
 }
-.coffeescript .javascript,
-.javascript .xml,
-.tex .hljs-formula,
-.xml .css,
-.xml .hljs-cdata,
-.xml .javascript,
-.xml .vbscript {
-  opacity: 0.7;
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 700;
 }
