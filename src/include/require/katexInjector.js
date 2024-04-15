@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const displayStyle = element.tagName === 'DIV' ? '\\displaystyle' : '';
     const preparedTex = `${displayStyle} ${tex}`;
-    console.log(preparedTex);
     try {
       katex.render(preparedTex, element);
     } catch (err) {
