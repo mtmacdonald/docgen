@@ -12,9 +12,6 @@ h3 {
   font-size: 24px;
   border-bottom: none;
 }
-#dg-content, #dg-innerContent {
-  padding-top: 0;
-}
 
 #pageWrapper {
  width: 980px;
