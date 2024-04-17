@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPDF from '@react-pdf/renderer';
-import {MyDocument} from './react-pdf';
+import { Pdf } from './react-pdf';
 import path from "path";
 
 export const generatePdf = ({
@@ -11,9 +11,11 @@ export const generatePdf = ({
 }) => {
   const pdfName = parameters.name.toLowerCase() + '.pdf';
   const pdfPath = path.normalize(`${options.output}/${pdfName}`);
-  console.log(pdfPath);
   ReactPDF.render(
-    <MyDocument />,
+    <Pdf
+      options={options}
+      sortedPages={sortedPages}
+    />,
     pdfPath
   );
 }
