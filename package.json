@@ -48,6 +48,7 @@
     "picocolors": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-pdf-html": "^2.0.4",
     "spawn-args": "^0.2.0",
     "z-schema": "^6.0.1"
   },

@@ -1,7 +1,7 @@
+import path from 'path';
 import React from 'react';
 import ReactPDF from '@react-pdf/renderer';
 import { Pdf } from './react-pdf';
-import path from "path";
 
 export const generatePdf = ({
   options,

@@ -1,5 +1,9 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import MarkdownIt from 'markdown-it';
+import Html from 'react-pdf-html';
+import { Document, Page, StyleSheet } from '@react-pdf/renderer';
+
+const markdown = new MarkdownIt('commonmark').enable('table');
 
 const styles = StyleSheet.create({
   page: {
@@ -12,6 +16,18 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
 });
+//markdown.render('### Example')
+
+const example = `
+# Placeholder heading
+
+Example content
+`;
+
+const getHtml = () => {
+  const html = markdown.render(example);
+  return html;
+}
 
 export const Pdf = ({
   options,
@@ -30,14 +46,9 @@ export const Pdf = ({
   }
   return (
     <Document>
-      {allPages.map(p => (
-        <Page size="A4" style={styles.page}>
-          <View style={styles.section}>
-            <Text>Section #1</Text>
-          </View>
-          <View style={styles.section}>
-            <Text>Section #2</Text>
-          </View>
+      {allPages.map((_p, i) => (
+        <Page key={i} size="A4" style={styles.page}>
+          <Html>{getHtml()}</Html>
         </Page>
       ))}
     </Document>
