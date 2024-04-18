@@ -1,15 +1,11 @@
 import React from 'react';
-import MarkdownIt from 'markdown-it';
 import Html from 'react-pdf-html';
 import { Document, Page, View, Text, StyleSheet } from '@react-pdf/renderer';
-//import { Copyright } from "../../views/components/copyright/copyright";
-
-const markdown = new MarkdownIt('commonmark').enable('table');
 
 const styles = StyleSheet.create({
   page: {
     padding: '1cm',
-    fontSize: 12,
+    fontSize: 10,
     margin:0,
   },
   // footer: {
@@ -32,7 +28,7 @@ const styles = StyleSheet.create({
   // },
   footer: {
     position: 'absolute',
-    fontSize: 12,
+    fontSize: 8,
     bottom: 30,
     left: 0,
     right: 0,
@@ -58,20 +54,19 @@ const styles = StyleSheet.create({
   }
 });
 
-const Footer = () => (
-  <View style={styles.footer} fixed debug>
-    <Text style={styles.footerLeft}>Baz</Text>
-    <Text
-      style={styles.footerMiddle}
-      // render={({ pageNumber, totalPages }) => (
-      //   `${pageNumber} / ${totalPages}`
-      // )}
-    >
-      Foo
+const Footer = ({parameters}) => (
+  <View style={styles.footer} fixed>
+    <Text style={styles.footerLeft}>{parameters.title}</Text>
+    <Text style={styles.footerMiddle}>
+      {`© ${parameters.year} ${parameters.name}`}
     </Text>
-    <Text style={styles.footerRight}>Bar</Text>
+    <Text
+      style={styles.footerRight}
+      render={({ pageNumber, totalPages }) => (
+        `${pageNumber} / ${totalPages}`
+      )}
+    />
   </View>
-
 );
 
 export const Pdf = ({
@@ -99,39 +94,13 @@ export const Pdf = ({
             <
               // @ts-ignore
               Html
-            >{p}</Html>
+            >
+              {p}
+            </Html>
           </View>
-          <Footer />
-            {/*<Text>Footer text - Page 2</Text>*/}
+          <Footer parameters={parameters}/>s
         </Page>
       ))}
     </Document>
   );
 }
-
-// export const PdfFooter = ({
-//                             parameters
-//                           }) => {
-//   return (
-//     <div id="dg-pdf-footer">
-//       <table>
-//         <thead></thead>
-//         <tfoot></tfoot>
-//         <tbody>
-//         <tr>
-//           <td>
-//             <span id="dg-title">{parameters.title}</span>&nbsp;
-//             (<span id="dg-web-title-version">{parameters.version}</span>)
-//           </td>
-//           <td>
-//             <Copyright parameters={parameters} />
-//           </td>
-//           <td>
-//             Page <span className="page"></span> of <span className="topage"></span>
-//           </td>
-//         </tr>
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
