@@ -13,6 +13,7 @@
     "copy:files": "ncp src/include dist/include",
     "dev": "ts-node src/docgen.ts run",
     "build": "rimraf dist && tsc -p tsconfig.json && yarn copy:files",
+    "build:pdf": "ts-node src/pdf/generate-pdf.tsx",
     "run:build": "dist/docgen.ts",
     "build:docs": "ts-node src/docgen.ts run -m -n -r -p -d 40000 -i src/docs -o ./docs",
     "build:docs:nopdf": "ts-node src/docgen.ts run -m -n -r -i src/docs -o ./docs",
@@ -35,6 +36,7 @@
     "docgen": "prettier --write"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.4.1",
     "cheerio": "^1.0.0-rc.12",
     "cli-spinner": "^0.2.10",
     "commander": "^11.0.0",
@@ -46,6 +48,7 @@
     "picocolors": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-pdf-html": "^2.0.4",
     "spawn-args": "^0.2.0",
     "z-schema": "^6.0.1"
   },

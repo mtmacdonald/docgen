@@ -7,5 +7,5 @@
     "resolveJsonModule": true,
     "jsx": "react"
   },
-  "files": ["./src/docgen.ts"]
+  "files": ["./src/docgen.ts", "src/pdf/generate-pdf.tsx"]
 }
