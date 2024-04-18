@@ -8,7 +8,7 @@ export const generatePdf = ({
   options,
   parameters,
   sortedPages,
-  mainProcess
+  mainProcess,
 }) => {
   const pdfName = parameters.name.toLowerCase() + '.pdf';
   const pdfPath = path.normalize(`${options.output}/${pdfName}`);
@@ -17,6 +17,7 @@ export const generatePdf = ({
       options={options}
       pages={pages}
       sortedPages={sortedPages}
+      parameters={parameters}
     />,
     pdfPath
   );
