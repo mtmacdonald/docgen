@@ -7,30 +7,15 @@ const markdown = new MarkdownIt('commonmark').enable('table');
 
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'row',
-    backgroundColor: '#E4E4E4',
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
+    padding: '1cm',
+    fontSize: 12,
+    margin:0,
   },
 });
-//markdown.render('### Example')
-
-const example = `
-# Placeholder heading
-
-Example content
-`;
-
-const getHtml = () => {
-  const html = markdown.render(example);
-  return html;
-}
 
 export const Pdf = ({
   options,
+  pages,
   sortedPages
 }) => {
   let allPages = [];
@@ -46,9 +31,12 @@ export const Pdf = ({
   }
   return (
     <Document>
-      {allPages.map((_p, i) => (
-        <Page key={i} size="A4" style={styles.page}>
-          <Html>{getHtml()}</Html>
+      {Object.values(pages).map((p, i) => (
+        <Page key={i} size="A4" style={styles.page} >
+          <
+            // @ts-ignore
+            Html
+          >{p}</Html>
         </Page>
       ))}
     </Document>

@@ -4,6 +4,7 @@ import ReactPDF from '@react-pdf/renderer';
 import { Pdf } from './react-pdf';
 
 export const generatePdf = ({
+  pages,
   options,
   parameters,
   sortedPages,
@@ -14,6 +15,7 @@ export const generatePdf = ({
   ReactPDF.render(
     <Pdf
       options={options}
+      pages={pages}
       sortedPages={sortedPages}
     />,
     pdfPath

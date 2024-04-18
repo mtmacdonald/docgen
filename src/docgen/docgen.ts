@@ -100,6 +100,7 @@ export function DocGen(process) {
       // await checkPdfVersion({ options, mainProcess });
       await generatePdf({
         options,
+        pages,
         parameters,
         sortedPages,
         mainProcess
