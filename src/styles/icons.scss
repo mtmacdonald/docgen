@@ -3,34 +3,35 @@
 */
 
 .dgIcon {
-	&.small svg {
-		width: 20px;
-		height: 20px;
-	}
+  &.small svg {
+    width: 20px;
+    height: 20px;
+  }
 
-	&.large svg {
-		width: 36px;
-		height: 36px;
-	}
+  &.large svg {
+    width: 36px;
+    height: 36px;
+  }
 
-	&.success svg {
-		color: #3c8039;
-	}
-	&.warning svg {
-		color: #987924;
-	}
-	&.error svg {
-		color: #922429;
-	}
-	&.info svg {
-		color: #296995;
-	}
+  &.success svg {
+    color: #3c8039;
+  }
+  &.warning svg {
+    color: #987924;
+  }
+  &.error svg {
+    color: #922429;
+  }
+  &.info svg {
+    color: #296995;
+  }
 }
-
 
 /*table icons*/
 
 .w-table td > .dgIcon {
-	vertical-align: middle;
+  vertical-align: middle;
 }
-.w-table td.center {display: table-cell;}
+.w-table td.center {
+  display: table-cell;
+}

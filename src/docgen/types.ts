@@ -16,64 +16,64 @@ export type Options = {
 };
 
 export type rawParameters = {
-  title: string,
-  name: string,
-  version: string,
-  date: string,
+  title: string;
+  name: string;
+  version: string;
+  date: string;
   organization: {
-    name: string,
-    url: string
-  },
+    name: string;
+    url: string;
+  };
   author: {
-    name: string,
-    url: string
-  },
+    name: string;
+    url: string;
+  };
   owner: {
-    name: string,
-    url: string
-  },
+    name: string;
+    url: string;
+  };
   contributors: [
     {
-      name: string,
-      url: string
-    }
-  ],
+      name: string;
+      url: string;
+    },
+  ];
   website: {
-    name: string,
-    url: string
-  },
+    name: string;
+    url: string;
+  };
   sponsorLink?: {
-    name: string,
-    url: string,
-    logo: string
-  },
+    name: string;
+    url: string;
+    logo: string;
+  };
   backlink?: {
-    name: string,
-    url: string
-  },
-  module?: string,
-  id?: string,
-  summary: string,
-  marking?: string,
-  legalese?: string
-  logoPath?: string
+    name: string;
+    url: string;
+  };
+  module?: string;
+  id?: string;
+  summary: string;
+  marking?: string;
+  legalese?: string;
+  logoPath?: string;
 };
 
 export type Parameters = rawParameters & {
-  attribution: string,
-  year: string
+  attribution: string;
+  year: string;
 };
 
 export type Content = {
-  name: string,
-  column: number,
+  name: string;
+  column: number;
   pages: [
     {
-      title: string,
-      source: string,
-      html: boolean,
-    }
-  ]
+      title: string;
+      source: string;
+      html: boolean;
+    },
+  ];
 };
 
 export type Meta = {
@@ -82,9 +82,9 @@ export type Meta = {
 };
 
 export type Templates = {
-  main?: string|TCheerioAPI,
-  redirect?: string|TCheerioAPI,
-  pdfCover?: string|TCheerioAPI,
-  pdfHeader?: string|TCheerioAPI,
-  pdfFooter?: string|TCheerioAPI,
+  main?: string | TCheerioAPI;
+  redirect?: string | TCheerioAPI;
+  pdfCover?: string | TCheerioAPI;
+  pdfHeader?: string | TCheerioAPI;
+  pdfFooter?: string | TCheerioAPI;
 };

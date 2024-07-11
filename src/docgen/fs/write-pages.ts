@@ -1,5 +1,5 @@
-import pico from 'picocolors'
-import { copyDirectory, makeDirectory, writeFile } from "./fs";
+import pico from 'picocolors';
+import { copyDirectory, makeDirectory, writeFile } from './fs';
 
 export const writePages = async ({
   options,
@@ -16,29 +16,17 @@ export const writePages = async ({
         const path = options.output + name + '.html';
         const html = hydratedPages.pages[key];
         return writeFile(path, html);
-      })
+      }),
     );
     await Promise.all(promises);
     //add extra files
-    await writeFile(
-      options.output + 'ownership.html',
-      hydratedPages.webCover,
-    );
+    await writeFile(options.output + 'ownership.html', hydratedPages.webCover);
     if (options.pdf) {
       let pdfTempDir = options.output + 'temp/';
       await makeDirectory(pdfTempDir);
-      await writeFile(
-        pdfTempDir + 'pdfCover.html',
-        hydratedPages.pdfCover,
-      );
-      await writeFile(
-        pdfTempDir + 'pdfHeader.html',
-        hydratedPages.pdfHeader,
-      );
-      await writeFile(
-        pdfTempDir + 'pdfFooter.html',
-        hydratedPages.pdfFooter,
-      );
+      await writeFile(pdfTempDir + 'pdfCover.html', hydratedPages.pdfCover);
+      await writeFile(pdfTempDir + 'pdfHeader.html', hydratedPages.pdfHeader);
+      await writeFile(pdfTempDir + 'pdfFooter.html', hydratedPages.pdfFooter);
     }
     await copyDirectory(
       __dirname + '/../../include/require',
