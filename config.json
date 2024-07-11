@@ -6,8 +6,18 @@
       "buildPath": "src/styles/css/",
       "files": [
         {
-          "destination": "variables.css",
+          "destination": "style-variables.css",
           "format": "css/variables"
+        }
+      ]
+    },
+    "js": {
+      "transformGroup": "js",
+      "buildPath": "src/styles/js/",
+      "files": [
+        {
+          "destination": "style-variables.js",
+          "format": "javascript/es6"
         }
       ]
     }
