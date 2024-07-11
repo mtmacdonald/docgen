@@ -22,8 +22,8 @@
     "test:run": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p -m -n -d 40000",
     "test:scaffold": "rimraf src/__test__/test-run-output && ts-node src/docgen.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p -m -n -d 40000",
-    "prettier:check": "prettier --check 'src/docgen.ts' '*.{ts,js,json,css,less}'",
-    "prettier:fix": "prettier --write 'src/docgen.ts' '*.{ts,js,json,css,less}'"
+    "prettier:check": "prettier --check 'src/**/*.{ts,js,json,css,scss}'",
+    "prettier:fix": "prettier --write 'src/**/*.{ts,js,json,css,scss}'"
   },
   "husky": {
     "hooks": {
@@ -31,7 +31,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,scss}": "prettier --write",
+    "src/**/*.{ts,js,json,css,scss}": "prettier --write",
     "docgen": "prettier --write"
   },
   "dependencies": {

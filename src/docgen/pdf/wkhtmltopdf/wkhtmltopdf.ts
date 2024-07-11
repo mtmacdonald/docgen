@@ -1,8 +1,8 @@
-import pico from 'picocolors'
+import pico from 'picocolors';
 import { Spinner as cliSpinner } from 'cli-spinner';
-import { execute } from "../../execute/execute";
-import { spawn } from "child_process";
-import { removeDirectory } from "../../fs/fs";
+import { execute } from '../../execute/execute';
+import { spawn } from 'child_process';
+import { removeDirectory } from '../../fs/fs';
 import spawnArgs from 'spawn-args';
 
 const wkhtmltopdfVersion = 'wkhtmltopdf 0.12.6 (with patched qt)'; //output from wkhtmltopdf -V
@@ -22,11 +22,7 @@ const pdfOptions = [
   ' --no-stop-slow-scripts',
 ];
 
-const getPdfArguments = ({
-  parameters,
-  options,
-  sortedPages
-}) => {
+const getPdfArguments = ({ parameters, options, sortedPages }) => {
   let pdfName = parameters.name.toLowerCase() + '.pdf';
   pdfOptions.push(' --enable-local-file-access');
   pdfOptions.push(' --javascript-delay ' + options.pdfDelay); //code syntax highlight in wkhtmltopdf 0.12.2.1 fails without a delay (but why doesn't --no-stop-slow-scripts work?)
@@ -37,7 +33,9 @@ const getPdfArguments = ({
   pdfOptions.push(' --footer-html ' + options.output + 'temp/pdfFooter.html');
   pdfOptions.push(' cover ' + options.output + 'temp/pdfCover.html');
   pdfOptions.push(
-    ' toc --xsl-style-sheet ' + __dirname + '/../../../include/pdf-contents.xsl',
+    ' toc --xsl-style-sheet ' +
+      __dirname +
+      '/../../../include/pdf-contents.xsl',
   );
   let allPages = '';
   for (let key in sortedPages) {
@@ -58,9 +56,9 @@ const getPdfArguments = ({
   return spawnArgs(args);
 };
 
-export const checkPdfVersion = async ({options, mainProcess}) => {
+export const checkPdfVersion = async ({ options, mainProcess }) => {
   try {
-    const {stdout} = await execute(options.wkhtmltopdfPath + ' -V');
+    const { stdout } = await execute(options.wkhtmltopdfPath + ' -V');
     //warn if the version of wkhtmltopdf is not an expected version
     const actualWkhtmltopdfVersion = stdout.trim();
     if (actualWkhtmltopdfVersion !== wkhtmltopdfVersion) {
@@ -94,10 +92,10 @@ export const generatePdf = async ({
   options,
   parameters,
   sortedPages,
-  mainProcess
+  mainProcess,
 }) => {
   console.log(pico.green('Creating the PDF copy (may take some time)'));
-  let args = getPdfArguments({options, parameters, sortedPages});
+  let args = getPdfArguments({ options, parameters, sortedPages });
   let wkhtmltopdf = spawn(options.wkhtmltopdfPath, args);
   let spinner = new cliSpinner(pico.green('   Processing... %s'));
   spinner.setSpinnerString('|/-\\');

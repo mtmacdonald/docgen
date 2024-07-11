@@ -1,15 +1,15 @@
 import path from 'path';
-import pico from 'picocolors'
+import pico from 'picocolors';
 import { promises as fsp } from 'fs';
 import fs from 'fs-extra';
 
 export const readFile = async (filePath: string) => {
   const normalized = path.normalize(filePath);
   try {
-    return (await fsp.readFile(
-      normalized,
-      { encoding: 'utf8' },
-    ))?.replace(/^\uFEFF/, ''); //remove the BOM (byte-order-mark) from UTF-8 files, if present
+    return (await fsp.readFile(normalized, { encoding: 'utf8' }))?.replace(
+      /^\uFEFF/,
+      '',
+    ); //remove the BOM (byte-order-mark) from UTF-8 files, if present
   } catch (error) {
     console.log(pico.red('Error reading file: ' + normalized));
   }
@@ -18,11 +18,7 @@ export const readFile = async (filePath: string) => {
 export const writeFile = async (filePath: string, data: string) => {
   const normalized = path.normalize(filePath);
   try {
-     await fsp.writeFile(
-      normalized,
-      data,
-      { encoding: 'utf8' },
-    ); //remove the BOM (byte-order-mark) from UTF-8 files, if present
+    await fsp.writeFile(normalized, data, { encoding: 'utf8' }); //remove the BOM (byte-order-mark) from UTF-8 files, if present
   } catch (error) {
     console.log(pico.red('Error writing file: ' + normalized));
   }
@@ -31,7 +27,7 @@ export const writeFile = async (filePath: string, data: string) => {
 export const copyDirectory = async (
   source: string,
   destination: string,
-  verbose: boolean
+  verbose: boolean,
 ) => {
   const normalizedSource = path.normalize(source);
   const normalizedDestination = path.normalize(destination);
@@ -41,9 +37,9 @@ export const copyDirectory = async (
     console.log(
       pico.red(
         'Error copying directory: ' +
-        normalizedSource +
-        ' to ' +
-        normalizedDestination,
+          normalizedSource +
+          ' to ' +
+          normalizedDestination,
       ),
     );
     if (verbose === true) {
@@ -52,7 +48,10 @@ export const copyDirectory = async (
   }
 };
 
-export const cleanDirectory = async (directoryPath: string, verbose: boolean) => {
+export const cleanDirectory = async (
+  directoryPath: string,
+  verbose: boolean,
+) => {
   const normalized = path.normalize(directoryPath);
   try {
     await fs.removeSync(normalized);
@@ -67,7 +66,10 @@ export const cleanDirectory = async (directoryPath: string, verbose: boolean) =>
 
 export const makeDirectory = async (path: string) => await fs.mkdirsSync(path);
 
-export const removeDirectory = async (directoryPath: string, verbose: boolean) => {
+export const removeDirectory = async (
+  directoryPath: string,
+  verbose: boolean,
+) => {
   const normalized = path.normalize(directoryPath);
   try {
     await fs.removeSync(normalized);

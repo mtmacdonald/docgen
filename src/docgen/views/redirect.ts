@@ -1,12 +1,8 @@
-import pico from 'picocolors'
+import pico from 'picocolors';
 import path from 'path';
 import { writeFile } from '../fs/fs';
 
-export let createRedirect = async ({
-  options,
-  redirectPage,
-  homePage,
-}) => {
+export let createRedirect = async ({ options, redirectPage, homePage }) => {
   if (options.isRedirectEnabled) {
     let parent = options.output.replace(/\/$/, ''); //trim any trailing slash
     parent = parent.split(path.sep).slice(-1).pop(); //get name of final directory in the path

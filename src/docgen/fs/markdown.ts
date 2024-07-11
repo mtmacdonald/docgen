@@ -1,5 +1,5 @@
-import pico from 'picocolors'
-import { readFile } from "./fs";
+import pico from 'picocolors';
+import { readFile } from './fs';
 import MarkdownIt from 'markdown-it';
 
 const markdown = new MarkdownIt('commonmark').enable('table');
@@ -11,11 +11,7 @@ markdown.validateLink = () => {
   return true;
 };
 
-export const loadMarkdown = async ({
-  contents,
-  options,
-  mainProcess,
-}) => {
+export const loadMarkdown = async ({ contents, options, mainProcess }) => {
   console.log(pico.green('Loading src files'));
   const pages = {};
   try {

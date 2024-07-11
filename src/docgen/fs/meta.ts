@@ -1,12 +1,12 @@
-import pico from 'picocolors'
-import { readFile } from "./fs";
-import { validateJSON } from "../validation/validation";
+import pico from 'picocolors';
+import { readFile } from './fs';
+import { validateJSON } from '../validation/validation';
 import type { Meta } from '../types';
 
 export const loadMeta = async ({
   inputPath,
   verbose,
-  mainProcess
+  mainProcess,
 }): Promise<Meta> => {
   const meta = {
     parameters: null,
@@ -49,7 +49,7 @@ export const loadMeta = async ({
     meta.contents.push(extra);
     return {
       rawParameters: meta.parameters,
-      contents: meta.contents
+      contents: meta.contents,
     };
   } catch (error) {
     console.log(pico.red('Error loading required JSON metadata files'));
