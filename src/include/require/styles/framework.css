@@ -1,3 +1,11 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+:root {
+  --colors-text-primary: #010304;
+  --colors-text-primary-hover: #153f54;
+}
+
 /*
  page dimensions
 */
@@ -8,7 +16,7 @@
  logo dimensions (should match the logo image file)
 */
 /*
- page color scheme
+ page color schemes
 */
 /*
  text color scheme
@@ -409,7 +417,7 @@ input[type='submit']:focus {
 */
 html {
   height: 100%;
-  background-color: rgb(1, 3, 4);
+  background-color: var(--colors-text-primary);
   color: #444;
 }
 html body {
@@ -531,7 +539,7 @@ h6,
 .dg-fakeHeading {
   text-decoration: none;
   font-weight: bold;
-  color: rgb(1, 3, 4);
+  color: var(--colors-text-primary);
   padding-bottom: 5px;
   line-height: 1.285714em;
   margin: 0 0 1rem;
@@ -641,13 +649,13 @@ section > div ol ol {
 a,
 .w-false-link,
 .w-link-button {
-  color: rgb(1, 3, 4);
+  color: var(--colors-text-primary);
 }
 
 a:hover,
 .w-false-link:hover,
 .w-link-button:hover {
-  color: #1c536e;
+  color: var(--colors-text-primary-hover);
   text-decoration: none;
 }
 
@@ -656,7 +664,7 @@ a:active {
 }
 
 a:visited {
-  color: #1c536e;
+  color: var(--colors-text-primary-hover);
 }
 
 .w-false-link,
@@ -1054,7 +1062,7 @@ img {
   display: flex;
   align-items: center;
   position: fixed;
-  color: rgb(1, 3, 4);
+  color: var(--colors-text-primary);
 }
 @media print {
   .topbar {
@@ -1082,7 +1090,7 @@ img {
 .topbar a:visited,
 .topbar .w-false-link,
 .topbar .w-false-link:hover {
-  color: rgb(1, 3, 4);
+  color: var(--colors-text-primary);
 }
 .topbar #dg-logo {
   background-repeat: no-repeat;

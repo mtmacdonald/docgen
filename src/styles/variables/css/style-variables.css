@@ -3,5 +3,6 @@
  */
 
 :root {
-  --colors-black: #000000;
+  --colors-text-primary: #010304;
+  --colors-text-primary-hover: #153f54;
 }

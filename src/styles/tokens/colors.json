@@ -1,8 +1,11 @@
 {
   "colors": {
     "$type": "color",
-    "black": {
-      "$value": "#000000"
+    "textPrimary": {
+      "$value": "rgb(1, 3, 4)"
+    },
+    "textPrimaryHover": {
+      "$value": "#153f54"
     }
   }
 }

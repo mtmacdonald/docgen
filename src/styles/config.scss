@@ -1,3 +1,4 @@
+
 /*
  page dimensions
 */
@@ -18,10 +19,9 @@ $logo-height: 42px;
 $logo-width: 90px;
 
 /*
- page color scheme
+ page color schemes
 */
 
-$brand-primary-color: rgb(1, 3, 4);
 $brand-secondary-color: rgb(46, 113, 225);
 $brand-secondary-color-dark: rgb(22, 71, 193);
 $brand-secondary-color-light: rgb(222, 232, 252);
@@ -37,7 +37,7 @@ $border: #999;
 */
 
 $text: #444;
-$link: $brand-primary-color;
+$link: var(--colors-text-primary);
 $hover: #4a72c1;
 $visited: #888;
 $focus: #4b91ff;

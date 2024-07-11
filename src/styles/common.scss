@@ -34,7 +34,7 @@ a:focus, button:focus, input[type="button"]:focus, input[type="submit"]:focus {
 
 @mixin border($width: 1px) { border: $width solid $border; }
 
-@mixin fixed-color-text($color: $brand-primary-color) {
+@mixin fixed-color-text($color: var(--colors-text-primary)) {
 	color:$color;
 	a, a:hover, a:active, a:visited, .w-false-link, .w-false-link:hover{ color: $color;}
 }
