@@ -3,7 +3,7 @@
   "platforms": {
     "css": {
       "transformGroup": "css",
-      "buildPath": "src/styles/css/",
+      "buildPath": "src/styles/variables/css/",
       "files": [
         {
           "destination": "style-variables.css",
@@ -13,7 +13,7 @@
     },
     "js": {
       "transformGroup": "js",
-      "buildPath": "src/styles/js/",
+      "buildPath": "src/styles/variables/js/",
       "files": [
         {
           "destination": "style-variables.js",
