@@ -3,6 +3,9 @@
  */
 
 :root {
+  --colors-background: #ffffff;
+  --colors-border: #999999;
+  --colors-text: #444444;
   --colors-text-primary: #010304;
   --colors-text-primary-hover: #153f54;
 }

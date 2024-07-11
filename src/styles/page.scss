@@ -16,7 +16,7 @@ html
 }
 
 .page {
-	background-color: $content-background;
+	background-color: var(--colors-background);
 	position: fixed;
 	right: 0;
 	bottom: 0;
@@ -48,7 +48,7 @@ html
 */
 
 section {
-	background-color: $content-background;
+	background-color: var(--colors-background);
 	/*
 		Center content
 		Note we need an old way because wkhtmltopdf doesn't support modern styles

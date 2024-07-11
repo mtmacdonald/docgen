@@ -1,6 +1,15 @@
 {
   "colors": {
     "$type": "color",
+    "background": {
+      "$value": "#fff"
+    },
+    "border": {
+      "$value": "#999"
+    },
+    "text": {
+      "$value": "#444"
+    },
     "textPrimary": {
       "$value": "rgb(1, 3, 4)"
     },
