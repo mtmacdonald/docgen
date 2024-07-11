@@ -421,7 +421,7 @@ input[type='submit']:focus {
 html {
   height: 100%;
   background-color: var(--colors-text-primary);
-  color: #444;
+  color: var(--colors-text);
 }
 html body {
   height: 100%;
