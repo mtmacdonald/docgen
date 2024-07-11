@@ -4,6 +4,8 @@
 
 export const ColorsBackground = '#ffffff';
 export const ColorsBorder = '#999999';
-export const ColorsText = '#444444';
-export const ColorsTextPrimary = '#010304';
-export const ColorsTextPrimaryHover = '#153f54';
+export const ColorsText = '#010304';
+export const ColorsTextLink = '#010304';
+export const ColorsTextLinkHover = '#4a72c1';
+export const ColorsTextLinkFocused = '#4b91ff';
+export const ColorsTextLinkVisited = '#4a72c1';

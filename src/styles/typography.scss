@@ -105,13 +105,20 @@ section > div ul ul, section > div ol ol {margin:0;} /*don't put margin on neste
  links
 */
 
-a, .w-false-link, .w-link-button { color: var(--colors-text-primary); }
+a, .w-false-link, .w-link-button {
+  color: var(--colors-text-link);
+}
 a:hover, .w-false-link:hover, .w-link-button:hover {
-  color: var(--colors-text-primary-hover);
+  color: var(--colors-text-link-hover);
   text-decoration: none;
 }
-a:active { 	background: none; } //'browser normalization'
-a:visited { color: var(--colors-text-primary-hover) }
+a:active {
+  color: var(--colors-text-link-focused);
+  background: none;
+}
+a:visited {
+  color: var(--colors-text-link-visited)
+}
 
 .w-false-link, .w-link-button { text-decoration: underline; cursor: pointer; }
 

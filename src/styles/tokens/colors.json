@@ -8,13 +8,19 @@
       "$value": "#999"
     },
     "text": {
-      "$value": "#444"
-    },
-    "textPrimary": {
       "$value": "rgb(1, 3, 4)"
     },
-    "textPrimaryHover": {
-      "$value": "#153f54"
+    "textLink": {
+      "$value": "rgb(1, 3, 4)"
+    },
+    "textLinkHover": {
+      "$value": "#4a72c1"
+    },
+    "textLinkFocused": {
+      "$value": "#4b91ff"
+    },
+    "textLinkVisited": {
+      "$value": "#4a72c1"
     }
   }
 }
