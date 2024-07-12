@@ -1,3 +1,16 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+:root {
+  --colors-background: #ffffff;
+  --colors-border: #999999;
+  --colors-text: #010304;
+  --colors-text-link: #010304;
+  --colors-text-link-hover: #4a72c1;
+  --colors-text-link-focused: #4b91ff;
+  --colors-text-link-visited: #4a72c1;
+}
+
 /*
  page dimensions
 */
@@ -8,7 +21,7 @@
  logo dimensions (should match the logo image file)
 */
 /*
- page color scheme
+ page color schemes
 */
 /*
  text color scheme
@@ -409,15 +422,15 @@ input[type='submit']:focus {
 */
 html {
   height: 100%;
-  background-color: rgb(1, 3, 4);
-  color: #444;
+  background-color: var(--colors-text-primary);
+  color: var(--colors-text);
 }
 html body {
   height: 100%;
 }
 
 .page {
-  background-color: #fff;
+  background-color: var(--colors-background);
   position: fixed;
   right: 0;
   bottom: 0;
@@ -450,7 +463,7 @@ html body {
  page content
 */
 section {
-  background-color: #fff;
+  background-color: var(--colors-background);
   /*
   	Center content
   	Note we need an old way because wkhtmltopdf doesn't support modern styles
@@ -531,7 +544,7 @@ h6,
 .dg-fakeHeading {
   text-decoration: none;
   font-weight: bold;
-  color: rgb(1, 3, 4);
+  color: var(--colors-text-primary);
   padding-bottom: 5px;
   line-height: 1.285714em;
   margin: 0 0 1rem;
@@ -641,22 +654,23 @@ section > div ol ol {
 a,
 .w-false-link,
 .w-link-button {
-  color: rgb(1, 3, 4);
+  color: var(--colors-text-link);
 }
 
 a:hover,
 .w-false-link:hover,
 .w-link-button:hover {
-  color: #1c536e;
+  color: var(--colors-text-link-hover);
   text-decoration: none;
 }
 
 a:active {
+  color: var(--colors-text-link-focused);
   background: none;
 }
 
 a:visited {
-  color: #1c536e;
+  color: var(--colors-text-link-visited);
 }
 
 .w-false-link,
@@ -762,7 +776,7 @@ code {
 pre {
   padding: 12px;
   background-color: #f3f3f3;
-  border: 1px solid #999;
+  border: 1px solid var(--colors-border);
   line-height: 14px;
   border-radius: 6px;
 }
@@ -786,7 +800,7 @@ table,
 }
 .w-table td,
 .w-table th {
-  border: 1px solid #999;
+  border: 1px solid var(--colors-border);
   padding: 2px 15px 2px 15px;
   height: 25px;
   vertical-align: middle;
@@ -1054,7 +1068,7 @@ img {
   display: flex;
   align-items: center;
   position: fixed;
-  color: rgb(1, 3, 4);
+  color: var(--colors-text-primary);
 }
 @media print {
   .topbar {
@@ -1082,7 +1096,7 @@ img {
 .topbar a:visited,
 .topbar .w-false-link,
 .topbar .w-false-link:hover {
-  color: rgb(1, 3, 4);
+  color: var(--colors-text-primary);
 }
 .topbar #dg-logo {
   background-repeat: no-repeat;

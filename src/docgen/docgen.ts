@@ -1,6 +1,6 @@
-import pico from 'picocolors'
+import pico from 'picocolors';
 import path from 'path';
-import { cleanDirectory } from "./fs/fs";
+import { cleanDirectory } from './fs/fs';
 import { loadMeta } from './fs/meta';
 import { loadTemplates } from './fs/templates';
 import { loadMarkdown } from './fs/markdown';
@@ -14,9 +14,7 @@ import { writePages } from './fs/write-pages';
 import { createRedirect } from './views/redirect';
 import { version } from '../../package.json';
 
-import type {
-  Options,
-} from './types';
+import type { Options } from './types';
 
 export function DocGen(process) {
   let mainProcess = process;
@@ -60,7 +58,7 @@ export function DocGen(process) {
       options,
       mainProcess,
     });
-    const {contents, rawParameters} = await loadMeta({
+    const { contents, rawParameters } = await loadMeta({
       inputPath: options.input,
       verbose: options.verbose,
       mainProcess,
@@ -103,7 +101,7 @@ export function DocGen(process) {
         pages,
         parameters,
         sortedPages,
-        mainProcess
+        mainProcess,
       });
     } else {
       console.log(pico.green(pico.bold('Done!')));

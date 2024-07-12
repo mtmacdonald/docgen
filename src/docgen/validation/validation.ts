@@ -1,5 +1,5 @@
 import schemaValidator from 'z-schema';
-import pico from 'picocolors'
+import pico from 'picocolors';
 
 const schemas = {
   parameters: {
@@ -132,14 +132,14 @@ const schemas = {
   },
 };
 
-export const validateJSON = ({key, data, verbose}) => {
+export const validateJSON = ({ key, data, verbose }) => {
   let schema = schemas[key];
   let validator = new schemaValidator({});
   let valid = validator.validate(data, schema);
   if (!valid) {
     console.log(
       pico.red(
-        `Error parsing required file: ${key}.json (failed schema validation)`
+        `Error parsing required file: ${key}.json (failed schema validation)`,
       ),
     );
     if (verbose === true) {

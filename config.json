@@ -1,0 +1,25 @@
+{
+  "source": ["src/styles/tokens/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "src/styles/variables/css/",
+      "files": [
+        {
+          "destination": "style-variables.css",
+          "format": "css/variables"
+        }
+      ]
+    },
+    "js": {
+      "transformGroup": "js",
+      "buildPath": "src/styles/variables/js/",
+      "files": [
+        {
+          "destination": "style-variables.js",
+          "format": "javascript/es6"
+        }
+      ]
+    }
+  }
+}
