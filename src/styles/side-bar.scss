@@ -128,7 +128,7 @@ $sidebarPadding: 5px;
   height: 40px;
   border-radius: 50%;
   outline: 0;
-  border: 1px solid $brand-secondary-color-dark;
+  border: 1px solid var(--color-button-background-dark);
   background: $brand-secondary-color;
   color: rgba(0, 0, 0, 0.6);
 

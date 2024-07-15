@@ -14,6 +14,7 @@
   --color-text-link-visited: #808080;
   --color-button-border: rgb(46, 113, 225);
   --color-button-background: rgb(46, 113, 225);
+  --color-button-shadow: rgba(0, 0, 0, 0.1);
   --size-font-base: 16px;
   --size-font-small: 12px;
   --size-font-medium: 16px;
@@ -849,8 +850,8 @@ button,
   outline: 0;
   vertical-align: baseline;
   border: 2px solid var(--color-button-border);
-  background: rgb(46, 113, 225);
-  color: white !important;
+  background: var(--color-button-background);
+  color: var(--color-background-light) !important;
   padding: 12px 18px;
   text-transform: none;
   text-shadow: none;
@@ -873,7 +874,7 @@ button:hover,
 button:focus,
 .button:focus {
   color: white !important;
-  box-shadow: 0 0 0 2px rgba(22, 71, 193, 0.25);
+  box-shadow: 0 0 0 2px var(--color-button-shadow);
 }
 button:active,
 .button:active {
@@ -1257,7 +1258,7 @@ img {
   height: 40px;
   border-radius: 50%;
   outline: 0;
-  border: 1px solid rgb(22, 71, 193);
+  border: 1px solid var(--color-button-background-dark);
   background: rgb(46, 113, 225);
   color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
