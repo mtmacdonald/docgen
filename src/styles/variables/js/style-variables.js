@@ -2,13 +2,18 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-export const ColorsBackgroundLight = '#fff';
-export const ColorsBorder = '#999';
-export const ColorsTextBase = 'rgb(1, 3, 4)';
-export const ColorsTextLink = 'rgb(1, 3, 4)';
-export const ColorsTextLinkHover = '#4a72c1';
-export const ColorsTextLinkActive = '#4b91ff';
-export const ColorsTextLinkVisited = '#808080';
+export const ColorPrimary = 'rgb(46, 113, 225)';
+export const ColorPrimaryLight = 'rgb(222, 232, 252)';
+export const ColorPrimaryDark = 'rgb(22, 71, 193)';
+export const ColorBackgroundLight = '#fff';
+export const ColorBorder = '#999';
+export const ColorTextBase = 'rgb(1, 3, 4)';
+export const ColorTextLink = 'rgb(1, 3, 4)';
+export const ColorTextLinkHover = '#4a72c1';
+export const ColorTextLinkActive = '#4b91ff';
+export const ColorTextLinkVisited = '#808080';
+export const ColorButtonBorder = 'rgb(46, 113, 225)';
+export const ColorButtonBackground = 'rgb(46, 113, 225)';
 export const SizeFontBase = '16px';
 export const SizeFontSmall = '12px';
 export const SizeFontMedium = '16px';

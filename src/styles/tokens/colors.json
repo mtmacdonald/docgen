@@ -1,5 +1,16 @@
 {
-  "colors": {
+  "color": {
+    "primary": {
+      "@": {
+        "value": "rgb(46, 113, 225)"
+      },
+      "light": {
+        "value": "rgb(222, 232, 252)"
+      },
+      "dark": {
+        "value": "rgb(22, 71, 193)"
+      }
+    },
     "background": {
       "light": {
         "value": "#fff"
@@ -25,6 +36,14 @@
         "visited": {
           "value": "#808080"
         }
+      }
+    },
+    "button": {
+      "border": {
+        "value": "{color.primary.@}"
+      },
+      "background": {
+        "value": "{color.primary.@}"
       }
     }
   }

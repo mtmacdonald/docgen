@@ -45,7 +45,7 @@ input[type='submit']:focus {
   border: $width solid $border;
 }
 
-@mixin fixed-color-text($color: var(--colors-text-primary)) {
+@mixin fixed-color-text($color: var(--color-text-primary)) {
   color: $color;
   a,
   a:hover,

@@ -10,7 +10,7 @@ button,
   justify-content: center;
   outline: 0;
   vertical-align: baseline;
-  border: 2px solid $brand-secondary-color;
+  border: 2px solid var(--color-button-border);
   background: $brand-secondary-color;
   color: white !important;
   padding: 12px 18px;
