@@ -2,24 +2,31 @@
  * Do not edit directly, this file was auto-generated.
  */
 :root {
-  --colors-background: #ffffff;
-  --colors-border: #999999;
-  --colors-text: #010304;
-  --colors-text-link: #010304;
-  --colors-text-link-hover: #4a72c1;
-  --colors-text-link-focused: #4b91ff;
-  --colors-text-link-visited: #4a72c1;
+  --color-primary: rgb(46, 113, 225);
+  --color-primary-light: rgb(222, 232, 252);
+  --color-primary-dark: rgb(22, 71, 193);
+  --color-background-light: #fff;
+  --color-border: #999;
+  --color-text: rgb(1, 3, 4);
+  --color-text-link: rgb(1, 3, 4);
+  --color-text-link-hover: #4a72c1;
+  --color-text-link-active: #4b91ff;
+  --color-text-link-visited: #808080;
+  --color-button-border: rgb(46, 113, 225);
+  --color-button-background: rgb(46, 113, 225);
+  --color-button-shadow: rgba(0, 0, 0, 0.1);
+  --size-font-base: 16px;
+  --size-font-small: 12px;
+  --size-font-medium: 16px;
+  --size-font-large: 24px;
+  --size-font-h1: 2rem;
+  --size-font-h2: 1.5rem;
+  --size-font-h3: 1.25rem;
+  --size-font-h4: 1rem;
+  --size-font-h5: 0.875rem;
+  --size-font-h6: 0.75rem;
 }
 
-/*
- page dimensions
-*/
-/*
- form width
-*/
-/*
- logo dimensions (should match the logo image file)
-*/
 /*
  page color schemes
 */
@@ -407,30 +414,19 @@ input[type='submit']:focus {
 }
 
 /*
- misc. entities
-*/
-#w-browser-warning {
-  text-align: center;
-}
-
-.w-invisible {
-  display: none;
-}
-
-/*
  page
 */
 html {
   height: 100%;
-  background-color: var(--colors-text-primary);
-  color: var(--colors-text);
+  background-color: var(--color-text-primary);
+  color: var(--color-text);
 }
 html body {
   height: 100%;
 }
 
 .page {
-  background-color: var(--colors-background);
+  background-color: var(--color-background-light);
   position: fixed;
   right: 0;
   bottom: 0;
@@ -463,7 +459,7 @@ html body {
  page content
 */
 section {
-  background-color: var(--colors-background);
+  background-color: var(--color-background-light);
   /*
   	Center content
   	Note we need an old way because wkhtmltopdf doesn't support modern styles
@@ -526,12 +522,12 @@ section > div blockquote {
   font-style: normal;
 }
 html {
-  font-size: 16px;
+  font-size: var(--size-font-medium);
 }
 
 body {
   font-family: 'montserrat', Arial, sans-serif;
-  font-size: 16px;
+  font-size: var(--size-font-medium);
   line-height: 26px;
 }
 
@@ -544,34 +540,34 @@ h6,
 .dg-fakeHeading {
   text-decoration: none;
   font-weight: bold;
-  color: var(--colors-text-primary);
+  color: var(--color-text-primary);
   padding-bottom: 5px;
   line-height: 1.285714em;
   margin: 0 0 1rem;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: var(--size-font-h1);
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: var(--size-font-h2);
 }
 
 h3 {
-  font-size: 1.25rem;
+  font-size: var(--size-font-h3);
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: var(--size-font-h4);
 }
 
 h5 {
-  font-size: 0.875rem;
+  font-size: var(--size-font-h5);
 }
 
 h6 {
-  font-size: 0.75rem;
+  font-size: var(--size-font-h6);
 }
 
 /*
@@ -654,23 +650,27 @@ section > div ol ol {
 a,
 .w-false-link,
 .w-link-button {
-  color: var(--colors-text-link);
+  color: var(--color-text-link);
 }
 
 a:hover,
 .w-false-link:hover,
 .w-link-button:hover {
-  color: var(--colors-text-link-hover);
+  color: var(--color-text-link-hover) !important;
   text-decoration: none;
 }
 
-a:active {
-  color: var(--colors-text-link-focused);
-  background: none;
+a:active,
+a:focus,
+.w-false-link:active,
+.w-false-link:focus,
+.w-link-button:active,
+.w-link-button:focus {
+  color: var(--color-text-link-active);
 }
 
 a:visited {
-  color: var(--colors-text-link-visited);
+  color: var(--color-text-link-visited);
 }
 
 .w-false-link,
@@ -776,7 +776,7 @@ code {
 pre {
   padding: 12px;
   background-color: #f3f3f3;
-  border: 1px solid var(--colors-border);
+  border: 1px solid var(--color-border);
   line-height: 14px;
   border-radius: 6px;
 }
@@ -800,7 +800,7 @@ table,
 }
 .w-table td,
 .w-table th {
-  border: 1px solid var(--colors-border);
+  border: 1px solid var(--color-border);
   padding: 2px 15px 2px 15px;
   height: 25px;
   vertical-align: middle;
@@ -838,9 +838,9 @@ button,
   justify-content: center;
   outline: 0;
   vertical-align: baseline;
-  border: 2px solid rgb(46, 113, 225);
-  background: rgb(46, 113, 225);
-  color: white !important;
+  border: 2px solid var(--color-button-border);
+  background: var(--color-button-background);
+  color: var(--color-background-light) !important;
   padding: 12px 18px;
   text-transform: none;
   text-shadow: none;
@@ -863,7 +863,7 @@ button:hover,
 button:focus,
 .button:focus {
   color: white !important;
-  box-shadow: 0 0 0 2px rgba(22, 71, 193, 0.25);
+  box-shadow: 0 0 0 2px var(--color-button-shadow);
 }
 button:active,
 .button:active {
@@ -1068,7 +1068,7 @@ img {
   display: flex;
   align-items: center;
   position: fixed;
-  color: var(--colors-text-primary);
+  color: var(--color-text-primary);
 }
 @media print {
   .topbar {
@@ -1096,7 +1096,7 @@ img {
 .topbar a:visited,
 .topbar .w-false-link,
 .topbar .w-false-link:hover {
-  color: var(--colors-text-primary);
+  color: var(--color-text-primary);
 }
 .topbar #dg-logo {
   background-repeat: no-repeat;
@@ -1247,7 +1247,7 @@ img {
   height: 40px;
   border-radius: 50%;
   outline: 0;
-  border: 1px solid rgb(22, 71, 193);
+  border: 1px solid var(--color-button-background-dark);
   background: rgb(46, 113, 225);
   color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;

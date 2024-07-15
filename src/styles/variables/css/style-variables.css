@@ -3,11 +3,27 @@
  */
 
 :root {
-  --colors-background: #ffffff;
-  --colors-border: #999999;
-  --colors-text: #010304;
-  --colors-text-link: #010304;
-  --colors-text-link-hover: #4a72c1;
-  --colors-text-link-focused: #4b91ff;
-  --colors-text-link-visited: #4a72c1;
+  --color-primary: rgb(46, 113, 225);
+  --color-primary-light: rgb(222, 232, 252);
+  --color-primary-dark: rgb(22, 71, 193);
+  --color-background-light: #fff;
+  --color-border: #999;
+  --color-text: rgb(1, 3, 4);
+  --color-text-link: rgb(1, 3, 4);
+  --color-text-link-hover: #4a72c1;
+  --color-text-link-active: #4b91ff;
+  --color-text-link-visited: #808080;
+  --color-button-border: rgb(46, 113, 225);
+  --color-button-background: rgb(46, 113, 225);
+  --color-button-shadow: rgba(0, 0, 0, 0.1);
+  --size-font-base: 16px;
+  --size-font-small: 12px;
+  --size-font-medium: 16px;
+  --size-font-large: 24px;
+  --size-font-h1: 2rem;
+  --size-font-h2: 1.5rem;
+  --size-font-h3: 1.25rem;
+  --size-font-h4: 1rem;
+  --size-font-h5: 0.875rem;
+  --size-font-h6: 0.75rem;
 }

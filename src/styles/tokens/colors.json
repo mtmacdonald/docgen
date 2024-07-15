@@ -1,26 +1,53 @@
 {
-  "colors": {
-    "$type": "color",
+  "color": {
+    "primary": {
+      "@": {
+        "value": "rgb(46, 113, 225)"
+      },
+      "light": {
+        "value": "rgb(222, 232, 252)"
+      },
+      "dark": {
+        "value": "rgb(22, 71, 193)"
+      }
+    },
     "background": {
-      "$value": "#fff"
+      "light": {
+        "value": "#fff"
+      }
     },
     "border": {
-      "$value": "#999"
+      "value": "#999"
     },
     "text": {
-      "$value": "rgb(1, 3, 4)"
+      "@": {
+        "value": "rgb(1, 3, 4)"
+      },
+      "link": {
+        "@": {
+          "value": "rgb(1, 3, 4)"
+        },
+        "hover": {
+          "value": "#4a72c1"
+        },
+        "active": {
+          "value": "#4b91ff"
+        },
+        "visited": {
+          "value": "#808080"
+        }
+      }
     },
-    "textLink": {
-      "$value": "rgb(1, 3, 4)"
-    },
-    "textLinkHover": {
-      "$value": "#4a72c1"
-    },
-    "textLinkFocused": {
-      "$value": "#4b91ff"
-    },
-    "textLinkVisited": {
-      "$value": "#4a72c1"
+    "button": {
+      "border": {
+        "value": "{color.primary.@}"
+      },
+      "background": {
+        "value": "{color.primary.@}"
+      },
+      "shadow": {
+        "value": "rgba(0, 0, 0, 0.1)"
+      }
     }
   }
 }

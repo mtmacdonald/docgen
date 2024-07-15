@@ -4,8 +4,8 @@
 
 html {
   height: 100%;
-  background-color: var(--colors-text-primary);
-  color: var(--colors-text);
+  background-color: var(--color-text-primary);
+  color: var(--color-text);
 
   body {
     height: 100%;
@@ -13,7 +13,7 @@ html {
 }
 
 .page {
-  background-color: var(--colors-background);
+  background-color: var(--color-background-light);
   position: fixed;
   right: 0;
   bottom: 0;
@@ -45,7 +45,7 @@ html {
 */
 
 section {
-  background-color: var(--colors-background);
+  background-color: var(--color-background-light);
   /*
 		Center content
 		Note we need an old way because wkhtmltopdf doesn't support modern styles
