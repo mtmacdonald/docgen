@@ -344,6 +344,29 @@ template {
   display: none;
 }
 
+/* iPad Input Shadows */
+input[type='text'],
+input[type='email'],
+input[type='search'],
+input[type='password'] {
+  -webkit-appearance: none;
+  -moz-appearance: none; /* mobile firefox too! */
+}
+
+/* FF dotted border outlines */
+:focus {
+  outline: none !important;
+}
+
+::-moz-focus-inner {
+  border: 0 !important;
+}
+
+/* Strip native browser link styles */
+a {
+  color: inherit;
+}
+
 /*
 	:focus styling
 
@@ -383,23 +406,6 @@ input[type='submit']:focus {
   visibility: hidden;
   display: block;
   content: ' ';
-}
-
-/*
- alignment
-*/
-.w-left {
-  text-align: left;
-  display: block;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.w-right {
-  text-align: right;
-  display: block;
-  margin-left: auto;
-  margin-right: 0;
 }
 
 .w-center {
