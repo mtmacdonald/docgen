@@ -160,12 +160,16 @@ a,
 a:hover,
 .w-false-link:hover,
 .w-link-button:hover {
-  color: var(--colors-text-link-hover);
+  color: var(--colors-text-link-hover) !important; //otherwise visited overrides
   text-decoration: none;
 }
-a:active {
-  color: var(--colors-text-link-focused);
-  background: none;
+a:active,
+a:focus,
+.w-false-link:active,
+.w-false-link:focus,
+.w-link-button:active,
+.w-link-button:focus {
+  color: var(--colors-text-link-active);
 }
 a:visited {
   color: var(--colors-text-link-visited);
