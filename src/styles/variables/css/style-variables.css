@@ -10,4 +10,14 @@
   --colors-text-link-hover: #4a72c1;
   --colors-text-link-active: #4b91ff;
   --colors-text-link-visited: #808080;
+  --size-font-base: 16px;
+  --size-font-small: 12px;
+  --size-font-medium: 16px;
+  --size-font-large: 24px;
+  --size-font-h1: 2rem;
+  --size-font-h2: 1.5rem;
+  --size-font-h3: 1.25rem;
+  --size-font-h4: 1rem;
+  --size-font-h5: 0.875rem;
+  --size-font-h6: 0.75rem;
 }
