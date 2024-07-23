@@ -48,6 +48,11 @@
       "shadow": {
         "value": "rgba(0, 0, 0, 0.1)"
       }
+    },
+    "table": {
+      "background": {
+        "value": "#eee"
+      }
     }
   }
 }

@@ -15,6 +15,7 @@ export const ColorTextLinkVisited = '#808080';
 export const ColorButtonBorder = 'rgb(46, 113, 225)';
 export const ColorButtonBackground = 'rgb(46, 113, 225)';
 export const ColorButtonShadow = 'rgba(0, 0, 0, 0.1)';
+export const ColorTableBackground = '#eee';
 export const SizeFontBase = '16px';
 export const SizeFontSmall = '12px';
 export const SizeFontMedium = '16px';

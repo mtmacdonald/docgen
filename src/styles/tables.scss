@@ -36,7 +36,7 @@ table,
 
   //'optionally set .w-stripe to stripe a table'
   &.w-stripe tbody tr:nth-of-type(2n) {
-    background-color: $light;
+    background-color: var(--color-);
   }
 
   //'override display:block on the w-center class within tables'
