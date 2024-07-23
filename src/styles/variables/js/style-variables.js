@@ -26,3 +26,7 @@ export const SizeFontH3 = '1.25rem';
 export const SizeFontH4 = '1rem';
 export const SizeFontH5 = '0.875rem';
 export const SizeFontH6 = '0.75rem';
+export const SizeHeaderHeight = '80px';
+export const SizeSideBarWidth = '330px';
+export const SizeSideBarMinWidth = '40px';
+export const SizeSideBarPadding = '5px';

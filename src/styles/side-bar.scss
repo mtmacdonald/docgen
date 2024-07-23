@@ -1,14 +1,11 @@
-$sidebar_width: 330px;
-$sidebarPadding: 5px;
-
 #dgSideBar {
   background-color: #1c1c1c;
   color: white;
   transition: width 0.4s ease;
-  width: $sidebar_width;
+  width: var(--size-side-bar-width);
   max-width: 80%;
   position: fixed;
-  top: $topBarHeight;
+  top: var(--size-header-height);
   left: 0;
   bottom: 0;
   z-index: 99;
@@ -18,7 +15,7 @@ $sidebarPadding: 5px;
   }
 
   &.dgSideBarCollapsed {
-    width: $sideBarMinWidth;
+    width: var(--size-side-bar-min-width);
   }
 }
 
@@ -34,10 +31,10 @@ $sidebarPadding: 5px;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: $sidebarPadding;
+  padding: var(size-side-bar-padding);
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  width: $sidebar_width;
+  width: var(--size-side-bar-width);
   transition: opacity 0.4s ease;
 
   .dgSideBarCollapsed & {

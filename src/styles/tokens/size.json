@@ -11,6 +11,16 @@
       "h4": { "value": "1rem" },
       "h5": { "value": "0.875rem" },
       "h6": { "value": "0.75rem" }
+    },
+    "header": {
+      "height": {
+        "value": "80px"
+      }
+    },
+    "sideBar": {
+      "width": { "value": "330px" },
+      "minWidth": { "value": "40px" },
+      "padding": { "value": "5px" }
     }
   }
 }

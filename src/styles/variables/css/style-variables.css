@@ -27,4 +27,8 @@
   --size-font-h4: 1rem;
   --size-font-h5: 0.875rem;
   --size-font-h6: 0.75rem;
+  --size-header-height: 80px;
+  --size-side-bar-width: 330px;
+  --size-side-bar-min-width: 40px;
+  --size-side-bar-padding: 5px;
 }

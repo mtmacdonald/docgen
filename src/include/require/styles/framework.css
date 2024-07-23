@@ -26,6 +26,10 @@
   --size-font-h4: 1rem;
   --size-font-h5: 0.875rem;
   --size-font-h6: 0.75rem;
+  --size-header-height: 80px;
+  --size-side-bar-width: 330px;
+  --size-side-bar-min-width: 40px;
+  --size-side-bar-padding: 5px;
 }
 
 /*
@@ -409,8 +413,8 @@ html body {
   right: 0;
   bottom: 0;
   overflow: scroll;
-  left: 40px;
-  top: 80px;
+  left: var(--size-side-bar-min-width);
+  top: var(--size-header-height);
   padding: 30px;
 }
 @media not print {
@@ -993,7 +997,7 @@ img {
   left: 0;
   z-index: 2;
   width: 100%;
-  height: 80px;
+  height: var(--size-header-height);
   line-height: initial;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
   border-bottom: none;
@@ -1072,10 +1076,10 @@ img {
   background-color: #1c1c1c;
   color: white;
   transition: width 0.4s ease;
-  width: 330px;
+  width: var(--size-side-bar-width);
   max-width: 80%;
   position: fixed;
-  top: 80px;
+  top: var(--size-header-height);
   left: 0;
   bottom: 0;
   z-index: 99;
@@ -1086,7 +1090,7 @@ img {
   }
 }
 #dgSideBar.dgSideBarCollapsed {
-  width: 40px;
+  width: var(--size-side-bar-min-width);
 }
 
 #dgSideBarInnerWrapper {
@@ -1101,10 +1105,10 @@ img {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 5px;
+  padding: var(size-side-bar-padding);
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  width: 330px;
+  width: var(--size-side-bar-width);
   transition: opacity 0.4s ease;
 }
 .dgSideBarCollapsed #dgSideBarInner {
