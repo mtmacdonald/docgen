@@ -17,7 +17,7 @@ table,
 
   th,
   tfoot td {
-    background-color: $medium;
+    background-color: var(--color-table-background-header-footer);
     font-weight: bold;
   }
 
@@ -36,7 +36,7 @@ table,
 
   //'optionally set .w-stripe to stripe a table'
   &.w-stripe tbody tr:nth-of-type(2n) {
-    background-color: var(--color-);
+    background-color: var(--color-table-background-row);
   }
 
   //'override display:block on the w-center class within tables'

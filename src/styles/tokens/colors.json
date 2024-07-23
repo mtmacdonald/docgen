@@ -23,6 +23,9 @@
       "@": {
         "value": "rgb(1, 3, 4)"
       },
+      "light": {
+        "value": "#bbb"
+      },
       "link": {
         "@": {
           "value": "rgb(1, 3, 4)"
@@ -51,7 +54,15 @@
     },
     "table": {
       "background": {
-        "value": "#eee"
+        "@": {
+          "value": "#eee"
+        },
+        "row": {
+          "value": "#eee"
+        },
+        "headerFooter": {
+          "value": "#ddd"
+        }
       }
     }
   }
