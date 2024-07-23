@@ -129,7 +129,7 @@ $sidebarPadding: 5px;
   border-radius: 50%;
   outline: 0;
   border: 1px solid var(--color-button-background-dark);
-  background: $brand-secondary-color;
+  background: var(--color-primary);
   color: rgba(0, 0, 0, 0.6);
 
   box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
@@ -141,7 +141,7 @@ $sidebarPadding: 5px;
 
   &:hover,
   &:focus {
-    background-color: darken($brand-secondary-color, 5%);
+    background-color: var(--color-primary-dark);
     background-image: none;
     color: rgba(0, 0, 0, 0.8);
     opacity: 1; //override base buttons style
@@ -149,7 +149,7 @@ $sidebarPadding: 5px;
 
   &:active,
   &.active {
-    background-color: darken($brand-secondary-color, 10%);
+    background-color: var(--color-primary-dark);
     background-image: none;
     color: rgba(0, 0, 0, 0.9);
   }

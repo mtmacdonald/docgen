@@ -849,14 +849,14 @@ button:active,
 
 .inverted {
   background-color: transparent;
-  color: rgb(46, 113, 225) !important;
-  border: 2px solid rgb(46, 113, 225);
+  color: var(--colour-primary) !important;
+  border: 2px solid var(--color-primary-light);
   box-shadow: none;
 }
 .inverted:hover,
 .inverted:focus,
 .inverted:active {
-  background-color: rgb(46, 113, 225);
+  background-color: var(--color-primary);
   color: white !important;
   box-shadow: none;
   opacity: 1;
@@ -1180,7 +1180,7 @@ img {
   border-radius: 50%;
   outline: 0;
   border: 1px solid var(--color-button-background-dark);
-  background: rgb(46, 113, 225);
+  background: var(--color-primary);
   color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
   user-select: none;
@@ -1192,14 +1192,14 @@ img {
 }
 #dgSideBarButton:hover,
 #dgSideBarButton:focus {
-  background-color: #1f64d7;
+  background-color: var(--color-primary-dark);
   background-image: none;
   color: rgba(0, 0, 0, 0.8);
   opacity: 1;
 }
 #dgSideBarButton:active,
 #dgSideBarButton.active {
-  background-color: #1c59c0;
+  background-color: var(--color-primary-dark);
   background-image: none;
   color: rgba(0, 0, 0, 0.9);
 }

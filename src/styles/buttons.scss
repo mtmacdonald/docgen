@@ -60,14 +60,14 @@ button,
 
 .inverted {
   background-color: transparent;
-  color: $brand-secondary-color !important;
-  border: 2px solid $brand-secondary-color;
+  color: var(--colour-primary) !important;
+  border: 2px solid var(--color-primary-light);
   box-shadow: none;
 
   &:hover,
   &:focus,
   &:active {
-    background-color: $brand-secondary-color;
+    background-color: var(--color-primary);
     color: white !important;
     box-shadow: none;
     opacity: 1;
