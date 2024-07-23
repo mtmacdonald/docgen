@@ -36,7 +36,7 @@
 
   //Header content styles
 
-  @include fixed-color-text();
+  color: var(--color-text-primary);
 
   #dg-logo {
     background-repeat: no-repeat;

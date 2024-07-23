@@ -12,6 +12,16 @@
       "h5": { "value": "0.875rem" },
       "h6": { "value": "0.75rem" }
     },
+    "message": {
+      "padding": {
+        "value": "20px 30px"
+      },
+      "border": {
+        "radius": {
+          "value": "2px"
+        }
+      }
+    },
     "header": {
       "height": {
         "value": "80px"

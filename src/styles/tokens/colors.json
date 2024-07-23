@@ -14,10 +14,36 @@
     "background": {
       "light": {
         "value": "#fff"
+      },
+      "success": {
+        "value": "#ccffbc"
+      },
+      "error": {
+        "value": "#ffe6e6"
+      },
+      "warning": {
+        "value": "#fff0bd"
+      },
+      "info": {
+        "value": "rgb(222, 232, 252)"
       }
     },
     "border": {
-      "value": "#999"
+      "@": {
+        "value": "#999"
+      },
+      "success": {
+        "value": "#2ab100"
+      },
+      "error": {
+        "value": "#c20000"
+      },
+      "warning": {
+        "value": "#b28900"
+      },
+      "info": {
+        "value": "#81a7f4"
+      }
     },
     "text": {
       "@": {
@@ -25,6 +51,18 @@
       },
       "light": {
         "value": "#bbb"
+      },
+      "success": {
+        "value": "#2ab100"
+      },
+      "error": {
+        "value": "#c20000"
+      },
+      "warning": {
+        "value": "#b28900"
+      },
+      "info": {
+        "value": "#0a2a6b"
       },
       "link": {
         "@": {
