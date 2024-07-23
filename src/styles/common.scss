@@ -11,18 +11,6 @@
   content: ' ';
 } //'use to clear floats'
 
-@mixin fixed-color-text($color: var(--color-text-primary)) {
-  color: $color;
-  a,
-  a:hover,
-  a:active,
-  a:visited,
-  .w-false-link,
-  .w-false-link:hover {
-    color: $color;
-  }
-}
-
 .w-center {
   text-align: center;
   display: block;

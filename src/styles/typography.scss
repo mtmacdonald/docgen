@@ -39,7 +39,6 @@
 
 $default-font: 'montserrat', Arial, sans-serif;
 $code-font: 'droid-sans-mono', Courier, monospace;
-$default-line-height: 26px;
 
 html {
   font-size: var(--size-font-medium);
@@ -48,7 +47,7 @@ html {
 body {
   font-family: $default-font;
   font-size: var(--size-font-medium);
-  line-height: $default-line-height;
+  line-height: var(--size-line-height);
 }
 
 h1,

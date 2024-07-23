@@ -12,6 +12,11 @@
       "h5": { "value": "0.875rem" },
       "h6": { "value": "0.75rem" }
     },
+    "line": {
+      "height": {
+        "value": "26px"
+      }
+    },
     "message": {
       "padding": {
         "value": "20px 30px"

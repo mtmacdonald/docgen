@@ -41,6 +41,7 @@ export const SizeFontH3 = '1.25rem';
 export const SizeFontH4 = '1rem';
 export const SizeFontH5 = '0.875rem';
 export const SizeFontH6 = '0.75rem';
+export const SizeLineHeight = '26px';
 export const SizeMessagePadding = '20px 30px';
 export const SizeMessageBorderRadius = '2px';
 export const SizeHeaderHeight = '80px';
