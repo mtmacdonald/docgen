@@ -26,8 +26,13 @@
   --color-text-link-hover: #4a72c1;
   --color-text-link-active: #4b91ff;
   --color-text-link-visited: #808080;
-  --color-button-border: rgb(46, 113, 225);
+  --color-button-border: 2px solid rgb(46, 113, 225);
+  --color-button-border-inverted: 2px solid rgb(46, 113, 225);
   --color-button-background: rgb(46, 113, 225);
+  --color-button-background-hover: #0042b4;
+  --color-button-background-inverted: #fff;
+  --color-button-text: #fff;
+  --color-button-text-inverted: rgb(46, 113, 225);
   --color-button-shadow: rgba(0, 0, 0, 0.1);
   --color-table-background: #eee;
   --color-table-background-row: #eee;

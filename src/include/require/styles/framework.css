@@ -25,8 +25,13 @@
   --color-text-link-hover: #4a72c1;
   --color-text-link-active: #4b91ff;
   --color-text-link-visited: #808080;
-  --color-button-border: rgb(46, 113, 225);
+  --color-button-border: 2px solid rgb(46, 113, 225);
+  --color-button-border-inverted: 2px solid rgb(46, 113, 225);
   --color-button-background: rgb(46, 113, 225);
+  --color-button-background-hover: #0042b4;
+  --color-button-background-inverted: #fff;
+  --color-button-text: #fff;
+  --color-button-text-inverted: rgb(46, 113, 225);
   --color-button-shadow: rgba(0, 0, 0, 0.1);
   --color-table-background: #eee;
   --color-table-background-row: #eee;
@@ -784,7 +789,7 @@ button,
   vertical-align: baseline;
   border: 2px solid var(--color-button-border);
   background: var(--color-button-background);
-  color: var(--color-background-light) !important;
+  color: var(--color-button-text) !important;
   padding: 12px 18px;
   text-transform: none;
   text-shadow: none;
@@ -802,11 +807,12 @@ button,
 }
 button:hover,
 .button:hover {
-  opacity: 0.8;
+  color: var(--color-button-text) !important;
+  background-color: var(--color-button-background-hover);
 }
 button:focus,
 .button:focus {
-  color: white !important;
+  color: var(--color-button-text) !important;
   box-shadow: 0 0 0 2px var(--color-button-shadow);
 }
 button:active,
@@ -816,22 +822,22 @@ button:active,
 
 .inverted {
   background-color: transparent;
-  color: var(--colour-primary) !important;
-  border: 2px solid var(--color-primary-light);
+  color: var(--color-button-text-inverted) !important;
+  border: var(--color-button-border-inverted);
   box-shadow: none;
 }
 .inverted:hover,
 .inverted:focus,
 .inverted:active {
-  background-color: var(--color-primary);
-  color: white !important;
+  background-color: var(--color-button-background);
+  color: var(--color-button-text) !important;
   box-shadow: none;
   opacity: 1;
 }
 
 .whiteInverted {
   background-color: transparent;
-  color: white !important;
+  color: var(--color-button-text) !important;
   border: 2px solid white;
   box-shadow: none;
 }
@@ -1138,8 +1144,8 @@ img {
   height: 40px;
   border-radius: 50%;
   outline: 0;
-  border: 1px solid var(--color-button-background-dark);
-  background: var(--color-primary);
+  border: 1px solid var(--color-button-border);
+  background: var(--color-button-background);
   color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
   user-select: none;
@@ -1151,14 +1157,14 @@ img {
 }
 #dgSideBarButton:hover,
 #dgSideBarButton:focus {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-button-background-hover);
   background-image: none;
   color: rgba(0, 0, 0, 0.8);
   opacity: 1;
 }
 #dgSideBarButton:active,
 #dgSideBarButton.active {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-button-background-hover);
   background-image: none;
   color: rgba(0, 0, 0, 0.9);
 }

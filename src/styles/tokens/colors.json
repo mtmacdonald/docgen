@@ -81,10 +81,17 @@
     },
     "button": {
       "border": {
-        "value": "{color.primary.@}"
+        "@": { "value": "2px solid {color.primary.@}" },
+        "inverted": { "value": "2px solid {color.primary.@}" }
       },
       "background": {
-        "value": "{color.primary.@}"
+        "@": { "value": "{color.primary.@}" },
+        "hover": { "value": "#0042b4" },
+        "inverted": { "value": "#fff" }
+      },
+      "text": {
+        "@": { "value": "#fff" },
+        "inverted": { "value": "{color.primary.@}" }
       },
       "shadow": {
         "value": "rgba(0, 0, 0, 0.1)"
