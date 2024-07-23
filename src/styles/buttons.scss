@@ -12,7 +12,7 @@ button,
   vertical-align: baseline;
   border: 2px solid var(--color-button-border);
   background: var(--color-button-background);
-  color: var(--color-background-light) !important;
+  color: var(--color-button-text) !important;
   padding: 12px 18px;
   text-transform: none;
   text-shadow: none;
@@ -29,46 +29,31 @@ button,
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    opacity: 0.8;
+    color: var(--color-button-text) !important;
+    background-color: var(--color-button-background-hover);
   }
 
   &:focus {
-    color: white !important;
+    color: var(--color-button-text) !important;
     box-shadow: 0 0 0 2px var(--color-button-shadow);
   }
 
   &:active {
     box-shadow: none;
   }
-
-  //&:hover,
-  //&:focus,
-  //&:active {
-  //	position: relative;
-  //	z-index: 1;
-  //}
-
-  //.icon {
-  //	margin: 0 0 0 10px;
-  //
-  //	svg {
-  //		height: 12px;
-  //		width: 12px;
-  //	}
-  //}
 }
 
 .inverted {
   background-color: transparent;
-  color: $brand-secondary-color !important;
-  border: 2px solid $brand-secondary-color;
+  color: var(--color-button-text-inverted) !important;
+  border: var(--color-button-border-inverted);
   box-shadow: none;
 
   &:hover,
   &:focus,
   &:active {
-    background-color: $brand-secondary-color;
-    color: white !important;
+    background-color: var(--color-button-background);
+    color: var(--color-button-text) !important;
     box-shadow: none;
     opacity: 1;
   }
@@ -76,7 +61,7 @@ button,
 
 .whiteInverted {
   background-color: transparent;
-  color: white !important;
+  color: var(--color-button-text) !important;
   border: 2px solid white;
   box-shadow: none;
 }

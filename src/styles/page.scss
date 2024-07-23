@@ -18,8 +18,8 @@ html {
   right: 0;
   bottom: 0;
   overflow: scroll;
-  left: $sideBarMinWidth;
-  top: $topBarHeight;
+  left: var(--size-side-bar-min-width);
+  top: var(--size-header-height);
   padding: 30px;
 
   @media not print {

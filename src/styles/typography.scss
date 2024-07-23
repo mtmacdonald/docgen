@@ -39,7 +39,6 @@
 
 $default-font: 'montserrat', Arial, sans-serif;
 $code-font: 'droid-sans-mono', Courier, monospace;
-$default-line-height: 26px;
 
 html {
   font-size: var(--size-font-medium);
@@ -48,7 +47,7 @@ html {
 body {
   font-family: $default-font;
   font-size: var(--size-font-medium);
-  line-height: $default-line-height;
+  line-height: var(--size-line-height);
 }
 
 h1,
@@ -132,19 +131,19 @@ section > div ol ol {
   font-weight: bold;
 }
 .w-information-text {
-  color: darken($information, 60%);
+  color: var(--color-text-info);
 }
 .w-success-text {
-  color: darken($success, 60%);
+  color: var(--color-text-success);
 }
 .w-warning-text {
-  color: darken($warning, 60%);
+  color: var(--color-text-warning);
 }
 .w-error-text {
-  color: darken($error, 60%);
+  color: var(--color-text-error);
 }
 .w-de-emphasised-text {
-  color: $dark;
+  color: var(--color-text-light);
 }
 
 /*
@@ -184,33 +183,34 @@ a:visited {
   border-radius: 5px;
 }
 
-@mixin special-text($color: $brand-secondary-color-light) {
-  background-color: $color;
-  border-left: 5px solid darken($color, 20%);
-  padding: 20px 30px;
-  @include fixed-color-text(darken($color, 70%));
-  border-radius: 2px;
-}
-
 .w-success {
-  @include special-text($success);
+  color: var(--color-text-success);
+  background-color: var(--color-background-success);
+  border-left: 5px solid var(--color-border-success);
+  padding: var(--size-message-padding);
+  border-radius: var(--size-message-border-radius);
 }
 .w-warning {
-  @include special-text($warning);
+  color: var(--color-text-warning);
+  background-color: var(--color-background-warning);
+  border-left: 5px solid var(--color-border-warning);
+  padding: var(--size-message-padding);
+  border-radius: var(--size-message-border-radius);
 }
 .w-error {
-  @include special-text($error);
+  color: var(--color-text-error);
+  background-color: var(--color-background-error);
+  border-left: 5px solid var(--color-border-error);
+  padding: var(--size-message-padding);
+  border-radius: var(--size-message-border-radius);
 }
+blockquote,
 .w-information {
-  @include special-text();
-}
-
-/*
- blockquotes
-*/
-
-blockquote {
-  @include special-text();
+  color: var(--color-text-info);
+  background-color: var(--color-background-info);
+  border-left: 5px solid var(--color-border-info);
+  padding: var(--size-message-padding);
+  border-radius: var(--size-message-border-radius);
 }
 
 /*
