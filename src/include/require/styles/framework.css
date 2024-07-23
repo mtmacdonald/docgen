@@ -626,7 +626,7 @@ section > div ol ol {
 }
 
 .w-de-emphasised-text {
-  color: #bbb;
+  color: var(--color-text-light);
 }
 
 /*

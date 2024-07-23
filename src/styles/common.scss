@@ -11,10 +11,6 @@
   content: ' ';
 } //'use to clear floats'
 
-@mixin border($width: 1px) {
-  border: $width solid $border;
-}
-
 @mixin fixed-color-text($color: var(--color-text-primary)) {
   color: $color;
   a,
