@@ -1006,6 +1006,7 @@ img {
 }
 .topbar #headerLeftText a {
   text-decoration: none;
+  color: var(--color-text-primary) !important;
 }
 .topbar #headerLeftText #headerSponsor {
   display: flex;
