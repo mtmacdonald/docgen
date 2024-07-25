@@ -1,4 +1,8 @@
-﻿## DocGen 4.2.0 15/04/2024
+﻿## DocGen 4.3.0 25/07/2024
+
+- add style-dictionary for managing design tokens
+
+## DocGen 4.2.0 15/04/2024
 
 - better mobile-friendly styles
 
