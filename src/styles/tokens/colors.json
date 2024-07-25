@@ -1,0 +1,114 @@
+{
+  "color": {
+    "primary": {
+      "@": {
+        "value": "rgb(46, 113, 225)"
+      },
+      "light": {
+        "value": "rgb(222, 232, 252)"
+      },
+      "dark": {
+        "value": "rgb(22, 71, 193)"
+      }
+    },
+    "background": {
+      "light": {
+        "value": "#fff"
+      },
+      "success": {
+        "value": "#ccffbc"
+      },
+      "error": {
+        "value": "#ffe6e6"
+      },
+      "warning": {
+        "value": "#fff0bd"
+      },
+      "info": {
+        "value": "rgb(222, 232, 252)"
+      }
+    },
+    "border": {
+      "@": {
+        "value": "#999"
+      },
+      "success": {
+        "value": "#2ab100"
+      },
+      "error": {
+        "value": "#c20000"
+      },
+      "warning": {
+        "value": "#b28900"
+      },
+      "info": {
+        "value": "#81a7f4"
+      }
+    },
+    "text": {
+      "@": {
+        "value": "rgb(1, 3, 4)"
+      },
+      "light": {
+        "value": "#bbb"
+      },
+      "success": {
+        "value": "#2ab100"
+      },
+      "error": {
+        "value": "#c20000"
+      },
+      "warning": {
+        "value": "#b28900"
+      },
+      "info": {
+        "value": "#0a2a6b"
+      },
+      "link": {
+        "@": {
+          "value": "rgb(1, 3, 4)"
+        },
+        "hover": {
+          "value": "#4a72c1"
+        },
+        "active": {
+          "value": "#4b91ff"
+        },
+        "visited": {
+          "value": "#808080"
+        }
+      }
+    },
+    "button": {
+      "border": {
+        "@": { "value": "2px solid {color.primary.@}" },
+        "inverted": { "value": "2px solid {color.primary.@}" }
+      },
+      "background": {
+        "@": { "value": "{color.primary.@}" },
+        "hover": { "value": "#0042b4" },
+        "inverted": { "value": "#fff" }
+      },
+      "text": {
+        "@": { "value": "#fff" },
+        "inverted": { "value": "{color.primary.@}" }
+      },
+      "shadow": {
+        "value": "rgba(0, 0, 0, 0.1)"
+      }
+    },
+    "table": {
+      "background": {
+        "@": {
+          "value": "#eee"
+        },
+        "row": {
+          "value": "#eee"
+        },
+        "headerFooter": {
+          "value": "#ddd"
+        }
+      }
+    }
+  }
+}

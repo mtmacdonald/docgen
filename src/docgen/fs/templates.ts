@@ -1,11 +1,11 @@
-import pico from 'picocolors'
+import pico from 'picocolors';
 import cheerio from 'cheerio';
 import { readFile } from './fs';
 import type { Templates } from '../types';
 
 export const loadTemplates = async ({
   options,
-  mainProcess
+  mainProcess,
 }): Promise<Templates> => {
   const templates = {};
   console.log(pico.green('Loading templates'));

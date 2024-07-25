@@ -2,80 +2,66 @@
  buttons
 */
 
-button, .button {
-	cursor: pointer;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	outline: 0;
-	vertical-align: baseline;
-	border: 2px solid $brand-secondary-color;
-	background: $brand-secondary-color;
-	color: white!important;
-	padding: 12px 18px;
-	text-transform: none;
-	text-shadow: none;
-	line-height: 1em;
-	font-style: normal;
-	text-align: center;
-	text-decoration: none;
-	border-radius: 6px;
-	user-select: none;
-	transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
-	box-shadow 0.1s ease, background 0.1s ease;
-	height: 14px;
-	max-width: 100%;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+button,
+.button {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  vertical-align: baseline;
+  border: 2px solid var(--color-button-border);
+  background: var(--color-button-background);
+  color: var(--color-button-text) !important;
+  padding: 12px 18px;
+  text-transform: none;
+  text-shadow: none;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 6px;
+  user-select: none;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+    box-shadow 0.1s ease, background 0.1s ease;
+  height: 14px;
+  max-width: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
-	&:hover {
-		opacity: 0.8;
-	}
+  &:hover {
+    color: var(--color-button-text) !important;
+    background-color: var(--color-button-background-hover);
+  }
 
-	&:focus {
-		color: white!important;
-		box-shadow: 0 0 0 2px rgba($brand-secondary-color-dark, 0.25);
-	}
+  &:focus {
+    color: var(--color-button-text) !important;
+    box-shadow: 0 0 0 2px var(--color-button-shadow);
+  }
 
-	&:active {
-		box-shadow: none;
-	}
-
-	//&:hover,
-	//&:focus,
-	//&:active {
-	//	position: relative;
-	//	z-index: 1;
-	//}
-
-	//.icon {
-	//	margin: 0 0 0 10px;
-	//
-	//	svg {
-	//		height: 12px;
-	//		width: 12px;
-	//	}
-	//}
+  &:active {
+    box-shadow: none;
+  }
 }
 
 .inverted {
-	background-color: transparent;
-	color: $brand-secondary-color!important;
-	border: 2px solid $brand-secondary-color;
-	box-shadow: none;
+  background-color: transparent;
+  color: var(--color-button-text-inverted) !important;
+  border: var(--color-button-border-inverted);
+  box-shadow: none;
 
-	&:hover,
-	&:focus,
-	&:active {
-		background-color: $brand-secondary-color;
-		color: white!important;
-		box-shadow: none;
-		opacity: 1;
-	}
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--color-button-background);
+    color: var(--color-button-text) !important;
+    box-shadow: none;
+    opacity: 1;
+  }
 }
 
 .whiteInverted {
-	background-color: transparent;
-	color: white!important;
-	border: 2px solid white;
-	box-shadow: none;
+  background-color: transparent;
+  color: var(--color-button-text) !important;
+  border: 2px solid white;
+  box-shadow: none;
 }
