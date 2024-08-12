@@ -1,7 +1,6 @@
-import { Page, Document } from '@react-pdf/renderer';
 import Html from 'react-pdf-html';
 
-const html = `<html>
+export const html = `<html>
   <body>
     <style>
       .my-heading4 {
@@ -72,9 +71,5 @@ function myCode() {
 `;
 
 export const Pdf = () => (
-  <Document>
-    <Page>
-      <Html>{html}</Html>
-    </Page>
-  </Document>
+  <Html>{html}</Html>
 );
