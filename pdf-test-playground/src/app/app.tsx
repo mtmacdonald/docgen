@@ -1,7 +1,8 @@
 import { ObjectInspector } from 'react-inspector';
+import Html from 'react-pdf-html';
 import { Document, Page, PDFViewer } from '@react-pdf/renderer';
 import { renderHtml } from 'react-pdf-html';
-import { Pdf, html } from '../document.tsx';
+import html from '../playground.html?raw';
 import styles from './app.module.css';
 
 export const App = () => {
@@ -14,7 +15,7 @@ export const App = () => {
         <PDFViewer>
           <Document>
             <Page>
-              <Pdf />
+              <Html>{html}</Html>
             </Page>
           </Document>
         </PDFViewer>
