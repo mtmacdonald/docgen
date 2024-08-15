@@ -1,9 +1,9 @@
 import { ObjectInspector } from 'react-inspector';
-import Html from 'react-pdf-html';
 import { Document, Page, PDFViewer } from '@react-pdf/renderer';
 import { renderHtml } from 'react-pdf-html';
 import html from '../playground.html?raw';
 import styles from './app.module.css';
+import { PdfHtmlBlock } from "../../../src/docgen/pdf/react-pdf/pdf-page/pdf-html-block.tsx";
 
 export const App = () => {
   return (
@@ -15,7 +15,7 @@ export const App = () => {
         <PDFViewer>
           <Document>
             <Page>
-              <Html>{html}</Html>
+              <PdfHtmlBlock page={html} />
             </Page>
           </Document>
         </PDFViewer>
