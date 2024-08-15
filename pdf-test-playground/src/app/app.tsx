@@ -1,13 +1,14 @@
+import { ObjectInspector } from 'react-inspector';
 import { Document, Page, PDFViewer } from '@react-pdf/renderer';
-//import { renderHtml } from 'react-pdf-html';
-import { Pdf /*, html */ } from '../document.tsx';
+import { renderHtml } from 'react-pdf-html';
+import { Pdf, html } from '../document.tsx';
 import styles from './app.module.css';
 
-const App = () => {
+export const App = () => {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        Placeholder
+        <ObjectInspector data={renderHtml(html)} />
       </div>
       <div className={styles.right}>
         <PDFViewer>
@@ -21,5 +22,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App
