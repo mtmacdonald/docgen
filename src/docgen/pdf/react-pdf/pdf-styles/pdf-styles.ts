@@ -26,7 +26,7 @@ export const htmlStyleSheet = {
     color: styles.ColorText,
   },
   h1: {
-    fontSize: em(1.4),
+    fontSize: styles.SizeFontH1Pdf,
     marginVertical: em(0.2, em(2)),
     fontWeight: 'bold',
   },

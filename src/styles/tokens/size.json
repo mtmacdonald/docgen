@@ -5,7 +5,10 @@
       "small": { "value": "12px" },
       "medium": { "value": "16px" },
       "large": { "value": "24px" },
-      "h1": { "value": "2rem" },
+      "h1": {
+        "@": { "value": "2rem" },
+        "pdf": { "value": "24pt" }
+      },
       "h2": { "value": "1.5rem" },
       "h3": { "value": "1.25rem" },
       "h4": { "value": "1rem" },

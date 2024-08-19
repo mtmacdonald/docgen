@@ -41,6 +41,7 @@ export const SizeFontSmall = '12px';
 export const SizeFontMedium = '16px';
 export const SizeFontLarge = '24px';
 export const SizeFontH1 = '2rem';
+export const SizeFontH1Pdf = '24pt';
 export const SizeFontH2 = '1.5rem';
 export const SizeFontH3 = '1.25rem';
 export const SizeFontH4 = '1rem';
