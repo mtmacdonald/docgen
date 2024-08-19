@@ -4,7 +4,7 @@ import { PdfHtmlBlock } from "./pdf-html-block";
 import { PdfFooter } from './pdf-footer/pdf-footer';
 import { pdfStyleSheet } from '../pdf-styles/pdf-styles';
 
-const reactPdfStyles = StyleSheet.create(pdfStyleSheet);
+export const reactPdfStyles = StyleSheet.create(pdfStyleSheet);
 
 export const PdfPage = ({
   page,
