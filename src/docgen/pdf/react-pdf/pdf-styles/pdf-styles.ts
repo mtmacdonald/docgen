@@ -26,7 +26,7 @@ export const htmlStyleSheet = {
     color: styles.ColorText,
   },
   'h1, h2, h3, h4, h5, h6': {
-    marginVertical: em(0.2, em(2)),
+    marginVertical: '20pt',
     fontWeight: 'bold',
   },
   h1: {
@@ -50,10 +50,21 @@ export const htmlStyleSheet = {
   blockquote: styleInfo,
   ['.w-information']: styleInfo,
   pre: {
-    //padding: 12px,
-    //background-color: #f3f3f3,
-    borderLeft: `1px solid ${styles.ColorBorder}`,
-    //line-height: 14px;
-    //border-radius: 6px;
+    fontSize: '10pt',
+    fontFamily: 'Courier',
+    backgroundColor: '#f5f5f5',
+    color: '#333333',
+    borderRadius: '4pt',
+    padding: '8pt',
+    borderLeft: '4pt solid #cccccc',
+    marginVertical: '8pt',
+  },
+  code: {
+    fontSize: '10pt',
+    fontFamily: 'Courier',
+    backgroundColor: '#f5f5f5',
+    color: '#d63384',
+    padding: '2pt 4pt',
+    borderRadius: '3pt',
   },
 };
