@@ -12,11 +12,26 @@
         "@": { "value": "2rem" },
         "pdf": { "value": "24pt" }
       },
-      "h2": { "value": "1.5rem" },
-      "h3": { "value": "1.25rem" },
-      "h4": { "value": "1rem" },
-      "h5": { "value": "0.875rem" },
-      "h6": { "value": "0.75rem" }
+      "h2": {
+        "@": { "value": "1.5rem" },
+        "pdf": { "value": "20pt" }
+      },
+      "h3": {
+        "@": { "value": "1.25rem" },
+        "pdf": { "value": "18pt" }
+      },
+      "h4": {
+        "@": { "value": "1rem" },
+        "pdf": { "value": "16pt" }
+      },
+      "h5": {
+        "@": { "value": "0.875rem" },
+        "pdf": { "value": "14pt" }
+      },
+      "h6": {
+        "@": { "value": "0.75rem" },
+        "pdf": { "value": "12pt" }
+      }
     },
     "line": {
       "height": {

@@ -44,10 +44,15 @@
   --size-font-h1: 2rem;
   --size-font-h1-pdf: 24pt;
   --size-font-h2: 1.5rem;
+  --size-font-h2-pdf: 20pt;
   --size-font-h3: 1.25rem;
+  --size-font-h3-pdf: 18pt;
   --size-font-h4: 1rem;
+  --size-font-h4-pdf: 16pt;
   --size-font-h5: 0.875rem;
+  --size-font-h5-pdf: 14pt;
   --size-font-h6: 0.75rem;
+  --size-font-h6-pdf: 12pt;
   --size-line-height: 26px;
   --size-message-padding: 20px 30px;
   --size-message-border-radius: 2px;

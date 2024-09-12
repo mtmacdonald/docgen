@@ -25,10 +25,27 @@ export const htmlStyleSheet = {
   p: {
     color: styles.ColorText,
   },
-  h1: {
-    fontSize: styles.SizeFontH1Pdf,
+  'h1, h2, h3, h4, h5, h6': {
     marginVertical: em(0.2, em(2)),
     fontWeight: 'bold',
+  },
+  h1: {
+    fontSize: styles.SizeFontH1Pdf,
+  },
+  h2: {
+    fontSize: styles.SizeFontH2Pdf,
+  },
+  h3: {
+    fontSize: styles.SizeFontH3Pdf,
+  },
+  h4: {
+    fontSize: styles.SizeFontH4Pdf,
+  },
+  h5: {
+    fontSize: styles.SizeFontH5Pdf,
+  },
+  h6: {
+    fontSize: styles.SizeFontH6Pdf,
   },
   blockquote: styleInfo,
   ['.w-information']: styleInfo,
