@@ -1,5 +1,8 @@
 {
   "size": {
+    "button": {
+      "base": { "value": "42px" }
+    },
     "font": {
       "base": { "value": "{size.font.medium.value}" },
       "small": { "value": "12px" },
