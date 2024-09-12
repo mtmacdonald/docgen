@@ -33,10 +33,11 @@
   --color-button-background-inverted: #fff;
   --color-button-text: #fff;
   --color-button-text-inverted: rgb(46, 113, 225);
-  --color-button-shadow: rgba(0, 0, 0, 0.1);
+  --color-button-shadow: none;
   --color-table-background: #eee;
   --color-table-background-row: #eee;
   --color-table-background-header-footer: #ddd;
+  --size-button-base: 42px;
   --size-font-base: 16px;
   --size-font-small: 12px;
   --size-font-medium: 16px;
