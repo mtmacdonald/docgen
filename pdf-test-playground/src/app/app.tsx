@@ -3,7 +3,7 @@ import { Document, Page, PDFViewer } from '@react-pdf/renderer';
 import { renderHtml } from 'react-pdf-html';
 import html from '../playground.html?raw';
 import styles from './app.module.css';
-import { PdfHtmlBlock } from '../../../src/docgen/pdf/react-pdf/pdf-page/pdf-html-block.tsx';
+import { PdfHtmlBlock } from '../../../src/docgen/pdf/react-pdf/pdf-page/pdf-html-block/pdf-html-block.tsx';
 import { reactPdfStyles } from '../../../src/docgen/pdf/react-pdf/pdf-page/pdf-page';
 
 export const App = () => {

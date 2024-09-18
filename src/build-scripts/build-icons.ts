@@ -7,7 +7,6 @@ const iconsOutputPath = 'src/include/require/styles/icons.js';
 const output = (icons) => `var w_icons = ${JSON.stringify(icons, null, 2)};`;
 
 export const buildIcons = async () => {
-  console.log('Build icons');
   try {
     const files = await fsp.readdir(iconSourcePath);
     const svgFiles = files.filter(

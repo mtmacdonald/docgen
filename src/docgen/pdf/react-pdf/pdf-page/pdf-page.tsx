@@ -1,6 +1,6 @@
 import React from 'react';
 import { Page, View, StyleSheet } from '@react-pdf/renderer';
-import { PdfHtmlBlock } from "./pdf-html-block";
+import { PdfHtmlBlock } from "./pdf-html-block/pdf-html-block";
 import { PdfFooter } from './pdf-footer/pdf-footer';
 import { pdfStyleSheet } from '../pdf-styles/pdf-styles';
 
