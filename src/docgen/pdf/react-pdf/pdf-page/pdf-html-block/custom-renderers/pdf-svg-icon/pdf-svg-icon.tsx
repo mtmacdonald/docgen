@@ -1,6 +1,6 @@
 import React from 'react';
 import * as icons from '@tabler/icons-react';
-import SvgWrapper from 'react-pdf-svg';
+import { SvgConverter } from '../svg-converter';
 import {
   View,
 } from '@react-pdf/renderer';
@@ -23,7 +23,7 @@ export const PdfSvgIcon = ({children, classNames, style, element}) => {
   const IconComponent = icons[iconNameToComponentName(iconName)];
   return (
     <View>
-      <SvgWrapper
+      <SvgConverter
         baseFontSize={9}
         styleUpdateQuery={{
           svg: {
@@ -32,7 +32,7 @@ export const PdfSvgIcon = ({children, classNames, style, element}) => {
         }}
       >
         <IconComponent color="white" size="48" />
-      </SvgWrapper>
+      </SvgConverter>
     </View>
   )
 };
