@@ -20,7 +20,15 @@ const iconNameToComponentName = (iconString: string): string => {
 
 export const PdfSvgIcon = ({children, classNames, style, element}) => {
   const iconName = element.getAttribute("data-name");
-  const IconComponent = icons[iconNameToComponentName(iconName)];
+  let IconComponent;
+  try {
+    IconComponent = icons[iconNameToComponentName(iconName)];
+  } catch (e) {
+    // do nothing
+  }
+  if (!IconComponent) {
+    return null;
+  }
   return (
     <View>
       <SvgConverter
