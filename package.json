@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^3.4.1",
+    "@tabler/icons-react": "^3.17.0",
     "cheerio": "^1.0.0-rc.12",
     "cli-spinner": "^0.2.10",
     "commander": "^11.0.0",
@@ -50,6 +51,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-pdf-html": "^2.0.4",
+    "react-pdf-svg": "^0.0.11",
     "spawn-args": "^0.2.0",
     "z-schema": "^6.0.1"
   },
