@@ -8,7 +8,6 @@ export const PdfHtmlBlock = ({
 }) => {
   return (
     <Html
-      resetStyles
       style={{ fontSize }}
       stylesheet={htmlStyleSheet}
       renderers={customRenderers}
