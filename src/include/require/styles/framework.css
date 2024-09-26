@@ -42,11 +42,17 @@
   --size-font-medium: 16px;
   --size-font-large: 24px;
   --size-font-h1: 2rem;
+  --size-font-h1-pdf: 24pt;
   --size-font-h2: 1.5rem;
+  --size-font-h2-pdf: 20pt;
   --size-font-h3: 1.25rem;
+  --size-font-h3-pdf: 18pt;
   --size-font-h4: 1rem;
+  --size-font-h4-pdf: 16pt;
   --size-font-h5: 0.875rem;
+  --size-font-h5-pdf: 14pt;
   --size-font-h6: 0.75rem;
+  --size-font-h6-pdf: 12pt;
   --size-line-height: 26px;
   --size-message-padding: 20px 30px;
   --size-message-border-radius: 2px;
@@ -418,7 +424,7 @@ a {
 */
 html {
   height: 100%;
-  background-color: var(--color-text-primary);
+  background-color: var(--color-text);
   color: var(--color-text);
 }
 html body {
@@ -540,7 +546,7 @@ h6,
 .dg-fakeHeading {
   text-decoration: none;
   font-weight: bold;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   padding-bottom: 5px;
   line-height: 1.285714em;
   margin: 0 0 1rem;
@@ -983,7 +989,7 @@ img {
   display: flex;
   align-items: center;
   position: fixed;
-  color: var(--color-text-primary);
+  color: var(--color-text);
 }
 @media print {
   .topbar {
@@ -1016,7 +1022,7 @@ img {
 }
 .topbar #headerLeftText a {
   text-decoration: none;
-  color: var(--color-text-primary) !important;
+  color: var(--color-text) !important;
 }
 .topbar #headerLeftText #headerSponsor {
   display: flex;
