@@ -78,6 +78,7 @@ export const htmlStyleSheet = {
     padding: '8pt',
     borderLeft: '4pt solid #cccccc',
     marginVertical: em(1),
+    whiteSpace: 'pre-wrap',
   },
   b: {
     fontWeight: 'bold',
