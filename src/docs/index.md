@@ -232,9 +232,8 @@ h3 {
   <li>
     <img src="files/images/icons/box.svg" />
     <h4>Mathematical expressions</h4>
-    <p>Displays mathematical expressions without plugins, using either
-    <a href="http://khan.github.io/KaTeX/">KaTeX</a> or
-    <a href="https://www.mathjax.org">MathJax</a>.</p>
+    <p>Displays mathematical expressions without plugins, using
+    <a href="https://katex.org/">KaTeX</a>
   </li>
   <li>
     <img src="files/images/icons/star.svg" />

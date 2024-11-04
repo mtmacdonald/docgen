@@ -230,12 +230,7 @@ Other files you want to attach should go into *files* directory.
 [LaTeX](http://en.wikipedia.org/wiki/LaTeX) is the most common markup format for mathematical expressions.
 
 Modern web browsers do not yet consistently support a common standard for authoring mathematical expressions. For this
-reason, extra libraries are needed. DocGen supports two widely-used web mathematics libraries out-the-box:
-
-- **[KaTeX](http://khan.github.io/KaTeX/)** is fast, lightweight, and [supports fewer features](http://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX)
-- **[MathJax](https://www.mathjax.org/)** is slower, larger, and [supports more features](http://docs.mathjax.org/en/latest/tex.html#supported-latex-commands)
-
-The document author decides which one (or both) to use.
+reason DocGen supports [KaTeX](https://katex.org/) out-the-box.
 
 <p class="dg-forceBreak"></p>
 
@@ -257,38 +252,4 @@ f(x) = \int_{-\infty}^\infty
     \hat f(\xi)\,e^{2 \pi i \xi x}
     \,d\xi
 </div>
-</div><br class="w-clear"/>
-
-### Mathematics using MathJax
-
-MathJax is the fallback choice for expressions not yet supported by KaTex. When required, MathJax can be enabled by 
-passing the **-n** option.
-
-> DocGen uses the same MathJax configuration as the popular [Stack Exchange](http://math.stackexchange.com) websites.
-
-<p class="w-error">
-Because MathJax is a large library, it is not bundled with DocGen, but is served from a third-party CDN 
-(content delivery network). This means users need an active Internet connection for the MathJax feature to work.
-</p>
-
-<p class="w-error">
-MathJax can be slow to render. When used with the PDF feature, it may be necessary to allow more rendering time by 
-passing the <br/><strong>-d [milliseconds]</strong> option.
-</p>
-
-<div class="container codeContainer">
-<pre><code>$$
-f(n) = \begin{cases}
-    n/2,  & \text{if $n$ is even} \\
-    3n+1, & \text{if $n$ is odd}
-    \end{cases}
-$$</code></pre>
-</div>
-<div class="container exampleContainer">
-$$
-f(n) = \begin{cases}
-    n/2,  & \text{if $n$ is even} \\
-    3n+1, & \text{if $n$ is odd}
-    \end{cases}
-$$
 </div><br class="w-clear"/>

@@ -8,7 +8,6 @@ import { toHTML } from "../html";
 
 export const processTemplates = ({
   parameters,
-  mathMathjax,
   mathKatex,
   templates: rawTemplates,
 }) => {
@@ -34,16 +33,6 @@ export const processTemplates = ({
       '<script type="text/javascript" src="require/katexInjector.js"></script>',
     );
   }
-  if (mathMathjax === true) {
-    let $ = templates.main;
-    //support for MathJax (only supported via CDN due to very large size)
-    //MathJax configuration is the same as used by math.stackexchange.com
-    $('head').append(
-      `<script type="text/javascript" id="MathJax-script" async
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-        </script>`,
-    );
-  }
   return templates;
 };
 
@@ -58,7 +47,6 @@ export const processPages = async ({
   const hydratedTemplates = processTemplates({
     parameters,
     templates,
-    mathMathjax: options.mathMathjax,
     mathKatex: options.mathKatex,
   });
   //Todo: rewrite in non-mutating style (for now just clone)

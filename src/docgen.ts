@@ -63,7 +63,6 @@ program
     '2000',
   )
   .option('-m, --math-katex', 'enable KaTex mathematical expressions')
-  .option('-n, --math-mathjax', 'enable MathJax mathematical expressions')
   .option(
     '-r, --redirect',
     'create an index.html in the parent directory that redirects to the homepage',
