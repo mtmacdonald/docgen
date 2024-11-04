@@ -170,16 +170,15 @@ For more examples, see [writing advanced content](advanced-content.html).
 possible to bypass the CommonMark parser altogether and specify a pure HTML input page, by setting 
 <code class="w-inline-code">"html": true</code> in a page object in *contents.json*.
 
-## Embedding images
+## Images
 
-Diagrams (in image form, e.g. JPEG, PNG, GIF etc.) should be put the *files/images* directory, and embedded as image
-links.
+Images (e.g. JPEG, PNG, GIF etc.) can be added to the *files/images*, and embedded as image links.
 
 <div class="container codeContainer">
-<pre><code>![logo](files/images/logo.svg)</code></pre>
+<pre><code>![logo](files/images/example-image.png)</code></pre>
 </div>
 <div class="container exampleContainer">
-<img src="files/images/logo.svg" />
+<img src="files/images/example-image.png" />
 </div><br class="w-clear"/>
 
 ## Icons
