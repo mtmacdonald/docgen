@@ -26,6 +26,7 @@ export const Pdf = ({
           key={i}
           page={page}
           parameters={parameters}
+          options={options}
         />
       ))}
     </Document>

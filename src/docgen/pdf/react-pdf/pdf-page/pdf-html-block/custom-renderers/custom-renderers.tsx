@@ -1,11 +1,13 @@
 import React from 'react';
+import path from 'path';
 import {
   Text,
+  Image,
 } from '@react-pdf/renderer';
 import cheerio from 'cheerio';
 import { PdfSvgIcon } from "./pdf-svg-icon/pdf-svg-icon";
 
-export const customRenderers = {
+export const customRenderers = ({options}) => ({
   span: (payload) => {
     const {children, style, element} = payload;
     const classNames = element.classList.toString();
@@ -24,4 +26,10 @@ export const customRenderers = {
     }
     return <Text style={style}>{children}</Text>;
   },
-};
+  img: (payload) => {
+    const {element, style} = payload;
+    const relativeSource = element.attributes.src;
+    const source = path.join(options.input, relativeSource);
+    return <Image style={style} source={source} />;
+  },
+});

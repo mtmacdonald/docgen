@@ -5,12 +5,13 @@ import { customRenderers } from "./custom-renderers/custom-renderers";
 
 export const PdfHtmlBlock = ({
   page,
+  options
 }) => {
   return (
     <Html
       style={{ fontSize }}
       stylesheet={htmlStyleSheet}
-      renderers={customRenderers}
+      renderers={customRenderers({options})}
     >
       {page}
     </Html>

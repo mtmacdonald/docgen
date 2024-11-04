@@ -8,12 +8,13 @@ export const reactPdfStyles = StyleSheet.create(pdfStyleSheet);
 
 export const PdfPage = ({
   page,
-  parameters
+  parameters,
+  options
 }) => {
   return (
     <Page size="A4" style={reactPdfStyles.page}>
       <View>
-        <PdfHtmlBlock page={page} />
+        <PdfHtmlBlock page={page} options={options} />
       </View>
       <PdfFooter parameters={parameters}/>s
     </Page>
