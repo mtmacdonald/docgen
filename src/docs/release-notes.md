@@ -1,4 +1,12 @@
-﻿## DocGen 4.3.0 25/07/2024
+﻿## DocGen 5.0.0 01/02/2025
+
+Major version (breaking changes)
+
+- new react-pdf engine (replaces wkhtmltopdf)
+- removed support for MathJax
+- improved button and layout styles
+
+## DocGen 4.3.0 25/07/2024
 
 - add style-dictionary for managing design tokens
 
