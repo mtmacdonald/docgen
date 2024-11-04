@@ -20,14 +20,6 @@ See [Node.js downloads](https://nodejs.org/en/download) and choose the installer
 - **OS X:** use the [official installer](https://nodejs.org/en/download) or [nvm](https://github.com/nvm-sh/nvm)
 - **Ubuntu Linux:** use [nvm](https://github.com/nvm-sh/nvm) or see [other instructions](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)
 
-### wkhtmltopdf (optional)
-
-The [wkhtmltopdf](http://wkhtmltopdf.org) package is optional and only needed if you want to enable generation of
-PDF documents.
-
-To install, [download the installer](https://wkhtmltopdf.org/downloads.html) or package for your operating system
-(choose the latest version).
-
 ## Install DocGen
 
 The easiest way to install DocGen is through **[npm](https://www.npmjs.com)** (the JavaScript package manager). Enter 

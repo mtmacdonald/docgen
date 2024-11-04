@@ -78,11 +78,6 @@ program
     'override parameters.date (useful for build tools) [default: false]',
     false,
   )
-  .option(
-    '-w, --wkhtmltopdf-path [path]',
-    'specify a custom path to wkhtmltopdf [default: wkhtmltopdf]',
-    'wkhtmltopdf',
-  )
   .action((command) => {
     run(command);
   });

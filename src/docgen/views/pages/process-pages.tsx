@@ -5,9 +5,6 @@ import cheerio from 'cheerio';
 import { Main } from './main/main';
 import { Cover } from './cover/cover';
 import { toHTML } from "../html";
-import { PdfCover } from "./cover/pdf-cover";
-import { PdfHeader } from "../components/pdf-header/pdf-header";
-import { PdfFooter } from "../components/pdf-footer/pdf-footer";
 
 export const processTemplates = ({
   parameters,
@@ -41,8 +38,6 @@ export const processTemplates = ({
     let $ = templates.main;
     //support for MathJax (only supported via CDN due to very large size)
     //MathJax configuration is the same as used by math.stackexchange.com
-    //Note - wkhtmlpdf //cdn urls - see https://github.com/wkhtmltopdf/wkhtmltopdf/issues/1634
-    //Note - later than version 2 doesn't work with wkhtmltodpf
     $('head').append(
       `<script type="text/javascript" id="MathJax-script" async
           src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -71,9 +66,6 @@ export const processPages = async ({
   const pageTableOfContentsEnabled = options.pageToc;
   const tableOfContents = contents;
   const mainTemplate = hydratedTemplates.main;
-  const pdfCoverTemplate = hydratedTemplates.pdfCover;
-  const pdfHeaderTemplate = hydratedTemplates.pdfHeader;
-  const pdfFooterTemplate = hydratedTemplates.pdfFooter;
   const pdfEnabled = options.pdf;
   console.log(pico.green('Generating the static web content'));
   tableOfContents.forEach((section) => {
@@ -141,30 +133,9 @@ export const processPages = async ({
   let $ = cheerio.load(mainTemplate.html());
   $('body').html(webCoverHtml);
 
-  const pdfCoverHtml = toHTML(
-    <PdfCover parameters={parameters} />
-  );
-  let $Pdf = cheerio.load(pdfCoverTemplate.html());
-  $Pdf('body').html(pdfCoverHtml);
-
-  const pdfHeaderHtml = toHTML(
-    <PdfHeader parameters={parameters} />
-  );
-  let $PdfHeader = cheerio.load(pdfHeaderTemplate.html());
-  $PdfHeader('body').html(pdfHeaderHtml);
-
-  const pdfFooterHtml = toHTML(
-    <PdfFooter parameters={parameters} />
-  );
-  let $PdfFooter = cheerio.load(pdfFooterTemplate.html());
-  $PdfFooter('body').html(pdfFooterHtml);
-
   return {
     pages,
     redirect: hydratedTemplates.redirect,
     webCover: $.html(),
-    pdfCover: $Pdf.html(),
-    pdfHeader: $PdfHeader.html(),
-    pdfFooter: $PdfFooter.html(),
   };
 };

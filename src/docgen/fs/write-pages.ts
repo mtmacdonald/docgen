@@ -21,13 +21,6 @@ export const writePages = async ({
     await Promise.all(promises);
     //add extra files
     await writeFile(options.output + 'ownership.html', hydratedPages.webCover);
-    if (options.pdf) {
-      let pdfTempDir = options.output + 'temp/';
-      await makeDirectory(pdfTempDir);
-      await writeFile(pdfTempDir + 'pdfCover.html', hydratedPages.pdfCover);
-      await writeFile(pdfTempDir + 'pdfHeader.html', hydratedPages.pdfHeader);
-      await writeFile(pdfTempDir + 'pdfFooter.html', hydratedPages.pdfFooter);
-    }
     await copyDirectory(
       __dirname + '/../../include/require',
       options.output + 'require',

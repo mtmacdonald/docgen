@@ -4,7 +4,6 @@ export type TCheerioAPI = typeof CheerioAPI;
 export type Options = {
   input: string; // inputPath
   output: string; // outputPath
-  wkhtmltopdfPath: string; // path to wkhtmltopdf
   verbose: boolean;
   pdf: boolean; // whether to generate PDF
   setVersion: boolean;
@@ -84,7 +83,4 @@ export type Meta = {
 export type Templates = {
   main?: string | TCheerioAPI;
   redirect?: string | TCheerioAPI;
-  pdfCover?: string | TCheerioAPI;
-  pdfHeader?: string | TCheerioAPI;
-  pdfFooter?: string | TCheerioAPI;
 };

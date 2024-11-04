@@ -4,7 +4,6 @@ import { cleanDirectory } from './fs/fs';
 import { loadMeta } from './fs/meta';
 import { loadTemplates } from './fs/templates';
 import { loadMarkdown } from './fs/markdown';
-//import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
 import { generatePdf } from './pdf/react-pdf/generate-pdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
@@ -32,11 +31,6 @@ export function DocGen(process) {
     }
     if (options.output) {
       options.output = path.normalize(options.output + '/');
-    }
-
-    //wkhtmltopdf path does not need a trailing slash
-    if (options.wkhtmltopdfPath && options.wkhtmltopdfPath !== '') {
-      options.wkhtmltopdfPath = path.normalize(options.wkhtmltopdfPath);
     }
   };
 

@@ -207,7 +207,7 @@ h3 {
   <li>
     <img src="files/images/icons/pdf.svg" />
     <h4>Optional PDF</h4>
-    <p>Also publishes the website content as a single PDF, using <a href="http://wkhtmltopdf.org">wkhtmltopdf</a>.</p>
+    <p>Also publishes the website content as a single PDF, using <a href="https://react-pdf.org/">React-pdf</a>.</p>
   </li>
   <li>
     <img src="files/images/icons/pencil.svg" />
