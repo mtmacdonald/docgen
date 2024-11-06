@@ -7,4 +7,7 @@ export default defineConfig({
   server: {
     open: '/pdf-test-playground/index.html',
   },
+  define: {
+    'process.env': {}
+  }
 })
