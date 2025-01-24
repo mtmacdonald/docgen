@@ -230,12 +230,6 @@ h3 {
     <p>Automatically highlights code blocks, using <a href="https://highlightjs.org">Highlight.js</a>, with language detection.</p>
   </li>
   <li>
-    <img src="files/images/icons/box.svg" />
-    <h4>Mathematical expressions</h4>
-    <p>Displays mathematical expressions without plugins, using
-    <a href="https://katex.org/">KaTeX</a>
-  </li>
-  <li>
     <img src="files/images/icons/star.svg" />
     <h4>Branding and metadata</h4>
     <p>Easily brand with a logo, attribute ownership, and attach release notes.</p>
