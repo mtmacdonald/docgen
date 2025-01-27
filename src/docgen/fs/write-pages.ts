@@ -31,13 +31,6 @@ export const writePages = async ({
       options.output + 'files',
       options.verbose,
     ); //user-attached files and images
-    if (options.mathKatex === true) {
-      await copyDirectory(
-        __dirname + '/../../include/optional/katex',
-        options.output + 'require/katex',
-        options.verbose,
-      );
-    }
   } catch (error) {
     console.log(pico.red('Error writing the web page files'));
     if (options.verbose === true) {

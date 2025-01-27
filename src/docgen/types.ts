@@ -8,7 +8,6 @@ export type Options = {
   pdf: boolean; // whether to generate PDF
   setVersion: boolean;
   setReleaseDate: boolean;
-  mathKatex: boolean;
   pageToc: boolean;
   redirect: boolean;
 };

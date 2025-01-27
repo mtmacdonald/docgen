@@ -58,12 +58,6 @@ program
   )
   .option('-p, --pdf', 'create a PDF document')
   .option(
-    '-d, --pdf-delay [milliseconds]',
-    'delay PDF printing to allow time for dynamic rendering [default: 2000]',
-    '2000',
-  )
-  .option('-m, --math-katex', 'enable KaTex mathematical expressions')
-  .option(
     '-r, --redirect',
     'create an index.html in the parent directory that redirects to the homepage',
   )

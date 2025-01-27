@@ -8,7 +8,6 @@ import { toHTML } from "../html";
 
 export const processTemplates = ({
   parameters,
-  mathKatex,
   templates: rawTemplates,
 }) => {
   //Todo: rewrite in non-mutating style (for now just clone)
@@ -19,19 +18,6 @@ export const processTemplates = ({
       let $ = templates[key];
       $('title').text(parameters.title);
     }
-  }
-  if (mathKatex === true) {
-    let $ = templates.main;
-    //support for KaTeX (bundled with DocGen)
-    $('head').append(
-      '<link rel="stylesheet" href="require/katex/katex.min.css" type="text/css">',
-    );
-    $('head').append(
-      '<script type="text/javascript" src="require/katex/katex.min.js"></script>',
-    );
-    $('head').append(
-      '<script type="text/javascript" src="require/katexInjector.js"></script>',
-    );
   }
   return templates;
 };
@@ -47,7 +33,6 @@ export const processPages = async ({
   const hydratedTemplates = processTemplates({
     parameters,
     templates,
-    mathKatex: options.mathKatex,
   });
   //Todo: rewrite in non-mutating style (for now just clone)
   const pages = cloneDeep(rawPages);
