@@ -225,11 +225,6 @@ h3 {
     <p>Automatically creates tables of contents, with links and PDF page numbers.</p>
   </li>
   <li>
-    <img src="files/images/icons/code.svg" />
-    <h4>Code syntax highlighting</h4>
-    <p>Automatically highlights code blocks, using <a href="https://highlightjs.org">Highlight.js</a>, with language detection.</p>
-  </li>
-  <li>
     <img src="files/images/icons/star.svg" />
     <h4>Branding and metadata</h4>
     <p>Easily brand with a logo, attribute ownership, and attach release notes.</p>
@@ -273,10 +268,7 @@ h3 {
     <ul>
       <li>Plain text</li>
       <li>CommonMark (Markdown)</li>
-      <li>HTML</li>
-      <li>LaTeX mathematical expressions</li>
       <li>Image diagrams</li>
-      <li>Attach other documents</li>
     <ul>
   </div>
   <div class="featureDetails">
