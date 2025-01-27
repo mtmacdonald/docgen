@@ -1,182 +1,139 @@
-﻿<style>
-.container {
-  box-sizing: border-box;
-  float:left;
-  width: 480px;
-  margin: 0 0 1rem;
-}
-.codeContainer pre {
-  margin: 0;
-}
-.codeContainer p {
-  margin: 0;
-  padding: 0;
-}
-.exampleContainer {
-  border: 1px solid #666;
-  border-radius: 6px;
-  padding: 0 18px 0 18px;
-}
-.exampleContainer img {
-  margin-top: 5px;
-}
-#content table {
-  width: 400px!important;
-}
-</style>
+﻿Content for a DocGen website is authored in a human-friendly plain text format called
+[Markdown](https://www.markdownguide.org/).
 
-Content for a DocGen website is authored either in:
+## Content files
 
-- plain text (`.txt` files)
-- [markdown](https://www.markdownguide.org/) (`.md` files)
-- HTML (embedded in `.md` files)
+DocGen content files are stored in Markdown files with the extension `.md`. These can be edited with any text editor.
 
-You can use any text editor or IDE to edit these. The advantage of markdown is that it will be automatically styled
-(e.g. headings, bullet points etc).
-
-Image files can be embedded (via links), and other files can be attached (the website will link to these).
-
-Additionally, some website metadata is configured via [JSON](http://json.org) files.
-
-## Overview
-
-DocGen transforms source files from an input directory into output files in an output directory.
-
-It takes every source file (plain text) specified in **contents.json** and converts it. Each source file becomes a 
-separate page in the website and a separate chapter in the PDF.
-
-DocGen adds metadata that is specified in **parameters.json**, and copies the images and files in the **files**
-directory to the output.
+Each Markdown file is converted to a page in the website and one or more pages in the PDF. You can create as many
+input files as you need.
 
 > Always save input files with **UTF-8** encoding. This makes non-standard characters (ø © é etc.) work.
 
-## Metadata
+## How to write Markdown files
 
-**parameters.json**
+Markdown is a simple markup language that uses plain text formatting syntax. It is designed to be easy to read and
+write. DocGen converts the Markdown content into an HTML website and a PDF copy.
 
-The parameters file is used to specify metadata describing the product. 
+This section shows some examples of what to type, and how it looks in the page.
 
-- **title** - the website title
-- **name** - the website name (also used to name the PDF)
-- **version** - the release version
-- **date** - the release date
-- **organization** - the company or organization 
-- **author** - the lead author of the document
-- **owner** - the owner of the document
-- **contributors** - list of contributors
-- **website** - a link to the parent website
-- **backlink** - a link back to another site (useful for integrated documentation)
-- **module** - module name (useful for larger sites with submodules)
-- **id** - reference number (e.g. id in a change management tool)
-- **summary** - a descriptive summary of the website/document
-- **marking** - license or other protective markings
-- **legalese** - document markings (confidentiality, disclaimers, smallprint etc)
+### Paragraphs
 
-Values can be empty strings, but the elements are required in the JSON file. 
+*What you type:*
 
-Parameters with URLs can be either website URLs, or email addresses (specify *'mailto:name@address.com'*).
+    This is a paragraph. Paragraphs are text blocks separated by new lines.
 
-**contents.json**
+    This is another paragraph. Text can be styled: *emphasised* and **strong**.
 
-The contents file specifies the names, locations, order, and hierarchy of the source files. It is used to generate both
-the web and PDF table of contents.
+*How it looks:*
 
-**release-notes.md**
+This is a paragraph. Paragraphs are text blocks separated by new lines.
 
-The release notes source file is a mandatory source file (that does not need to be listed in contents.json). Use it to
-summarize the change history for each version of the product.
+This is another paragraph. Text can be styled: *emphasised* and **strong**.
 
-## Plain text
+---------------------
 
-The simplest input format is just to write in plain text. Here is an example of the source and output:
+### Headings
 
-<div class="container codeContainer">
+*What you type:*
 
-    Example paragraph.
+    # Heading level 1
 
-</div>
-<div class="container exampleContainer">
+    ## Heading level 2
 
-Example paragraph.
+    ### Heading level 3
 
-</div><br class="w-clear"/>
+*How it looks:*
 
-<p class="dg-forceBreak"></p>
+# Heading level 1
 
-## Markdown
+## Heading level 2
 
-[Markdown](https://www.markdownguide.org/) is a human-friendly plain text markup format. The source format is easy
-to read and write, and the CommonMark parser translates it into HTML. DocGen uses the [CommonMark](http://commonmark.org/)
-standard via a package called [markdown-it](https://markdown-it.github.io). Here is an example of the source and output:
+### Heading level 3
 
-<div class="container codeContainer">
+---------------------
 
-    Markdown Example
-    ------------------
+### Links
 
-    Paragraphs are text blocks separated by new lines.
+*What you type:*
 
-    Text can be styled: *emphasised* and **strong**.
+    This is a link to [Google](http://www.google.com).
 
-    Here is an [example link](http://www.google.com).
+*How it looks:*
 
-      # To make a code block, just indent with a tab
-      # "Hello World" in Ruby:
-      5.times { puts "Hello!" }
-</div>
-<div class="container exampleContainer">
+This is a link to [Google](http://www.google.com).
 
-<p class="dg-fakeHeading" style="font-size: 18px; padding-bottom: 4px;">Markdown Example</p>
+---------------------
 
-Paragraphs are text blocks separated by new lines.
+### Bullet-points
 
-Text can be styled: *emphasised* and **strong**.
+*What you type:*
 
-Here is an [example link](http://www.google.com).
+    - one
+    - two
+    - three
 
-    # To make a code block, just indent with a tab
-    # "Hello World" in Ruby:
-    5.times { puts "Hello!" }
-</div><br class="w-clear"/>
+    1. one
+    2. two
+    3. three
 
+*How it looks:*
+
+- one
+- two
+- three
+
+1. one
+2. two
+3. three
+
+---------------------
+
+### Quotes
+
+*What you type:*
+
+    > This is a quote.
+
+*How it looks:*
+
+> This is a quote.
+
+---------------------
+
+### Code blocks
+
+*What you type:*
+
+    // To make a code block, just indent with a tab
+
+    const hello = () => {
+      console.log("Hello, World!");
+    };
+    hello();
+
+*How it looks:*
+
+    // To make a code block, just indent with a tab
+
+    const hello = () => {
+      console.log("Hello, World!");
+    };
+    hello();
+
+---------------------
+
+### Images
+
+Images can be added to documents - save the image files to the *files/images* directory (in `.jpg` or `.png` formats).
+
+*What you type:*
+
+    ![logo](files/images/example-image.png)
+
+*How it looks:*
+
+![logo](files/images/example-image.png)
+
+---------------------
 For more examples, see the [CommonMark reference](commonmark.html).
-
-## HTML
-
-For more complex pages not covered by CommonMark's syntax, simply use inline HTML:
-
-<div class="container codeContainer">
-<pre><code>&lt;table&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Foo&lt;/td&gt;
-    &lt;td&gt;Bar&lt;/td&gt;
-    &lt;td&gt;Baz&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-</div>
-<div class="container exampleContainer">
-<table>
-  <tr>
-    <td>Foo</td>
-    <td>Bar</td>
-    <td>Baz</td>
-  </tr>
-</table>
-</div><br class="w-clear"/>
-
-For more examples, see [writing advanced content](advanced-content.html).
-
-> Inline HTML is still parsed by the CommonMark parser (HTML is allowed in CommonMark documents). In DocGen, it is also 
-possible to bypass the CommonMark parser altogether and specify a pure HTML input page, by setting 
-<code class="w-inline-code">"html": true</code> in a page object in *contents.json*.
-
-## Images
-
-Images (e.g. JPEG, PNG, GIF etc.) can be added to the *files/images*, and embedded as image links.
-
-<div class="container codeContainer">
-<pre><code>![logo](files/images/example-image.png)</code></pre>
-</div>
-<div class="container exampleContainer">
-<img src="files/images/example-image.png" />
-</div><br class="w-clear"/>

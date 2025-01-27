@@ -7,10 +7,6 @@
         "title": "Overview",
         "source": "index.md",
         "html": true
-      },
-      {
-        "title": "Installation",
-        "source": "installation.md"
       }
     ]
   },
@@ -19,16 +15,20 @@
     "column": 2,
     "pages": [
       {
+        "title": "Installation",
+        "source": "installation.md"
+      },
+      {
         "title": "Running DocGen",
         "source": "running.md"
       },
       {
-        "title": "Writing content",
-        "source": "writing-content.md"
+        "title": "Configuration",
+        "source": "configuration.md"
       },
       {
-        "title": "Markdown reference",
-        "source": "markdown.md"
+        "title": "Writing content",
+        "source": "writing-content.md"
       },
       {
         "title": "Advanced content",

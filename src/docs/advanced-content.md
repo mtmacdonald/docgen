@@ -149,3 +149,36 @@ DocGen automatically tries to eliminate page breaks *inside* code blocks, block 
 To apply the same technique to other elements, revert to HTML and apply the **dg-avoidBreak** class. For example:
 
 	<p class="dg-avoidBreak">A long paragraph</p>
+
+
+## HTML
+
+The source format is easy
+to read and write, and the CommonMark parser translates it into HTML. DocGen uses the [CommonMark](http://commonmark.org/)
+standard via a package called [markdown-it](https://markdown-it.github.io). Here is an example of the source and output:
+
+For more complex pages not covered by CommonMark's syntax, simply use inline HTML:
+
+<div class="container codeContainer">
+<pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Foo&lt;/td&gt;
+    &lt;td&gt;Bar&lt;/td&gt;
+    &lt;td&gt;Baz&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+<div class="container exampleContainer">
+<table>
+  <tr>
+    <td>Foo</td>
+    <td>Bar</td>
+    <td>Baz</td>
+  </tr>
+</table>
+</div><br class="w-clear"/>
+
+
+> Inline HTML is still parsed by the CommonMark parser (HTML is allowed in CommonMark documents). In DocGen, it is also
+possible to bypass the CommonMark parser altogether and specify a pure HTML input page, by setting
+<code class="w-inline-code">"html": true</code> in a page object in *contents.json*.
