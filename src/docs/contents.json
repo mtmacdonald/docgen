@@ -31,8 +31,8 @@
         "source": "writing-content.md"
       },
       {
-        "title": "Advanced content",
-        "source": "advanced-content.md"
+        "title": "Using with version control",
+        "source": "version-control.md"
       }
     ]
   },
@@ -41,12 +41,12 @@
     "column": 3,
     "pages": [
       {
-        "title": "Troubleshooting",
-        "source": "troubleshooting.md"
+        "title": "How DocGen works",
+        "source": "how-docgen-works.md"
       },
       {
-        "title": "Using with version control",
-        "source": "version-control.md"
+        "title": "Troubleshooting",
+        "source": "troubleshooting.md"
       }
     ]
   }
