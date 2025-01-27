@@ -4,10 +4,6 @@ This section gives help on solving common issues with DocGen.
 
 Pass the **-v** (verbose) option when running DocGen to get more detailed error messages.
 
-## Attached files not in PDF
-
-Attached files are not converted to PDF, only the web content is. The website and PDF can link to other files.
-
 ## Corrupted text characters
 
 Make sure all the input text files are saved with UTF-8 encoding.
@@ -19,4 +15,4 @@ must have suitable dimensions for the header (height and width).
 
 ## Other issues
 
-For any other problems, please submit a [an issue ticket](https://github.com/mtmacdonald/docgen/issues).
+For any other problems, please submit [an issue ticket](https://github.com/mtmacdonald/docgen/issues).
