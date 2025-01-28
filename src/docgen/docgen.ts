@@ -89,8 +89,7 @@ export function DocGen(process) {
       homePage: contents[0].pages[0],
     });
     if (options.pdf === true) {
-      // await checkPdfVersion({ options, mainProcess });
-      await generatePdf({
+      generatePdf({
         options,
         pages,
         parameters,

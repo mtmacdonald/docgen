@@ -1,4 +1,5 @@
 import path from 'path';
+import pico from 'picocolors';
 import React from 'react';
 import ReactPDF from '@react-pdf/renderer';
 import { Pdf } from './react-pdf';
@@ -17,6 +18,7 @@ export const generatePdf = ({
   );
   const pdfName = parameters.name.toLowerCase() + '.pdf';
   const pdfPath = path.normalize(`${options.output}/${pdfName}`);
+  console.log(pico.green('Generating the PDF'));
   ReactPDF.render(
     <Pdf
       options={options}
