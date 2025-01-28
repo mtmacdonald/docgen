@@ -739,7 +739,6 @@ pre {
 .w-inline-code {
   background-color: #f3f3f3;
   vertical-align: middle;
-  display: inline-block !important;
   padding: 2px !important;
   border-radius: 2px;
 }

@@ -232,7 +232,6 @@ pre {
 .w-inline-code {
   background-color: #f3f3f3;
   vertical-align: middle;
-  display: inline-block !important; //override highlight.js changing code to display: block;
   padding: 2px !important;
   border-radius: 2px;
 }
