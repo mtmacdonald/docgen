@@ -12,7 +12,7 @@ export const generatePdf = ({
   mainProcess,
 }) => {
   // temporary filter of advanced pages until PDF refactor is ready
-  const excludedPages = ['index.md', 'release-notes.md', undefined];
+  const excludedPages = ['release-notes.md', undefined];
   const filteredPages = Object.fromEntries(
     Object.entries(pages).filter(([key]) => key !== 'undefined' && !excludedPages.includes(key))
   );

@@ -1,186 +1,9 @@
-﻿<style>
-
-:root {
-  --margin-card: 32px;
-  --width-card: 260px;
-}
-
-@media (min-width: 1200px) {
-  h1 {
-    font-size: 64px;
-    letter-spacing: -0.025em;
-    line-height: 1.15;
-  }
-}
-
-h2 {
-  font-size: 28px;
-}
-
-h3 {
-  font-size: 24px;
-}
-
-.lead {
-  font-size: 20px;
-  line-height: 28px;
-  margin: 0 0 20px 0;
-}
-
-.section {
-  padding: 32px 0;
-  margin: 0;
-}
-
-@media (min-width: 1200px) {
-  .section {
-    padding: 64px 0;
-  }
-}
-
-.banner {
-  --banner-image-width: 50%;
-  padding: 72px 0;
-  position: relative;
-}
-
-.bannerImage {
-  max-width: 100%;
-  margin: 20px 0;
-}
-
-.bannerButtons > * {
-  margin-right: 16px;
-  margin-bottom: 16px;
-}
-
-@media (min-width: 1200px) {
-  .banner {
-    padding-right: calc(var(--banner-image-width) + 100px);
-  }
-  .bannerImage {
-    position: absolute;
-    width: var(--banner-image-width);
-    height: auto;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
-  }
-}
-
-.howItWorksDetails {
-    text-align:left;
-    display: inline-block;
-    vertical-align: top;
-    width: var(--width-card);
-    margin-right: var(--margin-card);
-}
-.howItWorksDetails img {
-  border-radius: 12px;
-  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.features {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-.features li {
-  vertical-align: top;
-  display: inline-block;
-  width: var(--width-card);
-  margin-right: var(--margin-card);
-  margin-top: var(--margin-card);
-}
-.features li img {
-  height: 44px;
-  margin-bottom: 8px;
-}
-.features li span {
-  vertical-align: middle;
-  margin-right: 5px;
-}
-.features h4 {
-  margin-bottom: 0;
-}
-
-.featureDetails {
-  display: inline-block;
-  vertical-align: top;
-  width: var(--width-card);
-  margin-right: var(--margin-card);
-}
-
-.browsers {
-  margin: 40px 0;
-}
-.browsers a {
-  display: inline-block;
-  vertical-align: top;
-  width: 80px;
-  margin-right: var(--margin-card);
-  text-align: center;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-.browsers a:hover {
-  opacity: 0.7;
-}
-.browsers a img {
-  height: 60px;
-}
-.browsers a p {
-  margin: 8px;
-}
-
-.inkitSponsor {
-  max-width: 100%;
-  overflow: hidden;
-  background-image: url('files/images/inkit-dark-background.png');
-  background-size: cover;
-  background-position: center;
-  border-radius: 30px;
-  color: white;
-  opacity: 0.9;
-  padding: 32px;
-  text-align: left;
-}
-.inkitSponsor a, .inkitSponsor h3 {
-  color: white;
-}
-.inkitSponsor h3 {
-  color: white;
-  line-height: 1.2;
-  margin-bottom: 0;
-}
-.inkitSponsor p {
-  margin-top: 0;
-}
-.inkitSponsor img {
-  width: var(--width-card);
-  max-width: 100%;
-  margin-bottom: var(--margin-card);
-}
-@media (min-width: 800px) {
-  .inkitSponsor {
-    padding: 60px;
-  }
-  .inkitSponsor img {
-    float: left;
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
-    margin-right: var(--margin-card);
-    margin-bottom: 0;
-  }
-}
-</style>
-
-<div class="section banner">
+﻿<div class="section banner">
   <h1 class="headline">The Leading Open Source Documentation Tool</h1>
   <p class="lead">
    DocGen generates HTML websites and PDF documents from plain text for free.
   </p>
-  <img src="files/images/overview.svg"  alt="overview" width="700px" class="bannerImage" />
+  <img src="files/images/overview.png" alt="overview" width="700px" class="bannerImage" />
   <div class="bannerButtons">
     <a href="https://github.com/mtmacdonald/docgen/tags" class="button spaced">
       <span>Download</span>
@@ -249,6 +72,22 @@ h3 {
   <p>
     Simply <a href="https://github.com/mtmacdonald/docgen/releases">download</a> or <a href="#quick-start">install</a> DocGen, and run the tool to generate websites and PDF documents.
   </p>
+
+<div class="dgCardContainer">
+  <div class="dgCard">
+    <img src="files/images/text.png" alt="text" />
+    <p>001 | <strong>Create content in plain text or human-friendly <a href="http://commonmark.org">Markdown</a></strong></p>
+  </div>
+  <div class="dgCard">
+    <img src="files/images/web.png" alt="website" />
+    <p>002 | <strong>DocGen styles and publishes all your content as a website</strong></p>
+  </div>
+  <div class="dgCard">
+    <img src="files/images/pdf.png" alt="pdf" />
+    <p>003 | <strong>DocGen also creates an equivalent PDF copy</strong></p>
+  </div>
+</div>
+
   <div>
     <div class="howItWorksDetails">
       <img src="files/images/text.png" alt="text" />
@@ -271,6 +110,7 @@ h3 {
       <li>Image diagrams</li>
     <ul>
   </div>
+
   <div class="featureDetails">
     <strong>Configurable Metadata</strong>
     <ul>

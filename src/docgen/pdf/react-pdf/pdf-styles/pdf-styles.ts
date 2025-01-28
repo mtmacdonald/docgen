@@ -1,4 +1,5 @@
 import * as styles from '../../../../styles/variables/js/style-variables';
+import { docsStyleSheet } from './docgen-docs-styles';
 
 export const fontSize = 10;
 
@@ -157,4 +158,5 @@ export const htmlStyleSheet = {
     flexShrink: 1,
     fontWeight: 'bold',
   },
+  ...docsStyleSheet,
 };
