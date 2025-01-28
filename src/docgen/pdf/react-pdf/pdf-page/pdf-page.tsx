@@ -16,7 +16,7 @@ export const PdfPage = ({
       <View>
         <PdfHtmlBlock page={page} options={options} />
       </View>
-      <PdfFooter parameters={parameters}/>s
+      <PdfFooter parameters={parameters}/>
     </Page>
   )
-}
+};
