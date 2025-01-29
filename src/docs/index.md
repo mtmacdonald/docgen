@@ -17,6 +17,8 @@
 
 DocGen is an open-source website and PDF generator that makes it easy to create high-quality documentation.
 
+## Features
+
 <ul class="features">
 <li>
   <img src="files/images/icons/computer.png" />
@@ -25,7 +27,7 @@ DocGen is an open-source website and PDF generator that makes it easy to create 
 </li>
 <li>
   <img src="files/images/icons/pdf.png" />
-  <h4>Optional PDF</h4>
+  <h4 class="special">Optional PDF</h4>
   <p>Also publishes the website content as a single PDF, using <a href="https://react-pdf.org/">React-pdf</a>.</p>
 </li>
 <li>
