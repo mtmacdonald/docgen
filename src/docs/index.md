@@ -7,7 +7,7 @@
   <div class="bannerButtons">
     <a href="https://github.com/mtmacdonald/docgen/tags" class="button spaced">
       <span>Download</span>
-      <img class="icon" src="files/images/icons/arrowRight.svg" alt="arrow">
+      <img class="icon" src="files/images/icons/arrowRight.png" alt="arrow">
     </a>
     <a href="https://github.com/mtmacdonald/docgen/issues" class="button inverted">Report Issues</a>
   </div>
@@ -23,32 +23,32 @@
   <h2 class="dg-hiddenTitle" id="features">Features</h2>
   <ul class="features">
   <li>
-    <img src="files/images/icons/computer.svg" />
+    <img src="files/images/icons/computer.png" />
     <h4>Self-contained website</h4>
     <p>Creates a static website that works on any server, or as local files.</p>
   </li>
   <li>
-    <img src="files/images/icons/pdf.svg" />
+    <img src="files/images/icons/pdf.png" />
     <h4>Optional PDF</h4>
     <p>Also publishes the website content as a single PDF, using <a href="https://react-pdf.org/">React-pdf</a>.</p>
   </li>
   <li>
-    <img src="files/images/icons/pencil.svg" />
+    <img src="files/images/icons/pencil.png" />
     <h4>Human-friendly input</h4>
     <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">Markdown</a> format.</p>
   </li>
   <li>
-    <img src="files/images/icons/cog.svg" />
+    <img src="files/images/icons/cog.png" />
     <h4>Easy to version control</h4>
     <p>Plain text input formats work well with all version control systems.</p>
   </li>
   <li>
-    <img src="files/images/icons/document.svg" />
+    <img src="files/images/icons/document.png" />
     <h4>Table of contents</h4>
     <p>Automatically creates tables of contents, with links and PDF page numbers.</p>
   </li>
   <li>
-    <img src="files/images/icons/star.svg" />
+    <img src="files/images/icons/star.png" />
     <h4>Branding and metadata</h4>
     <p>Easily brand with a logo, attribute ownership, and attach release notes.</p>
   </li>
