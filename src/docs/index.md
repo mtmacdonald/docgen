@@ -13,47 +13,42 @@
   </div>
 </div>
 
-<div class="section">
-  <div>
-    <h2>DocGen is a Static Website Generator</h2>
-    <p>
-      DocGen is an open-source website generator that makes it easy to create high-quality documentation.
-    </p>
-  </div>
-  <h2 class="dg-hiddenTitle" id="features">Features</h2>
-  <ul class="features">
-  <li>
-    <img src="files/images/icons/computer.png" />
-    <h4>Self-contained website</h4>
-    <p>Creates a static website that works on any server, or as local files.</p>
-  </li>
-  <li>
-    <img src="files/images/icons/pdf.png" />
-    <h4>Optional PDF</h4>
-    <p>Also publishes the website content as a single PDF, using <a href="https://react-pdf.org/">React-pdf</a>.</p>
-  </li>
-  <li>
-    <img src="files/images/icons/pencil.png" />
-    <h4>Human-friendly input</h4>
-    <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">Markdown</a> format.</p>
-  </li>
-  <li>
-    <img src="files/images/icons/cog.png" />
-    <h4>Easy to version control</h4>
-    <p>Plain text input formats work well with all version control systems.</p>
-  </li>
-  <li>
-    <img src="files/images/icons/document.png" />
-    <h4>Table of contents</h4>
-    <p>Automatically creates tables of contents, with links and PDF page numbers.</p>
-  </li>
-  <li>
-    <img src="files/images/icons/star.png" />
-    <h4>Branding and metadata</h4>
-    <p>Easily brand with a logo, attribute ownership, and attach release notes.</p>
-  </li>
-  </ul>
-</div>
+## DocGen is a Static Website Generator
+
+DocGen is an open-source website and PDF generator that makes it easy to create high-quality documentation.
+
+<ul class="features">
+<li>
+  <img src="files/images/icons/computer.png" />
+  <h4>Self-contained website</h4>
+  <p>Creates a static website that works on any server, or as local files.</p>
+</li>
+<li>
+  <img src="files/images/icons/pdf.png" />
+  <h4>Optional PDF</h4>
+  <p>Also publishes the website content as a single PDF, using <a href="https://react-pdf.org/">React-pdf</a>.</p>
+</li>
+<li>
+  <img src="files/images/icons/pencil.png" />
+  <h4>Human-friendly input</h4>
+  <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">Markdown</a> format.</p>
+</li>
+<li>
+  <img src="files/images/icons/cog.png" />
+  <h4>Easy to version control</h4>
+  <p>Plain text input formats work well with all version control systems.</p>
+</li>
+<li>
+  <img src="files/images/icons/document.png" />
+  <h4>Table of contents</h4>
+  <p>Automatically creates tables of contents, with links and PDF page numbers.</p>
+</li>
+<li>
+  <img src="files/images/icons/star.png" />
+  <h4>Branding and metadata</h4>
+  <p>Easily brand with a logo, attribute ownership, and attach release notes.</p>
+</li>
+</ul>
 
 <div class="section dg-forceBreak">
   <h2>Sponsors</h2>
@@ -67,11 +62,9 @@
   </div>
 </div>
 
-<div class="section">
-  <h2>How it works</h2>
-  <p>
-    Simply <a href="https://github.com/mtmacdonald/docgen/releases">download</a> or <a href="#quick-start">install</a> DocGen, and run the tool to generate websites and PDF documents.
-  </p>
+## How it works
+
+Simply <a href="#quick-start">install</a> DocGen, and run the tool to generate websites and PDF documents.
 
 <div class="dgCardContainer">
   <div class="dgCard">
@@ -88,44 +81,42 @@
   </div>
 </div>
 
-  <div>
-    <div class="howItWorksDetails">
-      <img src="files/images/text.png" alt="text" />
-      <p>001 | <strong>Create content in plain text or human-friendly <a href="http://commonmark.org">Markdown</a></strong></p>
-    </div>
-    <div class="howItWorksDetails">
-      <img src="files/images/web.png" alt="website" />
-      <p>002 | <strong>DocGen styles and publishes all your content as a website</strong></p>
-    </div>
-    <div class="howItWorksDetails">
-      <img src="files/images/pdf.png" alt="pdf" />
-      <p>003 | <strong>DocGen also creates an equivalent PDF copy</strong></p>
-    </div>
+<div>
+  <div class="howItWorksDetails">
+    <img src="files/images/text.png" alt="text" />
+    <p>001 | <strong>Create content in plain text or human-friendly <a href="http://commonmark.org">Markdown</a></strong></p>
   </div>
-  <div class="featureDetails">
-    <strong>Flexible Input Formats</strong>
-    <ul>
-      <li>Plain text</li>
-      <li>CommonMark (Markdown)</li>
-      <li>Image diagrams</li>
-    <ul>
+  <div class="howItWorksDetails">
+    <img src="files/images/web.png" alt="website" />
+    <p>002 | <strong>DocGen styles and publishes all your content as a website</strong></p>
   </div>
-
-  <div class="featureDetails">
-    <strong>Configurable Metadata</strong>
-    <ul>
-      <li>Branding (logo, title, organization)</li>
-      <li>License, copyright, and legal markings</li>
-      <li>Ownership and attribution</li>
-      <li>Version information</li>
-      <li>Release notes (change log)</li>
-    </ul>
+  <div class="howItWorksDetails">
+    <img src="files/images/pdf.png" alt="pdf" />
+    <p>003 | <strong>DocGen also creates an equivalent PDF copy</strong></p>
   </div>
-  <blockquote>
-  NOTE: DocGen is intended for free-form, human-generated content which is regularly updated and improved, then
-  automatically laid out according to a template. It is not intended as a precision PDF editing tool.
-  </blockquote>
 </div>
+
+<div class="featureDetails">
+  <strong>Flexible Input Formats</strong>
+  <ul>
+    <li>Plain text</li>
+    <li>CommonMark (Markdown)</li>
+    <li>Image diagrams</li>
+  </ul>
+</div>
+<div class="featureDetails">
+  <strong>Configurable Metadata</strong>
+  <ul>
+    <li>Branding (logo, title, organization)</li>
+    <li>License, copyright, and legal markings</li>
+    <li>Ownership and attribution</li>
+    <li>Version information</li>
+    <li>Release notes (change log)</li>
+  </ul>
+</div>
+
+> NOTE: DocGen is intended for free-form, human-generated content which is regularly updated and improved, then
+automatically laid out according to a template. It is not intended as a precision PDF editing tool.
 
 ## Browser Support
 
