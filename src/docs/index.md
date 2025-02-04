@@ -5,10 +5,7 @@
   </p>
   <img src="files/images/overview.png" alt="overview" width="700px" class="bannerImage" />
   <div class="bannerButtons">
-    <a href="https://github.com/mtmacdonald/docgen/tags" class="button spaced">
-      <span>Download</span>
-      <img class="icon" src="files/images/icons/arrowRight.png" alt="arrow">
-    </a>
+    <a href="https://github.com/mtmacdonald/docgen/tags" class="button spaced">Download</a>
     <a href="https://github.com/mtmacdonald/docgen/issues" class="button inverted">Report Issues</a>
   </div>
 </div>
