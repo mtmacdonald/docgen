@@ -21,32 +21,32 @@ DocGen is an open-source website and PDF generator that makes it easy to create 
 <ul class="features">
 <li>
   <img src="files/images/icons/computer.png" />
-  <h4>Self-contained website</h4>
+  <p><strong>Self-contained website</strong></p>
   <p>Creates a static website that works on any server, or as local files.</p>
 </li>
 <li>
   <img src="files/images/icons/pdf.png" />
-  <h4 class="special">Optional PDF</h4>
+  <p><strong>Optional PDF</strong></p>
   <p>Also publishes the website content as a single PDF, using <a href="https://react-pdf.org/">React-pdf</a>.</p>
 </li>
 <li>
   <img src="files/images/icons/pencil.png" />
-  <h4>Human-friendly input</h4>
+  <p><strong>Human-friendly input</strong></p>
   <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">Markdown</a> format.</p>
 </li>
 <li>
   <img src="files/images/icons/cog.png" />
-  <h4>Easy to version control</h4>
+  <p><strong>Easy to version control</strong></p>
   <p>Plain text input formats work well with all version control systems.</p>
 </li>
 <li>
   <img src="files/images/icons/document.png" />
-  <h4>Table of contents</h4>
-  <p>Automatically creates tables of contents, with links and PDF page numbers.</p>
+  <p><strong>Table of contents</strong></p>
+  <p>Automatically creates tables of contents</p>
 </li>
 <li>
   <img src="files/images/icons/star.png" />
-  <h4>Branding and metadata</h4>
+  <p><strong>Branding and metadata</strong></p>
   <p>Easily brand with a logo, attribute ownership, and attach release notes.</p>
 </li>
 </ul>
