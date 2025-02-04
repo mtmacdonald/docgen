@@ -79,10 +79,10 @@ export const processPages = async ({
       }
       //------------------------------------------------------------------------------------------------------
       //prepend the auto heading (which makes the PDF table of contents match the web TOC)
-      $('#dg-innerContent').prepend(
-        '<h1 id="dg-autoTitle">' + page.title + '</h1>',
-      );
-      if (page.html === true) {
+      if (!page.hideAutomaticPageHeading) {
+        $('#dg-innerContent').prepend(
+          '<h1 id="dg-autoTitle">' + page.title + '</h1>',
+        );
         $('#dg-autoTitle').addClass('dg-hiddenTitle');
       }
       //------------------------------------------------------------------------------------------------------

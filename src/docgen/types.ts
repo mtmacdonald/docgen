@@ -68,7 +68,7 @@ export type Content = {
     {
       title: string;
       source: string;
-      html: boolean;
+      hideAutomaticPageHeading: boolean;
     },
   ];
 };

@@ -5,7 +5,8 @@
     "pages": [
       {
         "title": "Overview",
-        "source": "index.md"
+        "source": "index.md",
+        "hideAutomaticPageHeading": true
       }
     ]
   },
