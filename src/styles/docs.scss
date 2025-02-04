@@ -67,40 +67,6 @@ h3 {
   }
 }
 
-.features {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 20px;
-}
-.features li {
-  list-style-type: none;
-  vertical-align: top;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: var(--width-card);
-  margin-right: var(--margin-card);
-  margin-top: var(--margin-card);
-}
-.features li img {
-  align-self: flex-start;
-  object-fit: contain; /* preserve aspect ratio */
-  height: 44px;
-  margin-bottom: 8px;
-}
-//.features li span {
-//  vertical-align: middle;
-//  margin-right: 5px;
-//}
-//.features h4 {
-//  margin-bottom: 0;
-//}
-
 .featureDetails {
   display: inline-block;
   vertical-align: top;
@@ -153,6 +119,39 @@ h3 {
  New Docs Styles (Aligned with PDF)
  */
 
+/*features cards*/
+.features {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.features li {
+  list-style-type: none;
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--width-card);
+  margin-right: var(--margin-card);
+  margin-top: var(--margin-card);
+}
+.features li p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.features li img {
+  align-self: flex-start;
+  object-fit: contain; /* preserve aspect ratio */
+  height: 44px;
+  margin-bottom: 8px;
+}
+/*how it works cards*/
 .dgCardContainer {
   display: flex;
   flex-direction: row;

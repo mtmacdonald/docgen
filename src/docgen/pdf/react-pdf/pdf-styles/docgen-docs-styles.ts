@@ -1,29 +1,6 @@
 // Todo: lift props to style dictionary
 
 export const docsStyleSheet = {
-  ['.dgCardContainer']: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-    gap: '0.5cm',
-  },
-  ['.dgCard']: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'left',
-    maxWidth: '6cm',
-  },
-  ['.dgCard img']: {
-    width: '6cm',
-    height: 'auto',
-    borderRadius: '0.1cm',
-  },
-  ['.dgCard p']: {
-    marginTop: '0.5cm',
-    wordWrap: 'break-word',
-  },
   // Features cards
   ['.features']: {
     margin: 0,
@@ -50,5 +27,29 @@ export const docsStyleSheet = {
     height: '1cm',
     objectFit: 'contain', // preserve aspect ratio
     marginBottom: '0.1cm',
+  },
+  // How it works cards
+  ['.dgCardContainer']: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    gap: '0.5cm',
+  },
+  ['.dgCard']: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'left',
+    maxWidth: '6cm',
+  },
+  ['.dgCard img']: {
+    width: '6cm',
+    height: 'auto',
+    borderRadius: '0.1cm',
+  },
+  ['.dgCard p']: {
+    marginTop: '0.5cm',
+    wordWrap: 'break-word',
   },
 };
