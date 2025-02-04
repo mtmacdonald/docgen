@@ -30,17 +30,10 @@ const initSideBar = () => {
   });
 };
 
-const initCodeHighlighting = () => {
-  document.querySelectorAll('pre code, .w-inline-code').forEach((block) => {
-    hljs.highlightElement(block);
-  });
-};
-
 /*
   Document Ready
 */
 document.addEventListener('DOMContentLoaded', function () {
   initSideBar();
   injectSVG();
-  initCodeHighlighting();
 });

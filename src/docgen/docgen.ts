@@ -4,7 +4,7 @@ import { cleanDirectory } from './fs/fs';
 import { loadMeta } from './fs/meta';
 import { loadTemplates } from './fs/templates';
 import { loadMarkdown } from './fs/markdown';
-import { checkPdfVersion, generatePdf } from './pdf/wkhtmltopdf/wkhtmltopdf';
+import { generatePdf } from './pdf/react-pdf/generate-pdf';
 import { scaffold } from './scaffold/scaffold';
 import { sortPages } from './meta/sort-pages';
 import { deriveParameters } from './meta/derive-parameters';
@@ -31,11 +31,6 @@ export function DocGen(process) {
     }
     if (options.output) {
       options.output = path.normalize(options.output + '/');
-    }
-
-    //wkhtmltopdf path does not need a trailing slash
-    if (options.wkhtmltopdfPath && options.wkhtmltopdfPath !== '') {
-      options.wkhtmltopdfPath = path.normalize(options.wkhtmltopdfPath);
     }
   };
 
@@ -94,9 +89,9 @@ export function DocGen(process) {
       homePage: contents[0].pages[0],
     });
     if (options.pdf === true) {
-      await checkPdfVersion({ options, mainProcess });
-      await generatePdf({
+      generatePdf({
         options,
+        pages,
         parameters,
         sortedPages,
         mainProcess,

@@ -1,0 +1,178 @@
+:root {
+  --margin-card: 32px;
+  --width-card: 260px;
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 64px;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.lead {
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0 0 20px 0;
+}
+
+.section {
+  padding: 32px 0;
+  margin: 0;
+}
+
+@media (min-width: 1200px) {
+  .section {
+    padding: 64px 0;
+  }
+}
+
+.banner {
+  --banner-image-width: 50%;
+  padding: 72px 0;
+  position: relative;
+}
+
+.bannerImage {
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.bannerButtons > * {
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1200px) {
+  .banner {
+    padding-right: calc(var(--banner-image-width) + 100px);
+  }
+  .bannerImage {
+    position: absolute;
+    width: var(--banner-image-width);
+    height: auto;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+}
+
+.featureDetails {
+  display: inline-block;
+  vertical-align: top;
+  width: var(--width-card);
+  margin-right: var(--margin-card);
+}
+
+.inkitSponsor {
+  max-width: 100%;
+  overflow: hidden;
+  background-image: url('files/images/inkit-dark-background.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  color: white;
+  opacity: 0.9;
+  padding: 32px;
+  text-align: left;
+}
+.inkitSponsor a,
+.inkitSponsor h3 {
+  color: white;
+}
+.inkitSponsor h3 {
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+.inkitSponsor p {
+  margin-top: 0;
+}
+.inkitSponsor img {
+  width: var(--width-card);
+  max-width: 100%;
+  margin-bottom: var(--margin-card);
+}
+@media (min-width: 800px) {
+  .inkitSponsor {
+    padding: 60px;
+  }
+  .inkitSponsor img {
+    float: left;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+    margin-right: var(--margin-card);
+    margin-bottom: 0;
+  }
+}
+
+/*
+ New Docs Styles (Aligned with PDF)
+ */
+
+/*features cards*/
+.features {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.features li {
+  list-style-type: none;
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--width-card);
+  margin-right: var(--margin-card);
+  margin-top: var(--margin-card);
+}
+.features li p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.features li img {
+  align-self: flex-start;
+  object-fit: contain; /* preserve aspect ratio */
+  height: 44px;
+  margin-bottom: 8px;
+}
+/*how it works cards*/
+.dgCardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: var(--margin-card);
+}
+.dgCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  max-width: var(--width-card);
+}
+.dgCard img {
+  width: var(--width-card);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.dgCard p {
+  margin-top: var(--margin-card);
+  word-wrap: break-word;
+}

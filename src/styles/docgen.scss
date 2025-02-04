@@ -1,16 +1,3 @@
-pre {
-  font-size: 12px; /*todo - move to base styles*/
-}
-
-section blockquote p,
-section li p {
-  margin: 0;
-}
-
-.w-table {
-  width: 100%;
-}
-
 /*
 	Page table of contents
 */
@@ -20,22 +7,4 @@ section li p {
   padding: 10px;
   border: 1px solid #999;
   background-color: #eee;
-}
-
-/*
-	Class to make a heading look invisible in web page, but still appear in the PDF table of contents
-		- display:none, visibily: hidden, zero dimensions, and offscreen positioning don't work
-		- so instead take it out of the flow and make it small and translucent
-*/
-
-.dg-hiddenTitle {
-  display: block;
-  border: none;
-  margin: 0;
-  padding: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  background-color: transparent;
 }

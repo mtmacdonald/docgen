@@ -42,11 +42,17 @@
   --size-font-medium: 16px;
   --size-font-large: 24px;
   --size-font-h1: 2rem;
+  --size-font-h1-pdf: 24pt;
   --size-font-h2: 1.5rem;
+  --size-font-h2-pdf: 20pt;
   --size-font-h3: 1.25rem;
+  --size-font-h3-pdf: 18pt;
   --size-font-h4: 1rem;
+  --size-font-h4-pdf: 16pt;
   --size-font-h5: 0.875rem;
+  --size-font-h5-pdf: 14pt;
   --size-font-h6: 0.75rem;
+  --size-font-h6-pdf: 12pt;
   --size-line-height: 26px;
   --size-message-padding: 20px 30px;
   --size-message-border-radius: 2px;
@@ -391,34 +397,11 @@ a {
 }
 
 /*
- reused entities
-*/
-.w-clear-after::after,
-.w-clear {
-  clear: both;
-  height: 0;
-  visibility: hidden;
-  display: block;
-  content: ' ';
-}
-
-.w-center {
-  text-align: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.w-inline {
-  display: inline;
-}
-
-/*
  page
 */
 html {
   height: 100%;
-  background-color: var(--color-text-primary);
+  background-color: var(--color-text);
   color: var(--color-text);
 }
 html body {
@@ -462,7 +445,6 @@ section {
   background-color: var(--color-background-light);
   /*
   	Center content
-  	Note we need an old way because wkhtmltopdf doesn't support modern styles
   */
   width: 1200px;
   max-width: 100%;
@@ -540,7 +522,7 @@ h6,
 .dg-fakeHeading {
   text-decoration: none;
   font-weight: bold;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   padding-bottom: 5px;
   line-height: 1.285714em;
   margin: 0 0 1rem;
@@ -734,47 +716,8 @@ pre {
 .w-inline-code {
   background-color: #f3f3f3;
   vertical-align: middle;
-  display: inline-block !important;
   padding: 2px !important;
   border-radius: 2px;
-}
-
-table,
-.w-table {
-  border-spacing: 0;
-}
-
-.w-table {
-  width: 700px;
-  border-collapse: collapse;
-}
-.w-table td,
-.w-table th {
-  border: 1px solid var(--color-border);
-  padding: 2px 15px 2px 15px;
-  height: 25px;
-  vertical-align: middle;
-}
-.w-table th,
-.w-table tfoot td {
-  background-color: var(--color-table-background-header-footer);
-  font-weight: bold;
-}
-.w-table caption {
-  caption-side: bottom;
-  font-weight: bold;
-  padding: 15px;
-}
-.w-table.w-fixed {
-  table-layout: fixed;
-  word-wrap: break-word;
-}
-.w-table.w-stripe tbody tr:nth-of-type(2n) {
-  background-color: var(--color-table-background-row);
-}
-.w-table th.w-center,
-.w-table td.w-center {
-  display: table-cell;
 }
 
 /*
@@ -855,39 +798,6 @@ button:active,
 img {
   max-width: 100%;
   height: auto;
-}
-
-/*
- icons
-*/
-.dgIcon.small svg {
-  width: 20px;
-  height: 20px;
-}
-.dgIcon.large svg {
-  width: 36px;
-  height: 36px;
-}
-.dgIcon.success svg {
-  color: #3c8039;
-}
-.dgIcon.warning svg {
-  color: #987924;
-}
-.dgIcon.error svg {
-  color: #922429;
-}
-.dgIcon.info svg {
-  color: #296995;
-}
-
-/*table icons*/
-.w-table td > .dgIcon {
-  vertical-align: middle;
-}
-
-.w-table td.center {
-  display: table-cell;
 }
 
 #dg-coverInfo {
@@ -983,7 +893,7 @@ img {
   display: flex;
   align-items: center;
   position: fixed;
-  color: var(--color-text-primary);
+  color: var(--color-text);
 }
 @media print {
   .topbar {
@@ -1016,7 +926,7 @@ img {
 }
 .topbar #headerLeftText a {
   text-decoration: none;
-  color: var(--color-text-primary) !important;
+  color: var(--color-text) !important;
 }
 .topbar #headerLeftText #headerSponsor {
   display: flex;
@@ -1214,19 +1124,6 @@ footer > div:first-child {
   }
 }
 
-pre {
-  font-size: 12px; /*todo - move to base styles*/
-}
-
-section blockquote p,
-section li p {
-  margin: 0;
-}
-
-.w-table {
-  width: 100%;
-}
-
 /*
 	Page table of contents
 */
@@ -1237,19 +1134,188 @@ section li p {
   background-color: #eee;
 }
 
+:root {
+  --margin-card: 32px;
+  --width-card: 260px;
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 64px;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+}
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.lead {
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0 0 20px 0;
+}
+
+.section {
+  padding: 32px 0;
+  margin: 0;
+}
+
+@media (min-width: 1200px) {
+  .section {
+    padding: 64px 0;
+  }
+}
+.banner {
+  --banner-image-width: 50%;
+  padding: 72px 0;
+  position: relative;
+}
+
+.bannerImage {
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.bannerButtons > * {
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1200px) {
+  .banner {
+    padding-right: calc(var(--banner-image-width) + 100px);
+  }
+  .bannerImage {
+    position: absolute;
+    width: var(--banner-image-width);
+    height: auto;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+}
+.featureDetails {
+  display: inline-block;
+  vertical-align: top;
+  width: var(--width-card);
+  margin-right: var(--margin-card);
+}
+
+.inkitSponsor {
+  max-width: 100%;
+  overflow: hidden;
+  background-image: url('files/images/inkit-dark-background.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  color: white;
+  opacity: 0.9;
+  padding: 32px;
+  text-align: left;
+}
+
+.inkitSponsor a,
+.inkitSponsor h3 {
+  color: white;
+}
+
+.inkitSponsor h3 {
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.inkitSponsor p {
+  margin-top: 0;
+}
+
+.inkitSponsor img {
+  width: var(--width-card);
+  max-width: 100%;
+  margin-bottom: var(--margin-card);
+}
+
+@media (min-width: 800px) {
+  .inkitSponsor {
+    padding: 60px;
+  }
+  .inkitSponsor img {
+    float: left;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+    margin-right: var(--margin-card);
+    margin-bottom: 0;
+  }
+}
 /*
-	Class to make a heading look invisible in web page, but still appear in the PDF table of contents
-		- display:none, visibily: hidden, zero dimensions, and offscreen positioning don't work
-		- so instead take it out of the flow and make it small and translucent
-*/
-.dg-hiddenTitle {
-  display: block;
-  border: none;
+ New Docs Styles (Aligned with PDF)
+ */
+/*features cards*/
+.features {
   margin: 0;
   padding: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  background-color: transparent;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.features li {
+  list-style-type: none;
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--width-card);
+  margin-right: var(--margin-card);
+  margin-top: var(--margin-card);
+}
+
+.features li p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.features li img {
+  align-self: flex-start;
+  object-fit: contain; /* preserve aspect ratio */
+  height: 44px;
+  margin-bottom: 8px;
+}
+
+/*how it works cards*/
+.dgCardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: var(--margin-card);
+}
+
+.dgCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  max-width: var(--width-card);
+}
+
+.dgCard img {
+  width: var(--width-card);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dgCard p {
+  margin-top: var(--margin-card);
+  word-wrap: break-word;
 }
