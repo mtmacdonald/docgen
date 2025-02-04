@@ -47,7 +47,4 @@ export const docsStyleSheet = {
     objectFit: 'contain', // preserve aspect ratio
     marginBottom: '0.1cm',
   },
-  ['.features h4']: {
-    fontSize: 10, // TODO: not working (root style wins)
-  },
 };

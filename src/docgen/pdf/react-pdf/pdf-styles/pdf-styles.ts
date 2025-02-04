@@ -159,29 +159,7 @@ export const htmlStyleSheet = {
     fontWeight: 'bold',
   },
   ['.button']: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    //outline: 0;
-    //vertical-align: baseline;
-    border: '2px solid black',
-    //background: var(--color-button-background);
-    //color: var(--color-button-text) !important;
-    padding: '0 25px',
-    textTransform: 'none',
-    //text-shadow: none;
-    //lineHeight: '1em';
-    fontStyle: 'normal',
     textAlign: 'center',
-    textDecoration: 'none',
-    borderRadius: '0.25cm',
-    //user-select: none;
-    //transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease;
-    height: '1cm',
-    //border-radius: calc(var(--size-button-base) / 2);
-    //font-weight: 600;
-    //font-size: 16px;
-    maxWidth: '100%',
   },
   ...docsStyleSheet,
 };
