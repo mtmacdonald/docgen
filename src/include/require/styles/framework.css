@@ -397,29 +397,6 @@ a {
 }
 
 /*
- reused entities
-*/
-.w-clear-after::after,
-.w-clear {
-  clear: both;
-  height: 0;
-  visibility: hidden;
-  display: block;
-  content: ' ';
-}
-
-.w-center {
-  text-align: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.w-inline {
-  display: inline;
-}
-
-/*
  page
 */
 html {
@@ -743,44 +720,6 @@ pre {
   border-radius: 2px;
 }
 
-table,
-.w-table {
-  border-spacing: 0;
-}
-
-.w-table {
-  width: 700px;
-  border-collapse: collapse;
-}
-.w-table td,
-.w-table th {
-  border: 1px solid var(--color-border);
-  padding: 2px 15px 2px 15px;
-  height: 25px;
-  vertical-align: middle;
-}
-.w-table th,
-.w-table tfoot td {
-  background-color: var(--color-table-background-header-footer);
-  font-weight: bold;
-}
-.w-table caption {
-  caption-side: bottom;
-  font-weight: bold;
-  padding: 15px;
-}
-.w-table.w-fixed {
-  table-layout: fixed;
-  word-wrap: break-word;
-}
-.w-table.w-stripe tbody tr:nth-of-type(2n) {
-  background-color: var(--color-table-background-row);
-}
-.w-table th.w-center,
-.w-table td.w-center {
-  display: table-cell;
-}
-
 /*
  buttons
 */
@@ -859,39 +798,6 @@ button:active,
 img {
   max-width: 100%;
   height: auto;
-}
-
-/*
- icons
-*/
-.dgIcon.small svg {
-  width: 20px;
-  height: 20px;
-}
-.dgIcon.large svg {
-  width: 36px;
-  height: 36px;
-}
-.dgIcon.success svg {
-  color: #3c8039;
-}
-.dgIcon.warning svg {
-  color: #987924;
-}
-.dgIcon.error svg {
-  color: #922429;
-}
-.dgIcon.info svg {
-  color: #296995;
-}
-
-/*table icons*/
-.w-table td > .dgIcon {
-  vertical-align: middle;
-}
-
-.w-table td.center {
-  display: table-cell;
 }
 
 #dg-coverInfo {
@@ -1218,19 +1124,6 @@ footer > div:first-child {
   }
 }
 
-pre {
-  font-size: 12px; /*todo - move to base styles*/
-}
-
-section blockquote p,
-section li p {
-  margin: 0;
-}
-
-.w-table {
-  width: 100%;
-}
-
 /*
 	Page table of contents
 */
@@ -1239,23 +1132,6 @@ section li p {
   padding: 10px;
   border: 1px solid #999;
   background-color: #eee;
-}
-
-/*
-	Class to make a heading look invisible in web page, but still appear in the PDF table of contents
-		- display:none, visibily: hidden, zero dimensions, and offscreen positioning don't work
-		- so instead take it out of the flow and make it small and translucent
-*/
-.dg-hiddenTitle {
-  display: block;
-  border: none;
-  margin: 0;
-  padding: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  background-color: transparent;
 }
 
 :root {
@@ -1324,45 +1200,33 @@ h3 {
     margin: 0;
   }
 }
-.howItWorksDetails {
-  text-align: left;
-  display: inline-block;
-  vertical-align: top;
-  width: var(--width-card);
-  margin-right: var(--margin-card);
-}
-
-.howItWorksDetails img {
-  border-radius: 12px;
-  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
 .features {
   margin: 0;
   padding: 0;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .features li {
+  list-style-type: none;
   vertical-align: top;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: var(--width-card);
   margin-right: var(--margin-card);
   margin-top: var(--margin-card);
 }
 
 .features li img {
+  align-self: flex-start;
+  object-fit: contain; /* preserve aspect ratio */
   height: 44px;
   margin-bottom: 8px;
-}
-
-.features li span {
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
-.features h4 {
-  margin-bottom: 0;
 }
 
 .featureDetails {
@@ -1370,32 +1234,6 @@ h3 {
   vertical-align: top;
   width: var(--width-card);
   margin-right: var(--margin-card);
-}
-
-.browsers {
-  margin: 40px 0;
-}
-
-.browsers a {
-  display: inline-block;
-  vertical-align: top;
-  width: 80px;
-  margin-right: var(--margin-card);
-  text-align: center;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-.browsers a:hover {
-  opacity: 0.7;
-}
-
-.browsers a img {
-  height: 60px;
-}
-
-.browsers a p {
-  margin: 8px;
 }
 
 .inkitSponsor {
@@ -1444,26 +1282,32 @@ h3 {
   }
 }
 /*
- New Docs Styles
+ New Docs Styles (Aligned with PDF)
  */
 .dgCardContainer {
   display: flex;
-  gap: 10px;
-  justify-content: left;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: var(--margin-card);
 }
 
 .dgCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  text-align: left;
+  max-width: var(--width-card);
 }
 
 .dgCard img {
-  width: 100px;
+  width: var(--width-card);
   height: auto;
+  border-radius: 12px;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .dgCard p {
-  margin-top: 5px;
+  margin-top: var(--margin-card);
+  word-wrap: break-word;
 }

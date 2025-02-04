@@ -67,18 +67,6 @@ h3 {
   }
 }
 
-.howItWorksDetails {
-  text-align: left;
-  display: inline-block;
-  vertical-align: top;
-  width: var(--width-card);
-  margin-right: var(--margin-card);
-}
-.howItWorksDetails img {
-  border-radius: 12px;
-  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
 .features {
   margin: 0;
   padding: 0;
@@ -162,28 +150,30 @@ h3 {
 }
 
 /*
- New Docs Styles
+ New Docs Styles (Aligned with PDF)
  */
 
 .dgCardContainer {
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  justify-content: left;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: var(--margin-card);
 }
-
 .dgCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: left;
+  max-width: var(--width-card);
 }
-
 .dgCard img {
-  width: 200px;
+  width: var(--width-card);
   height: auto;
+  border-radius: 12px;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
 }
-
 .dgCard p {
-  margin-top: 20px;
+  margin-top: var(--margin-card);
+  word-wrap: break-word;
 }

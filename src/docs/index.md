@@ -51,16 +51,6 @@ DocGen is an open-source website and PDF generator that makes it easy to create 
 
 <div class="dgPDFPageBreak" />
 
-## Sponsors
-
-<div class="inkitSponsor">
-  <img src="files/images/inkit-screenshot.png" alt="Inkit sponsor">
-    <h3>DocGen is sponsored by Inkit</h3>
-    <p>
-      DocGen is open-source software sponsored by Inkit, the leading Zero Trust Document Generation Platform.
-    </p>
-    <a href="https://www.inkit.com" class="button whiteInverted">Learn More</a>
-</div>
 
 ## How it works
 
@@ -76,21 +66,6 @@ Simply <a href="#quick-start">install</a> DocGen, and run the tool to generate w
     <p>002 | <strong>DocGen styles and publishes all your content as a website</strong></p>
   </div>
   <div class="dgCard">
-    <img src="files/images/pdf.png" alt="pdf" />
-    <p>003 | <strong>DocGen also creates an equivalent PDF copy</strong></p>
-  </div>
-</div>
-
-<div>
-  <div class="howItWorksDetails">
-    <img src="files/images/text.png" alt="text" />
-    <p>001 | <strong>Create content in plain text or human-friendly <a href="http://commonmark.org">Markdown</a></strong></p>
-  </div>
-  <div class="howItWorksDetails">
-    <img src="files/images/web.png" alt="website" />
-    <p>002 | <strong>DocGen styles and publishes all your content as a website</strong></p>
-  </div>
-  <div class="howItWorksDetails">
     <img src="files/images/pdf.png" alt="pdf" />
     <p>003 | <strong>DocGen also creates an equivalent PDF copy</strong></p>
   </div>
