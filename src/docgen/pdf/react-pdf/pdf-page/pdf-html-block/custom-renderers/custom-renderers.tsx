@@ -1,6 +1,7 @@
 import React from 'react';
 import path from 'path';
 import {
+  View,
   Text,
   Image,
 } from '@react-pdf/renderer';
@@ -16,6 +17,14 @@ import cheerio from 'cheerio';
 */
 
 export const customRenderers = ({options}) => ({
+  div: (payload) => {
+    const {children, style, element} = payload;
+    const classNames = element.classList.toString();
+    if (classNames.includes("dgPDFPageBreak")) {
+      return <View break style={style}>{children}</View>;
+    }
+    return <View style={style}>{children}</View>;
+  },
   pre: (payload) => {
     const {children, element, style} = payload;
     //strip and handle code blocks

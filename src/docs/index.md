@@ -13,6 +13,8 @@
   </div>
 </div>
 
+<div class="dgPDFPageBreak" />
+
 ## DocGen is a Static Website Generator
 
 DocGen is an open-source website and PDF generator that makes it easy to create high-quality documentation.
