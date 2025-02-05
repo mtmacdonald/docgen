@@ -1208,50 +1208,26 @@ h3 {
 }
 
 .inkitSponsor {
-  max-width: 100%;
-  overflow: hidden;
-  background-image: url('files/images/inkit-dark-background.png');
-  background-size: cover;
-  background-position: center;
-  border-radius: 30px;
-  color: white;
-  opacity: 0.9;
-  padding: 32px;
-  text-align: left;
+  flex-direction: row;
+  width: 100%;
+  padding: 10px 0;
 }
 
-.inkitSponsor a,
-.inkitSponsor h3 {
-  color: white;
+.inkitText {
+  flex: 1;
+  justify-content: left;
 }
 
-.inkitSponsor h3 {
-  color: white;
-  line-height: 1.2;
-  margin-bottom: 0;
+.inkitImage {
+  flex: 1;
+  align-items: flex-start;
 }
 
-.inkitSponsor p {
-  margin-top: 0;
+.inkitImage img {
+  width: 200px;
+  border-radius: 8px;
 }
 
-.inkitSponsor img {
-  width: var(--width-card);
-  max-width: 100%;
-  margin-bottom: var(--margin-card);
-}
-
-@media (min-width: 800px) {
-  .inkitSponsor {
-    padding: 60px;
-  }
-  .inkitSponsor img {
-    float: left;
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
-    margin-right: var(--margin-card);
-    margin-bottom: 0;
-  }
-}
 /*
  New Docs Styles (Aligned with PDF)
  */

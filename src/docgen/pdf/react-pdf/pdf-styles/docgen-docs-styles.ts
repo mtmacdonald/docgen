@@ -52,4 +52,22 @@ export const docsStyleSheet = {
     marginTop: '0.5cm',
     wordWrap: 'break-word',
   },
+  // Sponsor cards
+  ['.inkitSponsor']: {
+    flexDirection: 'row',
+    width: '100%',
+    padding: '10 0',
+  },
+  ['.inkitText']: {
+    flex: 1,
+    justifyContent: 'left',
+  },
+  ['.inkitImage']: {
+    flex: 1,
+    alignItems: 'left',
+  },
+  ['.inkitImage img']: {
+    width: 200,
+    borderRadius: 8,
+  },
 };

@@ -54,11 +54,13 @@ DocGen is an open-source website and PDF generator that makes it easy to create 
 ## DocGen is sponsored by Inkit
 
 <div class="inkitSponsor">
-  <img src="files/images/inkit-screenshot.png" alt="Inkit sponsor">
-    <p>
-      DocGen is open-source software sponsored by Inkit, the leading Zero Trust Document Generation Platform.
-    </p>
+  <div class="inkitImage">
+    <img src="files/images/inkit-screenshot.png" alt="Inkit sponsor">
+  </div>
+  <div class="inkitText">
+    <p>DocGen is open-source software sponsored by Inkit, the leading Zero Trust Document Generation Platform.</p>
     <a href="https://www.inkit.com" class="button whiteInverted">Learn More</a>
+  </div>
 </div>
 
 ## How it works
@@ -98,6 +100,8 @@ Simply <a href="#quick-start">install</a> DocGen, and run the tool to generate w
     <li>Release notes (change log)</li>
   </ul>
 </div>
+
+<div class="dgPDFPageBreak" />
 
 > NOTE: DocGen is intended for free-form, human-generated content which is regularly updated and improved, then
 automatically laid out according to a template. It is not intended as a precision PDF editing tool.
