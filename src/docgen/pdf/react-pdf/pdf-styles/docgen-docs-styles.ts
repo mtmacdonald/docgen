@@ -41,10 +41,10 @@ export const docsStyleSheet = {
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'left',
-    maxWidth: '6cm',
+    maxWidth: '5.5cm',
   },
   ['.dgCard img']: {
-    width: '6cm',
+    width: '5.5cm',
     height: 'auto',
     borderRadius: '0.1cm',
   },

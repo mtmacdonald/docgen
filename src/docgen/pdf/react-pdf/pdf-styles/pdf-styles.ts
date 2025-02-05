@@ -5,9 +5,10 @@ export const fontSize = 10;
 
 export const pdfStyleSheet = {
   page: {
-    padding: '1cm',
+    paddingTop: 35,
+    paddingBottom: 65,
+    paddingHorizontal: 35,
     fontSize,
-    margin: 0,
   },
 };
 
