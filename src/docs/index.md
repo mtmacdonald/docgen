@@ -59,7 +59,7 @@ DocGen is an open-source website and PDF generator that makes it easy to create 
   </div>
   <div class="inkitText">
     <p>DocGen is open-source software sponsored by Inkit, the leading Zero Trust Document Generation Platform.</p>
-    <a href="https://www.inkit.com" class="button whiteInverted">Learn More</a>
+    <a href="https://www.inkit.com" class="button">Learn More</a>
   </div>
 </div>
 
@@ -82,23 +82,25 @@ Simply <a href="#quick-start">install</a> DocGen, and run the tool to generate w
   </div>
 </div>
 
-<div class="featureDetails">
-  <strong>Flexible Input Formats</strong>
-  <ul>
-    <li>Plain text</li>
-    <li>CommonMark (Markdown)</li>
-    <li>Image diagrams</li>
-  </ul>
-</div>
-<div class="featureDetails">
-  <strong>Configurable Metadata</strong>
-  <ul>
-    <li>Branding (logo, title, organization)</li>
-    <li>License, copyright, and legal markings</li>
-    <li>Ownership and attribution</li>
-    <li>Version information</li>
-    <li>Release notes (change log)</li>
-  </ul>
+<div class="featureDetailsContainer">
+  <div class="featureDetails">
+    <strong>Flexible Input Formats</strong>
+    <ul>
+      <li>Plain text</li>
+      <li>CommonMark (Markdown)</li>
+      <li>Image diagrams</li>
+    </ul>
+  </div>
+  <div class="featureDetails">
+    <strong>Configurable Metadata</strong>
+    <ul>
+      <li>Branding (logo, title, organization)</li>
+      <li>License, copyright, and legal markings</li>
+      <li>Ownership and attribution</li>
+      <li>Version information</li>
+      <li>Release notes (change log)</li>
+    </ul>
+  </div>
 </div>
 
 <div class="dgPDFPageBreak" />

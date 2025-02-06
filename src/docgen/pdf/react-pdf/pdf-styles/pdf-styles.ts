@@ -1,5 +1,5 @@
 import * as styles from '../../../../styles/variables/js/style-variables';
-import { docsStyleSheet } from './docgen-docs-styles';
+import { docsStyleSheet } from './pdf-docs-styles';
 
 export const fontSize = 10;
 

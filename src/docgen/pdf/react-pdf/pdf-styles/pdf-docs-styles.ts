@@ -3,7 +3,6 @@
 export const docsStyleSheet = {
   // Features cards
   ['.features']: {
-    margin: 0,
     padding: 0,
     width: '100%',
     display: 'flex',
@@ -11,22 +10,41 @@ export const docsStyleSheet = {
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
     gap: 20,
+    margin: '0 0 0.5cm',
   },
   ['.features li']: {
     listStyleType: 'none',
     verticalAlign: 'top',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     width: '5cm',
-    marginRight: '0.5cm',
-    marginTop: '0.5cm',
+    margin: '0.5cm 0.5cm 0 0',
+  },
+  ['.features li p']: {
+    margin: 0,
+    padding: '0 0 0.4cm 0',
+    textAlign: 'left',
   },
   ['.features li img']: {
     alignSelf: 'flex-start',
     height: '1cm',
     objectFit: 'contain', // preserve aspect ratio
-    marginBottom: '0.1cm',
+    marginBottom: '0.4cm',
+  },
+  // Feature details container
+  ['.featureDetailsContainer']: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    gap: '0.5cm',
+    padding: '0.5cm 0',
+  },
+  ['.featureDetails']: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '7cm',
   },
   // How it works cards
   ['.dgCardContainer']: {
@@ -54,8 +72,8 @@ export const docsStyleSheet = {
   },
   // Sponsor cards
   ['.inkitSponsor']: {
+    display: 'flex',
     flexDirection: 'row',
-    width: '100%',
     padding: '10 0',
   },
   ['.inkitText']: {
