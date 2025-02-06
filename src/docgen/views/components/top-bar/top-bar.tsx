@@ -28,16 +28,18 @@ export const TopBar = ({ parameters }) => {
                 &nbsp;({parameters.version})
               </span>
             </a>
-            <div id="headerSponsor">
-              <span>{parameters.sponsorLink.name}</span>
-              <a href={parameters.sponsorLink.url}>
-                <img
-                  id="sponsorLogo"
-                  src={parameters.sponsorLink.logo}
-                  alt="sponsor logo"
-                />
-              </a>
-            </div>
+            {parameters?.sponsorLink?.name && (
+              <div id="headerSponsor">
+                <span>{parameters.sponsorLink.name}</span>
+                <a href={parameters.sponsorLink.url}>
+                  <img
+                    id="sponsorLogo"
+                    src={parameters.sponsorLink.logo}
+                    alt="sponsor logo"
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </div>
         <div className="right">
