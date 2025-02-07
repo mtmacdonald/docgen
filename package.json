@@ -52,7 +52,7 @@
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@tabler/icons": "^2.47.0",
-    "@types/node": "^20.3.1",
+    "@types/node": "^22.13.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^8.8.0",
     "ncp": "^2.0.0",
