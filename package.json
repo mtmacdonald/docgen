@@ -13,7 +13,7 @@
     "build:tsc": "rimraf dist && tsc -p tsconfig.json && yarn copy:files",
     "build": "rimraf dist && pkgroll && yarn copy:files",
     "run:build": "dist/cli.js",
-    "build:docs": "rimraf dist && tsx src/cli.ts run -r -p -i src/docs -o ./docs",
+    "build:docs": "rimraf docs && tsx src/cli.ts run -r -p -i src/docs -o ./docs",
     "build:styles": "rimraf src/styles/variables && npx style-dictionary build && sass --no-source-map src/styles/main.scss src/include/require/styles/framework.css && yarn prettier:fix",
     "build:icons": "tsx src/build-scripts/build-scripts.ts build-icons",
     "test": "npm run prettier:check",
