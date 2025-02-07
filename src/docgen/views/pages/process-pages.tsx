@@ -5,14 +5,9 @@ import cheerio from 'cheerio';
 import { Main } from './main/main';
 import { Cover } from './cover/cover';
 import { toHTML } from "../html";
-import { PdfCover } from "./cover/pdf-cover";
-import { PdfHeader } from "../components/pdf-header/pdf-header";
-import { PdfFooter } from "../components/pdf-footer/pdf-footer";
 
 export const processTemplates = ({
   parameters,
-  mathMathjax,
-  mathKatex,
   templates: rawTemplates,
 }) => {
   //Todo: rewrite in non-mutating style (for now just clone)
@@ -23,31 +18,6 @@ export const processTemplates = ({
       let $ = templates[key];
       $('title').text(parameters.title);
     }
-  }
-  if (mathKatex === true) {
-    let $ = templates.main;
-    //support for KaTeX (bundled with DocGen)
-    $('head').append(
-      '<link rel="stylesheet" href="require/katex/katex.min.css" type="text/css">',
-    );
-    $('head').append(
-      '<script type="text/javascript" src="require/katex/katex.min.js"></script>',
-    );
-    $('head').append(
-      '<script type="text/javascript" src="require/katexInjector.js"></script>',
-    );
-  }
-  if (mathMathjax === true) {
-    let $ = templates.main;
-    //support for MathJax (only supported via CDN due to very large size)
-    //MathJax configuration is the same as used by math.stackexchange.com
-    //Note - wkhtmlpdf //cdn urls - see https://github.com/wkhtmltopdf/wkhtmltopdf/issues/1634
-    //Note - later than version 2 doesn't work with wkhtmltodpf
-    $('head').append(
-      `<script type="text/javascript" id="MathJax-script" async
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-        </script>`,
-    );
   }
   return templates;
 };
@@ -63,17 +33,12 @@ export const processPages = async ({
   const hydratedTemplates = processTemplates({
     parameters,
     templates,
-    mathMathjax: options.mathMathjax,
-    mathKatex: options.mathKatex,
   });
   //Todo: rewrite in non-mutating style (for now just clone)
   const pages = cloneDeep(rawPages);
   const pageTableOfContentsEnabled = options.pageToc;
   const tableOfContents = contents;
   const mainTemplate = hydratedTemplates.main;
-  const pdfCoverTemplate = hydratedTemplates.pdfCover;
-  const pdfHeaderTemplate = hydratedTemplates.pdfHeader;
-  const pdfFooterTemplate = hydratedTemplates.pdfFooter;
   const pdfEnabled = options.pdf;
   console.log(pico.green('Generating the static web content'));
   tableOfContents.forEach((section) => {
@@ -114,10 +79,10 @@ export const processPages = async ({
       }
       //------------------------------------------------------------------------------------------------------
       //prepend the auto heading (which makes the PDF table of contents match the web TOC)
-      $('#dg-innerContent').prepend(
-        '<h1 id="dg-autoTitle">' + page.title + '</h1>',
-      );
-      if (page.html === true) {
+      if (!page.hideAutomaticPageHeading) {
+        $('#dg-innerContent').prepend(
+          '<h1 id="dg-autoTitle">' + page.title + '</h1>',
+        );
         $('#dg-autoTitle').addClass('dg-hiddenTitle');
       }
       //------------------------------------------------------------------------------------------------------
@@ -141,30 +106,9 @@ export const processPages = async ({
   let $ = cheerio.load(mainTemplate.html());
   $('body').html(webCoverHtml);
 
-  const pdfCoverHtml = toHTML(
-    <PdfCover parameters={parameters} />
-  );
-  let $Pdf = cheerio.load(pdfCoverTemplate.html());
-  $Pdf('body').html(pdfCoverHtml);
-
-  const pdfHeaderHtml = toHTML(
-    <PdfHeader parameters={parameters} />
-  );
-  let $PdfHeader = cheerio.load(pdfHeaderTemplate.html());
-  $PdfHeader('body').html(pdfHeaderHtml);
-
-  const pdfFooterHtml = toHTML(
-    <PdfFooter parameters={parameters} />
-  );
-  let $PdfFooter = cheerio.load(pdfFooterTemplate.html());
-  $PdfFooter('body').html(pdfFooterHtml);
-
   return {
     pages,
     redirect: hydratedTemplates.redirect,
     webCover: $.html(),
-    pdfCover: $Pdf.html(),
-    pdfHeader: $PdfHeader.html(),
-    pdfFooter: $PdfFooter.html(),
   };
 };

@@ -4,7 +4,7 @@
 
 html {
   height: 100%;
-  background-color: var(--color-text-primary);
+  background-color: var(--color-text);
   color: var(--color-text);
 
   body {
@@ -48,7 +48,6 @@ section {
   background-color: var(--color-background-light);
   /*
 		Center content
-		Note we need an old way because wkhtmltopdf doesn't support modern styles
 	*/
   width: 1200px;
   max-width: 100%;
@@ -66,7 +65,7 @@ section {
   //expect responsive content (user-content that's not shouldn't break layout and scrolling)
   overflow: hidden;
 
-  > div p,
+  > div p:not(blockquote p),
   > div div,
   > div pre,
   > div ul,

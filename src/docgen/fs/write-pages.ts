@@ -1,5 +1,5 @@
 import pico from 'picocolors';
-import { copyDirectory, makeDirectory, writeFile } from './fs';
+import { copyDirectory, writeFile } from './fs';
 
 export const writePages = async ({
   options,
@@ -21,13 +21,6 @@ export const writePages = async ({
     await Promise.all(promises);
     //add extra files
     await writeFile(options.output + 'ownership.html', hydratedPages.webCover);
-    if (options.pdf) {
-      let pdfTempDir = options.output + 'temp/';
-      await makeDirectory(pdfTempDir);
-      await writeFile(pdfTempDir + 'pdfCover.html', hydratedPages.pdfCover);
-      await writeFile(pdfTempDir + 'pdfHeader.html', hydratedPages.pdfHeader);
-      await writeFile(pdfTempDir + 'pdfFooter.html', hydratedPages.pdfFooter);
-    }
     await copyDirectory(
       __dirname + '/../../include/require',
       options.output + 'require',
@@ -38,13 +31,6 @@ export const writePages = async ({
       options.output + 'files',
       options.verbose,
     ); //user-attached files and images
-    if (options.mathKatex === true) {
-      await copyDirectory(
-        __dirname + '/../../include/optional/katex',
-        options.output + 'require/katex',
-        options.verbose,
-      );
-    }
   } catch (error) {
     console.log(pico.red('Error writing the web page files'));
     if (options.verbose === true) {

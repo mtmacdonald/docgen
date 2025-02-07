@@ -30,14 +30,8 @@ export const loadMarkdown = async ({ contents, options, mainProcess }) => {
     files.forEach((page, index) => {
       let key = keys[index];
       try {
-        if (key.html === true) {
-          //allow raw HTML input pages
-          pages[key.source] = page;
-        } else {
-          //otherwise parse input from Markdown into HTML
-          let html = markdown.render(page);
-          pages[key.source] = html;
-        }
+        let html = markdown.render(page);
+        pages[key.source] = html;
       } catch (error) {
         console.log(pico.red('Error parsing Markdown file: ' + key.source));
         if (options.verbose === true) {

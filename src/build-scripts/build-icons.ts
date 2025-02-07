@@ -6,13 +6,19 @@ const iconsOutputPath = 'src/include/require/styles/icons.js';
 
 const output = (icons) => `var w_icons = ${JSON.stringify(icons, null, 2)};`;
 
+/*
+  Which Tabler icons to ship with DocGen
+ */
+const includeIcons = ['x', 'menu-2', 'users', 'refresh'];
+
 export const buildIcons = async () => {
-  console.log('Build icons');
   try {
     const files = await fsp.readdir(iconSourcePath);
-    const svgFiles = files.filter(
-      (file) => path.extname(file).toLowerCase() === '.svg',
-    );
+    const svgFiles = files.filter((file) => {
+      const extension = path.extname(file).toLowerCase();
+      const name = path.basename(file, extension).toLowerCase();
+      return extension === '.svg' && includeIcons.includes(name);
+    });
     const svgContents = {};
     await Promise.all(
       svgFiles.map(async (file) => {

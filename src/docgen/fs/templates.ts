@@ -15,15 +15,6 @@ export const loadTemplates = async ({
       redirect: await readFile(
         __dirname + '/../../include/templates/redirect.html',
       ),
-      pdfCover: await readFile(
-        __dirname + '/../../include/templates/pdfCover.html',
-      ),
-      pdfHeader: await readFile(
-        __dirname + '/../../include/templates/pdfHeader.html',
-      ),
-      pdfFooter: await readFile(
-        __dirname + '/../../include/templates/pdfFooter.html',
-      ),
     };
     for (let key in files) {
       if (files.hasOwnProperty(key)) {
