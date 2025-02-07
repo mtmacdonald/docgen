@@ -1,10 +1,12 @@
-import { cloneDeep } from 'lodash';
+import pkg from 'lodash';
 import React from 'react';
 import pico from 'picocolors'
 import cheerio from 'cheerio';
 import { Main } from './main/main';
 import { Cover } from './cover/cover';
 import { toHTML } from "../html";
+
+const { cloneDeep } = pkg;
 
 export const processTemplates = ({
   parameters,

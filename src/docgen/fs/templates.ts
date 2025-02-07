@@ -2,6 +2,7 @@ import pico from 'picocolors';
 import cheerio from 'cheerio';
 import { readFile } from './fs';
 import type { Templates } from '../types';
+import { __dirname } from '../helpers';
 
 export const loadTemplates = async ({
   options,

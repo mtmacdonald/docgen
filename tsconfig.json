@@ -2,10 +2,12 @@
   "compilerOptions": {
     "outDir": "./dist",
     "allowJs": true,
-    "target": "es5",
+    "target": "esnext",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "jsx": "react"
   },
-  "files": ["./src/docgen.ts"]
+  "files": [
+    "./src/cli.ts"
+  ]
 }

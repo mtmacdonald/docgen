@@ -1,5 +1,6 @@
 import pico from 'picocolors';
 import { copyDirectory, writeFile } from './fs';
+import { __dirname } from '../helpers';
 
 export const writePages = async ({
   options,
