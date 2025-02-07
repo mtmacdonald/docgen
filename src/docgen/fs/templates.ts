@@ -2,7 +2,6 @@ import pico from 'picocolors';
 import cheerio from 'cheerio';
 import { readFile } from './fs';
 import type { Templates } from '../types';
-import { __dirname } from '../helpers';
 
 export const loadTemplates = async ({
   options,
@@ -12,10 +11,8 @@ export const loadTemplates = async ({
   console.log(pico.green('Loading templates'));
   try {
     let files = {
-      main: await readFile(__dirname + '/../../include/templates/main.html'),
-      redirect: await readFile(
-        __dirname + '/../../include/templates/redirect.html',
-      ),
+      main: await readFile('./src/include/templates/main.html'),
+      redirect: await readFile('./src/include/templates/redirect.html'),
     };
     for (let key in files) {
       if (files.hasOwnProperty(key)) {

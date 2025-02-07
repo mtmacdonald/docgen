@@ -5,7 +5,9 @@
     "target": "esnext",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "jsx": "react"
+    "jsx": "react",
+    "moduleResolution": "nodenext",
+    "module": "NodeNext",
   },
   "files": [
     "./src/cli.ts"
