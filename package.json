@@ -21,7 +21,8 @@
     "test:scaffold": "rimraf src/__test__/test-run-output && tsx src/cli.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/cli.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p",
     "prettier:check": "prettier --check 'src/**/*.{ts,js,json,css,scss}'",
-    "prettier:fix": "prettier --write 'src/**/*.{ts,js,json,css,scss}'"
+    "prettier:fix": "prettier --write 'src/**/*.{ts,js,json,css,scss}'",
+    "test:publish": "sh ./src/__test__/test-publish/test-publish.sh"
   },
   "husky": {
     "hooks": {
