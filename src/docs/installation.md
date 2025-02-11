@@ -20,11 +20,19 @@ See [Node.js downloads](https://nodejs.org/en/download) and choose the installer
 - **OS X:** use the [official installer](https://nodejs.org/en/download) or [nvm](https://github.com/nvm-sh/nvm)
 - **Ubuntu Linux:** use [nvm](https://github.com/nvm-sh/nvm) or see [other instructions](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)
 
-## Install DocGen
+## Run directly with NPX (Recommended)
 
-The easiest way to install DocGen is through **[npm](https://www.npmjs.com)** (the JavaScript package manager). Enter 
+The easiest way to run DocGen is with [NPX](https://www.npmjs.com/package/npx) (Node Package Runner).
+
+  npx docgen-tool --help
+
+## Install DocGen (Alternative)
+
+Alternatively, you can install it as a global package with **[npm](https://www.npmjs.com)** (the JavaScript package manager). Enter 
 this terminal command:
 
 	npm install -g docgen-tool
 
-DocGen can also be installed by [direct download](https://github.com/mtmacdonald/docgen).
+## Direct Download
+
+You can directly download the source code [direct download](https://github.com/mtmacdonald/docgen).

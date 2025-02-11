@@ -123,9 +123,8 @@ In just three steps:
 3. **Generate a static website and PDF**
 
 Simply enter these commands in the terminal:
-
-    npm install -g docgen-tool
-    docgen scaffold
-    docgen run -o $HOME/docgen-example
+   
+    npx docgen-tool scaffold
+    npx docgen-tool run -o $HOME/docgen-example
 
 **See the <a href="installation.html">installation guide</a> for more detailed instructions.**
