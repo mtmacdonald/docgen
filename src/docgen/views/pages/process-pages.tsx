@@ -1,7 +1,7 @@
 import pkg from 'lodash';
 import React from 'react';
 import pico from 'picocolors'
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import { Main } from './main/main';
 import { Cover } from './cover/cover';
 import { toHTML } from "../html";

@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.1.6",
-    "cheerio": "^1.0.0-rc.12",
+    "cheerio": "^1.0.0",
     "cli-spinner": "^0.2.10",
     "commander": "^11.0.0",
     "fs-extra": "^11.1.1",

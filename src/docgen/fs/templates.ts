@@ -1,5 +1,5 @@
 import pico from 'picocolors';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import { readFile } from './fs';
 import type { Templates } from '../types';
 
