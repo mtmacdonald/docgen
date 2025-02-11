@@ -2,6 +2,9 @@ import path from 'path';
 import pico from 'picocolors';
 import { promises as fsp } from 'fs';
 import fs from 'fs-extra';
+import { dirname } from 'path';
+
+export const entrypointDirectory = dirname(process.argv[1]);
 
 export const readFile = async (filePath: string) => {
   const normalized = path.normalize(filePath);
