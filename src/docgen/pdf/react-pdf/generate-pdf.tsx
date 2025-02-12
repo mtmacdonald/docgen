@@ -1,8 +1,9 @@
 import path from 'path';
 import pico from 'picocolors';
 import React from 'react';
+// @ts-ignore
 import ReactPDF from '@react-pdf/renderer';
-import { Pdf } from './react-pdf';
+import { Pdf } from './react-pdf.tsx';
 
 export const generatePdf = ({
   pages,

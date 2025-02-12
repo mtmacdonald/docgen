@@ -1,9 +1,9 @@
 import pico from 'picocolors';
 import { join } from 'path';
 import * as cheerio from 'cheerio';
-import { readFile } from './fs';
-import type { Templates } from '../types';
-import { packageAbsolutePath } from '../../paths';
+import { readFile } from './fs.ts';
+import type { Templates } from '../types.ts';
+import { packageAbsolutePath } from '../../paths.ts';
 
 export const loadTemplates = async ({
   options,

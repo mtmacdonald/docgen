@@ -1,19 +1,19 @@
 import pico from 'picocolors';
 import path from 'path';
-import { cleanDirectory } from './fs/fs';
-import { loadMeta } from './fs/meta';
-import { loadTemplates } from './fs/templates';
-import { loadMarkdown } from './fs/markdown';
-import { generatePdf } from './pdf/react-pdf/generate-pdf';
-import { scaffold } from './scaffold/scaffold';
-import { sortPages } from './meta/sort-pages';
-import { deriveParameters } from './meta/derive-parameters';
-import { processPages } from './views/pages/process-pages';
-import { writePages } from './fs/write-pages';
-import { createRedirect } from './views/redirect';
+import { cleanDirectory } from './fs/fs.ts';
+import { loadMeta } from './fs/meta.ts';
+import { loadTemplates } from './fs/templates.ts';
+import { loadMarkdown } from './fs/markdown.ts';
+import { generatePdf } from './pdf/react-pdf/generate-pdf.tsx';
+import { scaffold } from './scaffold/scaffold.ts';
+import { sortPages } from './meta/sort-pages.ts';
+import { deriveParameters } from './meta/derive-parameters.ts';
+import { processPages } from './views/pages/process-pages.tsx';
+import { writePages } from './fs/write-pages.ts';
+import { createRedirect } from './views/redirect.ts';
 import { version } from '../../package.json';
 
-import type { Options } from './types';
+import type { Options } from './types.ts';
 
 export function DocGen(process) {
   let mainProcess = process;

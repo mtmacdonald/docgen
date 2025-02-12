@@ -1,7 +1,7 @@
 {
   "name": "docgen-tool",
   "type": "module",
-  "version": "5.0.0",
+  "version": "5.0.0-beta.3",
   "description": "A tool for creating HTML and PDF documentation",
   "bin": "./dist/cli.js",
   "files": [
@@ -10,7 +10,7 @@
   "scripts": {
     "copy:files": "ncp src/include dist/include",
     "dev": "tsx src/cli.ts run",
-    "build:tsc": "rimraf dist && tsc -p tsconfig.json && yarn copy:files",
+    "check:types": "tsc --noEmit",
     "build": "rimraf dist && pkgroll && yarn copy:files",
     "run:build": "dist/cli.js",
     "build:docs": "rimraf docs && tsx src/cli.ts run -r -p -i src/docs -o ./docs",

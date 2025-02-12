@@ -8,6 +8,8 @@
     "jsx": "react",
     "moduleResolution": "nodenext",
     "module": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true
   },
   "files": [
     "./src/cli.ts"

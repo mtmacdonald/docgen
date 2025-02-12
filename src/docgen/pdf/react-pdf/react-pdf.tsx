@@ -1,6 +1,6 @@
 import React from 'react';
 import { Document } from '@react-pdf/renderer';
-import { PdfPage } from './pdf-page/pdf-page';
+import { PdfPage } from './pdf-page/pdf-page.tsx';
 
 export const Pdf = ({
   parameters,

@@ -2,9 +2,9 @@ import pkg from 'lodash';
 import React from 'react';
 import pico from 'picocolors'
 import * as cheerio from 'cheerio';
-import { Main } from './main/main';
-import { Cover } from './cover/cover';
-import { toHTML } from "../html";
+import { Main } from './main/main.tsx';
+import { Cover } from './cover/cover.tsx';
+import { toHTML } from '../html.tsx';
 
 const { cloneDeep } = pkg;
 

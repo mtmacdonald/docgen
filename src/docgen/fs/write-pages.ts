@@ -1,7 +1,7 @@
 import pico from 'picocolors';
 import { join } from 'path';
-import { copyDirectory, writeFile } from './fs';
-import { packageAbsolutePath } from '../../paths';
+import { copyDirectory, writeFile } from './fs.ts';
+import { packageAbsolutePath } from '../../paths.ts';
 
 export const writePages = async ({
   options,

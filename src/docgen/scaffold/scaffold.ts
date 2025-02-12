@@ -1,7 +1,7 @@
 import { join } from 'path';
 import pico from 'picocolors';
-import { copyDirectory } from '../fs/fs';
-import { packageAbsolutePath } from '../../paths';
+import { copyDirectory } from '../fs/fs.ts';
+import { packageAbsolutePath } from '../../paths.ts';
 
 export const scaffold = async ({ outputDirectory, verbose }) => {
   console.log(pico.green('Creating scaffold template directory'));
