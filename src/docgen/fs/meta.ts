@@ -1,7 +1,7 @@
 import pico from 'picocolors';
-import { readFile } from './fs';
-import { validateJSON } from '../validation/validation';
-import type { Meta } from '../types';
+import { readFile } from './fs.ts';
+import { validateJSON } from '../validation/validation.ts';
+import type { Meta } from '../types.ts';
 
 export const loadMeta = async ({
   inputPath,

@@ -1,4 +1,4 @@
-import CheerioAPI from 'cheerio';
+import * as CheerioAPI from 'cheerio';
 export type TCheerioAPI = typeof CheerioAPI;
 
 export type Options = {

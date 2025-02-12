@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import { buildIcons } from './build-icons';
+import { buildIcons } from './build-icons.ts';
 
 program
   .command('build-icons')

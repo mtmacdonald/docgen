@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
-import { WebFooter } from '../../components/footer/footer';
-import { TopBar } from '../../components/top-bar/top-bar';
-import { SideBar } from '../../components/side-bar/side-bar';
-import { Page } from '../../components/page/page';
-import type { Parameters } from '../../../types';
+import { WebFooter } from '../../components/footer/footer.tsx';
+import { TopBar } from '../../components/top-bar/top-bar.tsx';
+import { SideBar } from '../../components/side-bar/side-bar.tsx';
+import { Page } from '../../components/page/page.tsx';
+import type { Parameters } from '../../../types.ts';
 
 type MainProps = {
   parameters: Parameters;

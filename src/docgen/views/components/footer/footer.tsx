@@ -1,5 +1,5 @@
 import React from 'react';
-import { Copyright } from "../copyright/copyright";
+import { Copyright } from "../copyright/copyright.tsx";
 
 export const Footer = ({
   parameters

@@ -1,7 +1,7 @@
 import React from 'react';
 import Html from 'react-pdf-html';
-import { fontSize, htmlStyleSheet } from '../../pdf-styles/pdf-styles';
-import { customRenderers } from "./custom-renderers/custom-renderers";
+import { fontSize, htmlStyleSheet } from '../../pdf-styles/pdf-styles.ts';
+import { customRenderers } from "./custom-renderers/custom-renderers.tsx";
 
 export const PdfHtmlBlock = ({
   page,

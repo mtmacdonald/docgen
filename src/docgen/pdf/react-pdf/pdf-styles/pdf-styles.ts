@@ -1,5 +1,5 @@
-import * as styles from '../../../../styles/variables/js/style-variables';
-import { docsStyleSheet } from './pdf-docs-styles';
+import * as styles from '../../../../styles/variables/js/style-variables.js';
+import { docsStyleSheet } from './pdf-docs-styles.ts';
 
 export const fontSize = 10;
 

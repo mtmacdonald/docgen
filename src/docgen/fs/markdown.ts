@@ -1,5 +1,5 @@
 import pico from 'picocolors';
-import { readFile } from './fs';
+import { readFile } from './fs.ts';
 import MarkdownIt from 'markdown-it';
 
 const markdown = new MarkdownIt('commonmark').enable('table');

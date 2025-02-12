@@ -1,6 +1,6 @@
 import pico from 'picocolors';
 import path from 'path';
-import { writeFile } from '../fs/fs';
+import { writeFile } from '../fs/fs.ts';
 
 export let createRedirect = async ({ options, redirectPage, homePage }) => {
   if (options.isRedirectEnabled) {

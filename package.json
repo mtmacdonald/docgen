@@ -1,28 +1,28 @@
 {
   "name": "docgen-tool",
+  "type": "module",
   "version": "5.0.0",
   "description": "A tool for creating HTML and PDF documentation",
-  "main": "dist/docgen.ts",
-  "bin": {
-    "docgen": "dist/docgen.ts"
-  },
+  "bin": "./dist/cli.js",
   "files": [
     "dist/*"
   ],
   "scripts": {
     "copy:files": "ncp src/include dist/include",
-    "dev": "tsx src/docgen.ts run",
-    "build": "rimraf dist && tsc -p tsconfig.json && yarn copy:files",
-    "run:build": "dist/docgen.ts",
-    "build:docs": "rimraf dist && tsx src/docgen.ts run -r -p -i src/docs -o ./docs",
+    "dev": "tsx src/cli.ts run",
+    "check:types": "tsc --noEmit",
+    "build": "rimraf dist && pkgroll && yarn copy:files",
+    "run:build": "dist/cli.js",
+    "build:docs": "rimraf docs && tsx src/cli.ts run -r -p -i src/docs -o ./docs",
     "build:styles": "rimraf src/styles/variables && npx style-dictionary build && sass --no-source-map src/styles/main.scss src/include/require/styles/framework.css && yarn prettier:fix",
     "build:icons": "tsx src/build-scripts/build-scripts.ts build-icons",
     "test": "npm run prettier:check",
-    "test:run": "rimraf src/__test__/test-run-output && tsx src/docgen.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p",
-    "test:scaffold": "rimraf src/__test__/test-run-output && tsx src/docgen.ts scaffold -o src/__test__/test-run-output",
-    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/docgen.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p",
+    "test:run": "rimraf src/__test__/test-run-output && tsx src/cli.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p",
+    "test:scaffold": "rimraf src/__test__/test-run-output && tsx src/cli.ts scaffold -o src/__test__/test-run-output",
+    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/cli.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p",
     "prettier:check": "prettier --check 'src/**/*.{ts,js,json,css,scss}'",
-    "prettier:fix": "prettier --write 'src/**/*.{ts,js,json,css,scss}'"
+    "prettier:fix": "prettier --write 'src/**/*.{ts,js,json,css,scss}'",
+    "test:publish": "sh ./src/__test__/test-publish/test-publish.sh"
   },
   "husky": {
     "hooks": {
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.1.6",
-    "cheerio": "^1.0.0-rc.12",
+    "cheerio": "^1.0.0",
     "cli-spinner": "^0.2.10",
     "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
@@ -53,10 +53,11 @@
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@tabler/icons": "^2.47.0",
-    "@types/node": "^20.3.1",
+    "@types/node": "^22.13.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^8.8.0",
     "ncp": "^2.0.0",
+    "pkgroll": "^2.8.0",
     "prettier": "^2.1.2",
     "rimraf": "^5.0.1",
     "sass": "^1.66.1",

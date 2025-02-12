@@ -1,8 +1,8 @@
 import React from 'react';
 import { Page, View, StyleSheet } from '@react-pdf/renderer';
-import { PdfHtmlBlock } from "./pdf-html-block/pdf-html-block";
-import { PdfFooter } from './pdf-footer/pdf-footer';
-import { pdfStyleSheet } from '../pdf-styles/pdf-styles';
+import { PdfHtmlBlock } from "./pdf-html-block/pdf-html-block.tsx";
+import { PdfFooter } from './pdf-footer/pdf-footer.tsx';
+import { pdfStyleSheet } from '../pdf-styles/pdf-styles.ts';
 
 export const reactPdfStyles = StyleSheet.create(pdfStyleSheet);
 

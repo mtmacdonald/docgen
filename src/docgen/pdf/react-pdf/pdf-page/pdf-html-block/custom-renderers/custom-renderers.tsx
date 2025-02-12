@@ -5,7 +5,7 @@ import {
   Text,
   Image,
 } from '@react-pdf/renderer';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 
 /*
   For "default" renderers in react-pdf-html, see
