@@ -1,42 +1,46 @@
 #!/usr/bin/env bash
 set -e  # Exit on error
 
-# Ensure script runs from the test directory
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
-
 # Build the package
 echo "Building package..."
 yarn build
 
-# Pack the package into a tarball
-TARBALL_NAME="package.tgz"
-yarn pack --filename "$TARBALL_NAME"
-echo "Package packed: $TARBALL_NAME"
+# Pack the package and get the filename
+TARBALL_NAME=$(npm pack --silent)
+echo "Packed as: $TARBALL_NAME"
 
-# Create a temporary test directory
+# Create a temp test directory
 TMPDIR=$(mktemp -d)
-echo "Created temp dir: $TMPDIR"
+echo "Using temp dir: $TMPDIR"
 
-# Initialize a new project in the temp directory
+# Move into the temp dir
+mv "$TARBALL_NAME" "$TMPDIR/"
 cd "$TMPDIR"
-yarn init -y >/dev/null
 
-# Install the packed tarball
-yarn add "file://$SCRIPT_DIR/$TARBALL_NAME"
+npm init -y >/dev/null
 
-# Get the package name from the project's root package.json
-#PACKAGE_NAME=$(jq -r .name < "$SCRIPT_DIR/../../package.json")
-#echo "Running CLI: $PACKAGE_NAME"
+# Install the packed package
+npm install "./$TARBALL_NAME"
 
-# Run the package CLI to verify installation
-npx docgen-tool --version || echo "⚠ CLI execution failed"
-npx docgen-tool --scaffold || echo "⚠ CLI execution failed"
-mkrdir example
-npx docgen run -o ./example || echo "⚠ CLI execution failed"
+# Run CLI commands to verify
+if ! npx docgen-tool --version; then
+  echo "⚠ CLI execution failed"
+  exit 1
+fi
+
+if ! npx docgen-tool scaffold; then
+  echo "⚠ CLI execution failed"
+  exit 1
+fi
+
+mkdir example
+if ! npx docgen-tool run -o ./example; then
+  echo "⚠ CLI execution failed"
+  exit 1
+fi
 
 # Cleanup
-cd "$SCRIPT_DIR"
+cd -
 rm -rf "$TMPDIR" "$TARBALL_NAME"
 
-echo "✔ Publish test succeeded!"
+echo "✔ Local publish test succeeded!"
