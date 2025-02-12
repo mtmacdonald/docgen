@@ -1,10 +1,11 @@
-﻿## DocGen 5.0.0 07/02/2025
+﻿## DocGen 5.0.0 12/02/2025
 
 Major version (breaking changes)
 
-- new react-pdf engine (replaces wkhtmltopdf)
+- new PDF engine based on [react-pdf](https://react-pdf.org) (replaces [wkhtmltopdf](https://wkhtmltopdf.org/))
 - removed support some features react-pdf can't support (math blocks, code syntax highlighting, SVG icons)
 - improved button and layout styles
+- fix regression bugs related to paths
 
 ## DocGen 4.3.0 25/07/2024
 
