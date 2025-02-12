@@ -1,6 +1,7 @@
 import pico from 'picocolors';
-import { copyDirectory, entrypointDirectory, writeFile } from './fs';
 import { join } from 'path';
+import { copyDirectory, writeFile } from './fs';
+import { packageAbsolutePath } from '../../paths';
 
 export const writePages = async ({
   options,
@@ -23,7 +24,7 @@ export const writePages = async ({
     //add extra files
     await writeFile(options.output + 'ownership.html', hydratedPages.webCover);
     await copyDirectory(
-      join(entrypointDirectory, 'include/require'),
+      join(packageAbsolutePath, 'include/require'),
       options.output + 'require',
       options.verbose,
     ); //CSS, JavaScript

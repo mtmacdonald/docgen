@@ -1,8 +1,9 @@
 import pico from 'picocolors';
-import * as cheerio from 'cheerio';
 import { join } from 'path';
-import { entrypointDirectory, readFile } from './fs';
+import * as cheerio from 'cheerio';
+import { readFile } from './fs';
 import type { Templates } from '../types';
+import { packageAbsolutePath } from '../../paths';
 
 export const loadTemplates = async ({
   options,
@@ -13,10 +14,10 @@ export const loadTemplates = async ({
   try {
     let files = {
       main: await readFile(
-        join(entrypointDirectory, 'include/templates/main.html'),
+        join(packageAbsolutePath, 'include/templates/main.html'),
       ),
       redirect: await readFile(
-        join(entrypointDirectory, 'include/templates/redirect.html'),
+        join(packageAbsolutePath, 'include/templates/redirect.html'),
       ),
     };
     for (let key in files) {
