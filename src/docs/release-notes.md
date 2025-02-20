@@ -1,4 +1,8 @@
-﻿## DocGen 5.0.0 12/02/2025
+﻿## DocGen 5.0.1 20/02/2025
+
+- Improve installation instructions
+
+## DocGen 5.0.0 12/02/2025
 
 Major version (breaking changes)
 
