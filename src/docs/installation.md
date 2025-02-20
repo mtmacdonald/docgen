@@ -24,4 +24,15 @@ See [Node.js downloads](https://nodejs.org/en/download) and choose the installer
 
 The easiest way to run DocGen is with [NPX](https://www.npmjs.com/package/npx) (Node Package Runner).
 
-  npx docgen-tool --help
+	npx docgen-tool --help
+
+## Install with NPM
+
+Alternatively, you can install DocGen globally with NPM (Node Package Manager).
+
+	npm install -g docgen-tool
+	docgen-tool --help
+
+## Direct Download
+
+You can [download](https://github.com/mtmacdonald/docgen/tags) the DocGen source code directly from Github.
