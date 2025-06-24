@@ -9,8 +9,8 @@ export const pdfAdmonitionsStyles = {
     fontWeight: 'bold',
     marginBottom: '6pt',
   },
-  ['.admonition.info']: {
-    color: '#1a202c', // TODO: not working
+  ['.admonition.information']: {
+    color: '#1a202c',
     backgroundColor: '#e6f0fa',
     borderLeft: '5px solid #3182ce',
   },
