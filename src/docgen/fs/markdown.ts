@@ -1,8 +1,11 @@
 import pico from 'picocolors';
 import { readFile } from './fs.ts';
 import MarkdownIt from 'markdown-it';
+import markdownItAdmon from 'markdown-it-admon';
 
-const markdown = new MarkdownIt('commonmark').enable('table');
+const markdown = new MarkdownIt('commonmark')
+  .enable('table')
+  .use(markdownItAdmon);
 
 //Allow CommonMark links that use other protocols, such as file:///
 //The markdown-it implementation is more restrictive than the CommonMark spec
