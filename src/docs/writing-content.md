@@ -101,6 +101,38 @@ This is a link to [Google](http://www.google.com).
 
 ---------------------
 
+*What you type:*
+
+    !!! Information Title
+        Information details
+
+    !!! Warning Title
+        Warning details
+
+    !!! Success Title
+        Success details
+
+    !!! Error Title
+        Error details
+
+*How it looks:*
+
+### Admonitions
+
+!!! Information Title
+    Information details
+
+!!! Warning Title
+    Warning details
+
+!!! Success Title
+    Success details
+
+!!! Error Title
+    Error details
+
+---------------------
+
 ### Code blocks
 
 *What you type:*
