@@ -665,6 +665,34 @@ a:visited {
   border-radius: 5px;
 }
 
+/*
+ pre-formatted, code
+*/
+code {
+  font-family: 'droid-sans-mono', Courier, monospace;
+}
+
+pre {
+  padding: 12px;
+  background-color: #f3f3f3;
+  border: 1px solid var(--color-border);
+  line-height: 14px;
+  border-radius: 6px;
+}
+
+.w-inline-code {
+  background-color: #f3f3f3;
+  vertical-align: middle;
+  padding: 2px !important;
+  border-radius: 2px;
+}
+
+/*
+  admonitions
+
+  - uses https://www.npmjs.com/package/markdown-it-admon
+  - styles loosely borrowed from repo CSS: https://github.com/commenthol/markdown-it-admon/blob/main/styles/admonition.css
+ */
 .w-success {
   color: var(--color-text-success);
   background-color: var(--color-background-success);
@@ -698,26 +726,46 @@ blockquote,
   border-radius: var(--size-message-border-radius);
 }
 
-/*
- pre-formatted, code
-*/
-code {
-  font-family: 'droid-sans-mono', Courier, monospace;
+.admonition {
+  margin: 1.5em 0;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid;
+  border-radius: 4px;
+  background-color: #f9f9f9;
 }
 
-pre {
-  padding: 12px;
-  background-color: #f3f3f3;
-  border: 1px solid var(--color-border);
-  line-height: 14px;
-  border-radius: 6px;
+.admonition > p {
+  margin: 0.5em 0 0;
 }
 
-.w-inline-code {
-  background-color: #f3f3f3;
-  vertical-align: middle;
-  padding: 2px !important;
-  border-radius: 2px;
+.admonition > .admonition-title {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+/* Info */
+.admonition.info {
+  border-left-color: #00bcd4;
+  background-color: #e0f7fa;
+}
+
+/* Success */
+.admonition.success {
+  border-left-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+/* Warning */
+.admonition.warning {
+  border-left-color: #ff9800;
+  background-color: #fff8e1;
+}
+
+/* Error */
+.admonition.error {
+  border-left-color: #f44336;
+  background-color: #ffebee;
 }
 
 table,

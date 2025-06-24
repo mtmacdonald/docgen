@@ -1,0 +1,78 @@
+/*
+  admonitions
+
+  - uses https://www.npmjs.com/package/markdown-it-admon
+  - styles loosely borrowed from repo CSS: https://github.com/commenthol/markdown-it-admon/blob/main/styles/admonition.css
+ */
+
+.w-success {
+  color: var(--color-text-success);
+  background-color: var(--color-background-success);
+  border-left: 5px solid var(--color-border-success);
+  padding: var(--size-message-padding);
+  border-radius: var(--size-message-border-radius);
+}
+.w-warning {
+  color: var(--color-text-warning);
+  background-color: var(--color-background-warning);
+  border-left: 5px solid var(--color-border-warning);
+  padding: var(--size-message-padding);
+  border-radius: var(--size-message-border-radius);
+}
+.w-error {
+  color: var(--color-text-error);
+  background-color: var(--color-background-error);
+  border-left: 5px solid var(--color-border-error);
+  padding: var(--size-message-padding);
+  border-radius: var(--size-message-border-radius);
+}
+blockquote,
+.w-information {
+  color: var(--color-text-info);
+  background-color: var(--color-background-info);
+  border-left: 5px solid var(--color-border-info);
+  padding: var(--size-message-padding);
+  border-radius: var(--size-message-border-radius);
+}
+
+.admonition {
+  margin: 1.5em 0;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.admonition > p {
+  margin: 0.5em 0 0;
+}
+
+.admonition > .admonition-title {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+/* Info */
+.admonition.info {
+  border-left-color: #00bcd4;
+  background-color: #e0f7fa;
+}
+
+/* Success */
+.admonition.success {
+  border-left-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+/* Warning */
+.admonition.warning {
+  border-left-color: #ff9800;
+  background-color: #fff8e1;
+}
+
+/* Error */
+.admonition.error {
+  border-left-color: #f44336;
+  background-color: #ffebee;
+}
