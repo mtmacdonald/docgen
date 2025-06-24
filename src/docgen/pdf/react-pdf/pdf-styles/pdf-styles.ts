@@ -1,5 +1,6 @@
 import * as styles from '../../../../styles/variables/js/style-variables.js';
 import { docsStyleSheet } from './pdf-docs-styles.ts';
+import { pdfAdmonitionsStyles } from './pdf-admonitions-styles.ts';
 
 export const fontSize = 10;
 
@@ -162,5 +163,6 @@ export const htmlStyleSheet = {
   ['.button']: {
     textAlign: 'center',
   },
+  ...pdfAdmonitionsStyles,
   ...docsStyleSheet,
 };
