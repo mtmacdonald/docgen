@@ -101,6 +101,8 @@ This is a link to [Google](http://www.google.com).
 
 ---------------------
 
+### Admonitions
+
 *What you type:*
 
     !!! Information Title
@@ -116,8 +118,6 @@ This is a link to [Google](http://www.google.com).
         Error details
 
 *How it looks:*
-
-### Admonitions
 
 !!! Information Title
     Information details
