@@ -2471,6 +2471,11 @@ magic-string@^0.30.17, magic-string@^0.30.3:
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.5.0"
 
+markdown-it-admon@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/markdown-it-admon/-/markdown-it-admon-1.0.1.tgz#3a2698116642d9069edff17a1598b3492d477faf"
+  integrity sha512-+slgF0zZQ5908uo+U0cNBY6CUG4ym2GZsOdliDdn6P5doMubfxEZsVW3POaJOzXpd6VXLmn95NYa9Qdp7OMK7Q==
+
 markdown-it@^13.0.1:
   version "13.0.2"
   resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-13.0.2.tgz#1bc22e23379a6952e5d56217fbed881e0c94d536"
