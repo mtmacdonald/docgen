@@ -62,7 +62,7 @@ export const htmlStyleSheet = {
     fontSize: em(1),
     marginVertical: em(1),
   },
-  blockquote: styleInfo,
+  //blockquote: styleInfo,
   ['.w-information']: styleInfo,
   hr: {
     marginVertical: em(0.5),

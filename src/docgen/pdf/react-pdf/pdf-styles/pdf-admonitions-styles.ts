@@ -1,12 +1,19 @@
 import * as styles from '../../../../styles/variables/js/style-variables.js';
 
+const admonitionBaseStyle = {
+  padding: '10pt',
+  marginLeft: 0,
+  marginRight: 0,
+  marginVertical: '12pt',
+};
+
 export const pdfAdmonitionsStyles = {
-  ['.admonition']: {
-    padding: '10pt',
-    marginLeft: 0,
-    marginRight: 0,
-    marginVertical: '12pt',
+  blockquote: {
+    ...admonitionBaseStyle,
+    backgroundColor: styles.ColorBackgroundNeutral,
+    borderLeft: `${styles.SizeAdmonitionBorderLeftPdf} solid ${styles.ColorBorderNeutral}`,
   },
+  ['.admonition']: admonitionBaseStyle,
   ['.admonition-title']: {
     fontWeight: 'bold',
     marginBottom: '6pt',
@@ -27,13 +34,4 @@ export const pdfAdmonitionsStyles = {
     backgroundColor: styles.ColorBackgroundError,
     borderLeft: `${styles.SizeAdmonitionBorderLeftPdf} solid ${styles.ColorBorderError}`,
   },
-  // Optional: blockquote in matching style
-  // blockquote: {
-  //   marginVertical: '12pt',
-  //   padding: '10pt',
-  //   borderLeft: '5px solid #a0aec0',
-  //   backgroundColor: '#f7fafc',
-  //   color: '#2d3748',
-  //   fontStyle: 'italic',
-  // },
 };
