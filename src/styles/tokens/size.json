@@ -38,6 +38,16 @@
         "value": "26px"
       }
     },
+    "contentBlock": {
+      "margin": {
+        "@": { "value": "1.5em 0" },
+        "pdf": { "value": "2mm 0" }
+      },
+      "padding": {
+        "@": { "value": "0.8rem 1rem" },
+        "pdf": { "value": "1mm 4mm" }
+      }
+    },
     "admonition": {
       "borderLeft": {
         "@": { "value": "4px" },

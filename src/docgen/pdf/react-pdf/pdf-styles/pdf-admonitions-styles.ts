@@ -1,8 +1,8 @@
 import * as styles from '../../../../styles/variables/js/style-variables.js';
 
 const admonitionBaseStyle = {
-  padding: '10pt',
-  marginVertical: '12pt',
+  padding: styles.SizeContentBlockPaddingPdf,
+  margin: styles.SizeContentBlockMarginPdf,
 };
 
 export const pdfAdmonitionsStyles = {

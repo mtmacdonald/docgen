@@ -3,24 +3,26 @@
 
   - uses https://www.npmjs.com/package/markdown-it-admon
   - styles loosely borrowed from repo CSS: https://github.com/commenthol/markdown-it-admon/blob/main/styles/admonition.css
+
+  Avoiding icons for now because they're not as easy in the PDF
  */
 
 blockquote,
 .admonition {
-  margin: 1.5em 0;
-  padding: 0.8rem 1rem;
+  margin: var(--size-content-block-margin);
+  padding: var(--size-content-block-padding);
   border-left: var(--size-admonition-border-left) solid;
   border-radius: var(--size-admonition-border-radius);
-}
-
-.admonition > p {
-  margin: 0.5em 0 0;
 }
 
 .admonition > .admonition-title {
   margin: 0;
   padding: 0;
   font-weight: bold;
+}
+
+.admonition > p {
+  margin: 0.5em 0 0;
 }
 
 .admonition.information {

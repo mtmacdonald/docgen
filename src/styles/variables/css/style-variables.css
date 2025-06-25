@@ -58,6 +58,10 @@
   --size-font-h6: 0.75rem;
   --size-font-h6-pdf: 12pt;
   --size-line-height: 26px;
+  --size-content-block-margin: 1.5em 0;
+  --size-content-block-margin-pdf: 2mm 0;
+  --size-content-block-padding: 0.8rem 1rem;
+  --size-content-block-padding-pdf: 1mm 4mm;
   --size-admonition-border-left: 4px;
   --size-admonition-border-left-pdf: 1mm;
   --size-admonition-border-radius: 4px;

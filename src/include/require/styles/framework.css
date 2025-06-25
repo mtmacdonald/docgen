@@ -57,6 +57,10 @@
   --size-font-h6: 0.75rem;
   --size-font-h6-pdf: 12pt;
   --size-line-height: 26px;
+  --size-content-block-margin: 1.5em 0;
+  --size-content-block-margin-pdf: 2mm 0;
+  --size-content-block-padding: 0.8rem 1rem;
+  --size-content-block-padding-pdf: 1mm 4mm;
   --size-admonition-border-left: 4px;
   --size-admonition-border-left-pdf: 1mm;
   --size-admonition-border-radius: 4px;
@@ -698,23 +702,25 @@ pre {
 
   - uses https://www.npmjs.com/package/markdown-it-admon
   - styles loosely borrowed from repo CSS: https://github.com/commenthol/markdown-it-admon/blob/main/styles/admonition.css
+
+  Avoiding icons for now because they're not as easy in the PDF
  */
 blockquote,
 .admonition {
-  margin: 1.5em 0;
-  padding: 0.8rem 1rem;
+  margin: var(--size-content-block-margin);
+  padding: var(--size-content-block-padding);
   border-left: var(--size-admonition-border-left) solid;
   border-radius: var(--size-admonition-border-radius);
-}
-
-.admonition > p {
-  margin: 0.5em 0 0;
 }
 
 .admonition > .admonition-title {
   margin: 0;
   padding: 0;
   font-weight: bold;
+}
+
+.admonition > p {
+  margin: 0.5em 0 0;
 }
 
 .admonition.information {
