@@ -38,6 +38,29 @@
         "value": "26px"
       }
     },
+    "contentBlock": {
+      "margin": {
+        "@": { "value": "1.5em 0" },
+        "pdf": { "value": "2mm 0" }
+      },
+      "padding": {
+        "@": { "value": "0.8rem 1rem" },
+        "pdf": { "value": "1mm 4mm" }
+      }
+    },
+    "admonition": {
+      "borderLeft": {
+        "@": { "value": "4px" },
+        "pdf": { "value": "1mm" }
+      },
+      "borderRadius": {
+        "value": "4px"
+      },
+      "titleMargin": {
+        "@": { "value": "0.1em 0 0" },
+        "pdf": { "value": "3mm 0 0" }
+      }
+    },
     "message": {
       "padding": {
         "value": "20px 30px"

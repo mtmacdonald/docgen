@@ -1,4 +1,9 @@
-﻿## DocGen 5.0.1 20/02/2025
+﻿## DocGen 5.1.0 25/06/2025
+
+- Add support for admonitions
+- Upgrades `@react-pdf/renderer`
+
+## DocGen 5.0.1 20/02/2025
 
 - Improve installation instructions
 
