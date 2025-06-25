@@ -38,6 +38,12 @@
         "value": "26px"
       }
     },
+    "admonition": {
+      "borderLeft": {
+        "@": { "value": "4px" },
+        "pdf": { "value": "1mm" }
+      }
+    },
     "message": {
       "padding": {
         "value": "20px 30px"

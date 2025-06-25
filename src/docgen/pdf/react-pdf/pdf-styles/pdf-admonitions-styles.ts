@@ -13,19 +13,19 @@ export const pdfAdmonitionsStyles = {
   },
   ['.admonition.information']: {
     backgroundColor: styles.ColorBackgroundInfo,
-    borderLeft: `5px solid ${styles.ColorBorderInfo}`,
+    borderLeft: `${styles.SizeAdmonitionBorderLeftPdf} solid ${styles.ColorBorderInfo}`,
   },
   ['.admonition.success']: {
     backgroundColor: styles.ColorBackgroundSuccess,
-    borderLeft: `5px solid ${styles.ColorBorderSuccess}`,
+    borderLeft: `${styles.SizeAdmonitionBorderLeftPdf} solid ${styles.ColorBorderSuccess}`,
   },
   ['.admonition.warning']: {
     backgroundColor: styles.ColorBackgroundWarning,
-    borderLeft: `5px solid ${styles.ColorBorderWarning}`,
+    borderLeft: `${styles.SizeAdmonitionBorderLeftPdf} solid ${styles.ColorBorderWarning}`,
   },
   ['.admonition.error']: {
     backgroundColor: styles.ColorBackgroundError,
-    borderLeft: `5px solid ${styles.ColorBorderError}`,
+    borderLeft: `${styles.SizeAdmonitionBorderLeftPdf} solid ${styles.ColorBorderError}`,
   },
   // Optional: blockquote in matching style
   // blockquote: {
