@@ -16,13 +16,13 @@
         "value": "#fff"
       },
       "success": {
-        "value": "#ccffbc"
+        "value": "#e8f5e9"
       },
       "error": {
-        "value": "#ffe6e6"
+        "value": "#ffebee"
       },
       "warning": {
-        "value": "#fff0bd"
+        "value": "#fff8e1"
       },
       "info": {
         "value": "rgb(222, 232, 252)"
@@ -33,13 +33,13 @@
         "value": "#999"
       },
       "success": {
-        "value": "#2ab100"
+        "value": "#4caf50"
       },
       "error": {
-        "value": "#c20000"
+        "value": "#f44336"
       },
       "warning": {
-        "value": "#b28900"
+        "value": "#ff9800"
       },
       "info": {
         "value": "#81a7f4"

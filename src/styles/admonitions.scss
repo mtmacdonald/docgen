@@ -7,30 +7,22 @@
 
 //.w-success {
 //  color: var(--color-text-success);
-//  background-color: var(--color-background-success);
-//  border-left: 5px solid var(--color-border-success);
 //  padding: var(--size-message-padding);
 //  border-radius: var(--size-message-border-radius);
 //}
 //.w-warning {
 //  color: var(--color-text-warning);
-//  background-color: var(--color-background-warning);
-//  border-left: 5px solid var(--color-border-warning);
 //  padding: var(--size-message-padding);
 //  border-radius: var(--size-message-border-radius);
 //}
 //.w-error {
 //  color: var(--color-text-error);
-//  background-color: var(--color-background-error);
-//  border-left: 5px solid var(--color-border-error);
 //  padding: var(--size-message-padding);
 //  border-radius: var(--size-message-border-radius);
 //}
 //blockquote,
 //.w-information {
 //  color: var(--color-text-info);
-//  background-color: var(--color-background-info);
-//  border-left: 5px solid var(--color-border-info);
 //  padding: var(--size-message-padding);
 //  border-radius: var(--size-message-border-radius);
 //}
@@ -56,26 +48,26 @@
 
 /* Info */
 .admonition.information {
-  border-left-color: #00bcd4;
-  background-color: #e0f7fa;
+  border-left-color: var(--color-border-info);
+  background-color: var(--color-background-info);
 }
 
 /* Success */
 .admonition.success {
-  border-left-color: #4caf50;
-  background-color: #e8f5e9;
+  border-left-color: var(--color-border-success);
+  background-color: var(--color-background-success);
 }
 
 /* Warning */
 .admonition.warning {
-  border-left-color: #ff9800;
-  background-color: #fff8e1;
+  border-left-color: var(--color-border-warning);
+  background-color: var(--color-background-warning);
 }
 
 /* Error */
 .admonition.error {
-  border-left-color: #f44336;
-  background-color: #ffebee;
+  border-left-color: var(--color-border-error);
+  background-color: var(--color-background-error);
 }
 
 /* Harmonized Blockquote */
