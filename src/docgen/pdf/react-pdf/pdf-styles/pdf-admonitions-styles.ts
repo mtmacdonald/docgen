@@ -10,6 +10,8 @@ export const pdfAdmonitionsStyles = {
     ...admonitionBaseStyle,
     backgroundColor: styles.ColorBackgroundNeutral,
     borderLeft: `${styles.SizeAdmonitionBorderLeftPdf} solid ${styles.ColorBorderNeutral}`,
+    color: styles.ColorBorderNeutral,
+    fontStyle: 'italic',
   },
   ['.admonition']: admonitionBaseStyle,
   ['.admonition-title']: {
