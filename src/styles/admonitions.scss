@@ -5,6 +5,7 @@
   - styles loosely borrowed from repo CSS: https://github.com/commenthol/markdown-it-admon/blob/main/styles/admonition.css
  */
 
+blockquote,
 .admonition {
   margin: 1.5em 0;
   padding: 0.8rem 1rem;
@@ -22,45 +23,29 @@
   font-weight: bold;
 }
 
-/* Info */
 .admonition.information {
   border-left-color: var(--color-border-info);
   background-color: var(--color-background-info);
 }
 
-/* Success */
 .admonition.success {
   border-left-color: var(--color-border-success);
   background-color: var(--color-background-success);
 }
 
-/* Warning */
 .admonition.warning {
   border-left-color: var(--color-border-warning);
   background-color: var(--color-background-warning);
 }
 
-/* Error */
 .admonition.error {
   border-left-color: var(--color-border-error);
   background-color: var(--color-background-error);
 }
 
-/* Harmonized Blockquote */
 blockquote {
-  margin: 1.5em 0;
-  padding: 0.8rem 1rem;
-  border-left: 4px solid var(--color-border-neutral);
+  border-left-color: var(--color-border-neutral);
   background-color: var(--color-background-neutral);
-  border-radius: 4px;
   color: var(--color-text-neutral);
   font-style: italic;
-}
-
-blockquote > :first-child {
-  margin-top: 0;
-}
-
-blockquote > :last-child {
-  margin-bottom: 0;
 }
