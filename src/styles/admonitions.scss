@@ -16,13 +16,8 @@ blockquote,
 }
 
 .admonition > .admonition-title {
-  margin: 0;
-  padding: 0;
+  margin: var(--size-admonition-title-margin);
   font-weight: bold;
-}
-
-.admonition > p {
-  margin: 0.5em 0 0;
 }
 
 .admonition.information {

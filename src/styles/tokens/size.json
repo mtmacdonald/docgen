@@ -55,6 +55,10 @@
       },
       "borderRadius": {
         "value": "4px"
+      },
+      "titleMargin": {
+        "@": { "value": "0.1em 0 0" },
+        "pdf": { "value": "3mm 0 0" }
       }
     },
     "message": {

@@ -15,8 +15,8 @@ export const pdfAdmonitionsStyles = {
   },
   ['.admonition']: admonitionBaseStyle,
   ['.admonition-title']: {
+    margin: styles.SizeAdmonitionTitleMarginPdf,
     fontWeight: 'bold',
-    marginBottom: '6pt',
   },
   ['.admonition.information']: {
     backgroundColor: styles.ColorBackgroundInfo,
