@@ -1,5 +1,6 @@
 import * as styles from '../../../../styles/variables/js/style-variables.js';
 import { docsStyleSheet } from './pdf-docs-styles.ts';
+import { pdfAdmonitionsStyles } from './pdf-admonitions-styles.ts';
 
 export const fontSize = 10;
 
@@ -61,8 +62,6 @@ export const htmlStyleSheet = {
     fontSize: em(1),
     marginVertical: em(1),
   },
-  blockquote: styleInfo,
-  ['.w-information']: styleInfo,
   hr: {
     marginVertical: em(0.5),
     borderBottomWidth: 1,
@@ -162,5 +161,6 @@ export const htmlStyleSheet = {
   ['.button']: {
     textAlign: 'center',
   },
+  ...pdfAdmonitionsStyles,
   ...docsStyleSheet,
 };
