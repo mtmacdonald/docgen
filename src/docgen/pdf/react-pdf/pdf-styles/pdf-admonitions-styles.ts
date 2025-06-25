@@ -2,8 +2,6 @@ import * as styles from '../../../../styles/variables/js/style-variables.js';
 
 const admonitionBaseStyle = {
   padding: '10pt',
-  marginLeft: 0,
-  marginRight: 0,
   marginVertical: '12pt',
 };
 

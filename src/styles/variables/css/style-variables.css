@@ -60,6 +60,7 @@
   --size-line-height: 26px;
   --size-admonition-border-left: 4px;
   --size-admonition-border-left-pdf: 1mm;
+  --size-admonition-border-radius: 4px;
   --size-message-padding: 20px 30px;
   --size-message-border-radius: 2px;
   --size-header-height: 80px;

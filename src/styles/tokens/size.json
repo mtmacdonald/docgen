@@ -42,6 +42,9 @@
       "borderLeft": {
         "@": { "value": "4px" },
         "pdf": { "value": "1mm" }
+      },
+      "borderRadius": {
+        "value": "4px"
       }
     },
     "message": {

@@ -59,6 +59,7 @@ export const SizeFontH6Pdf = '12pt';
 export const SizeLineHeight = '26px';
 export const SizeAdmonitionBorderLeft = '4px';
 export const SizeAdmonitionBorderLeftPdf = '1mm';
+export const SizeAdmonitionBorderRadius = '4px';
 export const SizeMessagePadding = '20px 30px';
 export const SizeMessageBorderRadius = '2px';
 export const SizeHeaderHeight = '80px';

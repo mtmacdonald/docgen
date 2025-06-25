@@ -1,39 +1,15 @@
 /*
-  admonitions
+  Admonitions
 
   - uses https://www.npmjs.com/package/markdown-it-admon
   - styles loosely borrowed from repo CSS: https://github.com/commenthol/markdown-it-admon/blob/main/styles/admonition.css
  */
 
-//.w-success {
-//  color: var(--color-text-success);
-//  padding: var(--size-message-padding);
-//  border-radius: var(--size-message-border-radius);
-//}
-//.w-warning {
-//  color: var(--color-text-warning);
-//  padding: var(--size-message-padding);
-//  border-radius: var(--size-message-border-radius);
-//}
-//.w-error {
-//  color: var(--color-text-error);
-//  padding: var(--size-message-padding);
-//  border-radius: var(--size-message-border-radius);
-//}
-//blockquote,
-//.w-information {
-//  color: var(--color-text-info);
-//  padding: var(--size-message-padding);
-//  border-radius: var(--size-message-border-radius);
-//}
-
-/* Base Admonition Style */
 .admonition {
   margin: 1.5em 0;
   padding: 0.8rem 1rem;
   border-left: var(--size-admonition-border-left) solid;
-  border-radius: 4px;
-  background-color: #f9f9f9;
+  border-radius: var(--size-admonition-border-radius);
 }
 
 .admonition > p {
