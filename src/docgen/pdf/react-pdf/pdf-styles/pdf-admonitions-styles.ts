@@ -1,3 +1,5 @@
+import * as styles from '../../../../styles/variables/js/style-variables.js';
+
 export const pdfAdmonitionsStyles = {
   ['.admonition']: {
     padding: '10pt',
@@ -10,24 +12,20 @@ export const pdfAdmonitionsStyles = {
     marginBottom: '6pt',
   },
   ['.admonition.information']: {
-    color: '#1a202c',
-    backgroundColor: '#e6f0fa',
-    borderLeft: '5px solid #3182ce',
+    backgroundColor: styles.ColorBackgroundInfo,
+    borderLeft: `5px solid ${styles.ColorBorderInfo}`,
   },
   ['.admonition.success']: {
-    color: '#22543d',
-    backgroundColor: '#f0fff4',
-    borderLeft: '5px solid #38a169',
+    backgroundColor: styles.ColorBackgroundSuccess,
+    borderLeft: `5px solid ${styles.ColorBorderSuccess}`,
   },
   ['.admonition.warning']: {
-    color: '#652b19',
-    backgroundColor: '#fffaf0',
-    borderLeft: '5px solid #dd6b20',
+    backgroundColor: styles.ColorBackgroundWarning,
+    borderLeft: `5px solid ${styles.ColorBorderWarning}`,
   },
   ['.admonition.error']: {
-    color: '#742a2a',
-    backgroundColor: '#fff5f5',
-    borderLeft: '5px solid #e53e3e',
+    backgroundColor: styles.ColorBackgroundError,
+    borderLeft: `5px solid ${styles.ColorBorderError}`,
   },
   // Optional: blockquote in matching style
   // blockquote: {
