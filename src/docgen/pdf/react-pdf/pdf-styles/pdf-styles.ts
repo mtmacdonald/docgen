@@ -1,6 +1,7 @@
 import * as styles from '../../../../styles/variables/js/style-variables.js';
 import { docsStyleSheet } from './pdf-docs-styles.ts';
 import { pdfAdmonitionsStyles } from './pdf-admonitions-styles.ts';
+import { pdfTableStyles } from './pdf-table-styles.js';
 
 export const fontSize = 10;
 
@@ -162,5 +163,6 @@ export const htmlStyleSheet = {
     textAlign: 'center',
   },
   ...pdfAdmonitionsStyles,
+  ...pdfTableStyles,
   ...docsStyleSheet,
 };
