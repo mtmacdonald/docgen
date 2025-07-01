@@ -169,3 +169,21 @@ Images can be added to documents - save the image files to the *files/images* di
 
 ---------------------
 For more examples, see the [CommonMark reference](commonmark.html).
+
+### Tables
+
+*What you type:*
+    
+    | Animal  | Description                    |
+    |---------|--------------------------------|
+    | Alpaca  | South American camelid mammal. |
+    | Tiger   | Large cat.                     |
+    | Wallaby | Australian mid-sized macropod. |
+
+*How it looks:*
+
+| Animal  | Description                    |
+|---------|--------------------------------|
+| Alpaca  | South American camelid mammal. |
+| Tiger   | Large cat.                     |
+| Wallaby | Australian mid-sized macropod. |
