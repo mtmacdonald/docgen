@@ -59,7 +59,7 @@
     "eslint-config-prettier": "^8.8.0",
     "ncp": "^2.0.0",
     "pkgroll": "^2.13.1",
-    "prettier": "^2.1.2",
+    "prettier": "^3.6.2",
     "rimraf": "^5.0.1",
     "sass": "^1.89.2",
     "style-dictionary": "^4.0.0",
