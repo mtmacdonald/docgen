@@ -62,9 +62,6 @@ section {
     flex: 1 0 auto;
   }
 
-  //expect responsive content (user-content that's not shouldn't break layout and scrolling)
-  overflow: hidden;
-
   > div p:not(blockquote p),
   > div div,
   > div pre,

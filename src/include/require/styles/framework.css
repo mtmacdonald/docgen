@@ -466,7 +466,6 @@ section {
   max-width: 100%;
   text-align: center;
   margin: 0 auto;
-  overflow: hidden;
 }
 section > * {
   text-align: left; /* Reset text alignment for child items */
@@ -942,7 +941,6 @@ img {
   display: flex;
   align-items: center;
   position: fixed;
-  color: var(--color-text);
 }
 @media print {
   .topbar {
