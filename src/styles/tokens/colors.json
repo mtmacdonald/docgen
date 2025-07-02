@@ -112,7 +112,12 @@
           "value": "#eee"
         },
         "headerFooter": {
-          "value": "#ddd"
+          "@": {
+            "value": "#ddd"
+          },
+          "pdf": {
+            "value": "#eee"
+          }
         }
       }
     }

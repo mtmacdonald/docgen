@@ -5,10 +5,17 @@ const tableCellStyle = {
   border: `${styles.SizeBorderWidthPdf} solid ${styles.ColorBorder}`,
 };
 
+const tableHeaderFooterStyle = {
+  ...tableCellStyle,
+  backgroundColor: styles.ColorTableBackgroundHeaderFooterPdf,
+  fontWeight: 'bold',
+};
+
 export const pdfTableStyles = {
   table: {
     border: '1px solid #ccc',
   },
   td: tableCellStyle,
-  th: tableCellStyle,
+  th: tableHeaderFooterStyle,
+  ['tfoot td']: tableHeaderFooterStyle,
 };

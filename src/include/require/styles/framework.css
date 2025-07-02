@@ -38,6 +38,7 @@
   --color-button-shadow: none;
   --color-table-background: #eee;
   --color-table-background-header-footer: #ddd;
+  --color-table-background-header-footer-pdf: #eee;
   --size-border-width: 1px;
   --size-border-width-pdf: 0.8pt;
   --size-button-base: 42px;
