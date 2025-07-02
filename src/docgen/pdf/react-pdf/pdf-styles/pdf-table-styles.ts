@@ -1,7 +1,8 @@
 import * as styles from '../../../../styles/variables/js/style-variables.js';
 
 const tableCellStyle = {
-  padding: '1mm',
+  padding: styles.SizeTableCellPaddingPdf,
+  border: `${styles.SizeBorderWidthPdf} solid ${styles.ColorBorder}`,
 };
 
 export const pdfTableStyles = {

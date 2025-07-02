@@ -1,16 +1,12 @@
 table,
 .w-table {
   border-spacing: 0;
-}
-
-.w-table {
-  width: 700px;
   border-collapse: collapse;
 
   td,
   th {
-    border: 1px solid var(--color-border);
-    padding: 2px 15px 2px 15px;
+    border: var(--size-border-width) solid var(--color-border);
+    padding: var(--size-table-cell-padding);
     height: 25px;
     vertical-align: middle;
   }
