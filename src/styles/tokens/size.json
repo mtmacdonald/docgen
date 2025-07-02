@@ -1,5 +1,11 @@
 {
   "size": {
+    "border": {
+      "width": {
+        "@": { "value": "1px" },
+        "pdf": { "value": "0.8pt" }
+      }
+    },
     "button": {
       "base": { "value": "42px" }
     },
@@ -36,6 +42,14 @@
     "line": {
       "height": {
         "value": "26px"
+      }
+    },
+    "table": {
+      "cell": {
+        "padding": {
+          "@": { "value": "2px 15px" },
+          "pdf": { "value": "2mm 2mm" }
+        }
       }
     },
     "contentBlock": {

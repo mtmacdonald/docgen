@@ -37,8 +37,10 @@
   --color-button-text-inverted: rgb(46, 113, 225);
   --color-button-shadow: none;
   --color-table-background: #eee;
-  --color-table-background-row: #eee;
   --color-table-background-header-footer: #ddd;
+  --color-table-background-header-footer-pdf: #eee;
+  --size-border-width: 1px;
+  --size-border-width-pdf: 0.8pt;
   --size-button-base: 42px;
   --size-font-base: 16px;
   --size-font-small: 12px;
@@ -57,6 +59,8 @@
   --size-font-h6: 0.75rem;
   --size-font-h6-pdf: 12pt;
   --size-line-height: 26px;
+  --size-table-cell-padding: 2px 15px;
+  --size-table-cell-padding-pdf: 2mm 2mm;
   --size-content-block-margin: 1.5em 0;
   --size-content-block-margin-pdf: 2mm 0;
   --size-content-block-padding: 0.8rem 1rem;
@@ -747,42 +751,22 @@ blockquote {
   font-style: italic;
 }
 
-table,
-.w-table {
+table {
   border-spacing: 0;
-}
-
-.w-table {
-  width: 700px;
   border-collapse: collapse;
 }
-.w-table td,
-.w-table th {
-  border: 1px solid var(--color-border);
-  padding: 2px 15px 2px 15px;
-  height: 25px;
-  vertical-align: middle;
+table td,
+table th {
+  border: var(--size-border-width) solid var(--color-border);
+  padding: var(--size-table-cell-padding);
 }
-.w-table th,
-.w-table tfoot td {
+table th,
+table tfoot td {
   background-color: var(--color-table-background-header-footer);
   font-weight: bold;
 }
-.w-table caption {
-  caption-side: bottom;
-  font-weight: bold;
-  padding: 15px;
-}
-.w-table.w-fixed {
-  table-layout: fixed;
-  word-wrap: break-word;
-}
-.w-table.w-stripe tbody tr:nth-of-type(2n) {
-  background-color: var(--color-table-background-row);
-}
-.w-table th.w-center,
-.w-table td.w-center {
-  display: table-cell;
+table tr:nth-of-type(2n) {
+  background-color: var(--color-table-background);
 }
 
 /*
