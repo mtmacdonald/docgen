@@ -751,47 +751,29 @@ blockquote {
   font-style: italic;
 }
 
-table,
-.w-table {
+table {
   border-spacing: 0;
   border-collapse: collapse;
 }
 table td,
-table th,
-.w-table td,
-.w-table th {
+table th {
   border: var(--size-border-width) solid var(--color-border);
   padding: var(--size-table-cell-padding);
   height: 25px;
   vertical-align: middle;
 }
 table th,
-table tfoot td,
-.w-table th,
-.w-table tfoot td {
+table tfoot td {
   background-color: var(--color-table-background-header-footer);
   font-weight: bold;
 }
-table caption,
-.w-table caption {
+table caption {
   caption-side: bottom;
   font-weight: bold;
   padding: 15px;
 }
-table.w-fixed,
-.w-table.w-fixed {
-  table-layout: fixed;
-  word-wrap: break-word;
-}
-table.w-stripe tbody tr:nth-of-type(2n),
-.w-table.w-stripe tbody tr:nth-of-type(2n) {
+table tr:nth-of-type(2n) {
   background-color: var(--color-table-background-row);
-}
-table th.w-center,
-table td.w-center,
-.w-table th.w-center,
-.w-table td.w-center {
-  display: table-cell;
 }
 
 /*

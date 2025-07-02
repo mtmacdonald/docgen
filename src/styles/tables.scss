@@ -1,5 +1,4 @@
-table,
-.w-table {
+table {
   border-spacing: 0;
   border-collapse: collapse;
 
@@ -23,21 +22,7 @@ table,
     padding: 15px;
   }
 
-  //'fixed-width forces the cell sizing to be independent of content'
-  //'therefore need to break long words to prevent them overflowing into the next cell'
-  &.w-fixed {
-    table-layout: fixed;
-    word-wrap: break-word;
-  }
-
-  //'optionally set .w-stripe to stripe a table'
-  &.w-stripe tbody tr:nth-of-type(2n) {
+  tr:nth-of-type(2n) {
     background-color: var(--color-table-background-row);
-  }
-
-  //'override display:block on the w-center class within tables'
-  th.w-center,
-  td.w-center {
-    display: table-cell;
   }
 }
