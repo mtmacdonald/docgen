@@ -1,4 +1,8 @@
-﻿## DocGen 5.1.0 25/06/2025
+﻿## DocGen 5.2.0 02/07/2025
+
+- Add support for tables
+
+## DocGen 5.1.0 25/06/2025
 
 - Add support for admonitions
 - Upgrades `@react-pdf/renderer`

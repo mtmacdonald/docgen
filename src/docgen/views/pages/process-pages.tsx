@@ -87,10 +87,6 @@ export const processPages = async ({
         );
         $('#dg-autoTitle').addClass('dg-hiddenTitle');
       }
-      //------------------------------------------------------------------------------------------------------
-      //apply the w-table class
-      $('table:not(.unstyled)').addClass('w-table w-fixed w-stripe');
-      //------------------------------------------------------------------------------------------------------
       pages[key] = $.html();
     });
   });

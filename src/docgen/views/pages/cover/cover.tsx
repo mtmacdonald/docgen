@@ -7,7 +7,6 @@ export const Cover = ({
     <div className="w-fixed-width">
       <div id="dg-innerContent">
         <table
-          className="w-table w-fixed"
           id="dg-coverInfo">
           <thead>
           <tr>
