@@ -111,9 +111,6 @@
         "@": {
           "value": "#eee"
         },
-        "row": {
-          "value": "#eee"
-        },
         "headerFooter": {
           "value": "#ddd"
         }

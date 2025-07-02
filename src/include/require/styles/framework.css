@@ -37,7 +37,6 @@
   --color-button-text-inverted: rgb(46, 113, 225);
   --color-button-shadow: none;
   --color-table-background: #eee;
-  --color-table-background-row: #eee;
   --color-table-background-header-footer: #ddd;
   --size-border-width: 1px;
   --size-border-width-pdf: 0.8pt;
@@ -759,21 +758,14 @@ table td,
 table th {
   border: var(--size-border-width) solid var(--color-border);
   padding: var(--size-table-cell-padding);
-  height: 25px;
-  vertical-align: middle;
 }
 table th,
 table tfoot td {
   background-color: var(--color-table-background-header-footer);
   font-weight: bold;
 }
-table caption {
-  caption-side: bottom;
-  font-weight: bold;
-  padding: 15px;
-}
 table tr:nth-of-type(2n) {
-  background-color: var(--color-table-background-row);
+  background-color: var(--color-table-background);
 }
 
 /*

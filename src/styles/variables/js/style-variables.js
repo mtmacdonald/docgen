@@ -37,7 +37,6 @@ export const ColorButtonText = '#fff';
 export const ColorButtonTextInverted = 'rgb(46, 113, 225)';
 export const ColorButtonShadow = 'none';
 export const ColorTableBackground = '#eee';
-export const ColorTableBackgroundRow = '#eee';
 export const ColorTableBackgroundHeaderFooter = '#ddd';
 export const SizeBorderWidth = '1px';
 export const SizeBorderWidthPdf = '0.8pt';

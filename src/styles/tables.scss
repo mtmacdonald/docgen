@@ -6,8 +6,6 @@ table {
   th {
     border: var(--size-border-width) solid var(--color-border);
     padding: var(--size-table-cell-padding);
-    height: 25px;
-    vertical-align: middle;
   }
 
   th,
@@ -16,13 +14,7 @@ table {
     font-weight: bold;
   }
 
-  caption {
-    caption-side: bottom;
-    font-weight: bold;
-    padding: 15px;
-  }
-
   tr:nth-of-type(2n) {
-    background-color: var(--color-table-background-row);
+    background-color: var(--color-table-background);
   }
 }
