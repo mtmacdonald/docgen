@@ -23,7 +23,10 @@ button,
   text-decoration: none;
   border-radius: 6px;
   user-select: none;
-  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease;
+  transition:
+    opacity 0.1s ease,
+    background-color 0.1s ease,
+    color 0.1s ease;
   height: var(--size-button-base);
   border-radius: calc(var(--size-button-base) / 2);
   font-weight: 600;

@@ -1,7 +1,7 @@
 import { promises as fsp } from 'fs';
 import path from 'path';
 
-const iconSourcePath = 'node_modules/@tabler/icons/icons';
+const iconSourcePath = 'node_modules/@tabler/icons/icons/outline';
 const iconsOutputPath = 'src/include/require/styles/icons.js';
 
 const output = (icons) => `var w_icons = ${JSON.stringify(icons, null, 2)};`;
