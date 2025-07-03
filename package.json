@@ -37,7 +37,7 @@
     "@react-pdf/renderer": "^4.3.0",
     "cheerio": "^1.1.0",
     "cli-spinner": "^0.2.10",
-    "commander": "^11.0.0",
+    "commander": "^14.0.0",
     "fs-extra": "^11.3.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
