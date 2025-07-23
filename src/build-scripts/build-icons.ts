@@ -19,19 +19,23 @@ export const buildIcons = async () => {
       const name = path.basename(file, extension).toLowerCase();
       return extension === '.svg' && includeIcons.includes(name);
     });
-    const svgContents = {};
-    await Promise.all(
+
+    const entries = await Promise.all(
       svgFiles.map(async (file) => {
         const filePath = path.join(iconSourcePath, file);
         const content = await fsp.readFile(filePath, 'utf8');
         const key = path.basename(file, '.svg'); // Remove .svg extension from filename
-        svgContents[key] = content;
+        return [key, content];
       }),
     );
-    await fsp.writeFile(iconsOutputPath, output(svgContents), {
-      encoding: 'utf8',
-    });
+
+    // Sort the icons by name
+    const sortedIcons = Object.fromEntries(
+      entries.sort(([a], [b]) => a.localeCompare(b)),
+    );
+
+    await fsp.writeFile(iconsOutputPath, output(sortedIcons), 'utf8');
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
