@@ -43,7 +43,7 @@ jobs:
         run: yarn test:run
 
       - name: Run DocGen (PROD)
-        run: yarn test:run:prod
+        run: yarn test:prod:run
 
       - name: Test Publish (Dry-Run)
         run: yarn test:publish
