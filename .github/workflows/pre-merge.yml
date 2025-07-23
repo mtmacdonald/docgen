@@ -25,7 +25,7 @@ jobs:
         run: yarn prettier:check
 
       - name: Check Types
-        run: yarn lint:check
+        run: yarn check:types
 
       - name: Build icons
         run: yarn build:icons
