@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Document } from '@react-pdf/renderer';
 import { PdfPage } from './pdf-page/pdf-page.tsx';
 
@@ -22,12 +22,13 @@ export const Pdf = ({
   return (
     <Document>
       {Object.values(pages).map((page, i) => (
-        <PdfPage
-          key={i}
-          page={page}
-          parameters={parameters}
-          options={options}
-        />
+        <Fragment key={i}>
+          <PdfPage
+            page={page}
+            parameters={parameters}
+            options={options}
+          />
+        </Fragment>
       ))}
     </Document>
   );
