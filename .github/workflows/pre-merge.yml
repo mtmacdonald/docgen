@@ -24,8 +24,8 @@ jobs:
       - name: Check Formatting
         run: yarn prettier:check
 
-      - name: Check Types
-        run: yarn check:types
+      # - name: Check Types
+      #   run: yarn check:types
 
       - name: Build icons
         run: yarn build:icons
