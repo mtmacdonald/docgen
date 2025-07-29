@@ -1,4 +1,8 @@
-﻿## DocGen 5.2.0 02/07/2025
+﻿## DocGen 5.3.0 29/07/2025
+
+- Upgrade fonts (Inkit rebrand)
+
+## DocGen 5.2.0 02/07/2025
 
 - Add support for tables
 
