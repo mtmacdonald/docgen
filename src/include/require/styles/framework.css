@@ -1207,6 +1207,7 @@ footer > div:first-child {
 
 @media (min-width: 1200px) {
   .banner h1 {
+    font-family: 'space-grotesk', sans-serif;
     font-size: 64px;
     letter-spacing: -0.025em;
     line-height: 1.15;
