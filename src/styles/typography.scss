@@ -4,41 +4,55 @@
 
 @font-face {
   font-family: 'archivo';
-  src: url('fonts/Archivo-Regular.woff2') format('woff2');
+  src: url('fonts/archivo-regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archivo';
-  src: url('fonts/Archivo-SemiBold.woff2') format('woff2');
+  src: url('fonts/archivo-semibold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archivo';
-  src: url('fonts/Archivo-Italic.woff2') format('woff2');
+  src: url('fonts/archivo-italic.woff2') format('woff2');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'archivo';
-  src: url('fonts/Archivo-SemiBoldItalic.woff2') format('woff2');
+  src: url('fonts/archivo-semibold-italic.woff2') format('woff2');
   font-weight: bold;
   font-style: italic;
+}
+
+@font-face {
+  font-family: 'space-grotesk';
+  src: url('fonts/space-grotesk-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'space-grotesk';
+  src: url('fonts/space-grotesk-semibold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'droid-sans-mono';
-  src: url('fonts/DroidSansMono.woff') format('woff');
+  src: url('fonts/droid-sans-mono.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
-$default-font: 'archivo', Arial, sans-serif;
-$code-font: 'droid-sans-mono', Courier, monospace;
+$default-font: 'archivo', sans-serif;
+$code-font: 'droid-sans-mono', monospace;
 
 html {
   font-size: var(--size-font-medium);
