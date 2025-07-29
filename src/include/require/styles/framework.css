@@ -489,25 +489,25 @@ section > div blockquote {
  typography
 */
 @font-face {
-  font-family: 'montserrat';
+  font-family: 'archivo';
   src: url('fonts/Archivo-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'montserrat';
+  font-family: 'archivo';
   src: url('fonts/Archivo-SemiBold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
-  font-family: 'montserrat';
+  font-family: 'archivo';
   src: url('fonts/Archivo-Italic.woff2') format('woff2');
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
-  font-family: 'montserrat';
+  font-family: 'archivo';
   src: url('fonts/Archivo-SemiBoldItalic.woff2') format('woff2');
   font-weight: bold;
   font-style: italic;
@@ -523,7 +523,7 @@ html {
 }
 
 body {
-  font-family: 'montserrat', Arial, sans-serif;
+  font-family: 'archivo', Arial, sans-serif;
   font-size: var(--size-font-medium);
   line-height: var(--size-line-height);
 }
