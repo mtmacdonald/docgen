@@ -1,0 +1,49 @@
+name: Pre-Merge Checks
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Check Formatting
+        run: yarn prettier:check
+
+      - name: Check Types
+        run: yarn check:types
+
+      - name: Build icons
+        run: yarn build:icons
+
+      - name: Build styles
+        run: yarn build:styles
+
+      - name: Build package
+        run: yarn build
+
+      - name: Run DocGen scaffold (DEV)
+        run: yarn test:scaffold
+
+      - name: Run DocGen (DEV)
+        run: yarn test:run
+
+      - name: Run DocGen (PROD)
+        run: yarn test:prod:run
+
+      - name: Test Publish (Dry-Run)
+        run: yarn test:publish

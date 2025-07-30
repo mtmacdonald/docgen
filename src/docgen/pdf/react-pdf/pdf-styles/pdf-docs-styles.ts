@@ -2,6 +2,9 @@
 
 export const docsStyleSheet = {
   // Features cards
+  ['.banner h1']: {
+    fontFamily: 'space-grotesk',
+  },
   ['.features']: {
     padding: 0,
     width: '100%',

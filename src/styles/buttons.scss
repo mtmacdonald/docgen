@@ -1,3 +1,5 @@
+@use 'typography';
+
 /*
  buttons
 */
@@ -18,12 +20,16 @@ button,
   text-transform: none;
   text-shadow: none;
   line-height: 1em;
+  font-family: typography.$highlight-font;
   font-style: normal;
   text-align: center;
   text-decoration: none;
   border-radius: 6px;
   user-select: none;
-  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease;
+  transition:
+    opacity 0.1s ease,
+    background-color 0.1s ease,
+    color 0.1s ease;
   height: var(--size-button-base);
   border-radius: calc(var(--size-button-base) / 2);
   font-weight: 600;

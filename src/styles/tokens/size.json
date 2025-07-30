@@ -10,7 +10,7 @@
       "base": { "value": "42px" }
     },
     "font": {
-      "base": { "value": "{size.font.medium.value}" },
+      "base": { "value": "16px" },
       "small": { "value": "12px" },
       "medium": { "value": "16px" },
       "large": { "value": "24px" },
