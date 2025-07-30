@@ -11,6 +11,7 @@ export const pdfStyleSheet = {
     paddingBottom: 65,
     paddingHorizontal: 35,
     fontSize,
+    fontFamily: 'archivo',
   },
 };
 
@@ -73,7 +74,7 @@ export const htmlStyleSheet = {
   },
   pre: {
     fontSize: '10pt',
-    fontFamily: 'Courier',
+    fontFamily: 'space-mono',
     backgroundColor: '#f5f5f5',
     color: '#333333',
     borderRadius: '4pt',
