@@ -60,14 +60,14 @@ Font.register({
       fontWeight: 400,
     },
     {
-      src: join(packageAbsolutePath, 'include/require/styles/fonts/space-mono-600.ttf'),
+      src: join(packageAbsolutePath, 'include/require/styles/fonts/space-mono-700.ttf'),
       fontStyle: 'normal',
-      fontWeight: 600,
+      fontWeight: 700,
     },
     {
-      src: join(packageAbsolutePath, 'include/require/styles/fonts/space-mono-600-italic.ttf'),
+      src: join(packageAbsolutePath, 'include/require/styles/fonts/space-mono-700-italic.ttf'),
       fontStyle: 'italic',
-      fontWeight: 600,
+      fontWeight: 700,
     },
   ]
 });
