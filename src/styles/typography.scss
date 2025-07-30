@@ -3,42 +3,88 @@
 */
 
 @font-face {
-  font-family: 'montserrat';
-  src: url('fonts/Montserrat-Regular.woff') format('woff');
-  font-weight: normal;
+  font-family: 'archivo';
+  font-display: swap;
+  src: url('fonts/archivo-regular.woff2') format('woff2');
   font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
-  font-family: 'montserrat';
-  src: url('fonts/Montserrat-SemiBold.woff') format('woff');
-  font-weight: bold;
+  font-family: 'archivo';
+  font-display: swap;
+  src: url('fonts/archivo-600.woff2') format('woff2');
   font-style: normal;
+  font-weight: 600;
 }
 
 @font-face {
-  font-family: 'montserrat';
-  src: url('fonts/Montserrat-Italic.woff') format('woff');
-  font-weight: normal;
+  font-family: 'archivo';
+  font-display: swap;
+  src: url('fonts/archivo-italic.woff2') format('woff2');
   font-style: italic;
+  font-weight: 400;
 }
 
 @font-face {
-  font-family: 'montserrat';
-  src: url('fonts/Montserrat-SemiBoldItalic.woff') format('woff');
-  font-weight: bold;
+  font-family: 'archivo';
+  font-display: swap;
+  src: url('fonts/archivo-600-italic.woff2') format('woff2');
   font-style: italic;
+  font-weight: 600;
 }
 
 @font-face {
-  font-family: 'droid-sans-mono';
-  src: url('fonts/DroidSansMono.woff') format('woff');
-  font-weight: normal;
+  font-family: 'space-grotesk';
+  font-display: swap;
+  src: url('fonts/space-grotesk-regular.woff2') format('woff2');
   font-style: normal;
+  font-weight: 400;
 }
 
-$default-font: 'montserrat', Arial, sans-serif;
-$code-font: 'droid-sans-mono', Courier, monospace;
+@font-face {
+  font-family: 'space-grotesk';
+  font-display: swap;
+  src: url('fonts/space-grotesk-600.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'space-mono';
+  font-display: swap;
+  src: url('fonts/space-mono-regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'space-mono';
+  font-display: swap;
+  src: url('fonts/space-mono-700.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'space-mono';
+  font-display: swap;
+  src: url('fonts/space-mono-italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'space-mono';
+  font-display: swap;
+  src: url('fonts/space-mono-700-italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 700;
+}
+
+$default-font: 'archivo', sans-serif;
+$highlight-font: 'space-grotesk', sans-serif;
+$code-font: 'space-mono', monospace;
 
 html {
   font-size: var(--size-font-medium);
