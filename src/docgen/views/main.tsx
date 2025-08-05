@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-const App = () => <div>Hello World</div>;
+import { App } from './app.tsx';
 
 const main = () => {
   const rootElement = document.getElementById('root');
