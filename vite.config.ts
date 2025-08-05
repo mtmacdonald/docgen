@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [
     react(),
     createHtmlPlugin({
-      entry: 'src/docgen/views/html.tsx',
+      entry: 'src/docgen/views/main.tsx',
       template: 'new-index.html',
     }),
   ],
