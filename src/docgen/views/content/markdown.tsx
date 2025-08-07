@@ -27,7 +27,6 @@ export const Markdown = ({ content }: Props) => {
             </code>
           );
         },
-        // Customize other elements as needed (e.g. h1, table, etc.)
       }}
     >
       {content}
