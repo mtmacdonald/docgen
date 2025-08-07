@@ -2,10 +2,14 @@ import path from 'node:path';
 import { build, loadConfigFromFile, mergeConfig } from 'vite';
 
 export const generate = async (command) => {
-  const { input, output } = command;
-  console.log(input, output);
+  const inputDir = path.resolve(process.cwd(), command.input); // user markdown path
+  const outputDir = path.resolve(process.cwd(), command.output); // site output path
+
+  console.log('Input (user docs):', inputDir);
+  console.log('Output (build dir):', outputDir);
   console.log('Building DocGen Site...');
 
+  // Optionally pass inputDir to your app via define or env
   const configPath = path.resolve(process.cwd(), 'vite.config.ts');
   const loaded = await loadConfigFromFile(
     { command: 'build', mode: 'production' },
@@ -17,14 +21,14 @@ export const generate = async (command) => {
   }
 
   const finalConfig = mergeConfig(loaded.config, {
-    // Keep the root as is (project root)
     build: {
-      outDir: path.resolve(process.cwd(), command.output),
+      outDir: outputDir,
       emptyOutDir: true,
     },
+    define: {
+      __DOCGEN_INPUT__: JSON.stringify(inputDir), // optional way to pass input to your app
+    },
   });
-
-  console.log(JSON.stringify(finalConfig, null, 2));
 
   await build(finalConfig);
 };
