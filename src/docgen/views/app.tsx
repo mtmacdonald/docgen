@@ -1,7 +1,8 @@
 import React from 'react';
 import { Main } from './pages/main/main';
 import '../../include/require/styles/framework.css';
-import { Page } from './content/page';
+import { RouterProvider } from '@tanstack/react-router';
+import { router } from './router';
 
 export const App = () => {
   return (
@@ -25,7 +26,7 @@ export const App = () => {
       pdfEnabled
     >
       <div>
-        <Page />
+        <RouterProvider router={router} />
       </div>
     </Main>
   );
