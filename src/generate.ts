@@ -1,13 +1,10 @@
 import path from 'node:path';
 import { build, loadConfigFromFile, mergeConfig } from 'vite';
-import { fileURLToPath } from 'node:url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export const generate = async (command) => {
-  console.log('Running Vite build with overrides...');
-  console.log(command);
+  const { input, output } = command;
+  console.log(input, output);
+  console.log('Building DocGen Site...');
 
   const configPath = path.resolve(process.cwd(), 'vite.config.ts');
   const loaded = await loadConfigFromFile(
@@ -27,6 +24,7 @@ export const generate = async (command) => {
     },
   });
 
+  console.log(JSON.stringify(finalConfig, null, 2));
+
   await build(finalConfig);
 };
-z;
