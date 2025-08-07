@@ -10,6 +10,7 @@
   "scripts": {
     "dev:new": "vite",
     "build:docs:new": "vite build",
+    "generate": "rimraf docs-new && tsx src/cli.ts generate -i src/docs -o ./docs-new",
     "preview:docs:new": "vite preview",
     "copy:files": "ncp src/include dist/include",
     "dev": "tsx src/cli.ts run",
