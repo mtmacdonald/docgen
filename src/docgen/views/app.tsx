@@ -23,11 +23,10 @@ export const App = () => {
       }}
       sortedPages={[]}
       pdfEnabled
-      children={(
-        <div>
-          <Page />
-        </div>
-      )}
-    />
+    >
+      <div>
+        <Page />
+      </div>
+    </Main>
   );
 }
