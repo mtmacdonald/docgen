@@ -1,6 +1,7 @@
 import React from 'react';
 import { Main } from './pages/main/main';
 import '../../include/require/styles/framework.css';
+import { Page } from './content/page';
 
 export const App = () => {
   return (
@@ -22,7 +23,11 @@ export const App = () => {
       }}
       sortedPages={[]}
       pdfEnabled
-      children={(<div>Placeholder</div>)}
+      children={(
+        <div>
+          <Page />
+        </div>
+      )}
     />
   );
 }
