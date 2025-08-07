@@ -11,7 +11,7 @@ export const Markdown = ({ content }: Props) => {
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
-        code({ node, inline, className, children, ...props }) {
+        code({ node, className, children, ...props }) {
           return (
             <code
               className={className}

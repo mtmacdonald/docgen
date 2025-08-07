@@ -1,3 +1,4 @@
+import React from 'react';
 import { Markdown } from './markdown.tsx';
 
 const md = `
