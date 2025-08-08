@@ -87,15 +87,17 @@
     li {
       display: flex;
       align-items: center;
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        svg {
+          vertical-align: middle;
+        }
+      }
     }
     .dgIcon {
       padding: 0 5px 0 0;
-      width: 20px;
-      height: 20px;
-    }
-    .dgIcon svg {
-      width: 20px;
-      height: 20px;
     }
   }
 

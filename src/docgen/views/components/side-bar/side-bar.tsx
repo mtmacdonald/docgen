@@ -4,6 +4,7 @@ import { TbMenu2, TbX, TbUsers, TbRefresh } from 'react-icons/tb';
 import cx from 'classnames';
 
 const SIDEBAR_ICON_SIZE = 24;
+const SIDEBAR_SMALL_ICON_SIZE = 20;
 
 const Page = ({ page }) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
@@ -57,18 +58,16 @@ export const SideBar = ({
                 <li>
                 <span
                   className="dgIcon"
-                  data-name="users"
                   title="ownership"
                 ></span>
-                  <a href="ownership.html"><TbUsers /> Ownership</a>
+                  <a href="ownership.html"><TbUsers size={SIDEBAR_SMALL_ICON_SIZE} /> Ownership</a>
                 </li>
                 <li>
                 <span
                   className="dgIcon"
-                  data-name="refresh"
                   title="release notes"
                 ></span>
-                  <a href="release-notes.html"><TbRefresh /> Release Notes</a>
+                  <a href="release-notes.html"><TbRefresh size={SIDEBAR_SMALL_ICON_SIZE} /> Release Notes</a>
                 </li>
               </ul>
             </div>

@@ -1129,14 +1129,16 @@ img {
   display: flex;
   align-items: center;
 }
+#dgSideBarContent .dgSideBarAttribution li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+#dgSideBarContent .dgSideBarAttribution li a svg {
+  vertical-align: middle;
+}
 #dgSideBarContent .dgSideBarAttribution .dgIcon {
   padding: 0 5px 0 0;
-  width: 20px;
-  height: 20px;
-}
-#dgSideBarContent .dgSideBarAttribution .dgIcon svg {
-  width: 20px;
-  height: 20px;
 }
 #dgSideBarContent .dgSideBarPDFButton {
   margin: 32px 0 12px 0;
