@@ -13,22 +13,6 @@ export const Markdown = ({ content }: Props) => {
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
       components={{
-        code({ node, className, children, ...props }) {
-          return (
-            <code
-              className={className}
-              style={{
-                background: '#f6f8fa',
-                padding: '0.2em 0.4em',
-                borderRadius: '4px',
-                fontSize: '0.95em',
-              }}
-              {...props}
-            >
-              {children}
-            </code>
-          );
-        },
       }}
     >
       {content}
