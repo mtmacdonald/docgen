@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
+import { TbMenu2, TbX } from 'react-icons/tb';
 import cx from 'classnames';
 
 const Page = ({ page }) => {
@@ -30,7 +31,7 @@ export const SideBar = ({
       <button id="dgSideBarButton"
         onClick={toggleOpen}
       >
-        <span className="dgIcon" data-name="menu-2"></span>
+        {open ? <TbX /> : <TbMenu2 />}
       </button>
       <div id="dgSideBarInnerWrapper">
         <div id="dgSideBarInner">
