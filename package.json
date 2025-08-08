@@ -37,6 +37,7 @@
     "@react-pdf/renderer": "^4.3.0",
     "@tanstack/react-router": "^1.130.12",
     "cheerio": "^1.1.2",
+    "classnames": "^2.5.1",
     "cli-spinner": "^0.2.10",
     "commander": "^14.0.0",
     "fs-extra": "^11.3.0",
