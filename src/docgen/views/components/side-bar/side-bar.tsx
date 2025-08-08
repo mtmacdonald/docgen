@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { TbMenu2, TbX } from 'react-icons/tb';
+import { TbMenu2, TbX, TbUsers, TbRefresh } from 'react-icons/tb';
 import cx from 'classnames';
 
 const Page = ({ page }) => {
@@ -56,7 +56,7 @@ export const SideBar = ({
                   data-name="users"
                   title="ownership"
                 ></span>
-                  <a href="ownership.html">Ownership</a>
+                  <a href="ownership.html"><TbUsers /> Ownership</a>
                 </li>
                 <li>
                 <span
@@ -64,7 +64,7 @@ export const SideBar = ({
                   data-name="refresh"
                   title="release notes"
                 ></span>
-                  <a href="release-notes.html">Release Notes</a>
+                  <a href="release-notes.html"><TbRefresh /> Release Notes</a>
                 </li>
               </ul>
             </div>
