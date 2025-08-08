@@ -1188,9 +1188,6 @@ img {
   margin: 0;
   color: white;
 }
-#dgSideBarButton .dgIcon svg {
-  height: 40px;
-}
 .dgSideBarCollapsed #dgSideBarButton {
   transform: scaleX(-1);
 }

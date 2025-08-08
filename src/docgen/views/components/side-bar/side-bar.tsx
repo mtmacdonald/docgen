@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { TbMenu2, TbX, TbUsers, TbRefresh } from 'react-icons/tb';
 import cx from 'classnames';
 
+const SIDEBAR_ICON_SIZE = 24;
+
 const Page = ({ page }) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
   const path = name + '.html';
@@ -31,7 +33,9 @@ export const SideBar = ({
       <button id="dgSideBarButton"
         onClick={toggleOpen}
       >
-        {open ? <TbX /> : <TbMenu2 />}
+        <span className="dgIcon">
+          {open ? <TbX size={SIDEBAR_ICON_SIZE}/> : <TbMenu2 size={SIDEBAR_ICON_SIZE} />}
+        </span>
       </button>
       <div id="dgSideBarInnerWrapper">
         <div id="dgSideBarInner">
