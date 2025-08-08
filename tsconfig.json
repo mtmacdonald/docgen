@@ -9,8 +9,10 @@
     "moduleResolution": "bundler",
     "module": "ESNext",
     "allowImportingTsExtensions": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strictNullChecks": true
   },
+  "include": ["src", "vite-env.d.ts"],
   "files": [
     "./src/cli.ts"
   ]

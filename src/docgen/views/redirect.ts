@@ -13,7 +13,7 @@ export let createRedirect = async ({ options, redirectPage, homePage }) => {
     let $ = redirectPage;
     $('a').attr('href', redirectLink);
     $('meta[http-equiv=REFRESH]').attr('content', '0;url=' + redirectLink);
-    let file = options.output + '../' + 'index.html';
+    let file = options.output + '../' + 'redirect.html';
     try {
       await writeFile(file, $.html());
     } catch (error) {

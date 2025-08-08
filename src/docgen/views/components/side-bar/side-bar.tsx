@@ -1,5 +1,10 @@
 // @ts-nocheck
-import React from 'react';
+import React, { useState } from 'react';
+import { TbMenu2, TbX, TbUsers, TbRefresh } from 'react-icons/tb';
+import cx from 'classnames';
+
+const SIDEBAR_ICON_SIZE = 24;
+const SIDEBAR_SMALL_ICON_SIZE = 20;
 
 const Page = ({ page }) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
@@ -16,12 +21,22 @@ export const SideBar = ({
   sortedPages,
   pdfEnabled
 }) => {
+  const [open, setOpen] = useState(false);
+  const toggleOpen = () => setOpen(!open)
   const pages = Object.values(sortedPages).flat();
   const pdfName = name.toLowerCase() + '.pdf';
   return (
-    <div id="dgSideBar" className="dgSideBarCollapsed">
-      <button id="dgSideBarButton">
-        <span className="dgIcon" data-name="menu-2"></span>
+    <div id="dgSideBar"
+         className={cx(
+           !open ? 'dgSideBarCollapsed' : '',
+         )}
+    >
+      <button id="dgSideBarButton"
+        onClick={toggleOpen}
+      >
+        <span className="dgIcon">
+          {open ? <TbX size={SIDEBAR_ICON_SIZE}/> : <TbMenu2 size={SIDEBAR_ICON_SIZE} />}
+        </span>
       </button>
       <div id="dgSideBarInnerWrapper">
         <div id="dgSideBarInner">
@@ -43,18 +58,16 @@ export const SideBar = ({
                 <li>
                 <span
                   className="dgIcon"
-                  data-name="users"
                   title="ownership"
                 ></span>
-                  <a href="ownership.html">Ownership</a>
+                  <a href="ownership.html"><TbUsers size={SIDEBAR_SMALL_ICON_SIZE} /> Ownership</a>
                 </li>
                 <li>
                 <span
                   className="dgIcon"
-                  data-name="refresh"
                   title="release notes"
                 ></span>
-                  <a href="release-notes.html">Release Notes</a>
+                  <a href="release-notes.html"><TbRefresh size={SIDEBAR_SMALL_ICON_SIZE} /> Release Notes</a>
                 </li>
               </ul>
             </div>

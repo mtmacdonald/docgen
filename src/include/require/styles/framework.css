@@ -1079,7 +1079,7 @@ img {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: var(size-side-bar-padding);
+  padding: var(--size-side-bar-padding);
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   width: var(--size-side-bar-width);
@@ -1129,14 +1129,16 @@ img {
   display: flex;
   align-items: center;
 }
+#dgSideBarContent .dgSideBarAttribution li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+#dgSideBarContent .dgSideBarAttribution li a svg {
+  vertical-align: middle;
+}
 #dgSideBarContent .dgSideBarAttribution .dgIcon {
   padding: 0 5px 0 0;
-  width: 20px;
-  height: 20px;
-}
-#dgSideBarContent .dgSideBarAttribution .dgIcon svg {
-  width: 20px;
-  height: 20px;
 }
 #dgSideBarContent .dgSideBarPDFButton {
   margin: 32px 0 12px 0;
@@ -1187,9 +1189,6 @@ img {
 #dgSideBarButton .dgIcon {
   margin: 0;
   color: white;
-}
-#dgSideBarButton .dgIcon svg {
-  height: 40px;
 }
 .dgSideBarCollapsed #dgSideBarButton {
   transform: scaleX(-1);
