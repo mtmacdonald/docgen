@@ -1,5 +1,6 @@
 // @ts-nocheck
-import React from 'react';
+import React, { useState } from 'react';
+import cx from 'classnames';
 
 const Page = ({ page }) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
@@ -16,11 +17,19 @@ export const SideBar = ({
   sortedPages,
   pdfEnabled
 }) => {
+  const [open, setOpen] = useState(false);
+  const toggleOpen = () => setOpen(!open)
   const pages = Object.values(sortedPages).flat();
   const pdfName = name.toLowerCase() + '.pdf';
   return (
-    <div id="dgSideBar" className="dgSideBarCollapsed">
-      <button id="dgSideBarButton">
+    <div id="dgSideBar"
+         className={cx(
+           !open ? 'dgSideBarCollapsed' : '',
+         )}
+    >
+      <button id="dgSideBarButton"
+        onClick={toggleOpen}
+      >
         <span className="dgIcon" data-name="menu-2"></span>
       </button>
       <div id="dgSideBarInnerWrapper">
