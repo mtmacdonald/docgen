@@ -7,7 +7,8 @@ import {
 import { Page } from './content/page.tsx';
 
 const pages = import.meta.glob('../../docs/**/*.md', {
-  as: 'raw',
+  query: '?raw',
+  import: 'default',
   eager: true,
 }) as Record<string, string>;
 
