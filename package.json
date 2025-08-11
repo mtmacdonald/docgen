@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "dev:docs:vite": "tsx src/cli.ts dev -i src/docs -o ./docs-new",
-    "build:docs:vite": "rimraf docs-new && tsx src/cli.ts build -i src/docs -o ./docs-new",
-    "preview:docs:new": "vite preview",
+    "build:docs:vite": "tsx src/cli.ts build -i src/docs -o ./docs-new",
+    "preview:docs:new": "npx serve -s ./new-docs",
     "copy:files": "ncp src/include dist/include",
     "dev": "tsx src/cli.ts run",
     "check:types": "tsc --noEmit",
