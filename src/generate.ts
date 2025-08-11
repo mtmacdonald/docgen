@@ -1,7 +1,6 @@
 import path from 'node:path';
 import { build, createServer } from 'vite';
 import react from '@vitejs/plugin-react';
-import { copyStaticFiles } from './copy-static-files.ts';
 
 export const runVite = async (command, mode) => {
   const inputDir = path.resolve(process.cwd(), command.input);
@@ -24,9 +23,7 @@ export const runVite = async (command, mode) => {
       ...baseConfig,
       build: { outDir: outputDir, emptyOutDir: true },
     });
-    await copyStaticFiles(inputDir, outputDir);
   } else {
-    await copyStaticFiles(inputDir, path.join(process.cwd(), 'public'));
     const server = await createServer(baseConfig);
     await server.listen();
     server.printUrls();
