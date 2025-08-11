@@ -10,7 +10,7 @@
   "scripts": {
     "dev:docs:vite": "tsx src/cli.ts dev -i src/docs -o ./docs-new",
     "build:docs:vite": "tsx src/cli.ts build -i src/docs -o ./docs-new",
-    "preview:docs:new": "npx serve -s ./new-docs",
+    "preview:docs:new": "npx serve -s ./docs-new",
     "copy:files": "ncp src/include dist/include",
     "dev": "tsx src/cli.ts run",
     "check:types": "tsc --noEmit",
