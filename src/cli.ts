@@ -2,7 +2,7 @@
 
 import { program } from 'commander';
 import { DocGen } from './docgen/docgen.ts';
-import { generate as viteGenerate } from './generate.ts';
+import { runVite } from './generate.ts';
 
 const generator = new DocGen(process);
 
@@ -14,10 +14,6 @@ const scaffold = (command) => {
 const run = (command) => {
   generator.setOptions(command);
   generator.run();
-};
-
-const generate = async (command) => {
-  await viteGenerate(command);
 };
 
 /*
@@ -81,7 +77,7 @@ program
   });
 
 program
-  .command('generate')
+  .command('dev')
   .usage('[--option]')
   .description('create a static website from an input directory')
   .option(
@@ -95,7 +91,25 @@ program
     './output',
   )
   .action((command) => {
-    generate(command);
+    runVite(command, 'dev');
+  });
+
+program
+  .command('build')
+  .usage('[--option]')
+  .description('create a static website from an input directory')
+  .option(
+    '-i, --input [path]',
+    'path to the input directory [default: ./]',
+    './',
+  )
+  .option(
+    '-o, --output [path]',
+    'path to the output directory [default: ./output]',
+    './output',
+  )
+  .action((command) => {
+    runVite(command, 'build');
   });
 
 program.parse(process.argv);

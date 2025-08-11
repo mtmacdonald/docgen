@@ -8,10 +8,8 @@
     "dist/*"
   ],
   "scripts": {
-    "dev:vite": "vite",
-    "dev:script": "tsx src/cli-new.ts dev -i src/docs -o ./docs-new",
-    "build:docs:script": "rimraf docs-new && tsx src/cli-new.ts build -i src/docs -o ./docs-new",
-    "build:docs:new": "vite build",
+    "dev:docs:vite": "tsx src/cli.ts dev -i src/docs -o ./docs-new",
+    "build:docs:vite": "rimraf docs-new && tsx src/cli.ts build -i src/docs -o ./docs-new",
     "preview:docs:new": "vite preview",
     "copy:files": "ncp src/include dist/include",
     "dev": "tsx src/cli.ts run",
