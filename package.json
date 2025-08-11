@@ -34,6 +34,7 @@
   "dependencies": {
     "@react-pdf/renderer": "^4.3.0",
     "@tanstack/react-router": "^1.130.12",
+    "@vitejs/plugin-react-oxc": "^0.4.0",
     "cheerio": "^1.1.2",
     "classnames": "^2.5.1",
     "cli-spinner": "^0.2.10",
@@ -58,7 +59,6 @@
   "devDependencies": {
     "@eslint/js": "^9.31.0",
     "@types/node": "^24.1.0",
-    "@vitejs/plugin-react": "^4.7.0",
     "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.8",
     "ncp": "^2.0.0",

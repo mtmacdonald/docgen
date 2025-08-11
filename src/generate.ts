@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { build, createServer } from 'vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-oxc';
 import { copyStaticFiles } from './copy-static-files.ts';
 
 export const runVite = async (command, mode) => {
