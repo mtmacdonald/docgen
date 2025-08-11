@@ -8,9 +8,10 @@
     "dist/*"
   ],
   "scripts": {
-    "dev:new": "vite",
+    "dev:vite": "vite",
+    "dev:script": "tsx src/cli-new.ts dev -i src/docs -o ./docs-new",
+    "build:docs:script": "rimraf docs-new && tsx src/cli-new.ts build -i src/docs -o ./docs-new",
     "build:docs:new": "vite build",
-    "generate": "rimraf docs-new && tsx src/cli.ts generate -i src/docs -o ./docs-new",
     "preview:docs:new": "vite preview",
     "copy:files": "ncp src/include dist/include",
     "dev": "tsx src/cli.ts run",
@@ -71,8 +72,7 @@
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
-    "vite": "npm:rolldown-vite@latest",
-    "vite-plugin-html": "^3.2.2"
+    "vite": "npm:rolldown-vite@latest"
   },
   "repository": {
     "type": "git",
