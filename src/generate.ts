@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 
 export const runVite = async (command, mode) => {
   const inputDir = path.resolve(process.cwd(), command.input);
+  const publicDir = path.join(inputDir, 'files');
   const outputDir = path.resolve(process.cwd(), command.output);
 
   const parametersPath = path.join(inputDir, 'parameters.json');
@@ -12,6 +13,7 @@ export const runVite = async (command, mode) => {
 
   const baseConfig = {
     root: process.cwd(),
+    publicDir,
     plugins: [react()],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parametersJson),

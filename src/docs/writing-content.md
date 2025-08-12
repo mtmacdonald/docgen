@@ -157,15 +157,15 @@ This is a link to [Google](http://www.google.com).
 
 ### Images
 
-Images can be added to documents - save the image files to the *files/images* directory (in `.jpg` or `.png` formats).
+Images can be added to documents - save the image files to the *images* directory (in `.jpg` or `.png` formats).
 
 *What you type:*
 
-    ![logo](files/images/example-image.png)
+    ![logo](images/example-image.png)
 
 *How it looks:*
 
-![logo](files/images/example-image.png)
+![logo](images/example-image.png)
 
 ---------------------
 For more examples, see the [CommonMark reference](commonmark.html).
