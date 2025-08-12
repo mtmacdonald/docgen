@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import { build, createServer } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -6,15 +7,14 @@ export const runVite = async (command, mode) => {
   const inputDir = path.resolve(process.cwd(), command.input);
   const outputDir = path.resolve(process.cwd(), command.output);
 
-  console.log(`Input (user docs): ${inputDir}`);
-  console.log(`Output (build dir): ${outputDir}`);
-  console.log(`Running Vite in ${mode} mode...`);
+  const parametersPath = path.join(inputDir, 'parameters.json');
+  const parametersJson = JSON.parse(fs.readFileSync(parametersPath, 'utf-8'));
 
   const baseConfig = {
     root: process.cwd(),
     plugins: [react()],
     define: {
-      __DOCGEN_INPUT__: JSON.stringify(inputDir),
+      __DOCGEN_PARAMETERS__: JSON.stringify(parametersJson),
     },
   };
 
