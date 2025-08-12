@@ -3,11 +3,7 @@ import { readFile } from './fs.ts';
 import { validateJSON } from '../validation/validation.ts';
 import type { Meta } from '../types.ts';
 
-export const loadMeta = async ({
-  inputPath,
-  verbose,
-  mainProcess,
-}): Promise<Meta> => {
+export const loadMeta = async ({ inputPath, verbose }): Promise<Meta> => {
   const meta = {
     parameters: null,
     contents: null,
@@ -25,7 +21,7 @@ export const loadMeta = async ({
           if (validateJSON({ key, data: file, verbose })) {
             meta[key] = file;
           } else {
-            mainProcess.exit(1);
+            //mainProcess.exit(1);
           }
         } catch (error) {
           console.log(
@@ -36,7 +32,7 @@ export const loadMeta = async ({
           if (verbose === true) {
             console.log(pico.red(error));
           }
-          mainProcess.exit(1);
+          //mainProcess.exit(1);
         }
       }
     }
@@ -56,6 +52,6 @@ export const loadMeta = async ({
     if (verbose === true) {
       console.log(pico.red(error));
     }
-    mainProcess.exit(1);
+    //mainProcess.exit(1);
   }
 };

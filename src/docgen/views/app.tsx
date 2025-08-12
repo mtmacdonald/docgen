@@ -3,20 +3,18 @@ import { Main } from './pages/main/main';
 import '../../include/require/styles/framework.css';
 import { RouterProvider } from '@tanstack/react-router';
 import { router } from './router';
-import { deriveParameters } from '../meta/derive-parameters.ts';
 
 declare const __DOCGEN_PARAMETERS__: unknown;
+declare const __DOCGEN_PAGES__: unknown;
 
 export const App = () => {
-  const derivedParameters = deriveParameters({
-    rawParameters: __DOCGEN_PARAMETERS__,
-    setVersion: '',
-    setReleaseDate: '',
-    homeLink: '',
-  });
 
   return (
-    <Main parameters={derivedParameters} sortedPages={[]} pdfEnabled>
+    <Main
+      parameters={__DOCGEN_PARAMETERS__}
+      sortedPages={__DOCGEN_PAGES__}
+      pdfEnabled
+    >
       <div>
         <RouterProvider router={router} />
       </div>
