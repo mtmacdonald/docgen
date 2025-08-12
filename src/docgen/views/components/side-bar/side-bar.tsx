@@ -8,7 +8,7 @@ const SIDEBAR_SMALL_ICON_SIZE = 20;
 
 const Page = ({ page }) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
-  const path = name + '.html';
+  const path = name; // + '.html';
   return (
     <li>
       <a href={path}>{page.title}</a>
