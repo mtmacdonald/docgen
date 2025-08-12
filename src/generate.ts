@@ -9,6 +9,7 @@ export const runVite = async (command, mode) => {
   const outputDir = path.resolve(process.cwd(), command.output);
 
   const parametersPath = path.join(inputDir, 'parameters.json');
+  // TODO: reinstate schema validation
   const parametersJson = JSON.parse(fs.readFileSync(parametersPath, 'utf-8'));
 
   const baseConfig = {
