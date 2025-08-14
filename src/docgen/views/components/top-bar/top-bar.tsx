@@ -13,7 +13,7 @@ const Logo = ({ parameters }) => {
   );
 };
 
-export const TopBar = ({ parameters }) => {
+export const TopBar = ({ parameters, onPdfToggle }) => {
   return (
     <div>
       <div className="topbar">
@@ -42,7 +42,20 @@ export const TopBar = ({ parameters }) => {
             )}
           </div>
         </div>
-        <div className="right">
+        <div className="right" style={{ display: 'flex', alignItems: 'center' }}>
+          <button
+            onClick={onPdfToggle}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0 10px',
+              fontSize: '1.2em',
+            }}
+            title="Show PDF"
+          >
+            📄
+          </button>
           <span id="dg-backlink">
             {parameters.backlink.url && (
               <a className="button inverted" href={parameters.backlink.url}>

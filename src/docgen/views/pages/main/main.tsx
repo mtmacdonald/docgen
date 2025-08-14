@@ -1,9 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { WebFooter } from '../../components/footer/footer.tsx';
 import { TopBar } from '../../components/top-bar/top-bar.tsx';
 import { SideBar } from '../../components/side-bar/side-bar.tsx';
-import { Page } from '../../components/page/page.tsx';
+import { Page as PageLayout } from '../../components/page/page.tsx';
+import { PDFViewer } from '@react-pdf/renderer';
 import type { Parameters } from '../../../types.ts';
+import { Pdf } from '../../../pdf/react-pdf/react-pdf.tsx';
 
 type MainProps = {
   parameters: Parameters;
@@ -18,27 +20,36 @@ export const Main = ({
   pdfEnabled,
   children,
 }: MainProps) => {
-  const {
-    name
-  } = parameters;
+  const [showPdf, setShowPdf] = useState(false);
+
+  const { name } = parameters;
+
   return (
     <>
-      <TopBar
-        parameters={parameters}
-      />
+      <TopBar parameters={parameters} onPdfToggle={() => setShowPdf(prev => !prev)} />
       <SideBar
         name={name}
         sortedPages={sortedPages}
         pdfEnabled={pdfEnabled}
       />
-      <Page>
-        <section id="dg-content">
-          <div id="dg-innerContent">
-            {children}
-          </div>
-        </section>
-        <WebFooter parameters={parameters} />
-      </Page>
+      <PageLayout>
+          <>
+            <section id="dg-content" style={{ height: '100%' }}>
+              <div id="dg-innerContent" style={{ height: '100%' }}>
+                {showPdf ? (
+                  <PDFViewer width="100%" height="800">
+                    <Pdf
+                      parameters={parameters}
+                      options={{}}
+                      sortedPages={sortedPages}
+                    />
+                  </PDFViewer>
+                ) : children}
+              </div>
+            </section>
+          </>
+        <WebFooter parameters={parameters} />s
+      </PageLayout>
     </>
   );
 };

@@ -5,16 +5,11 @@ import {
   createRouter,
 } from '@tanstack/react-router';
 import { Page } from './content/page.tsx';
-
-const pages = import.meta.glob('../../docs/**/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>;
+import { loadPages } from './load-pages.ts';
 
 const rootRoute = createRootRoute();
 
-const pageRoutes = Object.entries(pages).map(([fullPath, content]) => {
+const pageRoutes = Object.entries(loadPages()).map(([fullPath, content]) => {
   let routePath = fullPath
     .replace('../../docs/', '')
     .replace(/\.md$/, '');
