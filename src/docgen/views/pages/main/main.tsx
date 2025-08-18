@@ -6,22 +6,20 @@ import { Page as PageLayout } from '../../components/page/page.tsx';
 import { PDFViewer } from '@react-pdf/renderer';
 import type { Parameters } from '../../../types.ts';
 import { Pdf } from '../../../pdf/react-pdf/react-pdf.tsx';
+import { Outlet } from '@tanstack/react-router';
 
 type MainProps = {
   parameters: Parameters;
   sortedPages: any;
   pdfEnabled: boolean;
-  children?: ReactNode;
 };
 
 export const Main = ({
   parameters,
   sortedPages,
   pdfEnabled,
-  children,
 }: MainProps) => {
   const [showPdf, setShowPdf] = useState(false);
-
   const { name } = parameters;
 
   return (
@@ -33,22 +31,22 @@ export const Main = ({
         pdfEnabled={pdfEnabled}
       />
       <PageLayout>
-          <>
-            <section id="dg-content" style={{ height: '100%' }}>
-              <div id="dg-innerContent" style={{ height: '100%' }}>
-                {showPdf ? (
-                  <PDFViewer width="100%" height="800">
-                    <Pdf
-                      parameters={parameters}
-                      options={{}}
-                      sortedPages={sortedPages}
-                    />
-                  </PDFViewer>
-                ) : children}
-              </div>
-            </section>
-          </>
-        <WebFooter parameters={parameters} />s
+        <section id="dg-content" style={{ height: '100%' }}>
+          <div id="dg-innerContent" style={{ height: '100%' }}>
+            {showPdf ? (
+              <PDFViewer width="100%" height="800">
+                <Pdf
+                  parameters={parameters}
+                  options={{}}
+                  sortedPages={sortedPages}
+                />
+              </PDFViewer>
+            ) : (
+              <Outlet />
+              )}
+          </div>
+        </section>
+        <WebFooter parameters={parameters} />
       </PageLayout>
     </>
   );

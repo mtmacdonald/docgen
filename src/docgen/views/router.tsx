@@ -6,8 +6,20 @@ import {
 } from '@tanstack/react-router';
 import { Page } from './content/page.tsx';
 import { loadPages } from './load-pages.ts';
+import { Main } from './pages/main/main.tsx';
 
-const rootRoute = createRootRoute();
+declare const __DOCGEN_PARAMETERS__: unknown;
+declare const __DOCGEN_PAGES__: unknown;
+
+const rootRoute = createRootRoute({
+  component: () => (
+    <Main
+      parameters={__DOCGEN_PARAMETERS__ as any}
+      sortedPages={__DOCGEN_PAGES__ as any}
+      pdfEnabled
+    />
+  ),
+});
 
 const pageRoutes = Object.entries(loadPages()).map(([fullPath, content]) => {
   let routePath = fullPath

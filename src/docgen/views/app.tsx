@@ -1,23 +1,13 @@
 import React from 'react';
-import { Main } from './pages/main/main';
-import '../../include/require/styles/framework.css';
+import ReactDOM from 'react-dom/client';
 import { RouterProvider } from '@tanstack/react-router';
 import { router } from './router';
+import '../../include/require/styles/framework.css';
 
-declare const __DOCGEN_PARAMETERS__: unknown;
-declare const __DOCGEN_PAGES__: unknown;
-
-export const App = () => {
-
-  return (
-    <Main
-      parameters={__DOCGEN_PARAMETERS__}
-      sortedPages={__DOCGEN_PAGES__}
-      pdfEnabled
-    >
-      <div>
-        <RouterProvider router={router} />
-      </div>
-    </Main>
-  );
+const app = () => {
+  const rootElement = document.getElementById('root');
+  const root = ReactDOM.createRoot(rootElement!);
+  root.render(<RouterProvider router={router} />);
 };
+
+app();
