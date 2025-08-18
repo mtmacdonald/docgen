@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Document, Font } from '@react-pdf/renderer';
 import { PdfPage } from './pdf-page/pdf-page.tsx';
+import { marked } from 'marked';
 import { loadPages } from '../../views/load-pages.ts';
 
 // // Register fonts from public/assets
@@ -55,11 +56,12 @@ export const Pdf = ({ parameters, options, sortedPages }: PdfProps) => {
 
   return (
     <Document>
-      {Object.values(pages).map((page: any, i: number) => (
-        <Fragment key={i}>
-          <PdfPage page={page} parameters={parameters} options={options} />
-        </Fragment>
-      ))}
+      {Object.values(pages).map((page, i) => {
+        const html = marked(page); // convert Markdown string to HTML
+        return (
+          <PdfPage key={i} page={html} parameters={parameters} options={options} />
+        );
+      })}
     </Document>
   );
 };
