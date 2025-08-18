@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@tanstack/react-router';
 
 const Logo = ({ parameters }) => {
   return (
@@ -18,9 +19,9 @@ export const TopBar = ({ parameters, onPdfToggle }) => {
     <div>
       <div className="topbar">
         <div className="left">
-          <a className="dg-homelink" href={parameters.homePagePath}>
+          <Link className="dg-homelink" to="/">
             <Logo parameters={parameters} />
-          </a>
+          </Link>
           <div id="headerLeftText">
             <a className="dg-homelink" href={parameters.homePagePath}>
               <span id="dg-title">{parameters.title}</span>
