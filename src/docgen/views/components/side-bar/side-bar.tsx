@@ -7,38 +7,37 @@ import cx from 'classnames';
 const SIDEBAR_ICON_SIZE = 24;
 const SIDEBAR_SMALL_ICON_SIZE = 20;
 
-const Page = ({ page }) => {
+const Page = ({ page, onLinkClick }) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
   const path = name === 'index' ? '/' : name;
   return (
     <li>
-      <Link to={path}>{page.title}</Link>
+      <Link to={path} onClick={onLinkClick}>
+        {page.title}
+      </Link>
     </li>
   );
 };
 
-export const SideBar = ({
-  name,
-  sortedPages,
-  pdfEnabled
-}) => {
+export const SideBar = ({ name, sortedPages, pdfEnabled }) => {
   const [open, setOpen] = useState(false);
-  const toggleOpen = () => setOpen(!open)
+  const toggleOpen = () => setOpen(!open);
+  const close = () => setOpen(false);
+
   const pages = Object.values(sortedPages).flat();
   const pdfName = name.toLowerCase() + '.pdf';
+
   return (
-    <div id="dgSideBar"
-         className={cx(
-           !open ? 'dgSideBarCollapsed' : '',
-         )}
+    <div
+      id="dgSideBar"
+      className={cx(!open ? 'dgSideBarCollapsed' : '')}
     >
-      <button id="dgSideBarButton"
-        onClick={toggleOpen}
-      >
+      <button id="dgSideBarButton" onClick={toggleOpen}>
         <span className="dgIcon">
-          {open ? <TbX size={SIDEBAR_ICON_SIZE}/> : <TbMenu2 size={SIDEBAR_ICON_SIZE} />}
+          {open ? <TbX size={SIDEBAR_ICON_SIZE} /> : <TbMenu2 size={SIDEBAR_ICON_SIZE} />}
         </span>
       </button>
+
       <div id="dgSideBarInnerWrapper">
         <div id="dgSideBarInner">
           <div id="dgSideBarContent">
@@ -49,29 +48,29 @@ export const SideBar = ({
                   <div className="dgSideBarHeading">{page.heading}</div>
                   <ul>
                     {page.pages.map((subPage, i) => (
-                      <Page key={i} page={subPage} />
+                      <Page key={i} page={subPage} onLinkClick={close} />
                     ))}
                   </ul>
                 </div>
               ))}
+
             <div className="dgSideBarAttribution">
               <ul>
                 <li>
-                <span
-                  className="dgIcon"
-                  title="ownership"
-                ></span>
-                  <Link to="/ownership"><TbUsers size={SIDEBAR_SMALL_ICON_SIZE} /> Ownership</Link>
+                  <span className="dgIcon" title="ownership"></span>
+                  <Link to="/ownership" onClick={close}>
+                    <TbUsers size={SIDEBAR_SMALL_ICON_SIZE} /> Ownership
+                  </Link>
                 </li>
                 <li>
-                <span
-                  className="dgIcon"
-                  title="release notes"
-                ></span>
-                  <Link to="/release-notes"><TbRefresh size={SIDEBAR_SMALL_ICON_SIZE} /> Release Notes</Link>
+                  <span className="dgIcon" title="release notes"></span>
+                  <Link to="/release-notes" onClick={close}>
+                    <TbRefresh size={SIDEBAR_SMALL_ICON_SIZE} /> Release Notes
+                  </Link>
                 </li>
               </ul>
             </div>
+
             <div className="dgSideBarPDFButton">
               {pdfEnabled && (
                 <a
