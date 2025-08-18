@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
-import { TbFileText } from 'react-icons/tb';
+import { TbFile, TbFileOff } from 'react-icons/tb';
 
 const Logo = ({ parameters }) => {
   return (
@@ -14,7 +14,7 @@ const Logo = ({ parameters }) => {
   );
 };
 
-export const TopBar = ({ parameters, onPdfToggle }) => {
+export const TopBar = ({ parameters, pdfVisible, onPdfToggle }) => {
   return (
     <div>
       <div className="topbar">
@@ -45,12 +45,12 @@ export const TopBar = ({ parameters, onPdfToggle }) => {
         </div>
         <div className="right" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <button
-            className="button inverted"
+            className={`button ${pdfVisible ? '' : 'inverted'}`}
             onClick={onPdfToggle}
             title="Toggle PDF"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
-            <TbFileText size={18} className="icon" />
+            {pdfVisible ? <TbFile size={18} className="icon" /> : <TbFileOff size={18} className="icon" />}
             <span>PDF</span>
           </button>
           <span id="dg-backlink">

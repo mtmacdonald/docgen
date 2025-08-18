@@ -820,7 +820,7 @@ button,
   justify-content: center;
   outline: 0;
   vertical-align: baseline;
-  border: 2px solid var(--color-button-border);
+  border: var(--color-button-border);
   background: var(--color-button-background);
   color: var(--color-button-text) !important;
   padding: 0 25px;

@@ -15,17 +15,18 @@ type MainProps = {
 };
 
 export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
-  const [showPdf, setShowPdf] = useState(false);
+  const [pdfVisible, setPdfVisible] = useState(false);
+  const onTogglePdf = () => setPdfVisible(!pdfVisible);
   const { name } = parameters;
 
   return (
     <>
-      <TopBar parameters={parameters} onPdfToggle={() => setShowPdf(prev => !prev)} />
+      <TopBar parameters={parameters} onPdfToggle={onTogglePdf} pdfVisible={pdfVisible} />
       <SideBar name={name} sortedPages={sortedPages} pdfEnabled={pdfEnabled} />
       <Page>
         <section id="dg-content">
           <div id="dg-innerContent">
-            {showPdf ? (
+            {pdfVisible ? (
               <PDFViewer width="100%" height={800}>
                 <Pdf parameters={parameters} options={{}} sortedPages={sortedPages} />
               </PDFViewer>
