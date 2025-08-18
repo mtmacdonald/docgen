@@ -2,14 +2,9 @@ export const deriveParameters = ({
   rawParameters,
   setVersion,
   setReleaseDate,
-  homeLink,
 }) => {
   const version = setVersion || rawParameters.version;
   const releaseDate = setReleaseDate || rawParameters.date;
-  //the homepage is the first link in the first heading
-  const homePagePath = homeLink
-    ? `${homeLink.source.slice(0, homeLink.source.lastIndexOf('.'))}.html`
-    : '';
   const currentDate = new Date();
   const date = currentDate.toLocaleDateString('en-GB'); // 'DD/MM/YYYY'
   const time = currentDate.toLocaleTimeString('en-US', { hour12: false }); // 'HH:mm:ss'
@@ -23,6 +18,5 @@ export const deriveParameters = ({
     webFooter,
     version,
     releaseDate,
-    homePagePath,
   };
 };
