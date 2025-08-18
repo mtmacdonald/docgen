@@ -61,14 +61,14 @@ export const SideBar = ({
                   className="dgIcon"
                   title="ownership"
                 ></span>
-                  <a href="ownership.html"><TbUsers size={SIDEBAR_SMALL_ICON_SIZE} /> Ownership</a>
+                  <Link to="/ownership"><TbUsers size={SIDEBAR_SMALL_ICON_SIZE} /> Ownership</Link>
                 </li>
                 <li>
                 <span
                   className="dgIcon"
                   title="release notes"
                 ></span>
-                  <a href="release-notes.html"><TbRefresh size={SIDEBAR_SMALL_ICON_SIZE} /> Release Notes</a>
+                  <Link to="/release-notes"><TbRefresh size={SIDEBAR_SMALL_ICON_SIZE} /> Release Notes</Link>
                 </li>
               </ul>
             </div>
