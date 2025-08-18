@@ -39,7 +39,7 @@ type PdfProps = {
 };
 
 export const Pdf = ({ parameters, options, sortedPages }: PdfProps) => {
-  const pages = []; //loadPages();
+  const pages = loadPages();
 
   // Flatten pages if needed
   const allPages: string[] = [];
