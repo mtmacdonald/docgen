@@ -879,14 +879,6 @@ button:active,
   box-shadow: none;
 }
 
-.button .icon {
-  margin-left: 8px;
-  transition: transform 0.1s ease;
-}
-.button:hover .icon {
-  transform: translateX(4px);
-}
-
 img {
   max-width: 100%;
   height: auto;

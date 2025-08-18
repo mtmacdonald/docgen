@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
+import { TbFileText } from 'react-icons/tb';
 
 const Logo = ({ parameters }) => {
   return (
     parameters?.logoPath && (
       <img
-        style={{
-          marginRight: '25px',
-        }}
+        style={{ marginRight: '25px' }}
         src={parameters?.logoPath}
+        alt="logo"
       />
     )
   );
@@ -43,19 +43,15 @@ export const TopBar = ({ parameters, onPdfToggle }) => {
             )}
           </div>
         </div>
-        <div className="right" style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="right" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <button
+            className="button inverted"
             onClick={onPdfToggle}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: '0 10px',
-              fontSize: '1.2em',
-            }}
-            title="Show PDF"
+            title="Toggle PDF"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
-            📄
+            <TbFileText size={18} className="icon" />
+            <span>PDF</span>
           </button>
           <span id="dg-backlink">
             {parameters.backlink.url && (
