@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
+import { Link } from '@tanstack/react-router';
 import { TbMenu2, TbX, TbUsers, TbRefresh } from 'react-icons/tb';
 import cx from 'classnames';
 
@@ -8,10 +9,10 @@ const SIDEBAR_SMALL_ICON_SIZE = 20;
 
 const Page = ({ page }) => {
   const name = page.source.substring(0, page.source.lastIndexOf('.'));
-  const path = name; // + '.html';
+  const path = name === 'index' ? '/' : name;
   return (
     <li>
-      <a href={path}>{page.title}</a>
+      <Link to={path}>{page.title}</Link>
     </li>
   );
 };
