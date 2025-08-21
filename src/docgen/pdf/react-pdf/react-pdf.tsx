@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { Document, Font } from '@react-pdf/renderer';
 import { PdfPage } from './pdf-page/pdf-page.tsx';
 import { marked } from 'marked';
-import { loadPages } from '../../views/load-pages.ts';
+
+declare const __DOCGEN_PAGES__: Record<string, any[]>;
 
 // // Register fonts from public/assets
 // Font.register({
@@ -39,25 +40,49 @@ type PdfProps = {
   sortedPages: any;
 };
 
-export const Pdf = ({ parameters, options, sortedPages }: PdfProps) => {
-  const pages = loadPages();
+// Async loader for PDF pages
+const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> => {
+  const pages: Record<string, string> = {};
 
-  // Flatten pages if needed
-  const allPages: string[] = [];
-  for (let key in sortedPages) {
-    if (sortedPages.hasOwnProperty(key)) {
-      sortedPages[key].forEach((section: any) => {
-        section.pages.forEach((page: any) => {
-          allPages.push(page.source);
-        });
-      });
-    }
-  }
+  const sources = Object.values(sortedPages)
+    .flatMap((columns) =>
+      columns.flatMap((section) => section.pages.map((p: any) => p.source)),
+    );
+
+  await Promise.all(
+    sources.map(async (filename) => {
+      try {
+        const res = await fetch(`/${filename}`);
+        pages[filename] = res.ok ? await res.text() : `Error loading ${filename}`;
+      } catch (err) {
+        pages[filename] = `Error loading ${filename}: ${err}`;
+      }
+    }),
+  );
+
+  return pages;
+};
+
+export const Pdf = ({ parameters, options, sortedPages }: PdfProps) => {
+  const [pages, setPages] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const fetchPages = async () => {
+      const loaded = await loadPdfPages(sortedPages);
+      setPages(loaded);
+    };
+    fetchPages();
+  }, [sortedPages]);
+
+  const allSources = Object.values(sortedPages)
+    .flatMap((columns) =>
+      columns.flatMap((section) => section.pages.map((p: any) => p.source)),
+    );
 
   return (
     <Document>
-      {Object.values(pages).map((page, i) => {
-        const html = marked(page); // convert Markdown string to HTML
+      {allSources.map((source, i) => {
+        const html = marked(pages[source] || '');
         return (
           <PdfPage key={i} page={html} parameters={parameters} options={options} />
         );

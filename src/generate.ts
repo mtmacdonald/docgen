@@ -7,24 +7,24 @@ import { sortPages } from './docgen/meta/sort-pages.ts';
 
 export const runVite = async (command, mode) => {
   const inputDir = path.resolve(process.cwd(), command.input);
-  const publicDir = path.join(inputDir, 'files');
   const outputDir = path.resolve(process.cwd(), command.output);
 
   const { contents, rawParameters } = await loadMeta({
     inputPath: inputDir,
     verbose: false,
   });
+
   const sortedPages = sortPages({ contents });
   const parameters = deriveParameters({
     rawParameters,
-    setVersion: '', // options.setVersion,
-    setReleaseDate: '', // options.setReleaseDate,
+    setVersion: '',
+    setReleaseDate: '',
     homeLink: contents?.[0]?.pages[0],
   });
 
   const baseConfig = {
     root: process.cwd(),
-    publicDir,
+    publicDir: inputDir, // <- serve everything in the input folder as static
     plugins: [react()],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),

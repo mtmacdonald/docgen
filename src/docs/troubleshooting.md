@@ -10,7 +10,7 @@ Make sure all the input text files are saved with UTF-8 encoding.
 
 ## Missing logo
 
-The logo must be in PNG format and saved with the path *images/logo.png*. It
+The logo must be in PNG format and saved with the path *files/images/logo.png*. It
 must have suitable dimensions for the header (height and width).
 
 ## Other issues

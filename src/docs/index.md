@@ -3,7 +3,7 @@
   <p class="lead">
    DocGen generates HTML websites and PDF documents from plain text for free.
   </p>
-  <img src="images/overview.png" alt="overview" width="700px" class="bannerImage" />
+  <img src="files/images/overview.png" alt="overview" width="700px" class="bannerImage" />
   <div class="bannerButtons">
     <a href="https://github.com/mtmacdonald/docgen/tags" class="button spaced">Download</a>
     <a href="https://github.com/mtmacdonald/docgen/issues" class="button inverted">Report Issues</a>
@@ -18,32 +18,32 @@ DocGen is an open-source website and PDF generator that makes it easy to create 
 
 <ul class="features">
 <li>
-  <img src="images/icons/computer.png" />
+  <img src="files/images/icons/computer.png" />
   <p><strong>Self-contained website</strong></p>
   <p>Creates a static website that works on any server, or as local files.</p>
 </li>
 <li>
-  <img src="images/icons/pdf.png" />
+  <img src="files/images/icons/pdf.png" />
   <p><strong>Optional PDF</strong></p>
   <p>Also publishes the website content as a single PDF, using <a href="https://react-pdf.org/">React-pdf</a>.</p>
 </li>
 <li>
-  <img src="images/icons/pencil.png" />
+  <img src="files/images/icons/pencil.png" />
   <p><strong>Human-friendly input</strong></p>
   <p>Write in plain text, or the human-friendly <a href="http://commonmark.org">Markdown</a> format.</p>
 </li>
 <li>
-  <img src="images/icons/cog.png" />
+  <img src="files/images/icons/cog.png" />
   <p><strong>Easy to version control</strong></p>
   <p>Plain text input formats work well with all version control systems.</p>
 </li>
 <li>
-  <img src="images/icons/document.png" />
+  <img src="files/images/icons/document.png" />
   <p><strong>Table of contents</strong></p>
   <p>Automatically creates tables of contents</p>
 </li>
 <li>
-  <img src="images/icons/star.png" />
+  <img src="files/images/icons/star.png" />
   <p><strong>Branding and metadata</strong></p>
   <p>Easily brand with a logo, attribute ownership, and attach release notes.</p>
 </li>
@@ -55,7 +55,7 @@ DocGen is an open-source website and PDF generator that makes it easy to create 
 
 <div class="inkitSponsor">
   <div class="inkitImage">
-    <img src="images/inkit-screenshot.png" alt="Inkit sponsor">
+    <img src="files/images/inkit-screenshot.png" alt="Inkit sponsor">
   </div>
   <div class="inkitText">
     <p>DocGen is open-source software sponsored by Inkit, the leading Zero Trust Document Generation Platform.</p>
@@ -69,15 +69,15 @@ Simply <a href="#quick-start">install</a> DocGen, and run the tool to generate w
 
 <div class="dgCardContainer">
   <div class="dgCard">
-    <img src="images/text.png" alt="text" />
+    <img src="files/images/text.png" alt="text" />
     <p>001 | <strong>Create content in plain text or human-friendly <a href="http://commonmark.org">Markdown</a></strong></p>
   </div>
   <div class="dgCard">
-    <img src="images/web.png" alt="website" />
+    <img src="files/images/web.png" alt="website" />
     <p>002 | <strong>DocGen styles and publishes all your content as a website</strong></p>
   </div>
   <div class="dgCard">
-    <img src="images/pdf.png" alt="pdf" />
+    <img src="files/images/pdf.png" alt="pdf" />
     <p>003 | <strong>DocGen also creates an equivalent PDF copy</strong></p>
   </div>
 </div>

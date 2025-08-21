@@ -28,7 +28,7 @@
   "sponsorLink": {
     "name": "Sponsored by",
     "url": "https://www.inkit.com",
-    "logo": "images/inkit-logo-small.svg"
+    "logo": "files/images/inkit-logo-small.svg"
   },
   "backlink": {
     "name": "Contact Inkit",
@@ -39,5 +39,5 @@
   "summary": "DocGen is a command-line documentation tool for software products. It takes plain text or CommonMark (Markdown) as input, and generates both a static website and a PDF copy.",
   "marking": "MIT License.",
   "legalese": "",
-  "logoPath": "images/logo.svg"
+  "logoPath": "files/images/logo.svg"
 }

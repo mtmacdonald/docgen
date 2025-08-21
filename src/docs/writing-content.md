@@ -161,11 +161,11 @@ Images can be added to documents - save the image files to the *images* director
 
 *What you type:*
 
-    ![logo](images/example-image.png)
+    ![logo](files/images/example-image.png)
 
 *How it looks:*
 
-![logo](images/example-image.png)
+![logo](files/images/example-image.png)
 
 ---------------------
 For more examples, see the [CommonMark reference](commonmark.html).
