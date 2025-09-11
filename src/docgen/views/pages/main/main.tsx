@@ -6,7 +6,7 @@ import { Page } from '../../components/page/page.tsx';
 import { PDFViewer } from '@react-pdf/renderer';
 import type { Parameters } from '../../../types.ts';
 import { Pdf } from '../../../pdf/react-pdf/react-pdf.tsx';
-import { Outlet, useRouter, useRouterState } from '@tanstack/react-router';
+import { Outlet, useRouterState } from '@tanstack/react-router';
 
 type MainProps = {
   parameters: Parameters;
@@ -15,28 +15,15 @@ type MainProps = {
 };
 
 export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
-  const router = useRouter();
   const pdfVisible = useRouterState({
     select: (s) => s.location.pathname === '/pdf',
   });
-
-  const onPdfToggle = () => {
-    if (pdfVisible) {
-      router.history.back(); // go back to previous route
-    } else {
-      router.navigate({ to: '/pdf' });
-    }
-  };
 
   const { name } = parameters;
 
   return (
     <>
-      <TopBar
-        parameters={parameters}
-        pdfVisible={pdfVisible}
-        onPdfToggle={onPdfToggle}
-      />
+      <TopBar parameters={parameters} />
       <SideBar name={name} sortedPages={sortedPages} pdfEnabled={pdfEnabled} />
       <Page>
         <section id="dg-content">

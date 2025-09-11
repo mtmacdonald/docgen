@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
-import { TbFile, TbFileOff } from 'react-icons/tb';
+import { PdfToggleButton } from '../pdf-toggle-button/pdf-toggle-button.tsx';
 
 const Logo = ({ parameters }) => {
   return (
@@ -14,7 +14,7 @@ const Logo = ({ parameters }) => {
   );
 };
 
-export const TopBar = ({ parameters, pdfVisible, onPdfToggle }) => {
+export const TopBar = ({ parameters }) => {
   return (
     <div>
       <div className="topbar">
@@ -47,19 +47,7 @@ export const TopBar = ({ parameters, pdfVisible, onPdfToggle }) => {
           className="right"
           style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
         >
-          <button
-            className={`button ${pdfVisible ? '' : 'inverted'}`}
-            onClick={onPdfToggle}
-            title="Toggle PDF"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-          >
-            {pdfVisible ? (
-              <TbFile size={18} className="icon" />
-            ) : (
-              <TbFileOff size={18} className="icon" />
-            )}
-            <span>PDF</span>
-          </button>
+          <PdfToggleButton />
           <span id="dg-backlink">
             {parameters.backlink.url && (
               <a className="button inverted" href={parameters.backlink.url}>

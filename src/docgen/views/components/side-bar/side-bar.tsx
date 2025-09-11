@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { TbMenu2, TbX, TbUsers, TbRefresh } from 'react-icons/tb';
 import cx from 'classnames';
+import { PdfToggleButton } from '../pdf-toggle-button/pdf-toggle-button.tsx';
 
 const SIDEBAR_ICON_SIZE = 24;
 const SIDEBAR_SMALL_ICON_SIZE = 20;
@@ -25,13 +26,9 @@ export const SideBar = ({ name, sortedPages, pdfEnabled }) => {
   const close = () => setOpen(false);
 
   const pages = Object.values(sortedPages).flat();
-  const pdfName = name.toLowerCase() + '.pdf';
 
   return (
-    <div
-      id="dgSideBar"
-      className={cx(!open ? 'dgSideBarCollapsed' : '')}
-    >
+    <div id="dgSideBar" className={cx(!open ? 'dgSideBarCollapsed' : '')}>
       <button id="dgSideBarButton" onClick={toggleOpen}>
         <span className="dgIcon">
           {open ? <TbX size={SIDEBAR_ICON_SIZE} /> : <TbMenu2 size={SIDEBAR_ICON_SIZE} />}
@@ -71,17 +68,11 @@ export const SideBar = ({ name, sortedPages, pdfEnabled }) => {
               </ul>
             </div>
 
-            <div className="dgSideBarPDFButton">
-              {pdfEnabled && (
-                <a
-                  className="button"
-                  style={{ textDecoration: 'none' }}
-                  href={pdfName}
-                >
-                  PDF
-                </a>
-              )}
-            </div>
+            {pdfEnabled && (
+              <div className="dgSideBarPDFButton">
+                <PdfToggleButton onClick={close} />
+              </div>
+            )}
           </div>
         </div>
       </div>
