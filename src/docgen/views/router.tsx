@@ -4,6 +4,8 @@ import {
   createRoute,
   createRouter,
 } from '@tanstack/react-router';
+import { PDFViewer } from '@react-pdf/renderer';
+import { Pdf } from '../pdf/react-pdf/react-pdf.tsx';
 import { Page } from './content/page.tsx';
 import { Main } from './pages/main/main.tsx';
 import { Cover } from './pages/cover/cover.tsx';
@@ -77,7 +79,6 @@ const pageRoutes = Object.values(__DOCGEN_PAGES__)
     ),
   );
 
-// Add static /ownership route
 const ownershipRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'ownership',
@@ -88,8 +89,26 @@ const ownershipRoute = createRoute({
   ),
 });
 
+const pdfRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'pdf',
+  component: () => (
+    <PDFViewer width="100%" height={800}>
+      <Pdf
+        parameters={__DOCGEN_PARAMETERS__ as any}
+        options={{}}
+        sortedPages={__DOCGEN_PAGES__ as any}
+      />
+    </PDFViewer>
+  ),
+});
+
 const router = createRouter({
-  routeTree: rootRoute.addChildren([...pageRoutes, ownershipRoute]),
+  routeTree: rootRoute.addChildren([
+    ...pageRoutes,
+    ownershipRoute,
+    pdfRoute
+  ]),
 });
 
 export { router };

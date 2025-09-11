@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@tanstack/react-router';
+import { Link, useRouter } from '@tanstack/react-router';
 import { TbFile, TbFileOff } from 'react-icons/tb';
 
 const Logo = ({ parameters }) => {
@@ -14,7 +14,15 @@ const Logo = ({ parameters }) => {
   );
 };
 
-export const TopBar = ({ parameters, pdfVisible, onPdfToggle }) => {
+export const TopBar = ({ parameters, pdfVisible }) => {
+  const router = useRouter();
+
+  const onPdfToggle = () => {
+    router.navigate({
+      to: pdfVisible ? '/' : '/pdf',
+    });
+  };
+
   return (
     <div>
       <div className="topbar">
@@ -43,14 +51,21 @@ export const TopBar = ({ parameters, pdfVisible, onPdfToggle }) => {
             )}
           </div>
         </div>
-        <div className="right" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div
+          className="right"
+          style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+        >
           <button
             className={`button ${pdfVisible ? '' : 'inverted'}`}
             onClick={onPdfToggle}
             title="Toggle PDF"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
-            {pdfVisible ? <TbFile size={18} className="icon" /> : <TbFileOff size={18} className="icon" />}
+            {pdfVisible ? (
+              <TbFile size={18} className="icon" />
+            ) : (
+              <TbFileOff size={18} className="icon" />
+            )}
             <span>PDF</span>
           </button>
           <span id="dg-backlink">
