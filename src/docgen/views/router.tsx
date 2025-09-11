@@ -6,6 +6,7 @@ import {
 } from '@tanstack/react-router';
 import { Page } from './content/page.tsx';
 import { Main } from './pages/main/main.tsx';
+import { Cover } from './pages/cover/cover.tsx';
 
 declare const __DOCGEN_PARAMETERS__: unknown;
 declare const __DOCGEN_PAGES__: Record<string, any[]>;
@@ -76,8 +77,19 @@ const pageRoutes = Object.values(__DOCGEN_PAGES__)
     ),
   );
 
+// Add static /ownership route
+const ownershipRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'ownership',
+  component: () => (
+    <Cover
+      parameters={__DOCGEN_PARAMETERS__ as any}
+    />
+  ),
+});
+
 const router = createRouter({
-  routeTree: rootRoute.addChildren(pageRoutes),
+  routeTree: rootRoute.addChildren([...pageRoutes, ownershipRoute]),
 });
 
 export { router };
