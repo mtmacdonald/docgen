@@ -21,7 +21,6 @@ export const loadMeta = async ({ inputPath, verbose }): Promise<Meta> => {
           if (validateJSON({ key, data: file, verbose })) {
             meta[key] = file;
           } else {
-            //mainProcess.exit(1);
           }
         } catch (error) {
           console.log(
@@ -32,7 +31,6 @@ export const loadMeta = async ({ inputPath, verbose }): Promise<Meta> => {
           if (verbose === true) {
             console.log(pico.red(error));
           }
-          //mainProcess.exit(1);
         }
       }
     }
@@ -52,6 +50,5 @@ export const loadMeta = async ({ inputPath, verbose }): Promise<Meta> => {
     if (verbose === true) {
       console.log(pico.red(error));
     }
-    //mainProcess.exit(1);
   }
 };
