@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useRouter } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { TbFile, TbFileOff } from 'react-icons/tb';
 
 const Logo = ({ parameters }) => {
@@ -14,15 +14,7 @@ const Logo = ({ parameters }) => {
   );
 };
 
-export const TopBar = ({ parameters, pdfVisible }) => {
-  const router = useRouter();
-
-  const onPdfToggle = () => {
-    router.navigate({
-      to: pdfVisible ? '/' : '/pdf',
-    });
-  };
-
+export const TopBar = ({ parameters, pdfVisible, onPdfToggle }) => {
   return (
     <div>
       <div className="topbar">
