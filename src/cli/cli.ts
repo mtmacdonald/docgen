@@ -1,15 +1,9 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import { DocGen } from '../docgen/docgen.ts';
 import { generate } from './generate/generate.ts';
-
-const generator = new DocGen();
-
-const scaffold = (command) => {
-  generator.setOptions(command);
-  generator.scaffold();
-};
+import { scaffold } from './scaffold/scaffold.ts';
+import { version } from '../../package.json';
 
 /*
     parse command-line arguments with node commander
@@ -17,7 +11,7 @@ const scaffold = (command) => {
         command-line conventions: http://docopt.org
 */
 
-program.version(generator.getVersion()).usage('[command] [--option]');
+program.version(version).usage('[command] [--option]');
 
 program
   .command('scaffold')
