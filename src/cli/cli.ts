@@ -2,7 +2,7 @@
 
 import { program } from 'commander';
 import { DocGen } from '../docgen/docgen.ts';
-import { builder } from './builder.ts';
+import { generate } from './generate/generate.ts';
 
 const generator = new DocGen();
 
@@ -48,7 +48,7 @@ program
     './output',
   )
   .action((command) => {
-    builder(command, 'dev');
+    generate(command, 'dev');
   });
 
 program
@@ -66,7 +66,7 @@ program
     './output',
   )
   .action((command) => {
-    builder(command, 'build');
+    generate(command, 'build');
   });
 
 program.parse(process.argv);
