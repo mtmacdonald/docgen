@@ -1,11 +1,11 @@
 import path from 'node:path';
 import { build, createServer } from 'vite';
 import react from '@vitejs/plugin-react';
-import { deriveParameters } from './docgen/meta/derive-parameters.ts';
-import { loadMeta } from './docgen/fs/meta.ts';
-import { sortPages } from './docgen/meta/sort-pages.ts';
+import { deriveParameters } from '../docgen/meta/derive-parameters.ts';
+import { loadMeta } from '../docgen/fs/meta.ts';
+import { sortPages } from '../docgen/meta/sort-pages.ts';
 
-export const runVite = async (command, mode) => {
+export const builder = async (command, mode) => {
   const inputDir = path.resolve(process.cwd(), command.input);
   const outputDir = path.resolve(process.cwd(), command.output);
 

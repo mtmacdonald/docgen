@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import { DocGen } from './docgen/docgen.ts';
-import { runVite } from './generate.ts';
+import { DocGen } from '../docgen/docgen.ts';
+import { builder } from './builder.ts';
 
 const generator = new DocGen();
 
@@ -48,7 +48,7 @@ program
     './output',
   )
   .action((command) => {
-    runVite(command, 'dev');
+    builder(command, 'dev');
   });
 
 program
@@ -66,7 +66,7 @@ program
     './output',
   )
   .action((command) => {
-    runVite(command, 'build');
+    builder(command, 'build');
   });
 
 program.parse(process.argv);
