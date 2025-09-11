@@ -4,7 +4,7 @@ import { program } from 'commander';
 import { DocGen } from './docgen/docgen.ts';
 import { runVite } from './generate.ts';
 
-const generator = new DocGen(process);
+const generator = new DocGen();
 
 const scaffold = (command) => {
   generator.setOptions(command);
