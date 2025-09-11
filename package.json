@@ -17,7 +17,7 @@
     "preview:docs": "npx serve -s ./docs-new",
     "build:styles": "rimraf src/styles/variables && npx style-dictionary build && sass --no-source-map src/styles/main.scss src/include/require/styles/framework.css && yarn prettier:fix",
     "test": "npm run prettier:check",
-    "test:run": "rimraf src/__test__/test-run-output && tsx src/cli.ts run -i src/__test__/test-run -o src/__test__/test-run-output -p",
+    "test:run": "rimraf src/__test__/test-run-output && tsx src/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
     "test:scaffold": "rimraf src/__test__/test-run-output && tsx src/cli.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/cli.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p",
     "prettier:check": "prettier --check 'src/**/*.{ts,js,json,css,scss}'",
