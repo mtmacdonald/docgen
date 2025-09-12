@@ -1,6 +1,3 @@
-import * as CheerioAPI from 'cheerio';
-export type TCheerioAPI = typeof CheerioAPI;
-
 export type Options = {
   input: string; // inputPath
   output: string; // outputPath
@@ -76,9 +73,4 @@ export type Content = {
 export type Meta = {
   contents?: Content[];
   rawParameters?: Parameters;
-};
-
-export type Templates = {
-  main?: string | TCheerioAPI;
-  redirect?: string | TCheerioAPI;
 };
