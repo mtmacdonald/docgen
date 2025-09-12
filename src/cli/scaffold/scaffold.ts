@@ -9,7 +9,7 @@ export const scaffold = async (command) => {
   const verbose = command.verbose === true;
   console.log(pico.green('Creating scaffold template directory'));
   await copyDirectory(
-    join(packageAbsolutePath, 'include/template'),
+    join(packageAbsolutePath, 'bundle/template'),
     outputDir,
     verbose,
   );

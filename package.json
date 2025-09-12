@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "check:types": "tsc --noEmit",
-    "bundle": "rimraf dist && vite build --config vite.bundle.config.ts && chmod +x dist/cli.js && ncp src/bundle dist/include",
+    "bundle": "vite build --config vite.bundle.config.ts && chmod +x dist/cli.js && ncp src/bundle dist/bundle",
     "run:build": "dist/cli.js",
     "dev": "tsx src/cli/cli.ts run",
     "dev:docs": "tsx src/cli/cli.ts dev -i src/docs -o ./docs",

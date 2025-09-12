@@ -3,6 +3,7 @@ import { resolve } from 'path'
 
 export default defineConfig({
   build: {
+    emptyOutDir: true,
     ssr: true, // ensure Node, not browser
     lib: {
       entry: resolve(__dirname, 'src/cli/cli.ts'),
