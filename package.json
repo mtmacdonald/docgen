@@ -58,7 +58,6 @@
     "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.8",
     "ncp": "^2.0.0",
-    "pkgroll": "^2.14.3",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "sass": "^1.89.2",
