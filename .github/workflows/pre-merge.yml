@@ -27,14 +27,11 @@ jobs:
       - name: Check Types
         run: yarn check:types
 
-      - name: Build icons
-        run: yarn build:icons
-
       - name: Build styles
         run: yarn build:styles
 
-      - name: Build package
-        run: yarn build
+      - name: Bundle package (build NPM package)
+        run: yarn bundle
 
       - name: Run DocGen scaffold (DEV)
         run: yarn test:scaffold

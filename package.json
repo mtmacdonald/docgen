@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "check:types": "tsc --noEmit",
-    "build": "rimraf dist && pkgroll && ncp src/include dist/include",
+    "bundle": "rimraf dist && vite build --config vite.bundle.config.ts && chmod +x dist/cli.js && ncp src/include dist/include",
     "run:build": "dist/cli.js",
     "dev": "tsx src/cli/cli.ts run",
     "dev:docs": "tsx src/cli/cli.ts dev -i src/docs -o ./docs",
@@ -19,7 +19,7 @@
     "test": "npm run prettier:check",
     "test:run": "rimraf src/__test__/test-run-output && tsx src/cli/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
     "test:scaffold": "rimraf src/__test__/test-run-output && tsx src/cli/cli.ts scaffold -o src/__test__/test-run-output",
-    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/cli.js run -i src/__test__/test-run -o ../source/__test__/test-run-output -p",
+    "test:prod:run": "rimraf src/__test__/test-run-output && ./dist/cli.js build -i src/__test__/test-run -o ../source/__test__/test-run-output",
     "prettier:check": "prettier --check 'src/**/*.{ts,js,json,css,scss}'",
     "prettier:fix": "prettier --write 'src/**/*.{ts,js,json,css,scss}'",
     "test:publish": "sh ./src/__test__/test-publish/test-publish.sh",
@@ -49,6 +49,7 @@
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "spawn-args": "^0.2.0",
+    "vite": "npm:rolldown-vite@latest",
     "z-schema": "^6.0.2"
   },
   "devDependencies": {
@@ -64,8 +65,7 @@
     "style-dictionary": "^5.0.1",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.38.0",
-    "vite": "npm:rolldown-vite@latest"
+    "typescript-eslint": "^8.38.0"
   },
   "repository": {
     "type": "git",

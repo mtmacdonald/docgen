@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { program } from 'commander';
 import { generate } from './generate/generate.ts';
 import { scaffold } from './scaffold/scaffold.ts';
