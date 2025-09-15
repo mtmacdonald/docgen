@@ -3,13 +3,15 @@
   "type": "module",
   "version": "5.3.0",
   "description": "A tool for creating HTML and PDF documentation",
-  "bin": "./dist/cli.js",
+  "bin": "./dist/cli/cli.js",
   "files": [
     "dist/*"
   ],
   "scripts": {
     "check:types": "tsc --noEmit",
-    "bundle": "vite build --config vite.bundle.cli.config.ts && chmod +x dist/cli.js && cp src/index.html dist/ && ncp src/bundle dist/bundle",
+    "bundle:cli": "vite build --config ./vite.bundle.cli.config.ts && chmod +x dist/cli/cli.js",
+    "bundle:app": "vite build --config vite.bundle.app.config.ts && ncp src/bundle/template dist/template",
+    "bundle": "yarn bundle:cli && yarn bundle:app",
     "run:build": "dist/cli.js",
     "dev": "tsx src/cli/cli.ts run",
     "dev:docs": "tsx src/cli/cli.ts dev -i src/docs -o ./docs",

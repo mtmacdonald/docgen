@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import path from 'node:path';
 
 export default defineConfig({
   build: {
@@ -10,7 +11,7 @@ export default defineConfig({
       formats: ['es'],
       fileName: () => 'cli/cli.js',
     },
-    outDir: 'dist',
+    outDir: path.resolve(process.cwd(), 'dist/cli'),
     minify: false,
     target: 'node22',
     rollupOptions: {
