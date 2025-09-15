@@ -1,48 +1,25 @@
 import path from 'node:path';
-import { build, createServer } from 'vite';
-import react from '@vitejs/plugin-react';
-import { deriveParameters } from '../../docgen/meta/derive-parameters.ts';
-import { loadMeta } from '../../docgen/fs/meta.ts';
-import { sortPages } from '../../docgen/meta/sort-pages.ts';
+import fs from 'fs-extra';
 
-export const generate = async (command, mode) => {
-  const inputDir = path.resolve(process.cwd(), command.input);
-  const outputDir = path.resolve(process.cwd(), command.output);
+interface GenerateOptions {
+  inputDir: string;
+  outputDir: string;
+}
 
-  const { contents, rawParameters } = await loadMeta({
-    inputPath: inputDir,
-    verbose: false,
-  });
+export const generate = async (options: GenerateOptions) => {
+  const { inputDir, outputDir } = options;
 
-  const sortedPages = sortPages({ contents });
-  const parameters = deriveParameters({
-    rawParameters,
-    setVersion: '',
-    setReleaseDate: '',
-    homeLink: contents?.[0]?.pages[0],
-  });
+  // Prebuilt app is relative to this script in the package
+  const packageAppDir = path.resolve(import.meta.dirname, '../../dist/app');
 
-  const baseConfig = {
-    root: path.resolve(process.cwd(), 'src'), // ✅ app lives in src/, index.html included
-    publicDir: inputDir, // ✅ still serve everything from input as static
-    plugins: [react()],
-    define: {
-      __DOCGEN_PARAMETERS__: JSON.stringify(parameters),
-      __DOCGEN_PAGES__: JSON.stringify(sortedPages),
-    },
-  };
+  // 1. Remove existing output folder
+  await fs.remove(outputDir);
 
-  if (mode === 'build') {
-    await build({
-      ...baseConfig,
-      build: {
-        outDir: outputDir,
-        emptyOutDir: true,
-      },
-    });
-  } else {
-    const server = await createServer(baseConfig);
-    await server.listen();
-    server.printUrls();
-  }
+  // 2. Copy the user's input files
+  await fs.copy(inputDir, outputDir);
+
+  // 3. Copy the prebuilt app into outputDir/app
+  await fs.copy(packageAppDir, outputDir);
+
+  console.log(`Merged files into ${outputDir}`);
 };
