@@ -23,8 +23,8 @@ export const generate = async (command, mode) => {
   });
 
   const baseConfig = {
-    root: process.cwd(),
-    publicDir: inputDir, // <- serve everything in the input folder as static
+    root: path.resolve(process.cwd(), 'src'), // ✅ app lives in src/, index.html included
+    publicDir: inputDir, // ✅ still serve everything from input as static
     plugins: [react()],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),
@@ -35,7 +35,10 @@ export const generate = async (command, mode) => {
   if (mode === 'build') {
     await build({
       ...baseConfig,
-      build: { outDir: outputDir, emptyOutDir: true },
+      build: {
+        outDir: outputDir,
+        emptyOutDir: true,
+      },
     });
   } else {
     const server = await createServer(baseConfig);
