@@ -1,4 +1,4 @@
-import * as styles from '../../../../styles/variables/js/style-variables.js';
+// import * as styles from '../../../../styles/variables/js/style-variables.js';
 
 const admonitionBaseStyle = {
   padding: styles.SizeContentBlockPaddingPdf,
