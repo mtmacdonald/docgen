@@ -1,20 +1,12 @@
-import { join } from 'path';
 import pico from 'picocolors';
 import { copyDirectory } from '../../docgen/fs/fs.ts';
-import { packageAbsolutePath } from '../../paths.ts';
+import { findTemplateDir } from '../../paths.ts';
 import path from 'node:path';
 
 export const scaffold = async (command) => {
+  const inputDir = findTemplateDir(import.meta.dirname);
   const outputDir = path.normalize(command.output + '/');
   const verbose = command.verbose === true;
   console.log(pico.green('Creating scaffold template directory'));
-  console.log(
-    join(import.meta.dirname, '..', '..', 'dist', 'template'),
-    outputDir,
-  );
-  await copyDirectory(
-    join(import.meta.dirname, '..', '..', 'dist', 'template'),
-    outputDir,
-    verbose,
-  );
+  await copyDirectory(inputDir, outputDir, verbose);
 };
