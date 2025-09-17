@@ -12,6 +12,7 @@ export const PdfPage = ({
   options
 }) => {
   return (
+    // @ts-ignore
     <Page size="A4" style={reactPdfStyles.page}>
       <View>
         <PdfHtmlBlock page={page} options={options} />

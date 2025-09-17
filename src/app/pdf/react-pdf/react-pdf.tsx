@@ -46,6 +46,7 @@ const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> =
 
   const sources = Object.values(sortedPages)
     .flatMap((columns) =>
+      // @ts-ignore
       columns.flatMap((section) => section.pages.map((p: any) => p.source)),
     );
 
@@ -76,6 +77,7 @@ export const Pdf = ({ parameters, options, sortedPages }: PdfProps) => {
 
   const allSources = Object.values(sortedPages)
     .flatMap((columns) =>
+      // @ts-ignore
       columns.flatMap((section) => section.pages.map((p: any) => p.source)),
     );
 

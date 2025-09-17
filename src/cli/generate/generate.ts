@@ -20,16 +20,13 @@ export const generate = async (command, mode) => {
     rawParameters,
     setVersion: '',
     setReleaseDate: '',
-    homeLink: contents?.[0]?.pages[0],
   });
 
   const appPath = findAppDir(import.meta.dirname);
-  console.log(appPath);
   const baseConfig = {
     root: appPath,
     publicDir: inputDir,
     base: '/',
-    //publicDir: appPath,
     plugins: [react()],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),
