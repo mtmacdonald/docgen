@@ -6,7 +6,8 @@ import './views/assets/styles/framework.css';
 
 const app = () => {
   const rootElement = document.getElementById('root');
-  const root = ReactDOM.createRoot(rootElement!);
+  // @ts-ignore
+  const root = ReactDOM.createRoot(rootElement);
   root.render(<RouterProvider router={router} />);
 };
 

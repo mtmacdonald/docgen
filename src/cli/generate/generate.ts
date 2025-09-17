@@ -24,9 +24,12 @@ export const generate = async (command, mode) => {
   });
 
   const appPath = findAppDir(import.meta.dirname);
+  console.log(appPath);
   const baseConfig = {
     root: appPath,
-    publicDir: appPath,
+    publicDir: inputDir,
+    base: '/',
+    //publicDir: appPath,
     plugins: [react()],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),
