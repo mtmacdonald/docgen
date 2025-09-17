@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import { deriveParameters } from '../../docgen/meta/derive-parameters.ts';
 import { loadMeta } from '../../docgen/fs/meta.ts';
 import { sortPages } from '../../docgen/meta/sort-pages.ts';
-import { join } from 'path';
+import { findAppDir } from '../../paths.ts';
 
 export const generate = async (command, mode) => {
   const inputDir = path.resolve(process.cwd(), command.input);
@@ -23,11 +23,10 @@ export const generate = async (command, mode) => {
     homeLink: contents?.[0]?.pages[0],
   });
 
-  const pathZ = join(import.meta.dirname, '..', '..', 'dist', 'app');
-  console.log(pathZ);
+  const appPath = findAppDir(import.meta.dirname);
   const baseConfig = {
-    root: pathZ,
-    publicDir: pathZ,
+    root: appPath,
+    publicDir: appPath,
     plugins: [react()],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),

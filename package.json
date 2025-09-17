@@ -12,8 +12,6 @@
     "bundle:cli": "vite build --config ./vite.bundle.cli.config.ts && chmod +x dist/cli/cli.js",
     "bundle:app": "rimraf dist/app dist/template && ncp src/app dist/app && ncp src/template dist/template",
     "bundle": "yarn bundle:cli && yarn bundle:app",
-    "run:build": "dist/cli.js",
-    "dev": "tsx src/cli/cli.ts run",
     "dev:docs": "tsx src/cli/cli.ts dev -i src/docs -o ./docs",
     "build:docs": "tsx src/cli/cli.ts build -i src/docs -o ./docs",
     "preview:docs": "npx serve -s ./docs",
