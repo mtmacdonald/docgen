@@ -105,7 +105,7 @@ export const htmlStyleSheet = {
     fontStyle: 'italic',
   },
   code: {
-    // fontFamily: 'monospace',
+    //fontFamily: 'monospace',
   },
   a: {
     textDecoration: 'underline',

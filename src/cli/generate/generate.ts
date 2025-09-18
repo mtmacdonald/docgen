@@ -5,6 +5,20 @@ import { deriveParameters } from '../../docgen/meta/derive-parameters.ts';
 import { loadMeta } from '../../docgen/fs/meta.ts';
 import { sortPages } from '../../docgen/meta/sort-pages.ts';
 import { findAppDir } from '../../paths.ts';
+import { mkdirSync, copyFileSync } from 'node:fs';
+
+const FONT_FILES = [
+  'archivo-regular.ttf',
+  'archivo-italic.ttf',
+  'archivo-600.ttf',
+  'archivo-600-italic.ttf',
+  'space-grotesk-regular.ttf',
+  'space-grotesk-600.ttf',
+  'space-mono-regular.ttf',
+  'space-mono-italic.ttf',
+  'space-mono-700.ttf',
+  'space-mono-700-italic.ttf',
+];
 
 export const generate = async (command, mode) => {
   const inputDir = path.resolve(process.cwd(), command.input);
@@ -41,6 +55,15 @@ export const generate = async (command, mode) => {
         outDir: outputDir,
         emptyOutDir: true,
       },
+    });
+
+    // Copy TTF fonts into outputDir/assets/fonts
+    const fontDest = path.join(outputDir, 'assets');
+    mkdirSync(fontDest, { recursive: true });
+    FONT_FILES.forEach((file) => {
+      const src = path.join(appPath, 'views/assets/styles/fonts', file);
+      console.log(src);
+      copyFileSync(src, path.join(fontDest, file));
     });
   } else {
     const server = await createServer(baseConfig);
