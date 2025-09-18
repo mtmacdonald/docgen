@@ -1,7 +1,7 @@
-import * as styles from '../../../style-variables/js/style-variables.js';
-// import { docsStyleSheet } from './pdf-docs-styles.ts';
-// import { pdfAdmonitionsStyles } from './pdf-admonitions-styles.ts';
-// import { pdfTableStyles } from './pdf-table-styles.js';
+import * as styles from '../../../style-variables/js/style-variables';
+import { docsStyleSheet } from './pdf-docs-styles.ts';
+import { pdfAdmonitionsStyles } from './pdf-admonitions-styles.ts';
+import { pdfTableStyles } from './pdf-table-styles.js';
 
 export const fontSize = 10;
 
@@ -132,12 +132,6 @@ export const htmlStyleSheet = {
     flexGrow: 1,
     flexBasis: 1,
   },
-  table: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexShrink: 1,
-    borderCollapse: 'collapse',
-  },
   thead: {
     display: 'flex',
     flexDirection: 'column',
@@ -151,19 +145,10 @@ export const htmlStyleSheet = {
     flexDirection: 'row',
     flexShrink: 1,
   },
-  td: {
-    flexGrow: 1,
-    flexShrink: 1,
-  },
-  th: {
-    flexGrow: 1,
-    flexShrink: 1,
-    fontWeight: 'bold',
-  },
   ['.button']: {
     textAlign: 'center',
   },
-  //   ...pdfAdmonitionsStyles,
-  //   ...pdfTableStyles,
-  //   ...docsStyleSheet,
+  ...pdfAdmonitionsStyles,
+  ...pdfTableStyles,
+  ...docsStyleSheet,
 };
