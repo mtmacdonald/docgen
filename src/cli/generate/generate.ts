@@ -27,10 +27,19 @@ export const generate = async (command, mode) => {
     root: appPath,
     publicDir: inputDir,
     base: '/',
-    plugins: [react()],
+    plugins: [
+      react(),
+      {
+        name: 'html-transform',
+        transformIndexHtml(html: string) {
+          return html.replace(/%APP_TITLE%/g, parameters.title ?? 'DocGen');
+        },
+      },
+    ],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),
       __DOCGEN_PAGES__: JSON.stringify(sortedPages),
+      __APP_TITLE__: JSON.stringify(parameters.title ?? 'DocGen'),
     },
   };
 
