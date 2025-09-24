@@ -18,13 +18,13 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install dependencies
+        run: yarn install
+
       - name: Log Node & TypeScript versions
         run: |
           node -v
-          yarn tsc -v
-
-      - name: Install dependencies
-        run: yarn install
+          npx tsc -v
 
       - name: Check Formatting
         run: yarn prettier:check
