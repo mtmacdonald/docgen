@@ -24,7 +24,7 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
   return (
     <>
       <TopBar parameters={parameters} />
-      <SideBar name={name} sortedPages={sortedPages} pdfEnabled={pdfEnabled} />
+      <SideBar sortedPages={sortedPages} pdfEnabled={pdfEnabled} />
       <Page>
         <section id="dg-content">
           <div id="dg-innerContent">

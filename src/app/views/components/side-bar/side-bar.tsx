@@ -1,9 +1,9 @@
-// @ts-nocheck
 import React, { useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { TbMenu2, TbX, TbUsers, TbRefresh } from 'react-icons/tb';
 import cx from 'classnames';
 import { PdfToggleButton } from '../pdf-toggle-button/pdf-toggle-button.tsx';
+import type { TSortedPages } from '../../../../docgen/types.ts';
 
 const SIDEBAR_ICON_SIZE = 24;
 const SIDEBAR_SMALL_ICON_SIZE = 20;
@@ -20,7 +20,15 @@ const Page = ({ page, onLinkClick }) => {
   );
 };
 
-export const SideBar = ({ name, sortedPages, pdfEnabled }) => {
+export type TSideBarProps = {
+  sortedPages: TSortedPages;
+  pdfEnabled: boolean;
+}
+
+export const SideBar = ({
+  sortedPages,
+  pdfEnabled
+} : TSideBarProps) => {
   const [open, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!open);
   const close = () => setOpen(false);
