@@ -20,6 +20,7 @@ export const generate = async (command, mode) => {
   const { contents, rawParameters } = inputs;
 
   const sortedPages = sortPages({ contents });
+  console.log(JSON.stringify(sortedPages, null, 2));
   const parameters = deriveParameters({
     rawParameters,
     setVersion: '',

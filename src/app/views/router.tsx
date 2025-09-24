@@ -9,9 +9,10 @@ import { Pdf } from '../pdf/react-pdf/react-pdf.tsx';
 import { Page } from './content/page.tsx';
 import { Main } from './pages/main/main.tsx';
 import { Cover } from './pages/cover/cover.tsx';
+import type { TParameters, TSortedPages } from '../../docgen/types.ts';
 
-declare const __DOCGEN_PARAMETERS__: unknown;
-declare const __DOCGEN_PAGES__: Record<string, any[]>;
+declare const __DOCGEN_PARAMETERS__: TParameters;
+declare const __DOCGEN_PAGES__: TSortedPages;
 
 // Async loader to fetch Markdown files from public dir
 const loadPages = async () => {
@@ -55,8 +56,8 @@ const AsyncPage = ({ source }: { source: string }) => {
 const rootRoute = createRootRoute({
   component: () => (
     <Main
-      parameters={__DOCGEN_PARAMETERS__ as any}
-      sortedPages={__DOCGEN_PAGES__ as any}
+      parameters={__DOCGEN_PARAMETERS__}
+      sortedPages={__DOCGEN_PAGES__}
       pdfEnabled
     />
   ),
@@ -84,7 +85,7 @@ const ownershipRoute = createRoute({
   path: 'ownership',
   component: () => (
     <Cover
-      parameters={__DOCGEN_PARAMETERS__ as any}
+      parameters={__DOCGEN_PARAMETERS__}
     />
   ),
 });
@@ -95,9 +96,9 @@ const pdfRoute = createRoute({
   component: () => (
     <PDFViewer width="100%" height={800}>
       <Pdf
-        parameters={__DOCGEN_PARAMETERS__ as any}
+        parameters={__DOCGEN_PARAMETERS__}
         options={{}}
-        sortedPages={__DOCGEN_PAGES__ as any}
+        sortedPages={__DOCGEN_PAGES__}
       />
     </PDFViewer>
   ),

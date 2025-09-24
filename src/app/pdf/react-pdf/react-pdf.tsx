@@ -15,6 +15,7 @@ import spaceMonoRegular from '../../views/assets/styles/fonts/space-mono-regular
 import spaceMonoItalic from '../../views/assets/styles/fonts/space-mono-italic.ttf';
 import spaceMono700 from '../../views/assets/styles/fonts/space-mono-700.ttf';
 import spaceMono700Italic from '../../views/assets/styles/fonts/space-mono-700-italic.ttf';
+import type { TParameters, TSortedPages, TSection } from '../../../docgen/types.ts';
 
 Font.register({
   family: 'archivo',
@@ -45,9 +46,9 @@ Font.register({
 });
 
 type PdfProps = {
-  parameters: any;
+  parameters: TParameters;
   options: any;
-  sortedPages: any;
+  sortedPages: TSortedPages;
 };
 
 // Async loader for PDF pages
@@ -55,8 +56,7 @@ const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> =
   const pages: Record<string, string> = {};
 
   const sources = Object.values(sortedPages)
-    .flatMap((columns) =>
-      // @ts-ignore
+    .flatMap((columns: TSection) =>
       columns.flatMap((section) => section.pages.map((p: any) => p.source)),
     );
 
@@ -87,7 +87,6 @@ export const Pdf = ({ parameters, options, sortedPages }: PdfProps) => {
 
   const allSources = Object.values(sortedPages)
     .flatMap((columns) =>
-      // @ts-ignore
       columns.flatMap((section) => section.pages.map((p: any) => p.source)),
     );
 

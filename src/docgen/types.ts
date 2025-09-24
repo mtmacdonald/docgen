@@ -71,3 +71,18 @@ export type TInputConfig = {
   contents?: TContentEntry[];
   rawParameters?: TParameters | null;
 };
+
+export type TSection = {
+  heading: string;
+  column: 1 | 2 | 3 | 4 | 5;
+  pages: { title: string; source: string }[];
+  [key: string]: any;
+};
+
+export type TSortedPages = {
+  1: TSection[];
+  2: TSection[];
+  3: TSection[];
+  4: TSection[];
+  5: TSection[];
+};
