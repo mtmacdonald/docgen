@@ -30,9 +30,9 @@ export const PdfToggleButton = ({ onClick }: PdfToggleButtonProps) => {
       style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
     >
       {pdfVisible ? (
-        <TbFile size={18} className="icon" />
+        <TbFile size={18} />
       ) : (
-        <TbFileOff size={18} className="icon" />
+        <TbFileOff size={18} />
       )}
       <span>PDF</span>
     </button>

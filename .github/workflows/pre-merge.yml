@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: 22
 
+      - name: Log Node & TypeScript versions
+        run: |
+          node -v
+          npx tsc -v
+
       - name: Install dependencies
         run: yarn install
 
