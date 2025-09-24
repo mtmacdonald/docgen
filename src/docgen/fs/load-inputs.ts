@@ -7,14 +7,14 @@ export const loadInputs = async ({
   inputPath,
   verbose,
 }): Promise<TInputConfig | undefined> => {
-  const meta: TInputConfig = {
-    rawParameters: null,
+  const inputConfig = {
+    parameters: null,
     contents: [],
   };
   console.log(pico.green('Loading required JSON metadata files'));
   try {
     let files = {
-      rawParameters: await readFile(inputPath + '/parameters.json'),
+      parameters: await readFile(inputPath + '/parameters.json'),
       contents: await readFile(inputPath + '/contents.json'),
     };
     for (let key in files) {
@@ -22,7 +22,7 @@ export const loadInputs = async ({
         try {
           let file = JSON.parse(files[key]);
           if (validateJSON({ key, data: file, verbose })) {
-            meta[key] = file;
+            inputConfig[key] = file;
           } else {
           }
         } catch (error) {
@@ -43,12 +43,11 @@ export const loadInputs = async ({
       column: 5,
       pages: [{ title: 'Release notes', source: 'release-notes.md' }],
     };
-    if (meta?.contents) {
-      meta.contents.push(extra);
-    }
+    // @ts-ignore
+    inputConfig.contents.push(extra);
     return {
-      rawParameters: meta.rawParameters,
-      contents: meta.contents,
+      rawParameters: inputConfig.parameters,
+      contents: inputConfig.contents,
     };
   } catch (error) {
     console.log(pico.red('Error loading required JSON metadata files'));
