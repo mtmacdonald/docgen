@@ -2,7 +2,7 @@ import path from 'node:path';
 import { build, createServer } from 'vite';
 import react from '@vitejs/plugin-react';
 import { deriveParameters } from '../../docgen/meta/derive-parameters.ts';
-import { loadMeta } from '../../docgen/fs/meta.ts';
+import { loadInputs } from '../../docgen/fs/load-inputs.ts';
 import { sortPages } from '../../docgen/meta/sort-pages.ts';
 import { findAppDir } from '../../paths.ts';
 
@@ -10,10 +10,14 @@ export const generate = async (command, mode) => {
   const inputDir = path.resolve(process.cwd(), command.input);
   const outputDir = path.resolve(process.cwd(), command.output);
 
-  const { contents, rawParameters } = await loadMeta({
+  const inputs = await loadInputs({
     inputPath: inputDir,
     verbose: false,
   });
+  if (!inputs) {
+    throw new Error('Invalid DocGen input files, aborting...');
+  }
+  const { contents, rawParameters } = inputs;
 
   const sortedPages = sortPages({ contents });
   const parameters = deriveParameters({

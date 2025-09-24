@@ -4,12 +4,12 @@ import { TopBar } from '../../components/top-bar/top-bar.tsx';
 import { SideBar } from '../../components/side-bar/side-bar.tsx';
 import { Page } from '../../components/page/page.tsx';
 import { PDFViewer } from '@react-pdf/renderer';
-import type { Parameters } from '../../../../docgen/types.ts';
+import type { TParameters } from '../../../../docgen/types.ts';
 import { Pdf } from '../../../pdf/react-pdf/react-pdf.tsx';
 import { Outlet, useRouterState } from '@tanstack/react-router';
 
 type MainProps = {
-  parameters: Parameters;
+  parameters: TParameters;
   sortedPages: any;
   pdfEnabled: boolean;
 };

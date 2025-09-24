@@ -1,18 +1,20 @@
 import pico from 'picocolors';
 import { readFile } from './fs.ts';
 import { validateJSON } from '../validation/validation.ts';
-import type { Meta } from '../types.ts';
+import { TInputConfig } from '../types.ts';
 
-// @ts-ignore
-export const loadMeta = async ({ inputPath, verbose }): Promise<Meta> => {
-  const meta = {
-    parameters: null,
-    contents: null,
+export const loadInputs = async ({
+  inputPath,
+  verbose,
+}): Promise<TInputConfig | undefined> => {
+  const meta: TInputConfig = {
+    rawParameters: null,
+    contents: [],
   };
   console.log(pico.green('Loading required JSON metadata files'));
   try {
     let files = {
-      parameters: await readFile(inputPath + '/parameters.json'),
+      rawParameters: await readFile(inputPath + '/parameters.json'),
       contents: await readFile(inputPath + '/contents.json'),
     };
     for (let key in files) {
@@ -41,12 +43,11 @@ export const loadMeta = async ({ inputPath, verbose }): Promise<Meta> => {
       column: 5,
       pages: [{ title: 'Release notes', source: 'release-notes.md' }],
     };
-    // @ts-ignore
-    meta.contents.push(extra);
+    if (meta?.contents) {
+      meta.contents.push(extra);
+    }
     return {
-      // @ts-ignore
-      rawParameters: meta.parameters,
-      // @ts-ignore
+      rawParameters: meta.rawParameters,
       contents: meta.contents,
     };
   } catch (error) {
