@@ -3,12 +3,14 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { Link } from '@tanstack/react-router';
+import { preprocessAdmonitions } from '../../../common/markdown/markdown.ts';
 
 type Props = {
   content: string;
 };
 
 export const Markdown = ({ content }: Props) => {
+  const preparedContent = preprocessAdmonitions(content);
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
@@ -52,7 +54,7 @@ export const Markdown = ({ content }: Props) => {
         },
       }}
     >
-      {content}
+      {preparedContent}
     </ReactMarkdown>
   );
 };
