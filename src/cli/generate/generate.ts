@@ -6,7 +6,7 @@ import { loadInputs } from '../../docgen/fs/load-inputs.ts';
 import { sortPages } from '../../docgen/meta/sort-pages.ts';
 import { findAppDir } from '../../paths.ts';
 
-export const generate = async (command, mode) => {
+export const generate = async (command, mode: string) => {
   const inputDir = path.resolve(process.cwd(), command.input);
   const outputDir = path.resolve(process.cwd(), command.output);
 
@@ -22,8 +22,8 @@ export const generate = async (command, mode) => {
   const sortedPages = sortPages({ contents });
   const parameters = deriveParameters({
     rawParameters,
-    setVersion: '',
-    setReleaseDate: '',
+    setVersion: command?.setVersion,
+    setReleaseDate: command?.setReleaseDate,
   });
 
   const appPath = findAppDir(import.meta.dirname);

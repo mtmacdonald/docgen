@@ -39,6 +39,18 @@ program
     'path to the output directory [default: ./output]',
     './output',
   )
+  .option('-p, --pdf', 'create a PDF document')
+  .option(
+    '-s, --set-version [version]',
+    'override parameters.version (useful for build tools) [default: false]',
+    false,
+  )
+  .option(
+    '-R, --set-release-date [date]',
+    'override parameters.date (useful for build tools) [default: false]',
+    false,
+  )
+  .option('-v, --verbose', 'show verbose output including detailed errors')
   .action((command) => {
     generate(command, 'dev');
   });
@@ -57,6 +69,18 @@ program
     'path to the output directory [default: ./output]',
     './output',
   )
+  .option('-p, --pdf', 'create a PDF document')
+  .option(
+    '-s, --set-version [version]',
+    'override parameters.version (useful for build tools) [default: false]',
+    false,
+  )
+  .option(
+    '-R, --set-release-date [date]',
+    'override parameters.date (useful for build tools) [default: false]',
+    false,
+  )
+  .option('-v, --verbose', 'show verbose output including detailed errors')
   .action((command) => {
     generate(command, 'build');
   });
