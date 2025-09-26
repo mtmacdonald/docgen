@@ -110,6 +110,7 @@ const router = createRouter({
     ownershipRoute,
     pdfRoute
   ]),
+  basepath: '/docgen' // only for published git-hub pages docs
 });
 
 export { router };
