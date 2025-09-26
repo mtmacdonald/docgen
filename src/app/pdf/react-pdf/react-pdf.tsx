@@ -16,7 +16,7 @@ import spaceMonoItalic from '../../views/assets/styles/fonts/space-mono-italic.t
 import spaceMono700 from '../../views/assets/styles/fonts/space-mono-700.ttf';
 import spaceMono700Italic from '../../views/assets/styles/fonts/space-mono-700-italic.ttf';
 import type { TParameters, TSortedPages, TSection } from '../../../docgen/types.ts';
-import { preprocessAdmonitions } from '../../../common/markdown/markdown.ts';
+import { preprocessAdmonitions } from '../../common/markdown/markdown.ts';
 
 Font.register({
   family: 'archivo',
