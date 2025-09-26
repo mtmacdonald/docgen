@@ -1,4 +1,11 @@
-﻿## DocGen 5.3.0 30/07/2025
+﻿## DocGen 6.0.0 26/08/2025
+
+- Major version release
+  - DocGen is now a modern single-page application (SPA) built with [React](https://react.dev)
+  - Modern [Vite](https://vite.dev) build engine replaces old string template build system
+  - PDF now uses [PDFViewer](https://react-pdf.org/components#pdfviewer) component from `react-pdf`
+
+## DocGen 5.3.0 30/07/2025
 
 - Fonts now work in the PDF
 - Upgrade fonts to reflect Inkit rebrand

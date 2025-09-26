@@ -157,7 +157,7 @@ This is a link to [Google](http://www.google.com).
 
 ### Images
 
-Images can be added to documents - save the image files to the *files/images* directory (in `.jpg` or `.png` formats).
+Images can be added to documents - save the image files to the *images* directory (in `.jpg` or `.png` formats).
 
 *What you type:*
 

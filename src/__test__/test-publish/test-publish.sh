@@ -2,8 +2,8 @@
 set -e  # Exit on error
 
 # Build the package
-echo "Building package..."
-yarn build
+echo "Bundling package..."
+yarn bundle
 
 # Pack the package and get the filename
 TARBALL_NAME=$(npm pack --silent)
@@ -34,7 +34,7 @@ if ! npx docgen-tool scaffold; then
 fi
 
 mkdir example
-if ! npx docgen-tool run -o ./example; then
+if ! npx docgen-tool build -o ./example; then
   echo "⚠ CLI execution failed"
   exit 1
 fi

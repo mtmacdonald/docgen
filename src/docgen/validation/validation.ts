@@ -119,7 +119,6 @@ const schemas = {
                     properties: {
                       title: { type: 'string' },
                       source: { type: 'string' },
-                      hideAutomaticPageHeading: { type: 'boolean' },
                     },
                   },
                 ],
