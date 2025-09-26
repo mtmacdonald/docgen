@@ -30,7 +30,7 @@ export const generate = async (command, mode) => {
   const baseConfig = {
     root: appPath,
     publicDir: inputDir,
-    base: '/',
+    base: '',
     plugins: [
       react(),
       {
