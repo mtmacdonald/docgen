@@ -23,12 +23,12 @@ export const TopBar = ({ parameters }) => {
             <Logo parameters={parameters} />
           </Link>
           <div id="headerLeftText">
-            <a className="dg-homelink" href={parameters.homePagePath}>
+            <Link className="dg-homelink" to={parameters.homePagePath}>
               <span id="dg-title">{parameters.title}</span>
               <span id="dg-web-title-version" style={{ fontWeight: 'normal' }}>
                 &nbsp;({parameters.version})
               </span>
-            </a>
+            </Link>
             {parameters?.sponsorLink?.name && (
               <div id="headerSponsor">
                 <span>{parameters.sponsorLink.name}</span>
