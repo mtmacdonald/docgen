@@ -13,7 +13,7 @@ button,
   justify-content: center;
   outline: 0;
   vertical-align: baseline;
-  border: 2px solid var(--color-button-border);
+  border: var(--color-button-border);
   background: var(--color-button-background);
   color: var(--color-button-text) !important;
   padding: 0 25px;
@@ -71,15 +71,4 @@ button,
   color: var(--color-button-text) !important;
   border: 2px solid white;
   box-shadow: none;
-}
-
-.icon {
-  .button & {
-    margin-left: 8px;
-    transition: transform 0.1s ease;
-  }
-
-  .button:hover & {
-    transform: translateX(4px);
-  }
 }

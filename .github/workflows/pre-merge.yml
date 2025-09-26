@@ -21,20 +21,22 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Log Node & TypeScript versions
+        run: |
+          node -v
+          npx tsc -v
+
       - name: Check Formatting
         run: yarn prettier:check
 
       - name: Check Types
         run: yarn check:types
 
-      - name: Build icons
-        run: yarn build:icons
-
       - name: Build styles
         run: yarn build:styles
 
-      - name: Build package
-        run: yarn build
+      - name: Bundle package (build NPM package)
+        run: yarn bundle
 
       - name: Run DocGen scaffold (DEV)
         run: yarn test:scaffold

@@ -31,7 +31,7 @@
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: var(size-side-bar-padding);
+  padding: var(--size-side-bar-padding);
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   width: var(--size-side-bar-width);
@@ -87,15 +87,17 @@
     li {
       display: flex;
       align-items: center;
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        svg {
+          vertical-align: middle;
+        }
+      }
     }
     .dgIcon {
       padding: 0 5px 0 0;
-      width: 20px;
-      height: 20px;
-    }
-    .dgIcon svg {
-      width: 20px;
-      height: 20px;
     }
   }
 
@@ -156,9 +158,6 @@
   .dgIcon {
     margin: 0;
     color: white;
-    svg {
-      height: 40px;
-    }
   }
 
   transition: transform 0.4s;

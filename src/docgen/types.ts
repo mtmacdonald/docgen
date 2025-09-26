@@ -1,7 +1,4 @@
-import * as CheerioAPI from 'cheerio';
-export type TCheerioAPI = typeof CheerioAPI;
-
-export type Options = {
+export type TCliOptions = {
   input: string; // inputPath
   output: string; // outputPath
   verbose: boolean;
@@ -12,7 +9,7 @@ export type Options = {
   redirect: boolean;
 };
 
-export type rawParameters = {
+export type TInputParameters = {
   title: string;
   name: string;
   version: string;
@@ -56,29 +53,36 @@ export type rawParameters = {
   logoPath?: string;
 };
 
-export type Parameters = rawParameters & {
+export type TParameters = TInputParameters & {
   attribution: string;
   year: string;
 };
 
-export type Content = {
-  name: string;
+export type TContentEntry = {
+  heading: string;
   column: number;
-  pages: [
-    {
-      title: string;
-      source: string;
-      hideAutomaticPageHeading: boolean;
-    },
-  ];
+  pages: {
+    title: string;
+    source: string;
+  }[];
 };
 
-export type Meta = {
-  contents?: Content[];
-  rawParameters?: Parameters;
+export type TInputConfig = {
+  contents?: TContentEntry[];
+  rawParameters?: TParameters | null;
 };
 
-export type Templates = {
-  main?: string | TCheerioAPI;
-  redirect?: string | TCheerioAPI;
+export type TSection = {
+  heading: string;
+  column: 1 | 2 | 3 | 4 | 5;
+  pages: { title: string; source: string }[];
+  [key: string]: any;
+};
+
+export type TSortedPages = {
+  1: TSection[];
+  2: TSection[];
+  3: TSection[];
+  4: TSection[];
+  5: TSection[];
 };
