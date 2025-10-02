@@ -56,9 +56,10 @@ type PdfProps = {
 const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> => {
   const pages: Record<string, string> = {};
 
-  // Detect if running on GitHub Pages with a repo slug
+  // Detect if running on GitHub Pages
   const isGithubPages = window.location.hostname.includes('github.io');
   const basePath = isGithubPages ? '/docgen/' : '/';
+  console.log('isGithubPages:', isGithubPages, 'basePath:', basePath);
 
   const sources = Object.values(sortedPages)
     .flatMap((columns: TSection) =>
@@ -67,10 +68,18 @@ const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> =
 
   await Promise.all(
     sources.map(async (filename) => {
+      const url = `${basePath}${filename}`;
+      console.log('Fetching PDF page:', url);
       try {
-        const res = await fetch(`${basePath}${filename}`);
-        pages[filename] = res.ok ? await res.text() : `Error loading ${filename}`;
+        const res = await fetch(url);
+        if (!res.ok) {
+          console.error('Failed to fetch:', url, 'status:', res.status);
+          pages[filename] = `Error loading ${filename}: ${res.status}`;
+        } else {
+          pages[filename] = await res.text();
+        }
       } catch (err) {
+        console.error('Error fetching:', url, err);
         pages[filename] = `Error loading ${filename}: ${err}`;
       }
     }),
