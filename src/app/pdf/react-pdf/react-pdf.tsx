@@ -63,7 +63,6 @@ const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> =
   if (pathParts.length > 1) {
     basePath = '/' + pathParts[1] + '/';
   }
-  console.log('Detected basePath:', basePath);
 
   const sources = Object.values(sortedPages)
     .flatMap((columns: TSection) =>
@@ -73,17 +72,10 @@ const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> =
   await Promise.all(
     sources.map(async (filename) => {
       const url = `${basePath}${filename}`;
-      console.log('Fetching PDF page:', url);
       try {
         const res = await fetch(url);
-        if (!res.ok) {
-          console.error('Failed to fetch:', url, 'status:', res.status);
-          pages[filename] = `Error loading ${filename}: ${res.status}`;
-        } else {
-          pages[filename] = await res.text();
-        }
+        pages[filename] = res.ok ? await res.text() : `Error loading ${filename}: ${res.status}`;
       } catch (err) {
-        console.error('Error fetching:', url, err);
         pages[filename] = `Error loading ${filename}: ${err}`;
       }
     }),
