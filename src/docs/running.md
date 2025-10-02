@@ -30,16 +30,8 @@ The **run** command transforms an input directory (plain text source) into an ou
 
 **Basic usage:**
 
-	npx docgen-tool run -i $HOME/docgen-example -o $HOME/docgen-output
+	npx docgen-tool build -i $HOME/docgen-example -o $HOME/docgen-output
 
 **Optionally create a PDF:**
 
-	npx docgen-tool run -i $HOME/docgen-example -o $HOME/docgen-output -p
-
-**Optionally create a redirect page:**
-
-	npx docgen-tool run -i $HOME/docgen-example -o $HOME/docgen-output -r
-
-> The optional redirect page is an 'index.html' file that is placed in the output's parent directory. The redirect page
-redirects the user to the homepage in the output directory. This is mostly useful for hosting the website without having
-to place all the files in the root directory.
+	npx docgen-tool build -i $HOME/docgen-example -o $HOME/docgen-output -p
