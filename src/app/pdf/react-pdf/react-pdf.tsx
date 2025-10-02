@@ -56,6 +56,9 @@ type PdfProps = {
 const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> => {
   const pages: Record<string, string> = {};
 
+  // Determine base path dynamically
+  const basePath = window.location.pathname.includes('/docgen') ? '/docgen/' : '/';
+
   const sources = Object.values(sortedPages)
     .flatMap((columns: TSection) =>
       columns.flatMap((section) => section.pages.map((p: any) => p.source)),
@@ -64,7 +67,7 @@ const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> =
   await Promise.all(
     sources.map(async (filename) => {
       try {
-        const res = await fetch(`/${filename}`);
+        const res = await fetch(`${basePath}${filename}`);
         pages[filename] = res.ok ? await res.text() : `Error loading ${filename}`;
       } catch (err) {
         pages[filename] = `Error loading ${filename}: ${err}`;
@@ -74,6 +77,7 @@ const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> =
 
   return pages;
 };
+
 
 export const Pdf = ({ parameters, options, sortedPages }: PdfProps) => {
   const [pages, setPages] = useState<Record<string, string>>({});
