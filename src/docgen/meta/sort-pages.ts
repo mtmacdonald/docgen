@@ -1,4 +1,6 @@
-export const sortPages = ({ contents }) => {
+import { TSortedPages } from '../types.ts';
+
+export const sortPages = ({ contents }): TSortedPages => {
   return contents.reduce(
     (acc, section) => {
       const { column } = section;
