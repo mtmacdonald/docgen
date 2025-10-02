@@ -56,10 +56,14 @@ type PdfProps = {
 const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> => {
   const pages: Record<string, string> = {};
 
-  // Detect if running on GitHub Pages
-  const isGithubPages = window.location.hostname.includes('github.io');
-  const basePath = isGithubPages ? '/docgen/' : '/';
-  console.log('isGithubPages:', isGithubPages, 'basePath:', basePath);
+  // Dynamically detect the base path from the current location
+  // e.g., for http://localhost:5173/docgen/index.html => '/docgen/'
+  const pathParts = window.location.pathname.split('/');
+  let basePath = '/';
+  if (pathParts.length > 1) {
+    basePath = '/' + pathParts[1] + '/';
+  }
+  console.log('Detected basePath:', basePath);
 
   const sources = Object.values(sortedPages)
     .flatMap((columns: TSection) =>
