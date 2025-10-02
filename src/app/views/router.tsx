@@ -3,6 +3,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
+  redirect,
 } from '@tanstack/react-router';
 import { PDFViewer } from '@react-pdf/renderer';
 import { Pdf } from '../pdf/react-pdf/react-pdf.tsx';
@@ -26,7 +27,7 @@ const loadPages = async () => {
   await Promise.all(
     sources.map(async (filename) => {
       try {
-        const res = await fetch(`/${filename}`);
+        const res = await fetch(`/docgen/${filename}`);
         pages[filename] = res.ok ? await res.text() : `Error loading ${filename}`;
       } catch (err) {
         pages[filename] = `Error loading ${filename}: ${err}`;
@@ -104,11 +105,20 @@ const pdfRoute = createRoute({
   ),
 });
 
+const redirectDocsIndexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'docs/index.html',
+  beforeLoad: () => {
+    throw redirect({ to: '/' }) // relative redirect
+  },
+});
+
 const router = createRouter({
   routeTree: rootRoute.addChildren([
     ...pageRoutes,
     ownershipRoute,
-    pdfRoute
+    pdfRoute,
+    redirectDocsIndexRoute, // redirect legacy homepage to new homepage (GitHub pages hosting)
   ]),
   basepath: '/docgen' // only for published git-hub pages docs
 });

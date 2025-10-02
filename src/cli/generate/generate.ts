@@ -7,6 +7,10 @@ import { sortPages } from '../../docgen/meta/sort-pages.ts';
 import { findAppDir } from '../../paths.ts';
 
 export const generate = async (command, mode: string) => {
+  /*
+    Need dynamic basepath that works here, parameters links, router fix
+   */
+
   const inputDir = path.resolve(process.cwd(), command.input);
   const outputDir = path.resolve(process.cwd(), command.output);
 
@@ -30,7 +34,7 @@ export const generate = async (command, mode: string) => {
   const baseConfig = {
     root: appPath,
     publicDir: inputDir,
-    base: '',
+    base: '/docgen',
     plugins: [
       react(),
       {
