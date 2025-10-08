@@ -105,11 +105,23 @@ const pdfRoute = createRoute({
   ),
 });
 
-const redirectDocsIndexRoute = createRoute({
+const redirectLegacyRoutes = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'docs/index.html',
-  beforeLoad: () => {
-    throw redirect({ to: '/' }) // relative redirect
+  path: 'docs/$path+',
+  beforeLoad: ({ params }) => {
+    const { ['path+']: rawPath } = params;
+    const path = Array.isArray(rawPath) ? rawPath.join('/') : rawPath;
+
+    // Remove .html or .pdf extension
+    const cleanPath = path.replace(/\.(html|pdf)$/i, '');
+
+    if (cleanPath === 'index') {
+      throw redirect({ to: '/' });
+    } else if (cleanPath === 'docgen') {
+      throw redirect({ to: '/pdf' });
+    } else {
+      throw redirect({ to: `/${cleanPath}` });
+    }
   },
 });
 
@@ -118,7 +130,7 @@ const router = createRouter({
     ...pageRoutes,
     ownershipRoute,
     pdfRoute,
-    redirectDocsIndexRoute, // redirect legacy homepage to new homepage (GitHub pages hosting)
+    redirectLegacyRoutes, // redirect legacy Github pages routes to new ones
   ]),
   basepath: '/docgen' // only for published git-hub pages docs
 });
