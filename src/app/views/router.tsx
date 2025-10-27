@@ -133,9 +133,9 @@ const router = createRouter({
   routeTree: rootRoute.addChildren([
     ...pageRoutes,
     ownershipRoute,
-    pdfRoute
+    pdfRoute,
+    ...(__BASE_PATH__ === '/docgen/' ? [redirectLegacyRoutes] : []),
   ]),
-  ...(__BASE_PATH__ === '/docgen' ? [redirectLegacyRoutes] : []),
   basepath: __BASE_PATH__
 });
 
