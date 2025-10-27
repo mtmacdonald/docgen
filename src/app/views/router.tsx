@@ -3,7 +3,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-  redirect,
+  redirect
 } from '@tanstack/react-router';
 import { PDFViewer } from '@react-pdf/renderer';
 import { Pdf } from '../pdf/react-pdf/react-pdf.tsx';
@@ -14,6 +14,7 @@ import type { TParameters, TSortedPages } from '../../docgen/types.ts';
 
 declare const __DOCGEN_PARAMETERS__: TParameters;
 declare const __DOCGEN_PAGES__: TSortedPages;
+declare const __BASE_PATH__: string;
 
 // Async loader to fetch Markdown files from public dir
 const loadPages = async () => {
@@ -27,7 +28,7 @@ const loadPages = async () => {
   await Promise.all(
     sources.map(async (filename) => {
       try {
-        const res = await fetch(`/docgen/${filename}`);
+        const res = await fetch(`${__BASE_PATH__}${filename}`);
         pages[filename] = res.ok ? await res.text() : `Error loading ${filename}`;
       } catch (err) {
         pages[filename] = `Error loading ${filename}: ${err}`;
@@ -105,6 +106,9 @@ const pdfRoute = createRoute({
   ),
 });
 
+/*
+  Redirects for legacy routes in the gh-pages version
+ */
 const redirectLegacyRoutes = createRoute({
   getParentRoute: () => rootRoute,
   path: 'docs/$path+',
@@ -129,10 +133,10 @@ const router = createRouter({
   routeTree: rootRoute.addChildren([
     ...pageRoutes,
     ownershipRoute,
-    pdfRoute,
-    redirectLegacyRoutes, // redirect legacy Github pages routes to new ones
+    pdfRoute
   ]),
-  basepath: '/docgen' // only for published git-hub pages docs
+  ...(__BASE_PATH__ === '/docgen' ? [redirectLegacyRoutes] : []),
+  basepath: __BASE_PATH__
 });
 
 export { router };
