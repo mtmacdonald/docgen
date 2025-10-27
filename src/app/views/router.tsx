@@ -134,7 +134,7 @@ const router = createRouter({
     ...pageRoutes,
     ownershipRoute,
     pdfRoute,
-    ...(__BASE_PATH__ === '/docgen/' ? [] : []),
+    ...(__BASE_PATH__ === '/docgen/' ? [redirectLegacyRoutes] : []),
   ]),
   basepath: __BASE_PATH__
 });
