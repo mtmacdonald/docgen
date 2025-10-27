@@ -1,4 +1,4 @@
-﻿## DocGen 6.0.0 26/08/2025
+﻿## DocGen 6.0.0 02/10/2025
 
 - Major version release
   - DocGen is now a modern single-page application (SPA) built with [React](https://react.dev)
