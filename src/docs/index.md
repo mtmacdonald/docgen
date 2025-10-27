@@ -125,6 +125,7 @@ In just three steps:
 Simply enter these commands in the terminal:
    
     npx docgen-tool scaffold
-    npx docgen-tool run -o $HOME/docgen-example
+    npx docgen-tool build -o $HOME/docgen-example
+    npx serve $HOME/docgen-example
 
 **See the <a href="installation.html">installation guide</a> for more detailed instructions.**

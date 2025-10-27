@@ -18,6 +18,8 @@ import spaceMono700Italic from '../../views/assets/styles/fonts/space-mono-700-i
 import type { TParameters, TSortedPages, TSection } from '../../../docgen/types.ts';
 import { preprocessAdmonitions } from '../../common/markdown/markdown.ts';
 
+declare const __BASE_PATH__: string;
+
 Font.register({
   family: 'archivo',
   fonts: [
@@ -63,9 +65,10 @@ const loadPdfPages = async (sortedPages: any): Promise<Record<string, string>> =
 
   await Promise.all(
     sources.map(async (filename) => {
+      const url = `${__BASE_PATH__}${filename}`;
       try {
-        const res = await fetch(`/${filename}`);
-        pages[filename] = res.ok ? await res.text() : `Error loading ${filename}`;
+        const res = await fetch(url);
+        pages[filename] = res.ok ? await res.text() : `Error loading ${filename}: ${res.status}`;
       } catch (err) {
         pages[filename] = `Error loading ${filename}: ${err}`;
       }

@@ -1,7 +1,7 @@
 {
   "name": "docgen-tool",
   "type": "module",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "A tool for creating HTML and PDF documentation",
   "bin": "./dist/cli/cli.js",
   "files": [
@@ -15,6 +15,8 @@
     "dev:docs": "tsx src/cli/cli.ts dev -i src/docs -o ./docs",
     "build:docs": "tsx src/cli/cli.ts build -i src/docs -o ./docs",
     "preview:docs": "npx serve -s ./docs",
+    "build:docs:gh": "tsx src/cli/cli.ts build -i src/docs -o ./docs && yarn copy:gh:files",
+    "copy:gh:files": "node deploy/before-deploy-website.js",
     "build:styles": "rimraf src/app/style-variables && npx style-dictionary build && sass --no-source-map src/styles/main.scss src/app/views/assets/styles/framework.css && yarn prettier:fix",
     "test": "npm run prettier:check",
     "test:run": "tsx src/cli/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
@@ -36,6 +38,7 @@
     "cheerio": "^1.1.2",
     "classnames": "^2.5.1",
     "commander": "^14.0.0",
+    "dotenv": "^17.2.3",
     "fs-extra": "^11.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",

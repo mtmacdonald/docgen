@@ -1,10 +1,14 @@
 import path from 'node:path';
 import { build, createServer } from 'vite';
 import react from '@vitejs/plugin-react';
+import dotenv from 'dotenv';
 import { deriveParameters } from '../../docgen/meta/derive-parameters.ts';
 import { loadInputs } from '../../docgen/fs/load-inputs.ts';
 import { sortPages } from '../../docgen/meta/sort-pages.ts';
 import { findAppDir } from '../../paths.ts';
+
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+const basePath = process.env.BASE_PATH || '/';
 
 export const generate = async (command, mode: string) => {
   const inputDir = path.resolve(process.cwd(), command.input);
@@ -30,7 +34,7 @@ export const generate = async (command, mode: string) => {
   const baseConfig = {
     root: appPath,
     publicDir: inputDir,
-    base: '',
+    base: basePath,
     plugins: [
       react(),
       {
@@ -44,6 +48,7 @@ export const generate = async (command, mode: string) => {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),
       __DOCGEN_PAGES__: JSON.stringify(sortedPages),
       __APP_TITLE__: JSON.stringify(parameters.title ?? 'DocGen'),
+      __BASE_PATH__: JSON.stringify(basePath),
     },
   };
 

@@ -3,6 +3,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
+  redirect
 } from '@tanstack/react-router';
 import { PDFViewer } from '@react-pdf/renderer';
 import { Pdf } from '../pdf/react-pdf/react-pdf.tsx';
@@ -13,6 +14,7 @@ import type { TParameters, TSortedPages } from '../../docgen/types.ts';
 
 declare const __DOCGEN_PARAMETERS__: TParameters;
 declare const __DOCGEN_PAGES__: TSortedPages;
+declare const __BASE_PATH__: string;
 
 // Async loader to fetch Markdown files from public dir
 const loadPages = async () => {
@@ -26,7 +28,7 @@ const loadPages = async () => {
   await Promise.all(
     sources.map(async (filename) => {
       try {
-        const res = await fetch(`/${filename}`);
+        const res = await fetch(`${__BASE_PATH__}${filename}`);
         pages[filename] = res.ok ? await res.text() : `Error loading ${filename}`;
       } catch (err) {
         pages[filename] = `Error loading ${filename}: ${err}`;
@@ -104,12 +106,37 @@ const pdfRoute = createRoute({
   ),
 });
 
+/*
+  Redirects for legacy routes in the gh-pages version
+ */
+const redirectLegacyRoutes = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'docs/$path+',
+  beforeLoad: ({ params }) => {
+    const { ['path+']: rawPath } = params;
+    const path = Array.isArray(rawPath) ? rawPath.join('/') : rawPath;
+
+    // Remove .html or .pdf extension
+    const cleanPath = path.replace(/\.(html|pdf)$/i, '');
+
+    if (cleanPath === 'index') {
+      throw redirect({ to: '/' });
+    } else if (cleanPath === 'docgen') {
+      throw redirect({ to: '/pdf' });
+    } else {
+      throw redirect({ to: `/${cleanPath}` });
+    }
+  },
+});
+
 const router = createRouter({
   routeTree: rootRoute.addChildren([
     ...pageRoutes,
     ownershipRoute,
     pdfRoute
   ]),
+  ...(__BASE_PATH__ === '/docgen' ? [redirectLegacyRoutes] : []),
+  basepath: __BASE_PATH__
 });
 
 export { router };
