@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter, useRouterState } from '@tanstack/react-router';
 import { TbFile, TbFileOff } from 'react-icons/tb';
+import { pdfRoute } from '../../router';
 
 type PdfToggleButtonProps = {
   onClick?: () => void; // optional callback
@@ -9,7 +10,7 @@ type PdfToggleButtonProps = {
 export const PdfToggleButton = ({ onClick }: PdfToggleButtonProps) => {
   const router = useRouter();
   const pdfVisible = useRouterState({
-    select: (s) => s.location.pathname === '/pdf',
+    select: (state) => state.location.pathname.endsWith(pdfRoute.path),
   });
 
   const onPdfToggle = () => {
