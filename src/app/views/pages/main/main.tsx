@@ -7,6 +7,7 @@ import { PDFViewer } from '@react-pdf/renderer';
 import type { TParameters } from '../../../../docgen/types.ts';
 import { Pdf } from '../../../pdf/react-pdf/react-pdf.tsx';
 import { Outlet, useRouterState } from '@tanstack/react-router';
+import { pdfRoute } from '../../router.tsx';
 
 type MainProps = {
   parameters: TParameters;
@@ -16,11 +17,8 @@ type MainProps = {
 
 export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
   const pdfVisible = useRouterState({
-    select: (s) => s.location.pathname === '/pdf',
+    select: (state) => state.location.pathname.endsWith(pdfRoute.path),
   });
-
-  const { name } = parameters;
-
   return (
     <>
       <TopBar parameters={parameters} />

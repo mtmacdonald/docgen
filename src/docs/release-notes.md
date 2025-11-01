@@ -1,3 +1,7 @@
+## DocGen 6.0.2 01/11/2025
+
+- Fixed viewstate bug in PDF button in gh-pages website ([#139](https://github.com/mtmacdonald/docgen/issues/139))
+
 ## DocGen 6.0.1 27/10/2025
 
 - Minor fixes for publishing website on gh-pages
