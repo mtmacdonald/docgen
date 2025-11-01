@@ -14,16 +14,9 @@ export const PdfToggleButton = ({ onClick }: PdfToggleButtonProps) => {
   });
 
   const onPdfToggle = () => {
-    console.log({
-      handler: 'onPdfToggle',
-      pdfVisible,
-      history: router.history,
-    });
     if (pdfVisible) {
-      console.log('calling router.history.back()');
       router.history.back();
     } else {
-      console.log('router.navigate({ to: \'/pdf\' })');
       router.navigate({ to: '/pdf' });
     }
 
