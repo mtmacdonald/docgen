@@ -40,7 +40,7 @@ export const PDFViewer = () => {
 
   const render = useMemo(() => (
     fileData &&
-    <div style={{ width: '100%' }}>
+    <div>
       <Document
         key={pdfKey}
         file={{ data: fileData }}
@@ -50,10 +50,13 @@ export const PDFViewer = () => {
         }}
         renderMode="canvas"
       >
-        <Page
-          pageNumber={1}
-          width={window.innerWidth}
-        />
+        {Array.from({ length: numPages }, (_, i) => (
+          <Page
+            key={i}
+            pageNumber={i + 1}
+            width={700}
+          />
+        ))}
       </Document>
     </div>
   ), [fileData]);
