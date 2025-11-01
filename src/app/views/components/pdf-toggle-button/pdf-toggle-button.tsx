@@ -13,7 +13,7 @@ type PdfToggleButtonProps = {
   downloadNotViewer?: boolean; // new flag
 };
 
-export const PdfToggleButton = ({ onClick, downloadNotViewer = true }: PdfToggleButtonProps) => {
+export const PdfToggleButton = ({ onClick, downloadNotViewer }: PdfToggleButtonProps) => {
   const router = useRouter();
   const pdfVisible = useRouterState({
     select: (state) => state.location.pathname.endsWith(pdfRoute.path),

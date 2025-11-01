@@ -5,8 +5,7 @@ import {
   createRouter,
   redirect
 } from '@tanstack/react-router';
-import { PDFViewer } from '@react-pdf/renderer';
-import { Pdf } from '../pdf/react-pdf/react-pdf.tsx';
+import { PDFViewer } from '../pdf/react-pdf/pdf-viewer.tsx';
 import { Page } from './content/page.tsx';
 import { Main } from './pages/main/main.tsx';
 import { Cover } from './pages/cover/cover.tsx';
@@ -96,13 +95,8 @@ export const pdfRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'pdf',
   component: () => (
-    <PDFViewer width="100%" height={800}>
-      <Pdf
-        parameters={__DOCGEN_PARAMETERS__}
-        options={{}}
-        sortedPages={__DOCGEN_PAGES__}
-      />
-    </PDFViewer>
+    <div>Check this...</div>
+    // <PDFViewer />
   ),
 });
 

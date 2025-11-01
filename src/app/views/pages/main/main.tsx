@@ -3,7 +3,7 @@ import { WebFooter } from '../../components/footer/footer.tsx';
 import { TopBar } from '../../components/top-bar/top-bar.tsx';
 import { SideBar } from '../../components/side-bar/side-bar.tsx';
 import { Page } from '../../components/page/page.tsx';
-import { PDFViewer } from '@react-pdf/renderer';
+import { PDFViewer } from '../../../pdf/react-pdf/pdf-viewer.tsx';
 import type { TParameters } from '../../../../docgen/types.ts';
 import { Pdf } from '../../../pdf/react-pdf/react-pdf.tsx';
 import { Outlet, useRouterState } from '@tanstack/react-router';
@@ -27,7 +27,7 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
         <section id="dg-content">
           <div id="dg-innerContent">
             {pdfVisible ? (
-              <PDFViewer width="100%" height={800}>
+              <PDFViewer >
                 <Pdf parameters={parameters} options={{}} sortedPages={sortedPages} />
               </PDFViewer>
             ) : (
