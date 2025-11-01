@@ -92,7 +92,7 @@ const ownershipRoute = createRoute({
   ),
 });
 
-const pdfRoute = createRoute({
+export const pdfRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'pdf',
   component: () => (
