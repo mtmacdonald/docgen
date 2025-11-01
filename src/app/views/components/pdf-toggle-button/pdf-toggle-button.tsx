@@ -15,7 +15,12 @@ export const PdfToggleButton = ({ onClick }: PdfToggleButtonProps) => {
 
   const onPdfToggle = () => {
     if (pdfVisible) {
-      router.history.back();
+      /*
+        Would be nice to navigate to the last non-PDF page user was on, but
+        browser history makes that hard to find reliably (last page may not
+        exist or could be the PDF page itself). #152
+       */
+      router.navigate({ to: '/' });
     } else {
       router.navigate({ to: '/pdf' });
     }
