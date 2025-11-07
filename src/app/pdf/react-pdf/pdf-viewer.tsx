@@ -1,17 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import type { TParameters, TSortedPages } from '../../../docgen/types.ts';
-import { Pdf } from './react-pdf.tsx';
-import { useGeneratePdf } from './hooks/use-generate-pdf.tsx';
 import { PDFDocument, StandardFonts } from 'pdf-lib';
+import 'react-pdf/dist/Page/TextLayer.css';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
   import.meta.url,
 ).toString();
-
-import 'react-pdf/dist/Page/TextLayer.css';
-import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 declare const __DOCGEN_PARAMETERS__: TParameters;
 declare const __DOCGEN_PAGES__: TSortedPages;
@@ -48,7 +45,22 @@ export const PDFViewer = () => {
     generatePdf();
   }, []);
 
-  const render = useMemo(
+  // if (instance.loading || !fileData) return <div>Loading...</div>;
+  // if (instance.error) return <div>Something went wrong: {instance.error}</div>;
+
+  //if (enableWorkaround) return render;
+
+  // return (
+  //   <ReactPDFViewer width="100%" height={800}>
+  //     <Pdf
+  //       parameters={__DOCGEN_PARAMETERS__}
+  //       options={{}}
+  //       sortedPages={__DOCGEN_PAGES__}
+  //     />
+  //   </ReactPDFViewer>
+  // );
+
+  return useMemo(
     () =>
       fileData && (
         <div>
@@ -65,21 +77,4 @@ export const PDFViewer = () => {
       ),
     [fileData, numPages],
   );
-
-  // if (instance.loading || !fileData) return <div>Loading...</div>;
-  // if (instance.error) return <div>Something went wrong: {instance.error}</div>;
-
-  //if (enableWorkaround) return render;
-
-  // return (
-  //   <ReactPDFViewer width="100%" height={800}>
-  //     <Pdf
-  //       parameters={__DOCGEN_PARAMETERS__}
-  //       options={{}}
-  //       sortedPages={__DOCGEN_PAGES__}
-  //     />
-  //   </ReactPDFViewer>
-  // );
-
-  return render;
 };
