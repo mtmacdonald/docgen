@@ -27,7 +27,7 @@ const generatePdf = async () => {
   page2.drawText('Hello World - Page 2', { x: 50, y: 700, size: 30, font });
 
   const pdfBytes = await pdfDoc.save();
-  return new Uint8Array(pdfBytes);
+  return { data: new Uint8Array(pdfBytes) };
 };
 
 export const useGeneratePdf = () => {
@@ -55,14 +55,14 @@ export const useGeneratePdf = () => {
   //   error: instance?.error,
   // };
 
-  const [fileData, setFileData] = useState<Uint8Array | null>(null);
+  const [file, setFile] = useState<{ data: Uint8Array<ArrayBuffer> } | null>(null);
 
   useMemo(async () => {
     const data = await generatePdf();
     if (data) {
-      setFileData(data);
+      setFile(data);
     }
   }, []);
 
-  return { fileData };
+  return file;
 };

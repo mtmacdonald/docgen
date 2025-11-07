@@ -13,7 +13,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 export const PDFViewer = () => {
   const [numPages, setNumPages] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const { fileData } = useGeneratePdf();
+  const file = useGeneratePdf();
 
   const onDocumentLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
@@ -27,8 +27,6 @@ export const PDFViewer = () => {
   const goToNextPage = useCallback(() => {
     setPageNumber((prev) => Math.min(prev + 1, numPages));
   }, [numPages]);
-
-  const file = useMemo(() => (fileData ? { data: fileData } : null), [fileData]);
 
   return useMemo(
     () =>
@@ -111,7 +109,7 @@ export const PDFViewer = () => {
             }}
           >
             <Document
-              file={{ data: fileData ? fileData.slice(0) : undefined }} // clone to avoid detached buffer
+              file={file}
               onLoadSuccess={({ numPages }) => setNumPages(numPages)}
               renderMode="canvas"
             >
