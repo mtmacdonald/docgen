@@ -1,28 +1,65 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+// hooks/use-generate-pdf.tsx
+import { useState, useEffect, useMemo, useLayoutEffect } from 'react';
 import { usePDF as renderPDF } from '@react-pdf/renderer';
+import { PDFDocument, StandardFonts } from 'pdf-lib';
+import type { TParameters, TSortedPages } from '../../../../docgen/types.ts';
+
+declare const __DOCGEN_PARAMETERS__: TParameters;
+declare const __DOCGEN_PAGES__: TSortedPages;
+
+const enableWorkaround = false;
+
+// const PDF = (
+//   <Pdf
+//     parameters={__DOCGEN_PARAMETERS__}
+//     options={{}}
+//     sortedPages={__DOCGEN_PAGES__}
+//   />
+// );
 
 export const useGeneratePdf = (document: React.ReactElement) => {
-  console.log(document);
-  const [instance, _update] = renderPDF({ document });
+  // console.log(document);
+  // const [instance, _update] = renderPDF({ document });
+  // const [fileData, setFileData] = useState<Uint8Array | null>(null);
+  //
+  // // useLayoutEffect(() => {
+  // //   setPdfKey((prev) => prev + 1);
+  // // }, [instance.blob]);
+  //
+  // useEffect(() => {
+  //   if (instance.blob) {
+  //     instance.blob.arrayBuffer().then((buffer) => {
+  //       setFileData(new Uint8Array(buffer));
+  //     });
+  //   }
+  // }, []); // Todo: detect and trigger PDF changes
+  // //console.log(fileData);
+  // console.log(instance.blob);
+  //
+  // return {
+  //   fileData,
+  //   loading: instance?.loading,
+  //   error: instance?.error,
+  // };
+
   const [fileData, setFileData] = useState<Uint8Array | null>(null);
 
-  // useLayoutEffect(() => {
-  //   setPdfKey((prev) => prev + 1);
-  // }, [instance.blob]);
+  useMemo(() => {
+    const generatePdf = async () => {
+      const pdfDoc = await PDFDocument.create();
+      const page1 = pdfDoc.addPage([600, 800]);
+      const page2 = pdfDoc.addPage([600, 800]);
+      const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
-  useEffect(() => {
-    if (instance.blob) {
-      instance.blob.arrayBuffer().then((buffer) => {
-        setFileData(new Uint8Array(buffer));
-      });
-    }
-  }, []); // Todo: detect and trigger PDF changes
-  //console.log(fileData);
-  console.log(instance.blob);
+      page1.drawText('Hello World - Page 1', { x: 50, y: 700, size: 30, font });
+      page2.drawText('Hello World - Page 2', { x: 50, y: 700, size: 30, font });
 
-  return {
-    fileData,
-    loading: instance?.loading,
-    error: instance?.error,
-  };
+      const pdfBytes = await pdfDoc.save();
+      setFileData(new Uint8Array(pdfBytes));
+    };
+
+    generatePdf();
+  }, []);
+
+  return { fileData };
 };
