@@ -129,8 +129,8 @@ export const PDFViewer = () => {
             }}
           >
             <Document
-              file={file}
-              onLoadSuccess={onDocumentLoadSuccess}
+              file={{ data: fileData ? fileData.slice(0) : undefined }} // clone to avoid detached buffer
+              onLoadSuccess={({ numPages }) => setNumPages(numPages)}
               renderMode="canvas"
             >
               <Page
