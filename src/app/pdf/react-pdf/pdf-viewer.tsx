@@ -1,4 +1,5 @@
-import React, { useMemo, useState, useCallback } from 'react';
+// pdf-viewer.tsx
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useGeneratePdf } from './hooks/use-generate-pdf.tsx';
 
@@ -13,7 +14,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 export const PDFViewer = () => {
   const [numPages, setNumPages] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const { fileData } = useGeneratePdf(<div />); // placeholder document
+  const { fileData } = useGeneratePdf(<div />);
 
   const onDocumentLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
@@ -30,31 +31,127 @@ export const PDFViewer = () => {
 
   const file = useMemo(() => (fileData ? { data: fileData } : null), [fileData]);
 
+  const [viewportSize, setViewportSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () =>
+      setViewportSize({ width: window.innerWidth, height: window.innerHeight });
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Keep PDF visible above fold (accounting for ~100px header/footer)
+  const pdfMaxHeight = viewportSize.height - 160;
+  const pdfWidth = Math.min(viewportSize.width - 60, 700);
+
   return useMemo(
     () =>
       file && (
-        <div style={{ textAlign: 'center' }}>
-          <Document
-            file={file}
-            onLoadSuccess={onDocumentLoadSuccess}
-            renderMode="canvas"
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            paddingTop: '20px',
+            paddingBottom: '20px',
+            background: '#fff',
+          }}
+        >
+          {/* Top bar */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              width: `${pdfWidth}px`,
+              maxWidth: '100%',
+              marginBottom: '8px',
+            }}
           >
-            <Page pageNumber={pageNumber} width={700} />
-          </Document>
-
-          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '10px' }}>
-            <button onClick={goToPrevPage} disabled={pageNumber <= 1}>
-              Previous
+            <button
+              onClick={goToPrevPage}
+              disabled={pageNumber <= 1}
+              style={{
+                border: '1px solid #ccc',
+                background: '#f9f9f9',
+                color: '#333',
+                borderRadius: '4px',
+                padding: '4px 8px',
+                fontSize: '14px',
+                cursor: pageNumber <= 1 ? 'not-allowed' : 'pointer',
+                opacity: pageNumber <= 1 ? 0.4 : 1,
+                transition: 'background 0.2s',
+              }}
+            >
+              ←
             </button>
-            <span>
+
+            <span style={{ fontSize: '13px', color: '#555', minWidth: '100px', textAlign: 'center' }}>
               Page {pageNumber} of {numPages || '?'}
             </span>
-            <button onClick={goToNextPage} disabled={pageNumber >= numPages}>
-              Next
+
+            <button
+              onClick={goToNextPage}
+              disabled={pageNumber >= numPages}
+              style={{
+                border: '1px solid #ccc',
+                background: '#f9f9f9',
+                color: '#333',
+                borderRadius: '4px',
+                padding: '4px 8px',
+                fontSize: '14px',
+                cursor: pageNumber >= numPages ? 'not-allowed' : 'pointer',
+                opacity: pageNumber >= numPages ? 0.4 : 1,
+                transition: 'background 0.2s',
+              }}
+            >
+              →
             </button>
+          </div>
+
+          {/* PDF container */}
+          <div
+            style={{
+              border: '1px solid #ddd',
+              borderRadius: '6px',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.06)',
+              overflow: 'hidden',
+              maxHeight: `${pdfMaxHeight}px`,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              background: '#fff',
+            }}
+          >
+            <Document
+              file={file}
+              onLoadSuccess={onDocumentLoadSuccess}
+              renderMode="canvas"
+            >
+              <Page
+                pageNumber={pageNumber}
+                width={pdfWidth}
+                renderTextLayer={false}
+                renderAnnotationLayer={false}
+              />
+            </Document>
           </div>
         </div>
       ),
-    [file, numPages, pageNumber, goToPrevPage, goToNextPage, onDocumentLoadSuccess],
+    [
+      file,
+      numPages,
+      pageNumber,
+      goToPrevPage,
+      goToNextPage,
+      onDocumentLoadSuccess,
+      pdfWidth,
+      pdfMaxHeight,
+    ],
   );
 };
