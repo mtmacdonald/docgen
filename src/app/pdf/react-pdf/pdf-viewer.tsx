@@ -30,22 +30,6 @@ export const PDFViewer = () => {
 
   const file = useMemo(() => (fileData ? { data: fileData } : null), [fileData]);
 
-  const [viewportSize, setViewportSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  useEffect(() => {
-    const handleResize = () =>
-      setViewportSize({ width: window.innerWidth, height: window.innerHeight });
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Keep PDF visible above fold (accounting for ~100px header/footer)
-  const pdfMaxHeight = viewportSize.height - 160;
-  const pdfWidth = Math.min(viewportSize.width - 60, 700);
-
   return useMemo(
     () =>
       file && (
@@ -67,7 +51,7 @@ export const PDFViewer = () => {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '8px',
-              width: `${pdfWidth}px`,
+              width: '500px',
               maxWidth: '100%',
               marginBottom: '8px',
             }}
@@ -120,7 +104,6 @@ export const PDFViewer = () => {
               borderRadius: '6px',
               boxShadow: '0 2px 6px rgba(0,0,0,0.06)',
               overflow: 'hidden',
-              maxHeight: `${pdfMaxHeight}px`,
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
@@ -134,7 +117,7 @@ export const PDFViewer = () => {
             >
               <Page
                 pageNumber={pageNumber}
-                width={pdfWidth}
+                width={500}
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
               />
@@ -149,8 +132,6 @@ export const PDFViewer = () => {
       goToPrevPage,
       goToNextPage,
       onDocumentLoadSuccess,
-      pdfWidth,
-      pdfMaxHeight,
     ],
   );
 };
