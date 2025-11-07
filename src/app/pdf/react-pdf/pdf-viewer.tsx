@@ -1,5 +1,4 @@
-// pdf-viewer.tsx
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useGeneratePdf } from './hooks/use-generate-pdf.tsx';
 
@@ -12,26 +11,50 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 export const PDFViewer = () => {
-  const [numPages, setNumPages] = useState(2);
+  const [numPages, setNumPages] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
   const { fileData } = useGeneratePdf(<div />); // placeholder document
 
-  // Todo - generating, display loading
+  const onDocumentLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  }, []);
+
+  const goToPrevPage = useCallback(() => {
+    setPageNumber((prev) => Math.max(prev - 1, 1));
+  }, []);
+
+  const goToNextPage = useCallback(() => {
+    setPageNumber((prev) => Math.min(prev + 1, numPages));
+  }, [numPages]);
+
+  const file = useMemo(() => (fileData ? { data: fileData } : null), [fileData]);
 
   return useMemo(
     () =>
-      fileData && (
-        <div>
+      file && (
+        <div style={{ textAlign: 'center' }}>
           <Document
-            file={{ data: fileData }}
-            onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+            file={file}
+            onLoadSuccess={onDocumentLoadSuccess}
             renderMode="canvas"
           >
-            {Array.from({ length: numPages }, (_, i) => (
-              <Page key={i} pageNumber={i + 1} width={700} />
-            ))}
+            <Page pageNumber={pageNumber} width={700} />
           </Document>
+
+          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '10px' }}>
+            <button onClick={goToPrevPage} disabled={pageNumber <= 1}>
+              Previous
+            </button>
+            <span>
+              Page {pageNumber} of {numPages || '?'}
+            </span>
+            <button onClick={goToNextPage} disabled={pageNumber >= numPages}>
+              Next
+            </button>
+          </div>
         </div>
       ),
-    [fileData, numPages],
+    [file, numPages, pageNumber, goToPrevPage, goToNextPage, onDocumentLoadSuccess],
   );
 };
