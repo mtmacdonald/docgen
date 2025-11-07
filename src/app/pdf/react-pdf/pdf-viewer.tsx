@@ -1,4 +1,3 @@
-// pdf-viewer.tsx
 import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useGeneratePdf } from './hooks/use-generate-pdf.tsx';
@@ -14,7 +13,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 export const PDFViewer = () => {
   const [numPages, setNumPages] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const { fileData } = useGeneratePdf(<div />);
+  const { fileData } = useGeneratePdf();
 
   const onDocumentLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
