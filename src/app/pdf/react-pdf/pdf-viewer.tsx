@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback, useEffect } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useGeneratePdf } from './hooks/use-generate-pdf.tsx';
 
