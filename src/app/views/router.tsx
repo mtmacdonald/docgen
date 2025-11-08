@@ -3,10 +3,8 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-  redirect
+  redirect,
 } from '@tanstack/react-router';
-import { PDFViewer } from '@react-pdf/renderer';
-import { Pdf } from '../pdf/react-pdf/react-pdf.tsx';
 import { Page } from './content/page.tsx';
 import { Main } from './pages/main/main.tsx';
 import { Cover } from './pages/cover/cover.tsx';
@@ -85,25 +83,13 @@ const pageRoutes = Object.values(__DOCGEN_PAGES__)
 const ownershipRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'ownership',
-  component: () => (
-    <Cover
-      parameters={__DOCGEN_PARAMETERS__}
-    />
-  ),
+  component: () => <Cover parameters={__DOCGEN_PARAMETERS__} />,
 });
 
 export const pdfRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'pdf',
-  component: () => (
-    <PDFViewer width="100%" height={800}>
-      <Pdf
-        parameters={__DOCGEN_PARAMETERS__}
-        options={{}}
-        sortedPages={__DOCGEN_PAGES__}
-      />
-    </PDFViewer>
-  ),
+  component: () => null, // handled by main.tsx (pdfVisible)
 });
 
 /*
@@ -136,7 +122,7 @@ const router = createRouter({
     pdfRoute,
     ...(__BASE_PATH__ === '/docgen/' ? [redirectLegacyRoutes] : []),
   ]),
-  basepath: __BASE_PATH__
+  basepath: __BASE_PATH__,
 });
 
 export { router };
