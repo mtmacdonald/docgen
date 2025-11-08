@@ -48,7 +48,7 @@ Font.register({
   ],
 });
 
-type PdfProps = {
+export type PdfProps = {
   parameters: TParameters;
   options: any;
   sortedPages: TSortedPages;
