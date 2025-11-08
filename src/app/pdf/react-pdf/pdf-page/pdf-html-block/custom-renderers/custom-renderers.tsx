@@ -1,5 +1,4 @@
 import React from 'react';
-//import path from 'path';
 import {
   View,
   Text,
@@ -35,11 +34,9 @@ export const customRenderers = ({options}) => ({
     }
     return <Text style={style}>{children}</Text>;
   },
-  // TODO: reinstate images without path
-  // img: (payload) => {
-  //   const {element, style} = payload;
-  //   const relativeSource = element.attributes.src;
-  //   //const source = path.join(options.input, relativeSource);
-  //   return <Image style={style} source={source} />;
-  // },
+  img: (payload) => {
+    const { element, style } = payload;
+    // Load images from base URL
+    return <Image style={style} source={`/${element?.attributes?.src}`} />;
+  },
 });

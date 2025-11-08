@@ -22,7 +22,7 @@ export const PdfViewer = () => {
       //renderMode="canvas"
     >
       <Page
-        pageNumber={11}
+        pageNumber={1}
         width={500}
         //renderTextLayer={false}
         //renderAnnotationLayer={false}
