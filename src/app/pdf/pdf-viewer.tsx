@@ -33,8 +33,8 @@ export const PdfViewer = () => {
 
       <Document file={pdfUrl}>
         {/* Render all pages */}
-        {Array.from({ length: 1 }, (_, i) => (
-          <Page key={i} pageNumber={i + 1} width={500} />
+        {Array.from({ length: 21 }, (_, i) => (
+          <Page key={i} pageNumber={i + 1} width={500} renderAnnotationLayer={false} renderTextLayer={true} />
         ))}
       </Document>
     </div>
