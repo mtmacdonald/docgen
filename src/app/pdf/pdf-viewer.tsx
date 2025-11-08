@@ -19,13 +19,13 @@ export const PdfViewer = () => {
     <Document
       file={{ data }}
       onLoadSuccess={() => {}}
-      renderMode="canvas"
+      //renderMode="canvas"
     >
       <Page
-        pageNumber={1}
+        pageNumber={11}
         width={500}
-        renderTextLayer={false}
-        renderAnnotationLayer={false}
+        //renderTextLayer={false}
+        //renderAnnotationLayer={false}
       />
     </Document>
   );
