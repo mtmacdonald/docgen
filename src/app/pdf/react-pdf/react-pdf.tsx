@@ -15,7 +15,7 @@ import spaceMonoRegular from '../../views/assets/styles/fonts/space-mono-regular
 import spaceMonoItalic from '../../views/assets/styles/fonts/space-mono-italic.ttf';
 import spaceMono700 from '../../views/assets/styles/fonts/space-mono-700.ttf';
 import spaceMono700Italic from '../../views/assets/styles/fonts/space-mono-700-italic.ttf';
-import type { TParameters, TSortedPages, TSection } from '../../../docgen/types.ts';
+import type { TParameters, TSortedPages } from '../../../docgen/types.ts';
 import { preprocessAdmonitions } from '../../common/markdown/markdown.ts';
 
 declare const __DOCGEN_PARAMETERS__: TParameters;
@@ -50,7 +50,6 @@ Font.register({
 });
 
 // Async loader for PDF pages
-
 
 export const Pdf = ({loadedPages}) => {
   const parameters = __DOCGEN_PARAMETERS__;
