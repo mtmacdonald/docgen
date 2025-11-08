@@ -1,19 +1,32 @@
 import React from 'react';
-import { PDFViewer } from '@react-pdf/renderer';
-import { Pdf } from './react-pdf/react-pdf.tsx';
-import type { TParameters, TSortedPages } from '../../docgen/types.ts';
+import { Document, Page, pdfjs } from 'react-pdf';
+import { useGeneratePdf } from './user-generate.pdf.tsx';
 
-declare const __DOCGEN_PARAMETERS__: TParameters;
-declare const __DOCGEN_PAGES__: TSortedPages;
+import 'react-pdf/dist/Page/TextLayer.css';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
 
 export const PdfViewer = () => {
+  const data = useGeneratePdf();
+  if (!data) {
+    return (<div>Generating PDF...</div>);
+  }
   return (
-    <PDFViewer width="100%" height={800}>
-      <Pdf
-        parameters={__DOCGEN_PARAMETERS__}
-        options={{}}
-        sortedPages={__DOCGEN_PAGES__}
+    <Document
+      file={{ data }}
+      onLoadSuccess={() => {}}
+      renderMode="canvas"
+    >
+      <Page
+        pageNumber={1}
+        width={500}
+        renderTextLayer={false}
+        renderAnnotationLayer={false}
       />
-    </PDFViewer>
+    </Document>
   );
 }
