@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useGeneratePdf } from './user-generate.pdf.tsx';
 
@@ -12,21 +12,31 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 export const PdfViewer = () => {
   const data = useGeneratePdf();
-  if (!data) {
-    return (<div>Generating PDF...</div>);
-  }
+
+  // Memoize Blob URL so it doesn’t regenerate every render
+  const pdfUrl = useMemo(() => {
+    if (!data) return null;
+    const blob = new Blob([data], { type: 'application/pdf' });
+    return URL.createObjectURL(blob);
+  }, [data]);
+
+  const handleOpenPdf = () => {
+    if (!pdfUrl) return;
+    window.open(pdfUrl, '_blank');
+  };
+
+  if (!data) return <div>Generating PDF...</div>;
+
   return (
-    <Document
-      file={{ data }}
-      onLoadSuccess={() => {}}
-      //renderMode="canvas"
-    >
-      <Page
-        pageNumber={1}
-        width={500}
-        //renderTextLayer={false}
-        //renderAnnotationLayer={false}
-      />
-    </Document>
+    <div>
+      <button onClick={handleOpenPdf}>Open PDF in New Tab</button>
+
+      <Document file={pdfUrl}>
+        {/* Render all pages */}
+        {Array.from({ length: 1 }, (_, i) => (
+          <Page key={i} pageNumber={i + 1} width={500} />
+        ))}
+      </Document>
+    </div>
   );
-}
+};
