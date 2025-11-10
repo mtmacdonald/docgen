@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import WorkerURL from './generate-pdf.worker.tsx?worker';
 
 export const useGeneratePdf = () => {
-  const [result, setResult] = useState<Uint8Array<ArrayBuffer> | null>(null);
+  const [result, setResult] = useState<Blob | null>(null);
 
   useEffect(() => {
     const worker = new WorkerURL();
@@ -14,7 +14,7 @@ export const useGeneratePdf = () => {
       }
     };
 
-    worker.postMessage({ type: 'start', payload: { input: 21 } });
+    worker.postMessage({ type: 'start', payload: {} });
 
     return () => worker.terminate();
     // TODO: cleanup of blob URL to avoid memory leaks
