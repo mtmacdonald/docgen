@@ -7,7 +7,9 @@ export const useGeneratePdf = () => {
   const [result, setResult] = useState<Blob | null>(cachedPdf);
 
   useEffect(() => {
-    if (cachedPdf) return; // use cache immediately
+    if (cachedPdf) {
+      return;
+    }
     const worker = new WorkerURL();
     worker.onmessage = (e) => {
       if (e.data.type === 'complete') {

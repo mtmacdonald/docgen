@@ -1,5 +1,5 @@
-import { generatePdf } from './generate-pdf';
-import type { TSection, TSortedPages } from '../../docgen/types.ts';
+import { generatePdf } from './generate-pdf.tsx';
+import type { TSection, TSortedPages } from '../../../docgen/types.ts';
 
 declare const __BASE_PATH__: string;
 declare const __DOCGEN_PAGES__: TSortedPages;

@@ -6,7 +6,7 @@ import { Page } from '../../components/page/page.tsx';
 import type { TParameters } from '../../../../docgen/types.ts';
 import { Outlet, useRouterState } from '@tanstack/react-router';
 import { pdfRoute } from '../../router.tsx';
-import { PdfViewer } from '../../../pdf/pdf-viewer.tsx';
+import { PdfViewer } from '../../../pdf/pdf-viewer/pdf-viewer.tsx';
 
 type MainProps = {
   parameters: TParameters;

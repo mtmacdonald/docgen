@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-import { useGeneratePdf } from './user-generate.pdf.tsx';
+import { useGeneratePdf } from '../pdf-generator/user-generate.pdf.tsx';
 
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
