@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import WorkerURL from './generate-pdf.worker.ts?worker';
+import WorkerURL from './generate-pdf.worker.tsx?worker';
 
 export const useGeneratePdf = () => {
   const [result, setResult] = useState<Uint8Array<ArrayBuffer> | null>(null);
