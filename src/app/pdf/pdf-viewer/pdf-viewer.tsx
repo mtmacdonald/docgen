@@ -14,8 +14,8 @@ export const PdfViewer = () => {
   }
 
   const onPdfLoadSuccess = ({ numPages }) => setNumPages(numPages);
-  const goToPrevPage = () => setPageNumber(p => Math.max(p - 1, 1));
-  const goToNextPage = () => setPageNumber(p => Math.min(p + 1, numPages));
+  const goToPrevPage = () => setPageNumber((p) => Math.max(p - 1, 1));
+  const goToNextPage = () => setPageNumber((p) => Math.min(p + 1, numPages));
 
   return (
     <div>

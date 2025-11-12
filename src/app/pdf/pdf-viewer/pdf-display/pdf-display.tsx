@@ -10,20 +10,19 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-export const PdfDisplay = ({
-  pdfBlob,
-  pageNumber,
-  onPdfLoadSuccess
-}) => {
- return (
-   <div className={styles.pdfDisplayWrapper}>
-     <Document file={URL.createObjectURL(pdfBlob)} onLoadSuccess={onPdfLoadSuccess}>
-       <Page
-         pageNumber={pageNumber}
-         width={500}
-         renderAnnotationLayer={false}
-       />
-     </Document>
-   </div>
- )
-}
+export const PdfDisplay = ({ pdfBlob, pageNumber, onPdfLoadSuccess }) => {
+  return (
+    <div className={styles.pdfDisplayWrapper}>
+      <Document
+        file={URL.createObjectURL(pdfBlob)}
+        onLoadSuccess={onPdfLoadSuccess}
+      >
+        <Page
+          pageNumber={pageNumber}
+          width={500}
+          renderAnnotationLayer={false}
+        />
+      </Document>
+    </div>
+  );
+};

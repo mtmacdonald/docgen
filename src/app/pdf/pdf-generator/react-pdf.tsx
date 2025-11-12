@@ -51,20 +51,24 @@ Font.register({
 
 // Async loader for PDF pages
 
-export const Pdf = ({loadedPages}) => {
+export const Pdf = ({ loadedPages }) => {
   const parameters = __DOCGEN_PARAMETERS__;
   const options = {};
-  const allSources = Object.values(__DOCGEN_PAGES__)
-    .flatMap((columns) =>
-      columns.flatMap((section) => section.pages.map((p: any) => p.source)),
-    );
+  const allSources = Object.values(__DOCGEN_PAGES__).flatMap((columns) =>
+    columns.flatMap((section) => section.pages.map((p: any) => p.source)),
+  );
 
   return (
     <Document>
       {allSources.map((source, i) => {
         const html = marked(preprocessAdmonitions(loadedPages[source] || ''));
         return (
-          <PdfPage key={i} page={html} parameters={parameters} options={options} />
+          <PdfPage
+            key={i}
+            page={html}
+            parameters={parameters}
+            options={options}
+          />
         );
       })}
     </Document>

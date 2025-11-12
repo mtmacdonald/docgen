@@ -22,13 +22,13 @@
     "test:run": "tsx src/cli/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
     "test:scaffold": "tsx src/cli/cli.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "./dist/cli/cli.js build -i src/__test__/test-run -o ../source/__test__/test-run-output",
-    "prettier:check": "prettier --check 'src/**/*.{ts,js,json,css,scss}'",
-    "prettier:fix": "prettier --write 'src/**/*.{ts,js,json,css,scss}'",
+    "prettier:check": "prettier --check 'src/**/*.{ts,js,tsx,jsx,json,css,scss}'",
+    "prettier:fix": "prettier --write 'src/**/*.{ts,js,tsx,jsx,json,css,scss}'",
     "test:publish": "sh ./src/__test__/test-publish/test-publish.sh",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{ts,js,json,css,scss}": "prettier --write",
+    "src/**/*.{ts,js,tsx,jsx,json,css,scss}": "prettier --write",
     "docgen": "prettier --write"
   },
   "dependencies": {

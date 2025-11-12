@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-} from '@react-pdf/renderer';
+import { View, Text, Image } from '@react-pdf/renderer';
 import * as cheerio from 'cheerio';
 
 /*
@@ -15,17 +11,21 @@ import * as cheerio from 'cheerio';
   (and renderers.tsx for more details)
 */
 
-export const customRenderers = ({options}) => ({
+export const customRenderers = ({ options }) => ({
   div: (payload) => {
-    const {children, style, element} = payload;
+    const { children, style, element } = payload;
     const classNames = element.classList.toString();
-    if (classNames.includes("dgPDFPageBreak")) {
-      return <View break style={style}>{children}</View>;
+    if (classNames.includes('dgPDFPageBreak')) {
+      return (
+        <View break style={style}>
+          {children}
+        </View>
+      );
     }
     return <View style={style}>{children}</View>;
   },
   pre: (payload) => {
-    const {children, element, style} = payload;
+    const { children, element, style } = payload;
     //strip and handle code blocks
     const $ = cheerio.load(element.content.join());
     const code = $('code');

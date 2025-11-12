@@ -4,12 +4,6 @@ type PageProps = {
   children?: ReactNode;
 };
 
-export const Page = ({children} : PageProps) => {
-  return (
-    <div
-      className="page"
-    >
-      {children}
-    </div>
-  );
+export const Page = ({ children }: PageProps) => {
+  return <div className="page">{children}</div>;
 };

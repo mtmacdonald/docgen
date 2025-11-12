@@ -9,9 +9,15 @@ export const PdfControls = ({
 }) => {
   return (
     <div className={styles.pdfControlsContainer}>
-      <button onClick={goToPrevPage} disabled={pageNumber <= 1}>Prev</button>
-      <span>Page {pageNumber} of {numPages}</span>
-      <button onClick={goToNextPage} disabled={pageNumber >= numPages}>Next</button>
+      <button onClick={goToPrevPage} disabled={pageNumber <= 1}>
+        Prev
+      </button>
+      <span>
+        Page {pageNumber} of {numPages}
+      </span>
+      <button onClick={goToNextPage} disabled={pageNumber >= numPages}>
+        Next
+      </button>
     </div>
   );
 };

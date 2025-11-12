@@ -25,11 +25,7 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
       <Page>
         <section id="dg-content">
           <div id="dg-innerContent">
-            {pdfVisible ? (
-              <PdfViewer />
-            ) : (
-              <Outlet />
-            )}
+            {pdfVisible ? <PdfViewer /> : <Outlet />}
           </div>
         </section>
         <WebFooter parameters={parameters} />
