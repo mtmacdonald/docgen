@@ -22,7 +22,6 @@ export const PdfDisplay = ({
          pageNumber={pageNumber}
          width={500}
          renderAnnotationLayer={false}
-         renderTextLayer
        />
      </Document>
    </div>
