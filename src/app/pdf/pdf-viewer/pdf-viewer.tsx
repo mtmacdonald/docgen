@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useGeneratePdf } from '../pdf-generator/user-generate.pdf.tsx';
-import { PdfDisplay } from './pdf-display.tsx';
+import { PdfDisplay } from './pdf-display/pdf-display.tsx';
+import { PdfControls } from './pdf-controls/pdf-controls.tsx';
+import styles from './pdf-viewer.module.css';
 
 export const PdfViewer = () => {
   const pdfBlob = useGeneratePdf();
@@ -17,11 +19,12 @@ export const PdfViewer = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 12 }}>
-        <button onClick={goToPrevPage} disabled={pageNumber <= 1}>Prev</button>
-        <span>Page {pageNumber} of {numPages}</span>
-        <button onClick={goToNextPage} disabled={pageNumber >= numPages}>Next</button>
-      </div>
+      <PdfControls
+        pageNumber={pageNumber}
+        numPages={numPages}
+        goToPrevPage={goToPrevPage}
+        goToNextPage={goToNextPage}
+      />
       <PdfDisplay
         pdfBlob={pdfBlob}
         pageNumber={pageNumber}
