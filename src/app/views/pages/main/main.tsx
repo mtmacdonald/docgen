@@ -23,11 +23,15 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
       <TopBar parameters={parameters} />
       <SideBar sortedPages={sortedPages} pdfEnabled={pdfEnabled} />
       <Page>
-        <section id="dg-content">
-          <div id="dg-innerContent">
-            {pdfVisible ? <PdfViewer /> : <Outlet />}
-          </div>
-        </section>
+        {pdfVisible ? (
+          <PdfViewer />
+        ) : (
+          <section id="dg-content">
+            <div id="dg-innerContent">
+              <Outlet />
+            </div>
+          </section>
+        )}
         <WebFooter parameters={parameters} />
       </Page>
     </>
