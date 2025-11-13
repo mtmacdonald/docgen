@@ -19,7 +19,11 @@ export const Markdown = ({ content }: Props) => {
         a: ({ href, children, title, className }) => {
           // no href -> render plain text anchor
           if (!href) {
-            return <a title={title} className={className}>{children}</a>;
+            return (
+              <a title={title} className={className}>
+                {children}
+              </a>
+            );
           }
 
           // External links -> normal <a> (same tab)
@@ -42,8 +46,15 @@ export const Markdown = ({ content }: Props) => {
 
           // Internal doc links: strip .html/.md, drop leading "./", preserve fragment
           const [rawPath, fragment] = href.split('#');
-          const path = rawPath.replace(/^\.\//, '').replace(/(\.html|\.md)$/, '');
-          const toPath = path === '' || path === 'index' ? '/' : path.startsWith('/') ? path : `/${path}`;
+          const path = rawPath
+            .replace(/^\.\//, '')
+            .replace(/(\.html|\.md)$/, '');
+          const toPath =
+            path === '' || path === 'index'
+              ? '/'
+              : path.startsWith('/')
+                ? path
+                : `/${path}`;
           const to = fragment ? `${toPath}#${fragment}` : toPath;
 
           return (

@@ -1,0 +1,14 @@
+.pdfViewerOuterWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdfViewerInnerWrapper {
+  width: 502px;
+}
+
+.loaderWrapper {
+  position: relative;
+  min-height: 709px; /* width x A4 ratio - 500 * (297 / 210) */
+}

@@ -1,9 +1,7 @@
 import React from 'react';
-import { Copyright } from "../copyright/copyright.tsx";
+import { Copyright } from '../copyright/copyright.tsx';
 
-export const Footer = ({
-  parameters
-}) => {
+export const Footer = ({ parameters }) => {
   return (
     <>
       <p>
@@ -18,20 +16,17 @@ export const Footer = ({
   );
 };
 
-
-export const WebFooter = ({parameters}) => {
+export const WebFooter = ({ parameters }) => {
   return (
     <footer>
       <div>
         <p>
-          <span id="dg-web-footer">
-            {parameters.webFooter}
-          </span>
+          <span id="dg-web-footer">{parameters.webFooter}</span>
         </p>
       </div>
       <div>
         <Footer parameters={parameters} />
       </div>
     </footer>
-  )
+  );
 };

@@ -1,8 +1,6 @@
 import React from 'react';
 
-export const Copyright = ({
-  parameters
-}) => {
+export const Copyright = ({ parameters }) => {
   return (
     <span id="dg-copyright">
       &copy; {parameters.year}&nbsp;
