@@ -7,11 +7,11 @@ import { PdfLoader } from './pdf-loader/pdf-loader.tsx';
 import { Card } from '../../views/components/card/card.tsx';
 
 export const PdfViewer = () => {
-  const pdfBlob = useGeneratePdf();
+  const { pdfUrl } = useGeneratePdf();
   const [numPages, setNumPages] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
 
-  const loading = !pdfBlob;
+  const loading = !pdfUrl;
 
   const onPdfLoadSuccess = ({ numPages }: { numPages: number }) =>
     setNumPages(numPages);
@@ -35,7 +35,7 @@ export const PdfViewer = () => {
           <div className={styles.loaderWrapper}>
             {loading && <PdfLoader />}
             <PdfDisplay
-              pdfBlob={pdfBlob}
+              pdfUrl={pdfUrl}
               pageNumber={pageNumber}
               onPdfLoadSuccess={onPdfLoadSuccess}
             />

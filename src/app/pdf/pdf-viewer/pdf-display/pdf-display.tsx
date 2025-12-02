@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import styles from './pdf-display.module.css';
 
@@ -13,16 +13,11 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const WIDTH = 500;
 
-export const PdfDisplay = ({ pdfBlob, pageNumber, onPdfLoadSuccess }) => {
-  const pdfUrl = useMemo(() => {
-    if (!pdfBlob) return null;
-    return URL.createObjectURL(pdfBlob);
-  }, [pdfBlob]);
-  if (!pdfBlob) {
+export const PdfDisplay = ({ pdfUrl, pageNumber, onPdfLoadSuccess }) => {
+  if (!pdfUrl) {
     return null;
   }
   const key = `${pdfUrl}-${pageNumber}`;
-  //console.log('key', key);
   return (
     <div className={styles.pdfDisplayWrapper}>
       <Document
