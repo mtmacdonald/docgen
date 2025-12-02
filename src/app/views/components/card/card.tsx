@@ -5,6 +5,7 @@ import styles from './card.module.css';
 export interface ICardProps {
   bordered?: boolean;
   heading?: ReactNode;
+  headerClassName?: string;
   margin?: string;
   padding?: boolean;
   raised?: boolean;
@@ -14,6 +15,7 @@ export interface ICardProps {
 export const Card = ({
   bordered = true,
   heading = null,
+  headerClassName = '',
   children,
   margin = '0',
   padding = true,
@@ -28,7 +30,9 @@ export const Card = ({
       )}
       style={{ margin }}
     >
-      {heading ? <div className={cx(styles.cardHeader)}>{heading}</div> : null}
+      {heading ? (
+        <div className={cx(styles.cardHeader, headerClassName)}>{heading}</div>
+      ) : null}
       <div
         className={cx(
           styles.cardContent,

@@ -10,5 +10,13 @@
 
 .loaderWrapper {
   position: relative;
-  min-height: 709px; /* width x A4 ratio - 500 * (297 / 210) */
+  min-height: 709px;
+  /* width x A4 ratio - 500 * (297 / 210) */
+}
+
+.pdfHeader {
+  background-color: #323639 !important;
+  color: white;
+  border-bottom: 1px solid #323639;
+  padding: 4px 12px !important;
 }

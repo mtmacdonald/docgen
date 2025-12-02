@@ -1,6 +1,61 @@
 .pdfControlsContainer {
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
+  /* Push items to edges */
   align-items: center;
-  margin-bottom: 12px;
+  width: 100%;
+  gap: 16px;
+}
+
+.paginationControls {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  /* Removed flex: 1 and justify-content: center to keep it on the left */
+}
+
+.actionButtons {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: #f1f3f4;
+  /* Light grey/white text */
+  border-radius: 16px;
+  /* Rounded for hover effect */
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  font-size: 20px;
+  /* Icon size */
+}
+
+.controlButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Subtle grey highlight */
+}
+
+.controlButton:disabled {
+  color: #5f6368;
+  /* Dimmed icon color */
+  cursor: default;
+  background-color: transparent;
+}
+
+.pageText {
+  font-size: 13px;
+  color: #f1f3f4;
+  margin: 0 8px;
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: 500;
+  user-select: none;
 }
