@@ -8,6 +8,8 @@ import { Outlet, useRouterState } from '@tanstack/react-router';
 import { pdfRoute } from '../../router.tsx';
 import { PdfViewer } from '../../../pdf/pdf-viewer/pdf-viewer.tsx';
 
+import styles from './main.module.css';
+
 type MainProps = {
   parameters: TParameters;
   sortedPages: any;
@@ -22,7 +24,7 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
     <>
       <TopBar parameters={parameters} />
       <SideBar sortedPages={sortedPages} pdfEnabled={pdfEnabled} />
-      <Page>
+      <Page className={pdfVisible ? styles.pdfPage : ''}>
         {pdfVisible ? (
           <PdfViewer />
         ) : (
