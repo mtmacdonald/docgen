@@ -1,4 +1,5 @@
 import React from 'react';
+import { useResizeDetector } from 'react-resize-detector';
 import { Document, Page, pdfjs } from 'react-pdf';
 import styles from './pdf-display.module.css';
 
@@ -14,12 +15,13 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 const WIDTH = 500;
 
 export const PdfDisplay = ({ pdfUrl, pageNumber, onPdfLoadSuccess }) => {
+  const { width, ref } = useResizeDetector<HTMLDivElement>();
   if (!pdfUrl) {
     return null;
   }
   const key = `${pdfUrl}-${pageNumber}`;
   return (
-    <div className={styles.pdfDisplayWrapper}>
+    <div ref={ref} className={styles.pdfDisplayWrapper}>
       <Document
         file={pdfUrl}
         loading={<PdfLoader />}
@@ -28,7 +30,7 @@ export const PdfDisplay = ({ pdfUrl, pageNumber, onPdfLoadSuccess }) => {
         <Page
           key={key}
           pageNumber={pageNumber}
-          width={WIDTH}
+          width={width}
           renderAnnotationLayer={false}
         />
       </Document>
