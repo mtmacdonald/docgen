@@ -15,6 +15,7 @@ export const PdfControls = ({
   onDownload,
   onOpenNewTab,
 }) => {
+  const mobileDevice = 'ongesturechange' in window;
   return (
     <div className={styles.pdfControlsContainer}>
       <div className={styles.paginationControls}>
@@ -46,13 +47,15 @@ export const PdfControls = ({
         >
           <TbDownload />
         </button>
-        <button
-          className={styles.controlButton}
-          onClick={onOpenNewTab}
-          title="Open in new tab"
-        >
-          <TbExternalLink />
-        </button>
+        {!mobileDevice && (
+          <button
+            className={styles.controlButton}
+            onClick={onOpenNewTab}
+            title="Open in new tab"
+          >
+            <TbExternalLink />
+          </button>
+        )}
       </div>
     </div>
   );
