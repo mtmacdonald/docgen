@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGeneratePdf } from '../pdf-generator/user-generate.pdf.tsx';
+import { useGeneratePdf } from '../pdf-generator/use-generate.pdf.tsx';
 import { PdfDisplay } from './pdf-display/pdf-display.tsx';
 import { PdfControls } from './pdf-controls/pdf-controls.tsx';
 import styles from './pdf-viewer.module.css';
