@@ -6,6 +6,8 @@ export interface ICardProps {
   bordered?: boolean;
   heading?: ReactNode;
   headerClassName?: string;
+  className?: string;
+  contentClassName?: string;
   margin?: string;
   padding?: boolean;
   raised?: boolean;
@@ -16,6 +18,8 @@ export const Card = ({
   bordered = true,
   heading = null,
   headerClassName = '',
+  className = '',
+  contentClassName = '',
   children,
   margin = '0',
   padding = true,
@@ -27,6 +31,7 @@ export const Card = ({
         styles.card,
         bordered ? styles.bordered : '',
         raised ? styles.raised : '',
+        className,
       )}
       style={{ margin }}
     >
@@ -38,6 +43,7 @@ export const Card = ({
           styles.cardContent,
           heading ? styles.cardContentBorderTop : '',
           padding ? styles.padding : '',
+          contentClassName,
         )}
       >
         {children}

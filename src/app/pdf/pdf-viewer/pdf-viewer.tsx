@@ -24,6 +24,8 @@ export const PdfViewer = () => {
         <Card
           padding={false}
           headerClassName={styles.pdfHeader}
+          className={styles.card}
+          contentClassName={styles.cardContent}
           heading={
             <PdfControls
               pageNumber={pageNumber}

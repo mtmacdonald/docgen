@@ -14,12 +14,25 @@
   max-width: 800px;
   width: 100%;
   aspect-ratio: 210 / 297;
-  overflow-y: scroll;
+  overflow: hidden;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cardContent {
+  flex-grow: 1;
+  overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+}
+
+.cardContent::-webkit-scrollbar {
+  display: none;
 }
 
 .loaderWrapper {
