@@ -18,6 +18,21 @@ export const PdfViewer = () => {
   const goToPrevPage = () => setPageNumber((p) => Math.max(p - 1, 1));
   const goToNextPage = () => setPageNumber((p) => Math.min(p + 1, numPages));
 
+  const onDownload = () => {
+    if (!pdfUrl) return;
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'document.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const onOpenNewTab = () => {
+    if (!pdfUrl) return;
+    window.open(pdfUrl, '_blank');
+  };
+
   return (
     <div className={styles.pdfViewerOuterWrapper}>
       <div className={styles.pdfViewerInnerWrapper}>
@@ -32,6 +47,8 @@ export const PdfViewer = () => {
               numPages={numPages}
               goToPrevPage={goToPrevPage}
               goToNextPage={goToNextPage}
+              onDownload={onDownload}
+              onOpenNewTab={onOpenNewTab}
             />
           }
         >

@@ -12,6 +12,8 @@ export const PdfControls = ({
   numPages,
   goToPrevPage,
   goToNextPage,
+  onDownload,
+  onOpenNewTab,
 }) => {
   return (
     <div className={styles.pdfControlsContainer}>
@@ -39,14 +41,14 @@ export const PdfControls = ({
       <div className={styles.actionButtons}>
         <button
           className={styles.controlButton}
-          onClick={() => console.log('Download functionality coming soon')}
+          onClick={onDownload}
           title="Download PDF"
         >
           <TbDownload />
         </button>
         <button
           className={styles.controlButton}
-          onClick={() => console.log('Open functionality coming soon')}
+          onClick={onOpenNewTab}
           title="Open in new tab"
         >
           <TbExternalLink />
