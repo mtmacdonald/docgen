@@ -12,8 +12,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-const WIDTH = 500;
-
 export const PdfDisplay = ({ pdfUrl, pageNumber, onPdfLoadSuccess }) => {
   const { width, ref } = useResizeDetector<HTMLDivElement>();
   if (!pdfUrl) {
