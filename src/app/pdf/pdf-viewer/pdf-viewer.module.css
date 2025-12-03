@@ -2,15 +2,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .pdfViewerInnerWrapper {
-  width: 502px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 800px;
+  width: 100%;
+  aspect-ratio: 210 / 297;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .loaderWrapper {
   position: relative;
-  min-height: 709px;
+  width: 100%;
+  aspect-ratio: 210 / 297;
   /* width x A4 ratio - 500 * (297 / 210) */
 }
 
