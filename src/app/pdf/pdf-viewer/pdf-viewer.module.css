@@ -26,7 +26,6 @@
   position: relative;
   width: 100%;
   aspect-ratio: 210 / 297;
-  /* width x A4 ratio - 500 * (297 / 210) */
 }
 
 .pdfHeader {
