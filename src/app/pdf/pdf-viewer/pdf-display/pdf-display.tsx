@@ -29,7 +29,7 @@ export const PdfDisplay = ({ pdfUrl, pageNumber, onPdfLoadSuccess }) => {
           key={key}
           pageNumber={pageNumber}
           width={width}
-          renderAnnotationLayer={false}
+          renderAnnotationLayer={true}
         />
       </Document>
     </div>
