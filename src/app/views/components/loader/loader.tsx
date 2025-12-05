@@ -23,7 +23,7 @@ export const Loader = ({
 }: ILoaderProps) => {
   const color = 'black'; //theme === Theme.DARK ? Theme.WHITE : Theme.INHERIT;
 
-  const background = '#eee';
+  const background = '#ccc';
 
   return (
     <div
