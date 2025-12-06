@@ -1,6 +1,8 @@
 ﻿## DocGen 6.2.0 06/12/2025
 
-- Improve codeblock styles and add copy-to-clipboard button in website [#164](https://github.com/mtmacdonald/docgen/issues/164))
+- Improve `codeblock` styles and add copy-to-clipboard button in website ([#164](https://github.com/mtmacdonald/docgen/issues/164))
+- Fix height of loader in PDF card on mobile devices ([#165](https://github.com/mtmacdonald/docgen/issues/165))
+- Supporting watching for changes to input `.md` files in dev mode ("live preview") ([#135](https://github.com/mtmacdonald/docgen/issues/135))
 
 ## DocGen 6.1.0, 6.1.1 06/12/2025
 
