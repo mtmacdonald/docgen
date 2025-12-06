@@ -47,6 +47,26 @@ export const generate = async (command, mode: string) => {
           return html.replace(/%APP_TITLE%/g, parameters.title ?? 'DocGen');
         },
       },
+      ...(mode !== 'build'
+        ? [
+            {
+              name: 'watch-input-dir',
+              configureServer(server) {
+                const watchPattern = path.join(inputDir, '**/*.{md,json,png}');
+                server.watcher.add(watchPattern);
+                const handleFileChange = (changedPath: string) => {
+                  console.log(
+                    `Input file changed, reloading: ${path.relative(inputDir, changedPath)}`,
+                  );
+                  server.ws.send({ type: 'full-reload' });
+                };
+                server.watcher.on('add', handleFileChange);
+                server.watcher.on('change', handleFileChange);
+                server.watcher.on('unlink', handleFileChange);
+              },
+            },
+          ]
+        : []),
     ],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),
