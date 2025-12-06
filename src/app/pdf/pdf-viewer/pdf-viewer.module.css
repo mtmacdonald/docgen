@@ -48,3 +48,10 @@
   border-bottom: 1px solid #323639;
   padding: 4px 12px !important;
 }
+
+@media (max-width: 600px) {
+  .loaderWrapper {
+    height: 100% !important;
+    aspect-ratio: unset;
+  }
+}

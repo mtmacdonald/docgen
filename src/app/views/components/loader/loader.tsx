@@ -24,7 +24,6 @@ export const Loader = ({
   const color = 'black'; //theme === Theme.DARK ? Theme.WHITE : Theme.INHERIT;
 
   const background = '#ccc';
-
   return (
     <div
       className={cx(styles.loader, styles.cover)}
