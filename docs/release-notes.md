@@ -1,7 +1,8 @@
-## DocGen 6.1.0 06/12/2025
+## DocGen 6.1.0, 6.1.1 06/12/2025
 
 - New mobile-friendly PDFViewer component ([#140](https://github.com/mtmacdonald/docgen/issues/140))
 - Performance improvements and caching for PDF generation ([#141](https://github.com/mtmacdonald/docgen/issues/141))
+- Fix image rendering in PDF in published website ([#162](https://github.com/mtmacdonald/docgen/issues/162))
 
 ## DocGen 6.0.3 01/11/2025
 
