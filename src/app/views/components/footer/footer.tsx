@@ -1,5 +1,6 @@
 import React from 'react';
 import { Copyright } from '../copyright/copyright.tsx';
+import styles from './footer.module.css';
 
 export const Footer = ({ parameters }) => {
   return (
@@ -18,7 +19,7 @@ export const Footer = ({ parameters }) => {
 
 export const WebFooter = ({ parameters }) => {
   return (
-    <footer>
+    <footer className={styles.footer}>
       <div>
         <p>
           <span id="dg-web-footer">{parameters.webFooter}</span>

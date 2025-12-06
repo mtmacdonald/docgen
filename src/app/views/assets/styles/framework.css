@@ -1194,30 +1194,6 @@ img {
 }
 
 /*
- footer
-*/
-footer {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-}
-footer div {
-  margin: 0 30px 0 30px;
-}
-footer > div:first-child {
-  margin-top: 30px;
-  padding-top: 30px;
-  border-top: 1px solid #ddd;
-}
-@media not print {
-  footer {
-    flex-shrink: 0;
-  }
-}
-
-/*
 	Page table of contents
 */
 .dg-pageToc {
