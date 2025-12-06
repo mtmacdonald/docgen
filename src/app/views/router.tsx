@@ -3,10 +3,8 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-  redirect
+  redirect,
 } from '@tanstack/react-router';
-import { PDFViewer } from '@react-pdf/renderer';
-import { Pdf } from '../pdf/react-pdf/react-pdf.tsx';
 import { Page } from './content/page.tsx';
 import { Main } from './pages/main/main.tsx';
 import { Cover } from './pages/cover/cover.tsx';
@@ -20,16 +18,17 @@ declare const __BASE_PATH__: string;
 const loadPages = async () => {
   const pages: Record<string, string> = {};
 
-  const sources = Object.values(__DOCGEN_PAGES__)
-    .flatMap((columns) =>
-      columns.flatMap((section) => section.pages.map((p: any) => p.source)),
-    );
+  const sources = Object.values(__DOCGEN_PAGES__).flatMap((columns) =>
+    columns.flatMap((section) => section.pages.map((p: any) => p.source)),
+  );
 
   await Promise.all(
     sources.map(async (filename) => {
       try {
         const res = await fetch(`${__BASE_PATH__}${filename}`);
-        pages[filename] = res.ok ? await res.text() : `Error loading ${filename}`;
+        pages[filename] = res.ok
+          ? await res.text()
+          : `Error loading ${filename}`;
       } catch (err) {
         pages[filename] = `Error loading ${filename}: ${err}`;
       }
@@ -66,44 +65,31 @@ const rootRoute = createRootRoute({
 });
 
 // Dynamically generate routes from DOCGEN_PAGES
-const pageRoutes = Object.values(__DOCGEN_PAGES__)
-  .flatMap((columns) =>
-    columns.flatMap((section) =>
-      section.pages.map((p: any) => {
-        let routePath = p.source.replace(/\.md$/, '');
-        if (routePath === 'index') routePath = '/';
+const pageRoutes = Object.values(__DOCGEN_PAGES__).flatMap((columns) =>
+  columns.flatMap((section) =>
+    section.pages.map((p: any) => {
+      let routePath = p.source.replace(/\.md$/, '');
+      if (routePath === 'index') routePath = '/';
 
-        return createRoute({
-          getParentRoute: () => rootRoute,
-          path: routePath,
-          component: () => <AsyncPage source={p.source} />,
-        });
-      }),
-    ),
-  );
+      return createRoute({
+        getParentRoute: () => rootRoute,
+        path: routePath,
+        component: () => <AsyncPage source={p.source} />,
+      });
+    }),
+  ),
+);
 
 const ownershipRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'ownership',
-  component: () => (
-    <Cover
-      parameters={__DOCGEN_PARAMETERS__}
-    />
-  ),
+  component: () => <Cover parameters={__DOCGEN_PARAMETERS__} />,
 });
 
 export const pdfRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'pdf',
-  component: () => (
-    <PDFViewer width="100%" height={800}>
-      <Pdf
-        parameters={__DOCGEN_PARAMETERS__}
-        options={{}}
-        sortedPages={__DOCGEN_PAGES__}
-      />
-    </PDFViewer>
-  ),
+  component: () => null, // handled by main.tsx (pdfVisible)
 });
 
 /*
@@ -136,7 +122,7 @@ const router = createRouter({
     pdfRoute,
     ...(__BASE_PATH__ === '/docgen/' ? [redirectLegacyRoutes] : []),
   ]),
-  basepath: __BASE_PATH__
+  basepath: __BASE_PATH__,
 });
 
 export { router };

@@ -36,7 +36,11 @@ export const generate = async (command, mode: string) => {
     publicDir: inputDir,
     base: basePath,
     plugins: [
-      react(),
+      react({
+        // Exclude PRF worker from HMR (ReferenceError: window is not defined @react-refresh error caused by HMR)
+        // https://www.reddit.com/r/react/comments/1i808v1/comment/mxdh5xv/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+        exclude: /\/src\/app\/pdf\//,
+      }),
       {
         name: 'html-transform',
         transformIndexHtml(html: string) {

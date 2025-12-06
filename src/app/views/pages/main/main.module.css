@@ -1,0 +1,4 @@
+.pdfPage {
+  padding: 0 !important;
+  background-color: var(--color-table-background) !important;
+}

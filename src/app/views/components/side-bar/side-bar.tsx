@@ -23,12 +23,9 @@ const Page = ({ page, onLinkClick }) => {
 export type TSideBarProps = {
   sortedPages: TSortedPages;
   pdfEnabled: boolean;
-}
+};
 
-export const SideBar = ({
-  sortedPages,
-  pdfEnabled
-} : TSideBarProps) => {
+export const SideBar = ({ sortedPages, pdfEnabled }: TSideBarProps) => {
   const [open, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!open);
   const close = () => setOpen(false);
@@ -39,7 +36,11 @@ export const SideBar = ({
     <div id="dgSideBar" className={cx(!open ? 'dgSideBarCollapsed' : '')}>
       <button id="dgSideBarButton" onClick={toggleOpen}>
         <span className="dgIcon">
-          {open ? <TbX size={SIDEBAR_ICON_SIZE} /> : <TbMenu2 size={SIDEBAR_ICON_SIZE} />}
+          {open ? (
+            <TbX size={SIDEBAR_ICON_SIZE} />
+          ) : (
+            <TbMenu2 size={SIDEBAR_ICON_SIZE} />
+          )}
         </span>
       </button>
 
