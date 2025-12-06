@@ -39,6 +39,8 @@
   --color-table-background: #eee;
   --color-table-background-header-footer: #ddd;
   --color-table-background-header-footer-pdf: #eee;
+  --color-card-heading-background: #ccc;
+  --color-card-heading-background-dark: #323639;
   --color-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   --color-card-shadow-raised:
     0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1),
