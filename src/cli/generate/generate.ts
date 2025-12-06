@@ -50,7 +50,7 @@ export const generate = async (command, mode: string) => {
       {
         name: 'watch-input-dir',
         configureServer(server) {
-          const watchPattern = path.join(inputDir, '**/*.{md,json}');
+          const watchPattern = path.join(inputDir, '**/*.{md,json,png}');
           server.watcher.add(watchPattern);
           const handleFileChange = (changedPath: string) => {
             console.log(
