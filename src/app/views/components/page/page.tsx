@@ -2,14 +2,9 @@ import React, { ReactNode } from 'react';
 
 type PageProps = {
   children?: ReactNode;
+  className?: string;
 };
 
-export const Page = ({children} : PageProps) => {
-  return (
-    <div
-      className="page"
-    >
-      {children}
-    </div>
-  );
+export const Page = ({ children, className = '' }: PageProps) => {
+  return <div className={`page ${className}`}>{children}</div>;
 };

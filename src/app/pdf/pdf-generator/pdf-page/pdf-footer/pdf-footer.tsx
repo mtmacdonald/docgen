@@ -18,18 +18,18 @@ const styles = StyleSheet.create({
     width: '33%',
     textAlign: 'center',
     fontSize: 10,
-  }
+  },
 });
 
-export const PdfFooter = ({parameters}) => (
+export const PdfFooter = ({ parameters }) => (
   <View style={styles.footer} fixed>
     <Text style={styles.column}>{parameters.title}</Text>
-    <Text style={styles.column}>{`© ${parameters.year} ${parameters.name}`}</Text>
     <Text
       style={styles.column}
-      render={({ pageNumber, totalPages }) => (
-        `${pageNumber} / ${totalPages}`
-      )}
+    >{`© ${parameters.year} ${parameters.name}`}</Text>
+    <Text
+      style={styles.column}
+      render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`}
     />
   </View>
 );

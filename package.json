@@ -1,7 +1,7 @@
 {
   "name": "docgen-tool",
   "type": "module",
-  "version": "6.0.3",
+  "version": "6.1.0",
   "description": "A tool for creating HTML and PDF documentation",
   "bin": "./dist/cli/cli.js",
   "files": [
@@ -22,13 +22,13 @@
     "test:run": "tsx src/cli/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
     "test:scaffold": "tsx src/cli/cli.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "./dist/cli/cli.js build -i src/__test__/test-run -o ../source/__test__/test-run-output",
-    "prettier:check": "prettier --check 'src/**/*.{ts,js,json,css,scss}'",
-    "prettier:fix": "prettier --write 'src/**/*.{ts,js,json,css,scss}'",
+    "prettier:check": "prettier --check 'src/**/*.{ts,js,tsx,jsx,json,css,scss}'",
+    "prettier:fix": "prettier --write 'src/**/*.{ts,js,tsx,jsx,json,css,scss}'",
     "test:publish": "sh ./src/__test__/test-publish/test-publish.sh",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{ts,js,json,css,scss}": "prettier --write",
+    "src/**/*.{ts,js,tsx,jsx,json,css,scss}": "prettier --write",
     "docgen": "prettier --write"
   },
   "dependencies": {
@@ -48,7 +48,9 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
-    "react-pdf-html": "^2.1.3",
+    "react-pdf": "^10.2.0",
+    "react-pdf-html-simple": "^2.1.4",
+    "react-resize-detector": "^12.3.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "vite": "npm:rolldown-vite@latest",

@@ -1,0 +1,65 @@
+/* Todo: move these to global styles */
+:root {
+  --color-background-raised: white;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --border-radius: 4px;
+  --padding-xxs: 4px;
+  --padding-sm: 12px;
+  --shadow-layer:
+    0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 0 4px rgba(0, 0, 0, 0.1);
+  --color-background-cardheader: #ccc;
+}
+
+.card {
+  color: var(--color-text);
+
+  > div div {
+    /* Override global rule from page.scss that interferes with the text highlighting layer in the react-pdf viewer */
+    margin: 0;
+  }
+}
+
+.card.bordered {
+  background: var(--color-background-raised);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--border-radius);
+
+  &.raised {
+    box-shadow: var(--shadow-layer);
+  }
+
+  .cardHeader {
+    padding: var(--padding-xxs) var(--padding-sm);
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    background-color: var(--color-background-cardheader);
+  }
+
+  .cardContentBorderTop {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .padding {
+    padding: var(--padding-sm);
+  }
+}
+
+.cardContent {
+  &:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+  &:last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+  margin: 0;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-sm) 0;
+}
