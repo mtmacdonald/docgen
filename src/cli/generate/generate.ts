@@ -52,14 +52,15 @@ export const generate = async (command, mode: string) => {
         configureServer(server) {
           const watchPattern = path.join(inputDir, '**/*.{md,json}');
           server.watcher.add(watchPattern);
-          server.watcher.on('change', (changedPath) => {
-            if (changedPath.startsWith(inputDir)) {
-              console.log(
-                `Input file changed (full reload): ${path.relative(inputDir, changedPath)}`,
-              );
-              server.ws.send({ type: 'full-reload', path: '*' });
-            }
-          });
+          const handleFileChange = (changedPath: string) => {
+            console.log(
+              `Input file changed, reloading: ${path.relative(inputDir, changedPath)}`,
+            );
+            server.ws.send({ type: 'full-reload' });
+          };
+          server.watcher.on('add', handleFileChange);
+          server.watcher.on('change', handleFileChange);
+          server.watcher.on('unlink', handleFileChange);
         },
       },
     ],
