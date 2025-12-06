@@ -25,10 +25,6 @@
   overflow: hidden;
 }
 
-.cardContent {
-  flex-grow: 1;
-}
-
 .loaderWrapper {
   position: relative;
   width: 100%;

@@ -18,9 +18,7 @@ export interface ICardProps {
 export const Card = ({
   bordered = true,
   heading = null,
-  headerClassName = '',
   className = '',
-  contentClassName = '',
   children,
   margin = '0',
   padding = true,
@@ -48,7 +46,6 @@ export const Card = ({
           styles.cardContent,
           heading ? styles.cardContentBorderTop : '',
           padding ? styles.padding : '',
-          contentClassName,
         )}
       >
         {children}
