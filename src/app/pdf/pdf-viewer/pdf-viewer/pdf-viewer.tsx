@@ -41,6 +41,7 @@ export const PdfViewer = () => {
           headerClassName={styles.pdfHeader}
           className={styles.card}
           contentClassName={styles.cardContent}
+          dark
           heading={
             <PdfControls
               pageNumber={pageNumber}

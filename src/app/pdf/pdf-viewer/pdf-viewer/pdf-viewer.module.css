@@ -42,13 +42,6 @@
   aspect-ratio: 210 / 297;
 }
 
-.pdfHeader {
-  background-color: #323639 !important;
-  color: white;
-  border-bottom: 1px solid #323639;
-  padding: 4px 12px !important;
-}
-
 @media (max-width: 600px) {
   .loaderWrapper {
     height: 100% !important;
