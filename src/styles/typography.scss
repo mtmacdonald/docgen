@@ -110,21 +110,27 @@ h6,
   line-height: 1.285714em;
   margin: 0 0 1rem;
 }
+
 h1 {
   font-size: var(--size-font-h1);
 }
+
 h2 {
   font-size: var(--size-font-h2);
 }
+
 h3 {
   font-size: var(--size-font-h3);
 }
+
 h4 {
   font-size: var(--size-font-h4);
 }
+
 h5 {
   font-size: var(--size-font-h5);
 }
+
 h6 {
   font-size: var(--size-font-h6);
 }
@@ -142,33 +148,42 @@ ol {
     margin-bottom: 0;
   }
 }
+
 ul,
 ol {
   padding-left: 1.5rem;
 }
+
 ul {
   list-style-type: disc;
 }
+
 ol {
   list-style-type: decimal;
 }
+
 li.list-heading {
   position: relative;
   left: -15px;
   list-style-type: none;
   font-weight: bold;
 }
+
 section > div ul ul,
 section > div ol ol {
   margin: 0;
-} /*don't put margin on nested lists*/
+}
+
+/*don't put margin on nested lists*/
 
 .w-small {
   font-size: 12px;
 }
+
 .w-large {
   font-size: 18px;
 }
+
 .w-massive {
   font-size: 34px;
 }
@@ -176,18 +191,23 @@ section > div ol ol {
 .w-bold {
   font-weight: bold;
 }
+
 .w-information-text {
   color: var(--color-text-info);
 }
+
 .w-success-text {
   color: var(--color-text-success);
 }
+
 .w-warning-text {
   color: var(--color-text-warning);
 }
+
 .w-error-text {
   color: var(--color-text-error);
 }
+
 .w-de-emphasised-text {
   color: var(--color-text-light);
 }
@@ -201,12 +221,14 @@ a,
 .w-link-button {
   color: var(--color-text-link);
 }
+
 a:hover,
 .w-false-link:hover,
 .w-link-button:hover {
   color: var(--color-text-link-hover) !important; //otherwise visited overrides
   text-decoration: none;
 }
+
 a:active,
 a:focus,
 .w-false-link:active,
@@ -215,6 +237,7 @@ a:focus,
 .w-link-button:focus {
   color: var(--color-text-link-active);
 }
+
 a:visited {
   color: var(--color-text-link-visited);
 }
@@ -241,7 +264,7 @@ pre {
   padding: 12px;
   background-color: #f3f3f3;
   border: 1px solid var(--color-border);
-  line-height: 14px;
+  line-height: 1.5;
   border-radius: 6px;
   overflow-x: auto;
   scrollbar-width: none;

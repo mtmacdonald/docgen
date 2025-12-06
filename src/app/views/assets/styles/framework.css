@@ -644,7 +644,9 @@ li.list-heading {
 section > div ul ul,
 section > div ol ol {
   margin: 0;
-} /*don't put margin on nested lists*/
+}
+
+/*don't put margin on nested lists*/
 .w-small {
   font-size: 12px;
 }
@@ -731,7 +733,7 @@ pre {
   padding: 12px;
   background-color: #f3f3f3;
   border: 1px solid var(--color-border);
-  line-height: 14px;
+  line-height: 1.5;
   border-radius: 6px;
   overflow-x: auto;
   scrollbar-width: none;
