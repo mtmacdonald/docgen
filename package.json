@@ -28,8 +28,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{ts,js,tsx,jsx,json,css,scss}": "prettier --write",
-    "docgen": "prettier --write"
+    "src/**/*.{ts,js,tsx,jsx,json,css,scss}": "prettier --write"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.0",

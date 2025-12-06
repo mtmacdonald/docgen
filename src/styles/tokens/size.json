@@ -4,7 +4,8 @@
       "width": {
         "@": { "value": "1px" },
         "pdf": { "value": "0.8pt" }
-      }
+      },
+      "radius": { "value": "4px" }
     },
     "button": {
       "base": { "value": "42px" }
@@ -37,6 +38,14 @@
       "h6": {
         "@": { "value": "0.75rem" },
         "pdf": { "value": "12pt" }
+      }
+    },
+    "padding": {
+      "sm": {
+        "value": "12px"
+      },
+      "xxs": {
+        "value": "4px"
       }
     },
     "line": {

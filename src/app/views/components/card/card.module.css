@@ -1,16 +1,3 @@
-/* Todo: move these to global styles */
-:root {
-  --color-background-raised: white;
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --border-radius: 4px;
-  --padding-xxs: 4px;
-  --padding-sm: 12px;
-  --shadow-layer:
-    0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1),
-    0 0 4px rgba(0, 0, 0, 0.1);
-  --color-background-cardheader: #ccc;
-}
-
 .card {
   color: var(--color-text);
 
@@ -21,20 +8,25 @@
 }
 
 .card.bordered {
-  background: var(--color-background-raised);
+  background: var(--color-background-light);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-card);
-  border-radius: var(--border-radius);
+  box-shadow: var(--color-card-shadow);
+  border-radius: var(--size-border-radius);
 
   &.raised {
-    box-shadow: var(--shadow-layer);
+    box-shadow: var(--color-card-shadow-raised);
   }
 
   .cardHeader {
-    padding: var(--padding-xxs) var(--padding-sm);
+    padding: var(--size-padding-xxs) var(--size-padding-sm);
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-    background-color: var(--color-background-cardheader);
+    background-color: var(--color-card-heading-background);
+
+    &.dark {
+      color: var(--color-text-light);
+      background-color: var(--color-card-heading-background-dark);
+    }
   }
 
   .cardContentBorderTop {
@@ -42,7 +34,7 @@
   }
 
   .padding {
-    padding: var(--padding-sm);
+    padding: var(--size-padding-sm);
   }
 }
 
@@ -56,10 +48,17 @@
     border-bottom-right-radius: inherit;
   }
   margin: 0;
+
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .cardHeader {
   display: flex;
   align-items: center;
-  padding: var(--padding-sm) 0;
+  padding: var(--size-padding-sm) 0;
 }
