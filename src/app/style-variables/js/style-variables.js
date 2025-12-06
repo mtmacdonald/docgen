@@ -39,6 +39,9 @@ export const ColorButtonShadow = 'none';
 export const ColorTableBackground = '#eee';
 export const ColorTableBackgroundHeaderFooter = '#ddd';
 export const ColorTableBackgroundHeaderFooterPdf = '#eee';
+export const ColorCardShadow = '0 1px 2px rgba(0, 0, 0, 0.1)';
+export const ColorCardShadowRaised =
+  '0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1)';
 export const SizeBorderWidth = '1px';
 export const SizeBorderWidthPdf = '0.8pt';
 export const SizeBorderRadius = '4px';

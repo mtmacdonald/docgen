@@ -39,6 +39,10 @@
   --color-table-background: #eee;
   --color-table-background-header-footer: #ddd;
   --color-table-background-header-footer-pdf: #eee;
+  --color-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --color-card-shadow-raised:
+    0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 0 4px rgba(0, 0, 0, 0.1);
   --size-border-width: 1px;
   --size-border-width-pdf: 0.8pt;
   --size-border-radius: 4px;

@@ -1,8 +1,4 @@
 :root {
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --shadow-layer:
-    0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1),
-    0 0 4px rgba(0, 0, 0, 0.1);
   --color-background-cardheader: #ccc;
 }
 
@@ -18,11 +14,11 @@
 .card.bordered {
   background: var(--color-background-light);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--color-card-shadow);
   border-radius: var(--size-border-radius);
 
   &.raised {
-    box-shadow: var(--shadow-layer);
+    box-shadow: var(--color-card-shadow-raised);
   }
 
   .cardHeader {
