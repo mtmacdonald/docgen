@@ -42,6 +42,7 @@
   --color-table-background-header-footer-pdf: #eee;
   --size-border-width: 1px;
   --size-border-width-pdf: 0.8pt;
+  --size-border-radius: 4px;
   --size-button-base: 42px;
   --size-font-base: 16px;
   --size-font-small: 12px;
@@ -59,6 +60,8 @@
   --size-font-h5-pdf: 14pt;
   --size-font-h6: 0.75rem;
   --size-font-h6-pdf: 12pt;
+  --size-padding-sm: 12px;
+  --size-padding-xxs: 4px;
   --size-line-height: 26px;
   --size-table-cell-padding: 2px 15px;
   --size-table-cell-padding-pdf: 2mm 2mm;

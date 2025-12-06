@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useGeneratePdf } from '../pdf-generator/use-generate.pdf.tsx';
-import { PdfDisplay } from './pdf-display/pdf-display.tsx';
-import { PdfControls } from './pdf-controls/pdf-controls.tsx';
+import { useGeneratePdf } from '../../pdf-generator/use-generate.pdf.tsx';
+import { PdfDisplay } from '../pdf-display/pdf-display.tsx';
+import { PdfControls } from '../pdf-controls/pdf-controls.tsx';
 import styles from './pdf-viewer.module.css';
-import { PdfLoader } from './pdf-loader/pdf-loader.tsx';
-import { Card } from '../../views/components/card/card.tsx';
+import { PdfLoader } from '../pdf-loader/pdf-loader.tsx';
+import { Card } from '../../../views/components/card/card.tsx';
 
 export const PdfViewer = () => {
   const { pdfUrl } = useGeneratePdf();
