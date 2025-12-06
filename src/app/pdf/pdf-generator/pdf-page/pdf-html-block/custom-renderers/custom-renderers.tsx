@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, Image } from '@react-pdf/renderer';
 import * as cheerio from 'cheerio';
 
+declare const __BASE_PATH__: string;
+
 /*
   For "default" renderers in react-pdf-html, see
 
@@ -37,6 +39,11 @@ export const customRenderers = ({ options }) => ({
   img: (payload) => {
     const { element, style } = payload;
     // Load images from base URL
-    return <Image style={style} source={`/${element?.attributes?.src}`} />;
+    return (
+      <Image
+        style={style}
+        source={`${__BASE_PATH__}${element?.attributes?.src}`}
+      />
+    );
   },
 });
