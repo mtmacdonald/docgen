@@ -243,6 +243,11 @@ pre {
   border: 1px solid var(--color-border);
   line-height: 14px;
   border-radius: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .w-inline-code {
