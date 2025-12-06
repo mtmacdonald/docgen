@@ -1,4 +1,8 @@
-﻿## DocGen 6.1.0, 6.1.1 06/12/2025
+﻿## DocGen 6.2.0 06/12/2025
+
+- Improve codeblock styles and add copy-to-clipboard button in website [#164](https://github.com/mtmacdonald/docgen/issues/164))
+
+## DocGen 6.1.0, 6.1.1 06/12/2025
 
 - New mobile-friendly PDFViewer component ([#140](https://github.com/mtmacdonald/docgen/issues/140))
 - Performance improvements and caching for PDF generation ([#141](https://github.com/mtmacdonald/docgen/issues/141))
