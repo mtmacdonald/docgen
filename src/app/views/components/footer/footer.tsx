@@ -22,7 +22,7 @@ export const WebFooter = ({ parameters }) => {
     <footer className={styles.footer}>
       <div>
         <p>
-          <span id="dg-web-footer">{parameters.webFooter}</span>
+          <span>{parameters.webFooter}</span>
         </p>
       </div>
       <div>
