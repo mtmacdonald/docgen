@@ -4,6 +4,7 @@ import { TbMenu2, TbX, TbUsers, TbRefresh } from 'react-icons/tb';
 import cx from 'classnames';
 import { PdfToggleButton } from '../pdf-toggle-button/pdf-toggle-button.tsx';
 import type { TSortedPages } from '../../../../docgen/types.ts';
+import styles from './side-bar.module.css';
 
 const SIDEBAR_ICON_SIZE = 24;
 const SIDEBAR_SMALL_ICON_SIZE = 20;
@@ -33,9 +34,9 @@ export const SideBar = ({ sortedPages, pdfEnabled }: TSideBarProps) => {
   const pages = Object.values(sortedPages).flat();
 
   return (
-    <div id="dgSideBar" className={cx(!open ? 'dgSideBarCollapsed' : '')}>
-      <button id="dgSideBarButton" onClick={toggleOpen}>
-        <span className="dgIcon">
+    <div className={cx(styles.dgSideBar, !open && styles.dgSideBarCollapsed)}>
+      <button className={styles.dgSideBarButton} onClick={toggleOpen}>
+        <span className={styles.dgIcon}>
           {open ? (
             <TbX size={SIDEBAR_ICON_SIZE} />
           ) : (
@@ -44,14 +45,14 @@ export const SideBar = ({ sortedPages, pdfEnabled }: TSideBarProps) => {
         </span>
       </button>
 
-      <div id="dgSideBarInnerWrapper">
-        <div id="dgSideBarInner">
-          <div id="dgSideBarContent">
+      <div className={styles.dgSideBarInnerWrapper}>
+        <div className={styles.dgSideBarInner}>
+          <div className={styles.dgSideBarContent}>
             {pages
               .filter((p) => p?.heading !== 'Extra')
               .map((page, i) => (
                 <div key={i}>
-                  <div className="dgSideBarHeading">{page.heading}</div>
+                  <div className={styles.dgSideBarHeading}>{page.heading}</div>
                   <ul>
                     {page.pages.map((subPage, i) => (
                       <Page key={i} page={subPage} onLinkClick={close} />
@@ -59,17 +60,16 @@ export const SideBar = ({ sortedPages, pdfEnabled }: TSideBarProps) => {
                   </ul>
                 </div>
               ))}
-
-            <div className="dgSideBarAttribution">
+            <div className={styles.dgSideBarAttribution}>
               <ul>
                 <li>
-                  <span className="dgIcon" title="ownership"></span>
+                  <span className={styles.dgIcon} title="ownership"></span>
                   <Link to="/ownership" onClick={close}>
                     <TbUsers size={SIDEBAR_SMALL_ICON_SIZE} /> Ownership
                   </Link>
                 </li>
                 <li>
-                  <span className="dgIcon" title="release notes"></span>
+                  <span className={styles.dgIcon} title="release notes"></span>
                   <Link to="/release-notes" onClick={close}>
                     <TbRefresh size={SIDEBAR_SMALL_ICON_SIZE} /> Release Notes
                   </Link>
@@ -78,7 +78,7 @@ export const SideBar = ({ sortedPages, pdfEnabled }: TSideBarProps) => {
             </div>
 
             {pdfEnabled && (
-              <div className="dgSideBarPDFButton">
+              <div className={styles.dgSideBarPDFButton}>
                 <PdfToggleButton onClick={close} />
               </div>
             )}
