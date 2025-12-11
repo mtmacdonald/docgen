@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
 import { PdfToggleButton } from '../pdf-toggle-button/pdf-toggle-button.tsx';
+import styles from './top-bar.module.css';
 
 const Logo = ({ parameters }) => {
   return (
@@ -17,24 +18,24 @@ const Logo = ({ parameters }) => {
 export const TopBar = ({ parameters }) => {
   return (
     <div>
-      <div className="topbar">
-        <div className="left">
-          <Link className="dg-homelink" to="/">
+      <div className={styles.topBar}>
+        <div className={styles.left}>
+          <Link to="/">
             <Logo parameters={parameters} />
           </Link>
-          <div id="headerLeftText">
-            <Link className="dg-homelink" to={parameters.homePagePath}>
-              <span id="dg-title">{parameters.title}</span>
-              <span id="dg-web-title-version" style={{ fontWeight: 'normal' }}>
+          <div className={styles.headerLeftText}>
+            <Link to={parameters.homePagePath}>
+              <span>{parameters.title}</span>
+              <span style={{ fontWeight: 'normal' }}>
                 &nbsp;({parameters.version})
               </span>
             </Link>
             {parameters?.sponsorLink?.name && (
-              <div id="headerSponsor">
+              <div className={styles.headerSponsor}>
                 <span>{parameters.sponsorLink.name}</span>
                 <a href={parameters.sponsorLink.url}>
                   <img
-                    id="sponsorLogo"
+                    className={styles.sponsorLogo}
                     src={parameters.sponsorLink.logo}
                     alt="sponsor logo"
                   />
@@ -44,11 +45,11 @@ export const TopBar = ({ parameters }) => {
           </div>
         </div>
         <div
-          className="right"
+          className={styles.right}
           style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
         >
           <PdfToggleButton />
-          <span id="dg-backlink">
+          <span className={styles.dgBackLink}>
             {parameters.backlink.url && (
               <a className="button inverted" href={parameters.backlink.url}>
                 {parameters.backlink.name}
