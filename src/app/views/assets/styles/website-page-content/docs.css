@@ -1,6 +1,5 @@
-@use '../app/views/assets/styles/typography.css';
-
 :root {
+  /* TODO Lift to style variables */
   --margin-card: 32px;
   --width-card: 260px;
 }
