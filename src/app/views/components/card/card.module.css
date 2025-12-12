@@ -2,7 +2,7 @@
   color: var(--color-text);
 
   > div div {
-    /* Override global rule from page.scss that interferes with the text highlighting layer in the react-pdf viewer */
+    /* Override global rule from page.css that interferes with the text highlighting layer in the react-pdf viewer */
     margin: 0;
   }
 }

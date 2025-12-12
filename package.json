@@ -22,13 +22,13 @@
     "test:run": "tsx src/cli/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
     "test:scaffold": "tsx src/cli/cli.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "./dist/cli/cli.js build -i src/__test__/test-run -o ../source/__test__/test-run-output",
-    "prettier:check": "prettier --check 'src/**/*.{ts,js,tsx,jsx,json,css,scss}'",
-    "prettier:fix": "prettier --write 'src/**/*.{ts,js,tsx,jsx,json,css,scss}'",
+    "prettier:check": "prettier --check 'src/**/*.{ts,js,tsx,jsx,json,css}'",
+    "prettier:fix": "prettier --write 'src/**/*.{ts,js,tsx,jsx,json,css}'",
     "test:publish": "sh ./src/__test__/test-publish/test-publish.sh",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{ts,js,tsx,jsx,json,css,scss}": "prettier --write"
+    "src/**/*.{ts,js,tsx,jsx,json,css}": "prettier --write"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.0",
@@ -64,7 +64,6 @@
     "ncp": "^2.0.0",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "sass": "^1.89.2",
     "style-dictionary": "^5.0.1",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
