@@ -29,7 +29,7 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
           <PdfViewer />
         ) : (
           <section id="dg-content">
-            <div id="dg-innerContent">
+            <div>
               <Outlet />
             </div>
           </section>
