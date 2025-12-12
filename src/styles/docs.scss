@@ -1,4 +1,4 @@
-@use 'typography';
+@use '../app/views/assets/styles/typography.css';
 
 :root {
   --margin-card: 32px;
@@ -7,7 +7,7 @@
 
 @media (min-width: 1200px) {
   .banner h1 {
-    font-family: typography.$highlight-font;
+    font-family: var(--highlight-font), sans-serif;
     font-size: 64px;
     letter-spacing: -0.025em;
     line-height: 1.15;
