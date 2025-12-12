@@ -88,49 +88,6 @@
 }
 
 /*
- page
-*/
-html {
-  height: 100%;
-  background-color: var(--color-text);
-  color: var(--color-text);
-}
-html body {
-  height: 100%;
-}
-
-/*
- page content
-*/
-section {
-  background-color: var(--color-background-light);
-  /*
-  	Center content
-  */
-  width: 1200px;
-  max-width: 100%;
-  text-align: center;
-  margin: 0 auto;
-}
-section > * {
-  text-align: left; /* Reset text alignment for child items */
-}
-@media not print {
-  section {
-    flex: 1 0 auto;
-  }
-}
-section > div p:not(blockquote p),
-section > div div,
-section > div pre,
-section > div ul,
-section > div ol,
-section > div table,
-section > div blockquote {
-  margin: 20px 0 20px 0;
-}
-
-/*
  typography
 */
 @font-face {
