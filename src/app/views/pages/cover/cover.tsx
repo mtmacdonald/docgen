@@ -1,15 +1,14 @@
 import React, { Fragment } from 'react';
+import styles from './cover.module.css';
 
 export const Cover = ({ parameters }) => {
   return (
     <div className="w-fixed-width">
       <div id="dg-innerContent">
-        <table id="dg-coverInfo">
+        <table className={styles.dgCoverInfo}>
           <thead>
             <tr>
-              <th colSpan={3} id="dg-title">
-                {parameters.title}
-              </th>
+              <th colSpan={3}>{parameters.title}</th>
             </tr>
           </thead>
           <tfoot></tfoot>
@@ -17,7 +16,7 @@ export const Cover = ({ parameters }) => {
             <tr>
               <td>
                 <strong>Owner: </strong>
-                <span id="dg-owner">
+                <span>
                   {parameters.owner?.url ? (
                     <a href={parameters.owner.url}>{parameters.owner.name}</a>
                   ) : (
@@ -27,17 +26,17 @@ export const Cover = ({ parameters }) => {
               </td>
               <td>
                 <strong>Version: </strong>
-                <span id="dg-version">{parameters.version}</span>
+                <span>{parameters.version}</span>
               </td>
               <td>
                 <strong>Released: </strong>
-                <span id="dg-release-date">{parameters.releaseDate}</span>
+                <span>{parameters.releaseDate}</span>
               </td>
             </tr>
             <tr>
               <td>
                 <strong>Author: </strong>
-                <span id="dg-author">
+                <span>
                   {parameters.author?.url ? (
                     <a href={parameters.author.url}>{parameters.author.name}</a>
                   ) : (
@@ -47,7 +46,7 @@ export const Cover = ({ parameters }) => {
               </td>
               <td colSpan={2}>
                 <strong>Contributors: </strong>
-                <span id="dg-contributors">
+                <span>
                   {parameters.contributors.map((contributor, i) => (
                     <Fragment key={i}>
                       {contributor?.url ? (
@@ -61,18 +60,18 @@ export const Cover = ({ parameters }) => {
                 </span>
               </td>
             </tr>
-            <tr className="dg-finalRow">
+            <tr className={styles.dgFinalRow}>
               <td>
                 <strong>Module: </strong>
-                <span id="dg-module">{parameters.module}</span>
+                <span>{parameters.module}</span>
               </td>
               <td>
                 <strong>ID: </strong>
-                <span id="dg-id">{parameters.id}</span>
+                <span>{parameters.id}</span>
               </td>
               <td>
                 <strong>Link: </strong>
-                <span id="dg-website">
+                <span>
                   {parameters.website?.url ? (
                     <a href={parameters.website.url}>
                       {parameters.website.name}
@@ -86,7 +85,7 @@ export const Cover = ({ parameters }) => {
           </tbody>
         </table>
         <h1>Summary</h1>
-        <p id="dg-summary">{parameters.summary}</p>
+        <p className={styles.dgSummary}>{parameters.summary}</p>
       </div>
     </div>
   );
