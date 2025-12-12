@@ -1,9 +1,3 @@
-@use '../app/views/assets/styles/typography.css';
-
-/*
- buttons
-*/
-
 button,
 .button {
   box-sizing: border-box;
