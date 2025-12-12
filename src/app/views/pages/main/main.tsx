@@ -6,7 +6,7 @@ import { Page } from '../../components/page/page.tsx';
 import type { TParameters } from '../../../../docgen/types.ts';
 import { Outlet, useRouterState } from '@tanstack/react-router';
 import { pdfRoute } from '../../router.tsx';
-import { PdfViewer } from '../../../pdf/pdf-viewer/pdf-viewer.tsx';
+import { PdfViewer } from '../../../pdf/pdf-viewer/pdf-viewer/pdf-viewer.tsx';
 
 import styles from './main.module.css';
 
@@ -29,7 +29,7 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
           <PdfViewer />
         ) : (
           <section id="dg-content">
-            <div id="dg-innerContent">
+            <div>
               <Outlet />
             </div>
           </section>

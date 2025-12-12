@@ -18,11 +18,10 @@ export const Loader = ({
   height,
   text = '',
   children = null,
-  //theme = Theme.DARK,
   testId = null,
 }: ILoaderProps) => {
-  const color = 'black'; //theme === Theme.DARK ? Theme.WHITE : Theme.INHERIT;
-
+  // TODO: Lift to CSS module
+  const color = 'black';
   const background = '#ccc';
   return (
     <div
