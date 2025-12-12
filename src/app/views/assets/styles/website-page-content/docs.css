@@ -154,3 +154,10 @@
   margin-top: var(--margin-card);
   word-wrap: break-word;
 }
+
+.dg-pageToc {
+  list-style: none;
+  padding: 10px;
+  border: 1px solid #999;
+  background-color: #eee;
+}
