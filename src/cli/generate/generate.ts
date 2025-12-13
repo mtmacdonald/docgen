@@ -63,6 +63,25 @@ const styleVariablesPlugin = () => {
         }
       }
     },
+    handleHotUpdate({ file, server }: any) {
+      if (file.includes('style-tokens')) {
+        console.log('Style tokens changed, reloading...');
+        const cssModule = server.moduleGraph.getModuleById(
+          resolvedCssVirtualModuleId,
+        );
+        const jsModule = server.moduleGraph.getModuleById(
+          resolvedJsVirtualModuleId,
+        );
+        if (cssModule) {
+          server.moduleGraph.invalidateModule(cssModule);
+        }
+        if (jsModule) {
+          server.moduleGraph.invalidateModule(jsModule);
+        }
+        server.ws.send({ type: 'full-reload' });
+        return [];
+      }
+    },
   };
 };
 
