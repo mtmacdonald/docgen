@@ -52,6 +52,7 @@
     "react-resize-detector": "^12.3.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
+    "rolldown-vite": "npm:rolldown-vite@latest",
     "vite": "npm:rolldown-vite@latest",
     "z-schema": "^6.0.2"
   },
