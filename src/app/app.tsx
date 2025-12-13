@@ -4,7 +4,6 @@ import { RouterProvider } from '@tanstack/react-router';
 import { router } from './views/router.tsx';
 import 'virtual:style-variables.css';
 import './views/assets/styles/main.css';
-import './views/assets/styles/framework.css';
 
 const app = () => {
   const rootElement = document.getElementById('root');
