@@ -1,4 +1,5 @@
-import * as styles from '../../../style-variables/js/style-variables';
+// @ts-ignore
+import * as styles from 'virtual:style-variables.js';
 
 const admonitionBaseStyle = {
   padding: styles.SizeContentBlockPaddingPdf,
