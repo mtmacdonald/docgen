@@ -25,6 +25,15 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
       <TopBar parameters={parameters} />
       <SideBar sortedPages={sortedPages} pdfEnabled={pdfEnabled} />
       <Page className={pdfVisible ? styles.pdfPage : ''}>
+        <div
+          style={{
+            backgroundColor: 'var(--simple-test-color)',
+            height: '20px',
+            width: '100%',
+          }}
+        >
+          Virtual Module Test (Should be Magenta)
+        </div>
         {pdfVisible ? (
           <PdfViewer />
         ) : (

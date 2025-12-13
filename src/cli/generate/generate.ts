@@ -8,7 +8,26 @@ import { sortPages } from '../../docgen/meta/sort-pages.ts';
 import { findAppDir } from '../../paths.ts';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+
 const basePath = process.env.BASE_PATH || '/';
+
+const styleVariablesPlugin = () => {
+  const virtualModuleId = 'virtual:simple-styles.css';
+  const resolvedVirtualModuleId = '\0' + virtualModuleId;
+  return {
+    name: 'style-variables-plugin',
+    resolveId(id: string) {
+      if (id === virtualModuleId) {
+        return resolvedVirtualModuleId;
+      }
+    },
+    load(id: string) {
+      if (id === resolvedVirtualModuleId) {
+        return ':root { --simple-test-color: #ff00ff; }';
+      }
+    },
+  };
+};
 
 export const generate = async (command, mode: string) => {
   const inputDir = path.resolve(process.cwd(), command.input);
@@ -36,6 +55,7 @@ export const generate = async (command, mode: string) => {
     publicDir: inputDir,
     base: basePath,
     plugins: [
+      styleVariablesPlugin(),
       react({
         // Exclude PRF worker from HMR (ReferenceError: window is not defined @react-refresh error caused by HMR)
         // https://www.reddit.com/r/react/comments/1i808v1/comment/mxdh5xv/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
