@@ -1,4 +1,4 @@
-import { Plugin } from 'vite';
+import { type Plugin } from 'vite';
 
 export const htmlTransformPlugin = (title: string): Plugin => {
   return {

@@ -1,5 +1,5 @@
 import StyleDictionary from 'style-dictionary';
-import { Plugin } from 'vite';
+import { type Plugin } from 'vite';
 
 export const styleVariablesPlugin = (): Plugin => {
   const cssVirtualModuleId = 'virtual:style-variables.css';
