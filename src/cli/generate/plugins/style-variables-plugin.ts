@@ -23,19 +23,13 @@ export const styleVariablesPlugin = (): Plugin => {
         id === resolvedJsVirtualModuleId
       ) {
         const sd = new StyleDictionary('config.json');
-        const dictionary = await sd.getPlatformTokens('css');
-        const tokens = dictionary.allTokens;
-
         if (id === resolvedCssVirtualModuleId) {
-          return `:root {\n${tokens.map((t) => `  --${t.name}: ${t.value};`).join('\n')}\n}`;
+          const files = await sd.formatPlatform('css');
+          return files[0]?.output as string;
         }
-
         if (id === resolvedJsVirtualModuleId) {
-          const toPascalCase = (str: string) =>
-            str.replace(/(^|-)(\w)/g, (_, __, c) => c.toUpperCase());
-          return tokens
-            .map((t) => `export const ${toPascalCase(t.name)} = "${t.value}";`)
-            .join('\n');
+          const files = await sd.formatPlatform('js');
+          return files[0]?.output as string;
         }
       }
     },
