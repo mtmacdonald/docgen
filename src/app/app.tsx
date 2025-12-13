@@ -2,12 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from '@tanstack/react-router';
 import { router } from './views/router.tsx';
+import 'virtual:style-variables.css';
 import './views/assets/styles/main.css';
 import './views/assets/styles/framework.css';
-import 'virtual:style-variables.css';
-// @ts-ignore - virtual module
-import * as styleVariables from 'virtual:style-variables.js';
-console.log('JS Style Variables:', styleVariables);
 
 const app = () => {
   const rootElement = document.getElementById('root');
