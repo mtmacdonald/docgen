@@ -33,24 +33,16 @@ export const styleVariablesPlugin = (): Plugin => {
         }
       }
     },
-    handleHotUpdate({ file, server }: any) {
-      if (file.includes('style-tokens')) {
-        console.log('Style tokens changed, reloading...');
-        const cssModule = server.moduleGraph.getModuleById(
-          resolvedCssVirtualModuleId,
-        );
-        const jsModule = server.moduleGraph.getModuleById(
-          resolvedJsVirtualModuleId,
-        );
-        if (cssModule) {
-          server.moduleGraph.invalidateModule(cssModule);
+    handleHotUpdate({ file, server }) {
+      if (!file.includes('/style-tokens/')) return;
+      const ids = [resolvedCssVirtualModuleId, resolvedJsVirtualModuleId];
+      ids.forEach((id) => {
+        const mod = server.moduleGraph.getModuleById(id);
+        if (mod) {
+          server.moduleGraph.invalidateModule(mod);
         }
-        if (jsModule) {
-          server.moduleGraph.invalidateModule(jsModule);
-        }
-        server.ws.send({ type: 'full-reload' });
-        return [];
-      }
+      });
+      return [];
     },
   };
 };
