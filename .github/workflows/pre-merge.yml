@@ -33,7 +33,7 @@ jobs:
         run: yarn check:types
 
       - name: Build styles
-        run: yarn build:styles
+        run: yarn preview:style:variables
 
       - name: Bundle package (build NPM package)
         run: yarn bundle
