@@ -1,4 +1,3 @@
-// @ts-ignore
 import * as styles from 'virtual:style-variables.js';
 import { docsStyleSheet } from './pdf-docs-styles.ts';
 import { pdfAdmonitionsStyles } from './pdf-admonitions-styles.ts';

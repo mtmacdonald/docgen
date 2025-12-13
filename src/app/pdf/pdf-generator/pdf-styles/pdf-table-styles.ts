@@ -1,4 +1,3 @@
-// @ts-ignore
 import * as styles from 'virtual:style-variables.js';
 
 const tableCellStyle = {
