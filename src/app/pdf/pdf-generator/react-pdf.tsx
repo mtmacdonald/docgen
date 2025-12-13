@@ -51,7 +51,7 @@ Font.register({
 
 // Async loader for PDF pages
 
-export const Pdf = ({ loadedPages }) => {
+export const Pdf = ({ loadedPages, styleVariables }) => {
   const parameters = __DOCGEN_PARAMETERS__;
   const options = {};
   const allSources = Object.values(__DOCGEN_PAGES__).flatMap((columns) =>
@@ -68,6 +68,7 @@ export const Pdf = ({ loadedPages }) => {
             page={html}
             parameters={parameters}
             options={options}
+            styleVariables={styleVariables}
           />
         );
       })}

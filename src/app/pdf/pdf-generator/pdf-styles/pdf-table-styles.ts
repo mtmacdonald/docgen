@@ -1,21 +1,21 @@
-import * as styles from 'virtual:style-variables.js';
+export const getPdfTableStyles = (styles: any) => {
+  const tableCellStyle = {
+    padding: styles.SizeTableCellPaddingPdf,
+    border: `${styles.SizeBorderWidthPdf} solid ${styles.ColorBorder}`,
+  };
 
-const tableCellStyle = {
-  padding: styles.SizeTableCellPaddingPdf,
-  border: `${styles.SizeBorderWidthPdf} solid ${styles.ColorBorder}`,
-};
+  const tableHeaderFooterStyle = {
+    ...tableCellStyle,
+    backgroundColor: styles.ColorTableBackgroundHeaderFooterPdf,
+    fontWeight: 'bold',
+  };
 
-const tableHeaderFooterStyle = {
-  ...tableCellStyle,
-  backgroundColor: styles.ColorTableBackgroundHeaderFooterPdf,
-  fontWeight: 'bold',
-};
-
-export const pdfTableStyles = {
-  table: {
-    border: '1px solid #ccc',
-  },
-  td: tableCellStyle,
-  th: tableHeaderFooterStyle,
-  ['tfoot td']: tableHeaderFooterStyle,
+  return {
+    table: {
+      border: '1px solid #ccc',
+    },
+    td: tableCellStyle,
+    th: tableHeaderFooterStyle,
+    ['tfoot td']: tableHeaderFooterStyle,
+  };
 };
