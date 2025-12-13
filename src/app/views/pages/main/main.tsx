@@ -27,7 +27,7 @@ export const Main = ({ parameters, sortedPages, pdfEnabled }: MainProps) => {
       <Page className={pdfVisible ? styles.pdfPage : ''}>
         <div
           style={{
-            backgroundColor: 'var(--simple-test-color)',
+            backgroundColor: 'var(--color-primary)',
             height: '20px',
             width: '100%',
           }}

@@ -29,10 +29,10 @@ const styleVariablesPlugin = () => {
     },
     load(id: string) {
       if (id === resolvedCssVirtualModuleId) {
-        return ':root { --simple-test-color: #ff00ff; }';
+        return ':root { --color-primary: red; }';
       }
       if (id === resolvedJsVirtualModuleId) {
-        return 'export const ColorPrimary = "#ff00ff";';
+        return 'export const ColorPrimary = "red";';
       }
     },
   };
