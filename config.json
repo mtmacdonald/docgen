@@ -1,5 +1,10 @@
 {
-  "source": ["src/app/styles/style-tokens/**/*.json"],
+  "source": [
+    "src/app/styles/style-tokens/**/*.json"
+  ],
+  "log": {
+    "verbosity": "silent"
+  },
   "platforms": {
     "css": {
       "transformGroup": "css",
