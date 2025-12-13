@@ -64,23 +64,21 @@ const styleVariablesPlugin = () => {
     },
     handleHotUpdate({ file, server }: any) {
       if (file.includes('style-tokens')) {
-        console.log('Style tokens changed, reloading module...');
+        console.log('Style tokens changed, reloading...');
         const cssModule = server.moduleGraph.getModuleById(
           resolvedCssVirtualModuleId,
         );
         const jsModule = server.moduleGraph.getModuleById(
           resolvedJsVirtualModuleId,
         );
-        const updates: any[] = [];
         if (cssModule) {
           server.moduleGraph.invalidateModule(cssModule);
-          updates.push(cssModule);
         }
         if (jsModule) {
           server.moduleGraph.invalidateModule(jsModule);
-          updates.push(jsModule);
         }
-        return updates;
+        server.ws.send({ type: 'full-reload' });
+        return [];
       }
     },
   };
