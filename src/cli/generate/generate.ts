@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { build, createServer } from 'vite';
+import StyleDictionary from 'style-dictionary';
 import react from '@vitejs/plugin-react';
 import dotenv from 'dotenv';
 import { deriveParameters } from '../../docgen/meta/derive-parameters.ts';
@@ -27,12 +28,39 @@ const styleVariablesPlugin = () => {
         return resolvedJsVirtualModuleId;
       }
     },
-    load(id: string) {
-      if (id === resolvedCssVirtualModuleId) {
-        return ':root { --color-primary: red; }';
-      }
-      if (id === resolvedJsVirtualModuleId) {
-        return 'export const ColorPrimary = "red";';
+    async load(id: string) {
+      if (
+        id === resolvedCssVirtualModuleId ||
+        id === resolvedJsVirtualModuleId
+      ) {
+        const sd = new StyleDictionary('config.json');
+        // await sd.buildAllPlatforms(); // Don't build to disk
+        const dictionary = await sd.exportPlatform('css');
+
+        const flattenTokens = (obj: any, result: any[] = []) => {
+          for (const key in obj) {
+            if (obj[key].hasOwnProperty('value')) {
+              result.push(obj[key]);
+            } else if (typeof obj[key] === 'object') {
+              flattenTokens(obj[key], result);
+            }
+          }
+          return result;
+        };
+
+        const tokens = flattenTokens(dictionary);
+
+        if (id === resolvedCssVirtualModuleId) {
+          return `:root {\n${tokens.map((t) => `  --${t.name}: ${t.value};`).join('\n')}\n}`;
+        }
+
+        if (id === resolvedJsVirtualModuleId) {
+          const toPascalCase = (str: string) =>
+            str.replace(/(^|-)(\w)/g, (_, __, c) => c.toUpperCase());
+          return tokens
+            .map((t) => `export const ${toPascalCase(t.name)} = "${t.value}";`)
+            .join('\n');
+        }
       }
     },
   };
