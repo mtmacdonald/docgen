@@ -23,20 +23,8 @@ export const styleVariablesPlugin = (): Plugin => {
         id === resolvedJsVirtualModuleId
       ) {
         const sd = new StyleDictionary('config.json');
-        const dictionary = await sd.exportPlatform('css');
-
-        const flattenTokens = (obj: any, result: any[] = []) => {
-          for (const key in obj) {
-            if (obj[key].hasOwnProperty('value')) {
-              result.push(obj[key]);
-            } else if (typeof obj[key] === 'object') {
-              flattenTokens(obj[key], result);
-            }
-          }
-          return result;
-        };
-
-        const tokens = flattenTokens(dictionary);
+        const dictionary = await sd.getPlatformTokens('css');
+        const tokens = dictionary.allTokens;
 
         if (id === resolvedCssVirtualModuleId) {
           return `:root {\n${tokens.map((t) => `  --${t.name}: ${t.value};`).join('\n')}\n}`;
