@@ -17,7 +17,7 @@
     "preview:docs": "npx serve -s ./docs",
     "build:docs:gh": "tsx src/cli/cli.ts build -i src/docs -o ./docs && yarn copy:gh:files",
     "copy:gh:files": "node deploy/before-deploy-website.js",
-    "preview:style:variables": "rimraf src/app/styles/style-variables && npx style-dictionary build && yarn prettier:fix",
+    "preview:style:variables": "rimraf src/app/styles/style-variables && npx style-dictionary build --config src/app/styles/config.json && yarn prettier:fix",
     "test": "npm run prettier:check",
     "test:run": "tsx src/cli/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
     "test:scaffold": "tsx src/cli/cli.ts scaffold -o src/__test__/test-run-output",

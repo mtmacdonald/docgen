@@ -1,7 +1,8 @@
+import path from 'node:path';
 import StyleDictionary from 'style-dictionary';
 import { type Plugin } from 'vite';
 
-export const styleVariablesPlugin = (): Plugin => {
+export const styleVariablesPlugin = (appDir: string): Plugin => {
   const cssVirtualModuleId = 'virtual:style-variables.css';
   const resolvedCssVirtualModuleId = '\0' + cssVirtualModuleId;
   const jsVirtualModuleId = 'virtual:style-variables.js';
@@ -9,6 +10,7 @@ export const styleVariablesPlugin = (): Plugin => {
 
   return {
     name: 'style-variables-plugin',
+    enforce: 'pre',
     resolveId(id: string) {
       if (id === cssVirtualModuleId) {
         return resolvedCssVirtualModuleId;
@@ -22,7 +24,8 @@ export const styleVariablesPlugin = (): Plugin => {
         id === resolvedCssVirtualModuleId ||
         id === resolvedJsVirtualModuleId
       ) {
-        const sd = new StyleDictionary('config.json');
+        const configPath = path.join(appDir, 'styles/config.json');
+        const sd = new StyleDictionary(configPath);
         if (id === resolvedCssVirtualModuleId) {
           const files = await sd.formatPlatform('css');
           return files[0]?.output as string;
