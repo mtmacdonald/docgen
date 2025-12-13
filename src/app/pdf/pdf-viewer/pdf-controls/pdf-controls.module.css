@@ -38,7 +38,8 @@
   background: rgba(255, 255, 255, 0.1) !important;
 }
 
-.controlButton:disabled {
+.controlButton:disabled,
+.controlButton:disabled:hover {
   color: #5f6368 !important;
   cursor: default;
   background: transparent !important;
