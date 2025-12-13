@@ -12,18 +12,27 @@ dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 const basePath = process.env.BASE_PATH || '/';
 
 const styleVariablesPlugin = () => {
-  const virtualModuleId = 'virtual:simple-styles.css';
-  const resolvedVirtualModuleId = '\0' + virtualModuleId;
+  const cssVirtualModuleId = 'virtual:style-variables.css';
+  const resolvedCssVirtualModuleId = '\0' + cssVirtualModuleId;
+  const jsVirtualModuleId = 'virtual:style-variables.js';
+  const resolvedJsVirtualModuleId = '\0' + jsVirtualModuleId;
+
   return {
     name: 'style-variables-plugin',
     resolveId(id: string) {
-      if (id === virtualModuleId) {
-        return resolvedVirtualModuleId;
+      if (id === cssVirtualModuleId) {
+        return resolvedCssVirtualModuleId;
+      }
+      if (id === jsVirtualModuleId) {
+        return resolvedJsVirtualModuleId;
       }
     },
     load(id: string) {
-      if (id === resolvedVirtualModuleId) {
+      if (id === resolvedCssVirtualModuleId) {
         return ':root { --simple-test-color: #ff00ff; }';
+      }
+      if (id === resolvedJsVirtualModuleId) {
+        return 'export const ColorPrimary = "#ff00ff";';
       }
     },
   };

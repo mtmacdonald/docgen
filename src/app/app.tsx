@@ -1,4 +1,8 @@
-import 'virtual:simple-styles.css';
+import 'virtual:style-variables.css';
+// @ts-ignore - virtual module
+import * as styleVariables from 'virtual:style-variables.js';
+console.log('JS Style Variables:', styleVariables);
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from '@tanstack/react-router';
