@@ -1,4 +1,11 @@
-﻿## DocGen 6.2.0 06/12/2025
+﻿## DocGen 6.3.0 16/12/2025
+
+- Remove SASS style preprocessor, migrate to plain CSS
+- Lift [Style Dictionary](https://styledictionary.com) into the [Vite](https://vite.dev) build pipeline [#173](https://github.com/mtmacdonald/docgen/issues/143)
+- Support live UI updates when style tokens are edited
+- Overall styles cleanup, including moving of website styles to CSS modules [#160](https://github.com/mtmacdonald/docgen/issues/160)
+
+## DocGen 6.2.0 06/12/2025
 
 - Improve `codeblock` styles and add copy-to-clipboard button in website ([#164](https://github.com/mtmacdonald/docgen/issues/164))
 - Fix height of loader in PDF card on mobile devices ([#165](https://github.com/mtmacdonald/docgen/issues/165))
