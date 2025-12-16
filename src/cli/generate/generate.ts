@@ -6,8 +6,12 @@ import { deriveParameters } from '../../docgen/meta/derive-parameters.ts';
 import { loadInputs } from '../../docgen/fs/load-inputs.ts';
 import { sortPages } from '../../docgen/meta/sort-pages.ts';
 import { findAppDir } from '../../paths.ts';
+import { styleVariablesPlugin } from './plugins/style-variables-plugin.ts';
+import { htmlTransformPlugin } from './plugins/html-transform-plugin.ts';
+import { watchInputDirPlugin } from './plugins/watch-input-dir-plugin.ts';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+
 const basePath = process.env.BASE_PATH || '/';
 
 export const generate = async (command, mode: string) => {
@@ -36,37 +40,14 @@ export const generate = async (command, mode: string) => {
     publicDir: inputDir,
     base: basePath,
     plugins: [
+      styleVariablesPlugin(appPath),
       react({
         // Exclude PRF worker from HMR (ReferenceError: window is not defined @react-refresh error caused by HMR)
         // https://www.reddit.com/r/react/comments/1i808v1/comment/mxdh5xv/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
         exclude: /\/src\/app\/pdf\//,
       }),
-      {
-        name: 'html-transform',
-        transformIndexHtml(html: string) {
-          return html.replace(/%APP_TITLE%/g, parameters.title ?? 'DocGen');
-        },
-      },
-      ...(mode !== 'build'
-        ? [
-            {
-              name: 'watch-input-dir',
-              configureServer(server) {
-                const watchPattern = path.join(inputDir, '**/*.{md,json,png}');
-                server.watcher.add(watchPattern);
-                const handleFileChange = (changedPath: string) => {
-                  console.log(
-                    `Input file changed, reloading: ${path.relative(inputDir, changedPath)}`,
-                  );
-                  server.ws.send({ type: 'full-reload' });
-                };
-                server.watcher.on('add', handleFileChange);
-                server.watcher.on('change', handleFileChange);
-                server.watcher.on('unlink', handleFileChange);
-              },
-            },
-          ]
-        : []),
+      htmlTransformPlugin(parameters.title ?? 'DocGen'),
+      ...(mode !== 'build' ? [watchInputDirPlugin(inputDir)] : []),
     ],
     define: {
       __DOCGEN_PARAMETERS__: JSON.stringify(parameters),

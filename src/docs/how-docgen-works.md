@@ -20,7 +20,7 @@ The website is generated using [React](https://react.dev/) as template engine.
 
 DocGen uses [Style Dictionary](https://styledictionary.com) for defining design tokens and generating styles.
 
-The website styles are defined in [Sass](https://sass-lang.com).
+The website styles are defined in plain CSS.
 
 The PDF styles are defined in CSS-in-JS format. The React PDF engine uses [Yoga Layout](https://www.yogalayout.dev/),
 which supports a print-friendly subset of modern CSS.

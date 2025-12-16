@@ -29,3 +29,6 @@ dist-ssr
 *.sw?
 
 *.tgz
+
+# Style variables are now loaded from vite virtual modules
+src/app/styles/style-variables/

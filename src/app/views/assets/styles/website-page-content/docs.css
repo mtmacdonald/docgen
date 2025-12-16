@@ -1,13 +1,12 @@
-@use 'typography';
-
 :root {
+  /* TODO Lift to style variables */
   --margin-card: 32px;
   --width-card: 260px;
 }
 
 @media (min-width: 1200px) {
   .banner h1 {
-    font-family: typography.$highlight-font;
+    font-family: var(--highlight-font), sans-serif;
     font-size: 64px;
     letter-spacing: -0.025em;
     line-height: 1.15;
@@ -154,4 +153,11 @@
 .dgCard p {
   margin-top: var(--margin-card);
   word-wrap: break-word;
+}
+
+.dg-pageToc {
+  list-style: none;
+  padding: 10px;
+  border: 1px solid #999;
+  background-color: #eee;
 }

@@ -30,11 +30,11 @@ const loadPdfPages = async (
   return pages;
 };
 
-const slowTask = async () => {
+const slowTask = async (styleVariables) => {
   let data;
   try {
     const loadedPages = await loadPdfPages(__DOCGEN_PAGES__);
-    data = await generatePdf(loadedPages);
+    data = await generatePdf(loadedPages, styleVariables);
   } catch (error) {
     console.error(error);
   }
@@ -49,7 +49,7 @@ const slowTask = async () => {
 self.onmessage = ({ data: message }) => {
   switch (message.type) {
     case 'start':
-      slowTask();
+      slowTask(message.styleVariables);
       break;
     default:
   }

@@ -1,4 +1,4 @@
-.topbar {
+.topBar {
   top: 0;
   left: 0;
   z-index: 2;
@@ -36,13 +36,13 @@
     gap: 10px;
   }
 
-  //Header content styles
+  /*Header content styles */
 
-  #dg-logo {
+  .dgLogo {
     background-repeat: no-repeat;
   }
 
-  #headerLeftText {
+  .headerLeftText {
     display: flex;
     flex-direction: column;
 
@@ -51,10 +51,10 @@
 
     a {
       text-decoration: none;
-      color: var(--color-text) !important; //override hover + visited styles
+      color: var(--color-text) !important; /*override hover + visited styles*/
     }
 
-    #headerSponsor {
+    .headerSponsor {
       display: flex;
       align-items: center;
       font-weight: normal;
@@ -66,7 +66,7 @@
         margin-right: 6px;
       }
 
-      #sponsorLogo {
+      .sponsorLogo {
         height: 12px;
         margin: 0 auto;
         display: block;
@@ -80,7 +80,7 @@
     }
   }
 
-  #headerRightBlock {
+  .headerRightBlock {
     margin-left: auto;
   }
 }

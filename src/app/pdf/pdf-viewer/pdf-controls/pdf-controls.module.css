@@ -1,7 +1,6 @@
 .pdfControlsContainer {
   display: flex;
   justify-content: space-between;
-  /* Push items to edges */
   align-items: center;
   width: 100%;
   gap: 16px;
@@ -11,7 +10,6 @@
   display: flex;
   gap: 4px;
   align-items: center;
-  /* Removed flex: 1 and justify-content: center to keep it on the left */
 }
 
 .actionButtons {
@@ -28,27 +26,23 @@
   height: 32px;
   padding: 0;
   border: none;
-  background-color: transparent;
-  color: #f1f3f4;
-  /* Light grey/white text */
+  background: transparent !important;
+  color: #f1f3f4 !important;
   border-radius: 16px;
-  /* Rounded for hover effect */
   cursor: pointer;
   transition: background-color 0.1s ease;
   font-size: 20px;
-  /* Icon size */
 }
 
 .controlButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  /* Subtle grey highlight */
+  background: rgba(255, 255, 255, 0.1) !important;
 }
 
-.controlButton:disabled {
-  color: #5f6368;
-  /* Dimmed icon color */
+.controlButton:disabled,
+.controlButton:disabled:hover {
+  color: #5f6368 !important;
   cursor: default;
-  background-color: transparent;
+  background: transparent !important;
 }
 
 .pageText {

@@ -1,9 +1,3 @@
-@use 'typography';
-
-/*
- buttons
-*/
-
 button,
 .button {
   box-sizing: border-box;
@@ -20,7 +14,7 @@ button,
   text-transform: none;
   text-shadow: none;
   line-height: 1em;
-  font-family: typography.$highlight-font;
+  font-family: var(--highlight-font);
   font-style: normal;
   text-align: center;
   text-decoration: none;

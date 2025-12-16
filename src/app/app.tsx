@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from '@tanstack/react-router';
 import { router } from './views/router.tsx';
-import './views/assets/styles/framework.css';
+import 'virtual:style-variables.css';
+import './views/assets/styles/main.css';
 
 const app = () => {
   const rootElement = document.getElementById('root');

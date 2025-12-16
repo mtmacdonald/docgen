@@ -11,19 +11,19 @@ export interface ICardProps {
   margin?: string;
   padding?: boolean;
   raised?: boolean;
+  dark?: boolean;
   children?: ReactNode;
 }
 
 export const Card = ({
   bordered = true,
   heading = null,
-  headerClassName = '',
   className = '',
-  contentClassName = '',
   children,
   margin = '0',
   padding = true,
   raised = false,
+  dark = false,
 }: ICardProps) => {
   return (
     <div
@@ -31,19 +31,21 @@ export const Card = ({
         styles.card,
         bordered ? styles.bordered : '',
         raised ? styles.raised : '',
+        dark ? styles.dark : '',
         className,
       )}
       style={{ margin }}
     >
       {heading ? (
-        <div className={cx(styles.cardHeader, headerClassName)}>{heading}</div>
+        <div className={cx(styles.cardHeader, dark ? styles.dark : '')}>
+          {heading}
+        </div>
       ) : null}
       <div
         className={cx(
           styles.cardContent,
           heading ? styles.cardContentBorderTop : '',
           padding ? styles.padding : '',
-          contentClassName,
         )}
       >
         {children}

@@ -1,7 +1,7 @@
 {
   "name": "docgen-tool",
   "type": "module",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "description": "A tool for creating HTML and PDF documentation",
   "bin": "./dist/cli/cli.js",
   "files": [
@@ -18,19 +18,18 @@
     "preview:docs": "npx serve -s ./docs",
     "build:docs:gh": "tsx src/cli/cli.ts build -i src/docs -o ./docs && yarn copy:gh:files",
     "copy:gh:files": "node deploy/before-deploy-website.js",
-    "build:styles": "rimraf src/app/style-variables && npx style-dictionary build && sass --no-source-map src/styles/main.scss src/app/views/assets/styles/framework.css && yarn prettier:fix",
+    "preview:style:variables": "rimraf src/app/styles/style-variables && npx style-dictionary build --config src/app/styles/config.json && yarn prettier:fix",
     "test": "npm run prettier:check",
     "test:run": "tsx src/cli/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
     "test:scaffold": "tsx src/cli/cli.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "./dist/cli/cli.js build -i src/__test__/test-run -o ../source/__test__/test-run-output",
-    "prettier:check": "prettier --check 'src/**/*.{ts,js,tsx,jsx,json,css,scss}'",
-    "prettier:fix": "prettier --write 'src/**/*.{ts,js,tsx,jsx,json,css,scss}'",
+    "prettier:check": "prettier --check 'src/**/*.{ts,js,tsx,jsx,json,css}'",
+    "prettier:fix": "prettier --write 'src/**/*.{ts,js,tsx,jsx,json,css}'",
     "test:publish": "sh ./src/__test__/test-publish/test-publish.sh",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{ts,js,tsx,jsx,json,css,scss}": "prettier --write",
-    "docgen": "prettier --write"
+    "src/**/*.{ts,js,tsx,jsx,json,css}": "prettier --write"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.0",
@@ -54,6 +53,8 @@
     "react-resize-detector": "^12.3.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
+    "rolldown-vite": "npm:rolldown-vite@latest",
+    "style-dictionary": "^5.1.1",
     "vite": "npm:rolldown-vite@latest",
     "z-schema": "^6.0.2"
   },
@@ -66,8 +67,6 @@
     "ncp": "^2.0.0",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "sass": "^1.89.2",
-    "style-dictionary": "^5.0.1",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0"
