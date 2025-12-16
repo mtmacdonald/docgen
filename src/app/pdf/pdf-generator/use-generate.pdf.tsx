@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import * as styles from 'virtual:style-variables.js';
 import WorkerURL from './generate-pdf.worker.tsx?worker';
 
 export type TGeneratedPdf = {
@@ -37,7 +38,7 @@ export const useGeneratePdf = () => {
       }
     };
 
-    worker.postMessage({ type: 'start' });
+    worker.postMessage({ type: 'start', styleVariables: { ...styles } });
 
     return () => worker.terminate();
   }, []);

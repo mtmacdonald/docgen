@@ -28,13 +28,13 @@ if ! npx docgen-tool --version; then
   exit 1
 fi
 
-if ! npx docgen-tool scaffold; then
+if ! npx docgen-tool scaffold -o ./example-input; then
   echo "⚠ CLI execution failed"
   exit 1
 fi
 
-mkdir example
-if ! npx docgen-tool build -o ./example; then
+mkdir example-output
+if ! npx docgen-tool build -i ./example-input -o ./example-output; then
   echo "⚠ CLI execution failed"
   exit 1
 fi

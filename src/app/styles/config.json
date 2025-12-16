@@ -1,9 +1,12 @@
 {
-  "source": ["src/styles/tokens/**/*.json"],
+  "source": ["src/app/styles/style-tokens/**/*.json"],
+  "log": {
+    "verbosity": "silent"
+  },
   "platforms": {
     "css": {
       "transformGroup": "css",
-      "buildPath": "src/app/style-variables/css/",
+      "buildPath": "src/app/styles/style-variables/css/",
       "files": [
         {
           "destination": "style-variables.css",
@@ -13,7 +16,7 @@
     },
     "js": {
       "transformGroup": "js",
-      "buildPath": "src/app/style-variables/js/",
+      "buildPath": "src/app/styles/style-variables/js/",
       "files": [
         {
           "destination": "style-variables.js",
