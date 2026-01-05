@@ -4581,10 +4581,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1, ripemd160@^2.0.3:
     hash-base "^3.1.2"
     inherits "^2.0.4"
 
-"rolldown-vite@npm:rolldown-vite@latest":
-  version "7.2.11"
-  resolved "https://registry.yarnpkg.com/rolldown-vite/-/rolldown-vite-7.2.11.tgz#d20699687afd7c6a035be70b1f74a59f5f67fb6d"
-  integrity sha512-WwCantGLbztBNipg+WwcA+a1c3Mo9LPY0VZ35IFXnUsQyZzsMHtzmy+H5PqELPj3AOauI9L/HMCjoJZp3i9eFg==
+rolldown-vite@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/rolldown-vite/-/rolldown-vite-7.3.0.tgz#46eaf1be33689674ac2c7e43e722791f4d54bbf3"
+  integrity sha512-5hI5NCJwKBGtzWtdKB3c2fOEpI77Iaa0z4mSzZPU1cJ/OqrGbFafm90edVCd7T9Snz+Sh09TMAv4EQqyVLzuEg==
   dependencies:
     "@oxc-project/runtime" "0.101.0"
     fdir "^6.5.0"

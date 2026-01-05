@@ -52,7 +52,7 @@
     "react-resize-detector": "^12.3.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
-    "rolldown-vite": "npm:rolldown-vite@latest",
+    "rolldown-vite": "^7.3.0",
     "style-dictionary": "^5.1.1",
     "vite": "npm:rolldown-vite@latest",
     "z-schema": "^6.0.2"
