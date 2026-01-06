@@ -1,4 +1,4 @@
-﻿## DocGen 6.3.0 06/01/2026
+﻿## DocGen 6.3.1 06/01/2026
 
 - Fixed dev mode build error ([#179](https://github.com/mtmacdonald/docgen/issues/179))
 - Fixed `buffer is not defined` warning in PDF ([#172](https://github.com/mtmacdonald/docgen/issues/172))
