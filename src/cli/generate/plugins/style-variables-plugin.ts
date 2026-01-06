@@ -14,14 +14,14 @@ export const styleVariablesPlugin = (appDir: string): Plugin => {
     enforce: 'pre',
     resolveId(id: string) {
       if (id === cssVirtualModuleId) {
-        return '\0' + resolvedCssPath;
+        return resolvedCssPath;
       }
       if (id === jsVirtualModuleId) {
-        return '\0' + resolvedJsPath;
+        return resolvedJsPath;
       }
     },
     async load(id: string) {
-      if (id === '\0' + resolvedCssPath || id === '\0' + resolvedJsPath) {
+      if (id === resolvedCssPath || id === resolvedJsPath) {
         const configPath = path.join(appDir, 'styles/config.json');
         const configContent = fs.readFileSync(configPath, 'utf-8');
         const config = JSON.parse(configContent);
@@ -29,11 +29,11 @@ export const styleVariablesPlugin = (appDir: string): Plugin => {
         config.source = [path.join(appDir, 'styles/style-tokens/**/*.json')];
 
         const sd = new StyleDictionary(config);
-        if (id === '\0' + resolvedCssPath) {
+        if (id === resolvedCssPath) {
           const files = await sd.formatPlatform('css');
           return files[0]?.output as string;
         }
-        if (id === '\0' + resolvedJsPath) {
+        if (id === resolvedJsPath) {
           const files = await sd.formatPlatform('js');
           return files[0]?.output as string;
         }
@@ -41,7 +41,7 @@ export const styleVariablesPlugin = (appDir: string): Plugin => {
     },
     handleHotUpdate({ file, server }) {
       if (!file.includes('/style-tokens/')) return;
-      const ids = ['\0' + resolvedCssPath, '\0' + resolvedJsPath];
+      const ids = [resolvedCssPath, resolvedJsPath];
       ids.forEach((id) => {
         const mod = server.moduleGraph.getModuleById(id);
         if (mod) {
