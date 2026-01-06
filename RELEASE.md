@@ -15,6 +15,7 @@ Merge your changes into `master` branch by submitting a pull request.
 On `master` branch:
 
 - `yarn bundle`
+- `npm login`
 - `npm publish`
 
 ## Deploy the gh-pages website
