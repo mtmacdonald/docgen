@@ -43,11 +43,6 @@ export const generate = async (command, mode: string) => {
     plugins: [
       nodePolyfills({
         include: ['buffer'],
-        globals: {
-          Buffer: true,
-          global: true,
-          process: true,
-        },
       }),
       styleVariablesPlugin(appPath),
       react({
