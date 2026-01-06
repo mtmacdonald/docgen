@@ -1,7 +1,7 @@
 {
   "name": "docgen-tool",
   "type": "module",
-  "version": "6.3.0",
+  "version": "6.3.1",
   "description": "A tool for creating HTML and PDF documentation",
   "bin": "./dist/cli/cli.js",
   "files": [
@@ -53,9 +53,10 @@
     "react-resize-detector": "^12.3.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
-    "rolldown-vite": "npm:rolldown-vite@latest",
+    "rolldown-vite": "^7.3.0",
     "style-dictionary": "^5.1.1",
     "vite": "npm:rolldown-vite@latest",
+    "vite-plugin-node-polyfills": "0.22.0",
     "z-schema": "^6.0.2"
   },
   "devDependencies": {
