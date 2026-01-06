@@ -6,8 +6,8 @@ import { type Plugin } from 'vite';
 export const styleVariablesPlugin = (appDir: string): Plugin => {
   const cssVirtualModuleId = 'virtual:style-variables.css';
   const jsVirtualModuleId = 'virtual:style-variables.js';
-  const resolvedCssPath = path.join(appDir, 'virtual-style-variables.css');
-  const resolvedJsPath = path.join(appDir, 'virtual-style-variables.js');
+  const resolvedCssPath = `\0${path.join(appDir, 'virtual-style-variables.css')}`;
+  const resolvedJsPath = `\0${path.join(appDir, 'virtual-style-variables.js')}`;
 
   return {
     name: 'style-variables-plugin',
