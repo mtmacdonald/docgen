@@ -1,0 +1,35 @@
+.codeBlockWrapper {
+  position: relative;
+}
+
+.copyButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  color: #fff !important;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  font-size: 16px;
+  opacity: 1;
+}
+
+.copyButton:hover {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+.copyButton:active {
+  background-color: rgba(0, 0, 0, 0.55) !important;
+}
+
+.copied {
+  opacity: 0.8;
+}

@@ -1,0 +1,48 @@
+/*
+  Admonitions
+
+  - uses https://www.npmjs.com/package/markdown-it-admon
+  - styles loosely borrowed from repo CSS: https://github.com/commenthol/markdown-it-admon/blob/main/styles/admonition.css
+
+  Avoiding icons for now because they're not as easy in the PDF
+ */
+
+blockquote,
+.admonition {
+  margin: var(--size-content-block-margin);
+  padding: var(--size-content-block-padding);
+  border-left: var(--size-admonition-border-left) solid;
+  border-radius: var(--size-admonition-border-radius);
+}
+
+.admonition > .admonition-title {
+  margin: var(--size-admonition-title-margin);
+  font-weight: bold;
+}
+
+.admonition.information {
+  border-left-color: var(--color-border-info);
+  background-color: var(--color-background-info);
+}
+
+.admonition.success {
+  border-left-color: var(--color-border-success);
+  background-color: var(--color-background-success);
+}
+
+.admonition.warning {
+  border-left-color: var(--color-border-warning);
+  background-color: var(--color-background-warning);
+}
+
+.admonition.error {
+  border-left-color: var(--color-border-error);
+  background-color: var(--color-background-error);
+}
+
+blockquote {
+  border-left-color: var(--color-border-neutral);
+  background-color: var(--color-background-neutral);
+  color: var(--color-text-neutral);
+  font-style: italic;
+}

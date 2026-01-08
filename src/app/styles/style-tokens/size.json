@@ -1,0 +1,108 @@
+{
+  "size": {
+    "border": {
+      "width": {
+        "@": { "value": "1px" },
+        "pdf": { "value": "0.8pt" }
+      },
+      "radius": { "value": "4px" }
+    },
+    "button": {
+      "base": { "value": "42px" }
+    },
+    "font": {
+      "base": { "value": "16px" },
+      "small": { "value": "12px" },
+      "medium": { "value": "16px" },
+      "large": { "value": "24px" },
+      "h1": {
+        "@": { "value": "2rem" },
+        "pdf": { "value": "24pt" }
+      },
+      "h2": {
+        "@": { "value": "1.5rem" },
+        "pdf": { "value": "20pt" }
+      },
+      "h3": {
+        "@": { "value": "1.25rem" },
+        "pdf": { "value": "18pt" }
+      },
+      "h4": {
+        "@": { "value": "1rem" },
+        "pdf": { "value": "16pt" }
+      },
+      "h5": {
+        "@": { "value": "0.875rem" },
+        "pdf": { "value": "14pt" }
+      },
+      "h6": {
+        "@": { "value": "0.75rem" },
+        "pdf": { "value": "12pt" }
+      }
+    },
+    "padding": {
+      "sm": {
+        "value": "12px"
+      },
+      "xxs": {
+        "value": "4px"
+      }
+    },
+    "line": {
+      "height": {
+        "value": "26px"
+      }
+    },
+    "table": {
+      "cell": {
+        "padding": {
+          "@": { "value": "2px 15px" },
+          "pdf": { "value": "2mm 2mm" }
+        }
+      }
+    },
+    "contentBlock": {
+      "margin": {
+        "@": { "value": "1.5em 0" },
+        "pdf": { "value": "2mm 0" }
+      },
+      "padding": {
+        "@": { "value": "0.8rem 1rem" },
+        "pdf": { "value": "1mm 4mm" }
+      }
+    },
+    "admonition": {
+      "borderLeft": {
+        "@": { "value": "4px" },
+        "pdf": { "value": "1mm" }
+      },
+      "borderRadius": {
+        "value": "4px"
+      },
+      "titleMargin": {
+        "@": { "value": "0.1em 0 0" },
+        "pdf": { "value": "3mm 0 0" }
+      }
+    },
+    "message": {
+      "padding": {
+        "value": "20px 30px"
+      },
+      "border": {
+        "radius": {
+          "value": "2px"
+        }
+      }
+    },
+    "header": {
+      "height": {
+        "value": "80px"
+      }
+    },
+    "sideBar": {
+      "width": { "value": "330px" },
+      "minWidth": { "value": "40px" },
+      "padding": { "value": "5px" }
+    }
+  }
+}
