@@ -80,7 +80,7 @@ export const generate = async (command, mode: string) => {
       build: {
         outDir: outputDir,
         emptyOutDir: true,
-        minify: 'esbuild',
+        minify: false,
       },
     });
   } else {
