@@ -4,7 +4,7 @@ import { getPdfTableStyles } from './pdf-table-styles.ts';
 
 export const fontSize = 10;
 
-export const getPdfStyleSheet = (styles: any) => ({
+export const getPdfStyleSheet = () => ({
   page: {
     paddingTop: 35,
     paddingBottom: 65,
@@ -24,15 +24,6 @@ export const em = (val: number, relativeSize: number = fontSize) =>
 export const getHtmlStyleSheet = (styles: any) => {
   const pdfAdmonitionsStyles = getPdfAdmonitionsStyles(styles);
   const pdfTableStyles = getPdfTableStyles(styles);
-
-  const styleInfo = {
-    color: styles.ColorTextInfo,
-    backgroundColor: styles.ColorBackgroundInfo,
-    borderLeft: `5px solid ${styles.ColorBorderInfo}`,
-    padding: styles.SizeMessagePadding,
-    marginLeft: 0,
-    marginRight: 0,
-  };
 
   return {
     'h1, h2, h3, h4, h5, h6': {

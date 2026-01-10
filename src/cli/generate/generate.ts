@@ -45,15 +45,12 @@ export const generate = async (command, mode: string) => {
     resolve: {
       // Remove once github.com/davidmyersdev/vite-plugin-node-polyfills/issues/140 is fixed
       alias: {
-        'vite-plugin-node-polyfills/shims/process': require.resolve(
-          'vite-plugin-node-polyfills/shims/process',
-        ),
-        'vite-plugin-node-polyfills/shims/buffer': require.resolve(
-          'vite-plugin-node-polyfills/shims/buffer',
-        ),
-        'vite-plugin-node-polyfills/shims/global': require.resolve(
-          'vite-plugin-node-polyfills/shims/global',
-        ),
+        'vite-plugin-node-polyfills/shims/process':
+          require.resolve('vite-plugin-node-polyfills/shims/process'),
+        'vite-plugin-node-polyfills/shims/buffer':
+          require.resolve('vite-plugin-node-polyfills/shims/buffer'),
+        'vite-plugin-node-polyfills/shims/global':
+          require.resolve('vite-plugin-node-polyfills/shims/global'),
       },
     },
     plugins: [

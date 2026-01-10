@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as styles from 'virtual:style-variables.js';
-import WorkerURL from './generate-pdf.worker.tsx?worker';
+import * as WorkerModule from './generate-pdf.worker.tsx?worker';
 
 export type TGeneratedPdf = {
   pdfBlob: Blob | null;
@@ -21,7 +21,7 @@ export const useGeneratePdf = () => {
       return;
     }
 
-    const worker = new WorkerURL();
+    const worker = new WorkerModule.default();
 
     worker.onmessage = (e) => {
       if (e.data.type === 'complete') {

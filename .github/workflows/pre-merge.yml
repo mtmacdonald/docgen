@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Install dependencies
         run: yarn install
@@ -27,7 +27,10 @@ jobs:
           npx tsc -v
 
       - name: Check Formatting
-        run: yarn prettier:check
+        run: yarn formatting:check
+
+      - name: Check Linting
+        run: yarn lint:check
 
       - name: Check Types
         run: yarn check:types

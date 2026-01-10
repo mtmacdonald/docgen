@@ -13,7 +13,7 @@ declare const __BASE_PATH__: string;
   (and renderers.tsx for more details)
 */
 
-export const customRenderers = ({ options }) => ({
+export const customRenderers = () => ({
   div: (payload) => {
     const { children, style, element } = payload;
     const classNames = element.classList.toString();
