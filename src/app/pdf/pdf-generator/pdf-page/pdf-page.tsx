@@ -8,7 +8,7 @@ import {
 } from '../pdf-styles/pdf-styles.ts';
 
 export const PdfPage = ({ page, parameters, options, styleVariables }) => {
-  const reactPdfStyles = StyleSheet.create(getPdfStyleSheet(styleVariables));
+  const reactPdfStyles = StyleSheet.create(getPdfStyleSheet());
   const htmlStylesheet = getHtmlStyleSheet(styleVariables);
 
   return (

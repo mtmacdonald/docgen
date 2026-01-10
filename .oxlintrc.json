@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "eslint",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "import",
+    "jsdoc",
+    "node",
+    "promise"
+  ],
+  "rules": {
+    "no-unused-vars": "error"
+  }
+}
