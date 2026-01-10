@@ -27,14 +27,24 @@ export const customRenderers = () => ({
     return <View style={style}>{children}</View>;
   },
   pre: (payload) => {
-    const { children, element, style } = payload;
-    //strip and handle code blocks
-    const $ = cheerio.load(element.content.join());
+    const { element, style } = payload;
+    const html = element.innerHTML ?? '';
+    const $ = cheerio.load(html);
     const code = $('code');
-    if (code.length) {
-      return <Text style={style}>{code.text().trim()}</Text>;
-    }
-    return <Text style={style}>{children}</Text>;
+    const text = code.length ? code.text() : $.text();
+
+    // Preserve indentation and multiple spaces with Non-Breaking Spaces
+    // to ensure react-pdf doesn't collapse them
+    const formattedText = text
+      // Trim spaces at the start
+      .replace(/^ +/gm, (match) => '\u00A0'.repeat(match.length))
+      // preserve internal indentation
+      .replace(/ {2,}/g, (match) => '\u00A0'.repeat(match.length))
+      // consistent tab width
+      .replace(/\t/g, '\u00A0\u00A0')
+      .trimEnd();
+
+    return <Text style={style}>{formattedText}</Text>;
   },
   img: (payload) => {
     const { element, style } = payload;
