@@ -51,7 +51,7 @@ adding a `theme.json` file to the root of the input directory. See the example b
 be customized. If set, DocGen merges these properties with its base styles, and uses
 [styledictionary](https://styledictionary.com/) to generate CSS and JS variables used in the website and PDF.
 
-```json
+```
 {
   "color": {
     "primary": {
@@ -62,7 +62,7 @@ be customized. If set, DocGen merges these properties with its base styles, and 
         "value": "honeydew"
       },
       "dark": {
-        "value": "darkslategray"
+        "value": "darkgreen"
       }
     }
   }
