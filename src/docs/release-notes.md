@@ -1,8 +1,9 @@
-﻿## DocGen 6.4.0 10/01/2026
+﻿## DocGen 6.4.0, 6.4.1 10/01/2026
 
 - Support for customizable themes ([#134](https://github.com/mtmacdonald/docgen/issues/134))
 - Fix code block indentation issue in PDF ([#183](https://github.com/mtmacdonald/docgen/issues/183))
 - Switch lint tool to [oxlint](https://oxc.rs/docs/guide/usage/linter.html) ([#170](https://github.com/mtmacdonald/docgen/issues/170))
+- Workaround for production PDF issue with mangled list text ([#187](https://github.com/mtmacdonald/docgen/issues/187))
 - Upgrade NPM dependencies
 
 ## DocGen 6.3.1 06/01/2026

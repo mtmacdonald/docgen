@@ -124,7 +124,6 @@ export const getHtmlStyleSheet = (styles: any) => {
     li_content: {
       textAlign: 'left',
       flexGrow: 1,
-      flexBasis: 1,
     },
     thead: {
       display: 'flex',
