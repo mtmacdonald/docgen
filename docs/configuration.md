@@ -43,3 +43,28 @@ the web and PDF table of contents.
 
 The release notes source file is a mandatory source file (that does not need to be listed in contents.json). Use it to
 summarize the change history for each version of the product.
+
+## Custom Themes
+
+DocGen supports optional themes, which override some of the base styles in the website and PDF. Themes are specified by
+adding a `theme.json` file to the root of the input directory. See the example below for the properties that can
+be customized. If set, DocGen merges these properties with its base styles, and uses
+[styledictionary](https://styledictionary.com/) to generate CSS and JS variables used in the website and PDF.
+
+```
+{
+  "color": {
+    "primary": {
+      "@": {
+        "value": "mediumseagreen"
+      },
+      "light": {
+        "value": "honeydew"
+      },
+      "dark": {
+        "value": "darkgreen"
+      }
+    }
+  }
+}
+```

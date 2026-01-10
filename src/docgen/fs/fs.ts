@@ -6,12 +6,14 @@ import fs from 'fs-extra';
 export const readFile = async (filePath: string) => {
   const normalized = path.normalize(filePath);
   try {
-    return (await fsp.readFile(normalized, { encoding: 'utf8' }))?.replace(
-      /^\uFEFF/,
-      '',
-    ); //remove the BOM (byte-order-mark) from UTF-8 files, if present
+    const content = await fsp.readFile(normalized, { encoding: 'utf8' });
+    // remove the BOM (byte-order-mark) from UTF-8 files, if present
+    return content?.replace(/^\uFEFF/, '');
   } catch (error) {
-    console.log(pico.red('Error reading file: ' + normalized));
+    console.log(pico.red(`Error reading file: ${normalized}`));
+    if (error instanceof Error) {
+      console.log(pico.dim(error.message));
+    }
   }
 };
 

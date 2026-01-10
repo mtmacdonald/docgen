@@ -3,7 +3,10 @@ import path from 'node:path';
 import StyleDictionary from 'style-dictionary';
 import { type Plugin } from 'vite';
 
-export const styleVariablesPlugin = (appDir: string): Plugin => {
+export const styleVariablesPlugin = (
+  appDir: string,
+  inputDir: string,
+): Plugin => {
   const cssVirtualModuleId = 'virtual:style-variables.css';
   const jsVirtualModuleId = 'virtual:style-variables.js';
   const resolvedCssPath = `\0${path.join(appDir, 'virtual-style-variables.css')}`;
@@ -28,6 +31,11 @@ export const styleVariablesPlugin = (appDir: string): Plugin => {
         // Rewrite source to be absolute based on appDir to avoid CWD issues
         config.source = [path.join(appDir, 'styles/style-tokens/**/*.json')];
 
+        const themePath = path.join(inputDir, 'theme.json');
+        if (fs.existsSync(themePath)) {
+          config.source.push(themePath);
+        }
+
         const sd = new StyleDictionary(config);
         if (id === resolvedCssPath) {
           const files = await sd.formatPlatform('css');
@@ -40,7 +48,11 @@ export const styleVariablesPlugin = (appDir: string): Plugin => {
       }
     },
     handleHotUpdate({ file, server }) {
-      if (!file.includes('/style-tokens/')) return;
+      const isStyleToken = file.includes('/style-tokens/');
+      const isTheme = file === path.join(inputDir, 'theme.json');
+
+      if (!isStyleToken && !isTheme) return;
+
       const ids = [resolvedCssPath, resolvedJsPath];
       ids.forEach((id) => {
         const mod = server.moduleGraph.getModuleById(id);

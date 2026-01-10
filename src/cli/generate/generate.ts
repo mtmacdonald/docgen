@@ -45,22 +45,19 @@ export const generate = async (command, mode: string) => {
     resolve: {
       // Remove once github.com/davidmyersdev/vite-plugin-node-polyfills/issues/140 is fixed
       alias: {
-        'vite-plugin-node-polyfills/shims/process': require.resolve(
-          'vite-plugin-node-polyfills/shims/process',
-        ),
-        'vite-plugin-node-polyfills/shims/buffer': require.resolve(
-          'vite-plugin-node-polyfills/shims/buffer',
-        ),
-        'vite-plugin-node-polyfills/shims/global': require.resolve(
-          'vite-plugin-node-polyfills/shims/global',
-        ),
+        'vite-plugin-node-polyfills/shims/process':
+          require.resolve('vite-plugin-node-polyfills/shims/process'),
+        'vite-plugin-node-polyfills/shims/buffer':
+          require.resolve('vite-plugin-node-polyfills/shims/buffer'),
+        'vite-plugin-node-polyfills/shims/global':
+          require.resolve('vite-plugin-node-polyfills/shims/global'),
       },
     },
     plugins: [
       nodePolyfills({
         include: ['buffer'],
       }),
-      styleVariablesPlugin(appPath),
+      styleVariablesPlugin(appPath, inputDir),
       react({
         // Exclude PRF worker from HMR (ReferenceError: window is not defined @react-refresh error caused by HMR)
         // https://www.reddit.com/r/react/comments/1i808v1/comment/mxdh5xv/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button

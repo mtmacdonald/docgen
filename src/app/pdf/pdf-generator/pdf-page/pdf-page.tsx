@@ -7,18 +7,14 @@ import {
   getHtmlStyleSheet,
 } from '../pdf-styles/pdf-styles.ts';
 
-export const PdfPage = ({ page, parameters, options, styleVariables }) => {
-  const reactPdfStyles = StyleSheet.create(getPdfStyleSheet(styleVariables));
+export const PdfPage = ({ page, parameters, styleVariables }) => {
+  const reactPdfStyles = StyleSheet.create(getPdfStyleSheet());
   const htmlStylesheet = getHtmlStyleSheet(styleVariables);
 
   return (
     <Page size="A4" style={reactPdfStyles.page}>
       <View>
-        <PdfHtmlBlock
-          page={page}
-          options={options}
-          stylesheet={htmlStylesheet}
-        />
+        <PdfHtmlBlock page={page} stylesheet={htmlStylesheet} />
       </View>
       <PdfFooter parameters={parameters} />
     </Page>

@@ -32,3 +32,5 @@ dist-ssr
 
 # Style variables are now loaded from vite virtual modules
 src/app/styles/style-variables/
+
+src/docs/theme.json

@@ -53,7 +53,6 @@ Font.register({
 
 export const Pdf = ({ loadedPages, styleVariables }) => {
   const parameters = __DOCGEN_PARAMETERS__;
-  const options = {};
   const allSources = Object.values(__DOCGEN_PAGES__).flatMap((columns) =>
     columns.flatMap((section) => section.pages.map((p: any) => p.source)),
   );
@@ -67,7 +66,6 @@ export const Pdf = ({ loadedPages, styleVariables }) => {
             key={i}
             page={html}
             parameters={parameters}
-            options={options}
             styleVariables={styleVariables}
           />
         );
