@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.0",
-    "@tanstack/react-router": "^1.130.12",
+    "@tanstack/react-router": "^1.147.0",
     "@vitejs/plugin-react": "^5.0.0",
     "cheerio": "^1.1.2",
     "classnames": "^2.5.1",
