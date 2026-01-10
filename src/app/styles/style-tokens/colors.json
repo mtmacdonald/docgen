@@ -90,17 +90,31 @@
     },
     "button": {
       "border": {
-        "@": { "value": "2px solid {color.primary.@}" },
-        "inverted": { "value": "2px solid {color.primary.@}" }
+        "@": {
+          "value": "2px solid {color.primary.@}"
+        },
+        "inverted": {
+          "value": "2px solid {color.primary.@}"
+        }
       },
       "background": {
-        "@": { "value": "{color.primary.@}" },
-        "hover": { "value": "#0042b4" },
-        "inverted": { "value": "#fff" }
+        "@": {
+          "value": "{color.primary.@}"
+        },
+        "hover": {
+          "value": "{color.primary.dark}"
+        },
+        "inverted": {
+          "value": "#fff"
+        }
       },
       "text": {
-        "@": { "value": "#fff" },
-        "inverted": { "value": "{color.primary.@}" }
+        "@": {
+          "value": "#fff"
+        },
+        "inverted": {
+          "value": "{color.primary.@}"
+        }
       },
       "shadow": {
         "value": "none"
