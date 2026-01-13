@@ -70,8 +70,6 @@ export const generate = async (command, mode: string) => {
       build: {
         outDir: outputDir,
         emptyOutDir: true,
-        // See #187 - esbuild minification works, oxc minification currently conflicts with marked parsing...
-        minify: false,
       },
     });
   } else {
