@@ -1,5 +1,4 @@
 import path from 'node:path';
-import { createRequire } from 'node:module';
 import { build, createServer } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
@@ -14,7 +13,6 @@ import { watchInputDirPlugin } from './plugins/watch-input-dir-plugin.ts';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
-const require = createRequire(import.meta.url);
 const basePath = process.env.BASE_PATH || '/';
 
 export const generate = async (command, mode: string) => {
@@ -42,20 +40,12 @@ export const generate = async (command, mode: string) => {
     root: appPath,
     publicDir: inputDir,
     base: basePath,
-    resolve: {
-      // Remove once github.com/davidmyersdev/vite-plugin-node-polyfills/issues/140 is fixed
-      alias: {
-        'vite-plugin-node-polyfills/shims/process':
-          require.resolve('vite-plugin-node-polyfills/shims/process'),
-        'vite-plugin-node-polyfills/shims/buffer':
-          require.resolve('vite-plugin-node-polyfills/shims/buffer'),
-        'vite-plugin-node-polyfills/shims/global':
-          require.resolve('vite-plugin-node-polyfills/shims/global'),
-      },
-    },
     plugins: [
       nodePolyfills({
         include: ['buffer'],
+        globals: {
+          Buffer: true,
+        },
       }),
       styleVariablesPlugin(appPath, inputDir),
       react({
