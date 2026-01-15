@@ -1,4 +1,4 @@
-﻿## DocGen 6.4.2 15/01/2026
+﻿## DocGen 6.4.2, 6.4.3 15/01/2026
 
 - Upgrade all NPM dependencies and resolve build config issues: [PR189](https://github.com/mtmacdonald/docgen/pull/189)
 

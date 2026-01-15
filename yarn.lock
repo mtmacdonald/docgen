@@ -525,7 +525,7 @@
     "@napi-rs/canvas-win32-arm64-msvc" "0.1.88"
     "@napi-rs/canvas-win32-x64-msvc" "0.1.88"
 
-"@napi-rs/wasm-runtime@^1.0.7", "@napi-rs/wasm-runtime@^1.1.0", "@napi-rs/wasm-runtime@^1.1.1":
+"@napi-rs/wasm-runtime@^1.0.7", "@napi-rs/wasm-runtime@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@napi-rs/wasm-runtime/-/wasm-runtime-1.1.1.tgz#c3705ab549d176b8dc5172723d6156c3dc426af2"
   integrity sha512-p64ah1M1ld8xjWv3qbvFwHiFVWrq1yFvV4f7w+mzaqiR4IlSgkqhcRdHwsGgomwzBH51sRY4NEowLxnaBjcW/A==
@@ -611,20 +611,10 @@
   resolved "https://registry.yarnpkg.com/@oxc-parser/binding-win32-x64-msvc/-/binding-win32-x64-msvc-0.99.0.tgz#9273f482a36b5e0e05e272216ad4504a4e930b0c"
   integrity sha512-sJN1Q8h7ggFOyDn0zsHaXbP/MklAVUvhrbq0LA46Qum686P3SZQHjbATqJn9yaVEvaSKXCshgl0vQ1gWkGgpcQ==
 
-"@oxc-project/runtime@0.101.0":
-  version "0.101.0"
-  resolved "https://registry.yarnpkg.com/@oxc-project/runtime/-/runtime-0.101.0.tgz#df05967a97f0dc83aae68db1acd57759abdd7dfa"
-  integrity sha512-t3qpfVZIqSiLQ5Kqt/MC4Ge/WCOGrrcagAdzTcDaggupjiGxUx4nJF2v6wUCXWSzWHn5Ns7XLv13fCJEwCOERQ==
-
 "@oxc-project/runtime@0.108.0":
   version "0.108.0"
   resolved "https://registry.yarnpkg.com/@oxc-project/runtime/-/runtime-0.108.0.tgz#ac8ac78a1e252b21c98a97e33f2237de7ac72201"
   integrity sha512-J1cESY4anMO4i9KtCPmCfQAzAR00Uw4SWsDPFP10CIwDMugkh34UrTKByuYKuPaHy0XAk8LlJiZJq2OLMfbuIQ==
-
-"@oxc-project/types@=0.101.0":
-  version "0.101.0"
-  resolved "https://registry.yarnpkg.com/@oxc-project/types/-/types-0.101.0.tgz#5692200d09d6f87341eac3f8e70e403173c5283e"
-  integrity sha512-nuFhqlUzJX+gVIPPfuE6xurd4lST3mdcWOhyK/rZO0B9XWMKm79SuszIQEnSMmmDhq1DC8WWVYGVd+6F93o1gQ==
 
 "@oxc-project/types@=0.108.0":
   version "0.108.0"
@@ -821,112 +811,55 @@
     "@react-pdf/primitives" "^4.1.1"
     "@react-pdf/stylesheet" "^6.1.2"
 
-"@rolldown/binding-android-arm64@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-android-arm64/-/binding-android-arm64-1.0.0-beta.53.tgz#3dfce34db89a71956b26affb296dddc2c7dfb728"
-  integrity sha512-Ok9V8o7o6YfSdTTYA/uHH30r3YtOxLD6G3wih/U9DO0ucBBFq8WPt/DslU53OgfteLRHITZny9N/qCUxMf9kjQ==
-
 "@rolldown/binding-android-arm64@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-android-arm64/-/binding-android-arm64-1.0.0-beta.60.tgz#0fa61b39f0b94c9fa50f93365e73ad3db2bcdb5a"
   integrity sha512-hOW6iQXtpG4uCW1zGK56+KhEXGttSkTp2ykncW/nkOIF/jOKTqbM944Q73HVeMXP1mPRvE2cZwNp3xeLIeyIGQ==
-
-"@rolldown/binding-darwin-arm64@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-darwin-arm64/-/binding-darwin-arm64-1.0.0-beta.53.tgz#d000b0cc5c5fec4032f13806b1ba42c018d7e81d"
-  integrity sha512-yIsKqMz0CtRnVa6x3Pa+mzTihr4Ty+Z6HfPbZ7RVbk1Uxnco4+CUn7Qbm/5SBol1JD/7nvY8rphAgyAi7Lj6Vg==
 
 "@rolldown/binding-darwin-arm64@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-darwin-arm64/-/binding-darwin-arm64-1.0.0-beta.60.tgz#99925b4522b7c174680bd1e1091f325ffec141a8"
   integrity sha512-vyDA4HXY2mP8PPtl5UE17uGPxUNG4m1wkfa3kAkR8JWrFbarV97UmLq22IWrNhtBPa89xqerzLK8KoVmz5JqCQ==
 
-"@rolldown/binding-darwin-x64@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-darwin-x64/-/binding-darwin-x64-1.0.0-beta.53.tgz#42cf05245d0a54b3df67307f0f93ac32e8322b5a"
-  integrity sha512-GTXe+mxsCGUnJOFMhfGWmefP7Q9TpYUseHvhAhr21nCTgdS8jPsvirb0tJwM3lN0/u/cg7bpFNa16fQrjKrCjQ==
-
 "@rolldown/binding-darwin-x64@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-darwin-x64/-/binding-darwin-x64-1.0.0-beta.60.tgz#f5539bee7a6f6123129ccc84b4dd06a0b5c7831c"
   integrity sha512-WnxyqxAKP2BsxouwGY/RCF5UFw/LA4QOHhJ7VEl+UCelHokiwqNHRbryLAyRy3TE1FZ5eae+vAFcaetAu/kWLw==
-
-"@rolldown/binding-freebsd-x64@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-freebsd-x64/-/binding-freebsd-x64-1.0.0-beta.53.tgz#c4ee51d63e27298d5cafeb221ca976b1298b3586"
-  integrity sha512-9Tmp7bBvKqyDkMcL4e089pH3RsjD3SUungjmqWtyhNOxoQMh0fSmINTyYV8KXtE+JkxYMPWvnEt+/mfpVCkk8w==
 
 "@rolldown/binding-freebsd-x64@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-freebsd-x64/-/binding-freebsd-x64-1.0.0-beta.60.tgz#22a6518f02c5803777719351c64a0409deb9c5c3"
   integrity sha512-JtyWJ+zXOHof5gOUYwdTWI2kL6b8q9eNwqB/oD4mfUFaC/COEB2+47JMhcq78dey9Ahmec3DZKRDZPRh9hNAMQ==
 
-"@rolldown/binding-linux-arm-gnueabihf@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-1.0.0-beta.53.tgz#3ecf76c30ab45950d79eb5d38bf9d6d4877e1866"
-  integrity sha512-a1y5fiB0iovuzdbjUxa7+Zcvgv+mTmlGGC4XydVIsyl48eoxgaYkA3l9079hyTyhECsPq+mbr0gVQsFU11OJAQ==
-
 "@rolldown/binding-linux-arm-gnueabihf@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-1.0.0-beta.60.tgz#78ebaac7e92b990b0a07af3c281fcfeafa2c6571"
   integrity sha512-LrMoKqpHx+kCaNSk84iSBd4yVOymLIbxJQtvFjDN2CjQraownR+IXcwYDblFcj9ivmS54T3vCboXBbm3s1zbPQ==
-
-"@rolldown/binding-linux-arm64-gnu@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-1.0.0-beta.53.tgz#d0ee79d5cf29e43aa7ac7b327626aee1c405a20b"
-  integrity sha512-bpIGX+ov9PhJYV+wHNXl9rzq4F0QvILiURn0y0oepbQx+7stmQsKA0DhPGwmhfvF856wq+gbM8L92SAa/CBcLg==
 
 "@rolldown/binding-linux-arm64-gnu@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-1.0.0-beta.60.tgz#785f7e085e1094db3ba4008988c879568a17b951"
   integrity sha512-sqI+Vdx1gmXJMsXN3Fsewm3wlt7RHvRs1uysSp//NLsCoh9ZFEUr4ZzGhWKOg6Rvf+njNu/vCsz96x7wssLejQ==
 
-"@rolldown/binding-linux-arm64-musl@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-arm64-musl/-/binding-linux-arm64-musl-1.0.0-beta.53.tgz#2a6bd23ff647b916158100ce24a54b3d1856fb29"
-  integrity sha512-bGe5EBB8FVjHBR1mOLOPEFg1Lp3//7geqWkU5NIhxe+yH0W8FVrQ6WRYOap4SUTKdklD/dC4qPLREkMMQ855FA==
-
 "@rolldown/binding-linux-arm64-musl@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-arm64-musl/-/binding-linux-arm64-musl-1.0.0-beta.60.tgz#60ce089126bf69f2fe8cc3c246e643f229943e0d"
   integrity sha512-8xlqGLDtTP8sBfYwneTDu8+PRm5reNEHAuI/+6WPy9y350ls0KTFd3EJCOWEXWGW0F35ko9Fn9azmurBTjqOrQ==
-
-"@rolldown/binding-linux-x64-gnu@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-x64-gnu/-/binding-linux-x64-gnu-1.0.0-beta.53.tgz#5f1178cc3b9a19c83b5d49737f7774e98dde81fc"
-  integrity sha512-qL+63WKVQs1CMvFedlPt0U9PiEKJOAL/bsHMKUDS6Vp2Q+YAv/QLPu8rcvkfIMvQ0FPU2WL0aX4eWwF6e/GAnA==
 
 "@rolldown/binding-linux-x64-gnu@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-x64-gnu/-/binding-linux-x64-gnu-1.0.0-beta.60.tgz#4694794ed9ba1bacb473727c748a78474f93e427"
   integrity sha512-iR4nhVouVZK1CiGGGyz+prF5Lw9Lmz30Rl36Hajex+dFVFiegka604zBwzTp5Tl0BZnr50ztnVJ30tGrBhDr8Q==
 
-"@rolldown/binding-linux-x64-musl@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-x64-musl/-/binding-linux-x64-musl-1.0.0-beta.53.tgz#91deaa186011af99d8b9934af180bffe4fae3d19"
-  integrity sha512-VGl9JIGjoJh3H8Mb+7xnVqODajBmrdOOb9lxWXdcmxyI+zjB2sux69br0hZJDTyLJfvBoYm439zPACYbCjGRmw==
-
 "@rolldown/binding-linux-x64-musl@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-linux-x64-musl/-/binding-linux-x64-musl-1.0.0-beta.60.tgz#23a5a7c9569018ff5fc8941f1e11fed7e260aec6"
   integrity sha512-HbfNcqNeqxFjSMf1Kpe8itr2e2lr0Bm6HltD2qXtfU91bSSikVs9EWsa1ThshQ1v2ZvxXckGjlVLtah6IoslPg==
 
-"@rolldown/binding-openharmony-arm64@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-openharmony-arm64/-/binding-openharmony-arm64-1.0.0-beta.53.tgz#44702518f6527d5578f4dd063b2ee85cb3c93a20"
-  integrity sha512-B4iIserJXuSnNzA5xBLFUIjTfhNy7d9sq4FUMQY3GhQWGVhS2RWWzzDnkSU6MUt7/aHUrep0CdQfXUJI9D3W7A==
-
 "@rolldown/binding-openharmony-arm64@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-openharmony-arm64/-/binding-openharmony-arm64-1.0.0-beta.60.tgz#cfd463dddbb2469de3520d667f1d30671f1669fa"
   integrity sha512-BiiamFcgTJ+ZFOUIMO9AHXUo9WXvHVwGfSrJ+Sv0AsTd2w3VN7dJGiH3WRcxKFetljJHWvGbM4fdpY5lf6RIvw==
-
-"@rolldown/binding-wasm32-wasi@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-wasm32-wasi/-/binding-wasm32-wasi-1.0.0-beta.53.tgz#82f5b480895960df59c2a3dc32874b403b698439"
-  integrity sha512-BUjAEgpABEJXilGq/BPh7jeU3WAJ5o15c1ZEgHaDWSz3LB881LQZnbNJHmUiM4d1JQWMYYyR1Y490IBHi2FPJg==
-  dependencies:
-    "@napi-rs/wasm-runtime" "^1.1.0"
 
 "@rolldown/binding-wasm32-wasi@1.0.0-beta.60":
   version "1.0.0-beta.60"
@@ -935,20 +868,10 @@
   dependencies:
     "@napi-rs/wasm-runtime" "^1.1.1"
 
-"@rolldown/binding-win32-arm64-msvc@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-1.0.0-beta.53.tgz#489c43aaa7a6088f17ef8d1124b41c4489f40eb9"
-  integrity sha512-s27uU7tpCWSjHBnxyVXHt3rMrQdJq5MHNv3BzsewCIroIw3DJFjMH1dzCPPMUFxnh1r52Nf9IJ/eWp6LDoyGcw==
-
 "@rolldown/binding-win32-arm64-msvc@1.0.0-beta.60":
   version "1.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@rolldown/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-1.0.0-beta.60.tgz#de5e93cf5f197d0cecff1f2fc5ec0e1f5494c30a"
   integrity sha512-JBOm8/DC/CKnHyMHoJFdvzVHxUixid4dGkiTqGflxOxO43uSJMpl77pSPXvzwZ/VXwqblU2V0/PanyCBcRLowQ==
-
-"@rolldown/binding-win32-x64-msvc@1.0.0-beta.53":
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.0.0-beta.53.tgz#78bc08543b916082271d7a19b310e24ea6821da7"
-  integrity sha512-cjWL/USPJ1g0en2htb4ssMjIycc36RvdQAx1WlXnS6DpULswiUTVXPDesTifSKYSyvx24E0YqQkEm0K/M2Z/AA==
 
 "@rolldown/binding-win32-x64-msvc@1.0.0-beta.60":
   version "1.0.0-beta.60"
@@ -3365,43 +3288,6 @@ rimraf@^6.1.2:
   dependencies:
     glob "^13.0.0"
     package-json-from-dist "^1.0.1"
-
-rolldown-vite@^7.3.1:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/rolldown-vite/-/rolldown-vite-7.3.1.tgz#432c09996320610d7fdc5fecf538128b65386461"
-  integrity sha512-LYzdNAjRHhF2yA4JUQm/QyARyi216N2rpJ0lJZb8E9FU2y5v6Vk+xq/U4XBOxMefpWixT5H3TslmAHm1rqIq2w==
-  dependencies:
-    "@oxc-project/runtime" "0.101.0"
-    fdir "^6.5.0"
-    lightningcss "^1.30.2"
-    picomatch "^4.0.3"
-    postcss "^8.5.6"
-    rolldown "1.0.0-beta.53"
-    tinyglobby "^0.2.15"
-  optionalDependencies:
-    fsevents "~2.3.3"
-
-rolldown@1.0.0-beta.53:
-  version "1.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/rolldown/-/rolldown-1.0.0-beta.53.tgz#b1a102a1265d6dcce9ae36f37d6f3aca05bb8ed2"
-  integrity sha512-Qd9c2p0XKZdgT5AYd+KgAMggJ8ZmCs3JnS9PTMWkyUfteKlfmKtxJbWTHkVakxwXs1Ub7jrRYVeFeF7N0sQxyw==
-  dependencies:
-    "@oxc-project/types" "=0.101.0"
-    "@rolldown/pluginutils" "1.0.0-beta.53"
-  optionalDependencies:
-    "@rolldown/binding-android-arm64" "1.0.0-beta.53"
-    "@rolldown/binding-darwin-arm64" "1.0.0-beta.53"
-    "@rolldown/binding-darwin-x64" "1.0.0-beta.53"
-    "@rolldown/binding-freebsd-x64" "1.0.0-beta.53"
-    "@rolldown/binding-linux-arm-gnueabihf" "1.0.0-beta.53"
-    "@rolldown/binding-linux-arm64-gnu" "1.0.0-beta.53"
-    "@rolldown/binding-linux-arm64-musl" "1.0.0-beta.53"
-    "@rolldown/binding-linux-x64-gnu" "1.0.0-beta.53"
-    "@rolldown/binding-linux-x64-musl" "1.0.0-beta.53"
-    "@rolldown/binding-openharmony-arm64" "1.0.0-beta.53"
-    "@rolldown/binding-wasm32-wasi" "1.0.0-beta.53"
-    "@rolldown/binding-win32-arm64-msvc" "1.0.0-beta.53"
-    "@rolldown/binding-win32-x64-msvc" "1.0.0-beta.53"
 
 rolldown@1.0.0-beta.60:
   version "1.0.0-beta.60"
