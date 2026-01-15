@@ -1,7 +1,7 @@
 {
   "name": "docgen-tool",
   "type": "module",
-  "version": "6.4.1",
+  "version": "6.4.2",
   "description": "A tool for creating HTML and PDF documentation",
   "bin": "./dist/cli/cli.js",
   "files": [
@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.2",
-    "@tanstack/react-router": "^1.147.0",
-    "@vitejs/plugin-react": "5.0.2",
+    "@tanstack/react-router": "^1.150.0",
+    "@vitejs/plugin-react": "5.1.2",
     "cheerio": "^1.1.2",
     "classnames": "^2.5.1",
     "commander": "^14.0.2",
@@ -59,18 +59,17 @@
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "rolldown-vite": "^7.3.1",
-    "style-dictionary": "^5.1.3",
-    "vite": "npm:rolldown-vite@latest",
-    "vite-plugin-node-polyfills": "0.22.0",
+    "style-dictionary": "^5.1.4",
+    "vite": "8.0.0-beta.8",
     "z-schema": "^6.0.2"
   },
   "devDependencies": {
     "@prettier/plugin-oxc": "^0.1.3",
-    "@types/node": "^25.0.5",
+    "@types/node": "^25.0.9",
     "@types/react": "^19.2.8",
     "ncp": "^2.0.0",
-    "oxlint": "^1.38.0",
-    "prettier": "^3.7.4",
+    "oxlint": "^1.39.0",
+    "prettier": "^3.8.0",
     "rimraf": "^6.1.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
