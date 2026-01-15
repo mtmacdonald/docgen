@@ -1,7 +1,6 @@
 import path from 'node:path';
 import { build, createServer } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import dotenv from 'dotenv';
 import { deriveParameters } from '../../docgen/meta/derive-parameters.ts';
 import { loadInputs } from '../../docgen/fs/load-inputs.ts';
@@ -41,12 +40,6 @@ export const generate = async (command, mode: string) => {
     publicDir: inputDir,
     base: basePath,
     plugins: [
-      nodePolyfills({
-        include: ['buffer'],
-        globals: {
-          Buffer: true,
-        },
-      }),
       styleVariablesPlugin(appPath, inputDir),
       react({
         // Exclude PRF worker from HMR (ReferenceError: window is not defined @react-refresh error caused by HMR)
