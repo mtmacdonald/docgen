@@ -1,4 +1,8 @@
-﻿## DocGen 6.4.0, 6.4.1 10/01/2026
+﻿## DocGen 6.4.2 15/01/2026
+
+- Upgrade all NPM dependencies and resolve build config issues: [PR189](https://github.com/mtmacdonald/docgen/pull/189)
+
+## DocGen 6.4.0, 6.4.1 10/01/2026
 
 - Support for customizable themes ([#134](https://github.com/mtmacdonald/docgen/issues/134))
 - Fix code block indentation issue in PDF ([#183](https://github.com/mtmacdonald/docgen/issues/183))
