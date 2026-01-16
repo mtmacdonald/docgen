@@ -59,6 +59,7 @@
     "remark-gfm": "^4.0.1",
     "style-dictionary": "^5.1.4",
     "vite": "8.0.0-beta.8",
+    "vite-plugin-node-polyfills": "^0.25.0",
     "z-schema": "^6.0.2"
   },
   "devDependencies": {
