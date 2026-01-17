@@ -11,7 +11,7 @@
   "scripts": {
     "check:types": "tsc --noEmit",
     "bundle:cli": "vite build --config ./vite.bundle.cli.config.ts && chmod +x dist/cli/cli.js",
-    "bundle:app": "rimraf dist/app dist/template && ncp src/app dist/app && ncp src/template dist/template",
+    "bundle:app": "tsx scripts/bundle-app.ts",
     "bundle": "pnpm bundle:cli && pnpm bundle:app",
     "dev:docs": "tsx src/cli/cli.ts dev -i src/docs -o ./docs",
     "build:docs": "tsx src/cli/cli.ts build -i src/docs -o ./docs",
