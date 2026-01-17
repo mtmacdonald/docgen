@@ -3,7 +3,7 @@ set -e  # Exit on error
 
 # Build the package
 echo "Bundling package..."
-pnpm run bundle
+pnpm bundle
 
 # Pack the package and get the filename
 TARBALL_NAME=$(npm pack --silent)
@@ -23,18 +23,18 @@ npm init -y >/dev/null
 npm install "./$TARBALL_NAME"
 
 # Run CLI commands to verify
-if ! npx docgen-tool --version; then
+if ! pnpx docgen-tool --version; then
   echo "⚠ CLI execution failed"
   exit 1
 fi
 
-if ! npx docgen-tool scaffold -o ./example-input; then
+if ! pnpx docgen-tool scaffold -o ./example-input; then
   echo "⚠ CLI execution failed"
   exit 1
 fi
 
 mkdir example-output
-if ! npx docgen-tool build -i ./example-input -o ./example-output; then
+if ! pnpx docgen-tool build -i ./example-input -o ./example-output; then
   echo "⚠ CLI execution failed"
   exit 1
 fi

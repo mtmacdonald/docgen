@@ -24,7 +24,7 @@ jobs:
       - name: Log Node & TypeScript versions
         run: |
           node -v
-          pnpm exec tsc -v
+          pnpm tsc -v
 
       - name: Check Formatting
         run: pnpm formatting:check
