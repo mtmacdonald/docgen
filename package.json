@@ -19,7 +19,7 @@
     "build:docs:gh": "tsx src/cli/cli.ts build -i src/docs -o ./docs && pnpm copy:gh:files",
     "copy:gh:files": "node deploy/before-deploy-website.js",
     "preview:style:variables": "rimraf src/app/styles/style-variables && pnpx style-dictionary build --config src/app/styles/config.json && pnpm formatting:fix",
-    "test": "npm run formatting:check",
+    "test": "pnpm formatting:check",
     "test:run": "tsx src/cli/cli.ts build -i src/__test__/test-run -o src/__test__/test-run-output",
     "test:scaffold": "tsx src/cli/cli.ts scaffold -o src/__test__/test-run-output",
     "test:prod:run": "./dist/cli/cli.js build -i src/__test__/test-run -o ../source/__test__/test-run-output",
