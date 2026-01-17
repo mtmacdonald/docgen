@@ -1,3 +1,8 @@
+## DocGen 6.4.4 17/01/2026
+
+- Remove dependency on [cheerio](https://www.npmjs.com/package/cheerio), replace with [node-html-parser](https://www.npmjs.com/package/node-html-parser) ([#192](https://github.com/mtmacdonald/docgen/issues/192))
+- Upgrade package manager from [yarn classic](https://classic.yarnpkg.com/lang/en) to [pnpm.io](https://pnpm.io) ([#191](https://github.com/mtmacdonald/docgen/issues/191))
+
 ## DocGen 6.4.2, 6.4.3 15/01/2026
 
 - Upgrade all NPM dependencies and resolve build config issues: [PR189](https://github.com/mtmacdonald/docgen/pull/189)

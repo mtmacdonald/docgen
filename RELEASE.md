@@ -5,8 +5,8 @@
 Bump version number, release date, and release notes in:
 
 - package.json
-- source/user-guide/parameters.json
-- source/user-guide/release-notes.txt
+- src/docs/user-guide/parameters.json
+- src/docs/user-guide/release-notes.txt
 
 Merge your changes into `master` branch by submitting a pull request.
 
@@ -14,13 +14,13 @@ Merge your changes into `master` branch by submitting a pull request.
 
 On `master` branch:
 
-- `yarn bundle`
+- `pnpm bundle`
 - `npm login`
 - `npm publish`
 
 ## Deploy the gh-pages website
 
 - Merge `master` into `gh-pages` branch
-- `yarn build:docs:gh`
+- `pnpm build:docs:gh`
 - Commit the generated docs
 - Push to `gh-pages` branch

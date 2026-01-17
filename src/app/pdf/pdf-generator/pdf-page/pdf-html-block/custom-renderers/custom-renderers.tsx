@@ -1,6 +1,6 @@
 import React from 'react';
+import { parse } from 'node-html-parser';
 import { View, Text, Image } from '@react-pdf/renderer';
-import * as cheerio from 'cheerio';
 
 declare const __BASE_PATH__: string;
 
@@ -28,10 +28,11 @@ export const customRenderers = () => ({
   },
   pre: (payload) => {
     const { element, style } = payload;
-    const html = element.innerHTML ?? '';
-    const $ = cheerio.load(html);
-    const code = $('code');
-    const text = code.length ? code.text() : $.text();
+    const root = parse(element.innerHTML ?? '');
+    const codeElement = root.querySelector('code');
+    const text = codeElement
+      ? codeElement.textContent
+      : (root.textContent ?? '');
 
     // Preserve indentation and multiple spaces with Non-Breaking Spaces
     // to ensure react-pdf doesn't collapse them
