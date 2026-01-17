@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { cpSync } from 'fs';
 
 const spaScript = `
 <!-- Start Single Page Apps for GitHub Pages -->
@@ -13,14 +12,14 @@ const spaScript = `
 <!-- End Single Page Apps for GitHub Pages -->
 `;
 
-// 1. Deep copy deploy/docs -> docs
-cpSync('deploy/include', 'docs/', { recursive: true });
+// 1. Deep copy deploy-website/docs -> docs
+fs.cpSync('deploy-website/include', 'docs/', { recursive: true });
 
 // 2. Insert SPA script into index.html
 const indexFile = path.join('docs', 'index.html');
 let html = fs.readFileSync(indexFile, 'utf-8');
 
-// Find <title> tag and insert after it
+// Find the <title> tag and insert after it
 html = html.replace(/(<title>.*?<\/title>)/, `$1\n${spaScript}`);
 
 fs.writeFileSync(indexFile, html, 'utf-8');
