@@ -5,8 +5,8 @@
 Bump version number, release date, and release notes in:
 
 - package.json
-- source/user-guide/parameters.json
-- source/user-guide/release-notes.txt
+- src/docs/user-guide/parameters.json
+- src/docs/user-guide/release-notes.txt
 
 Merge your changes into `master` branch by submitting a pull request.
 
