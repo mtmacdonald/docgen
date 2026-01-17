@@ -3,7 +3,7 @@ set -e  # Exit on error
 
 # Build the package
 echo "Bundling package..."
-yarn bundle
+pnpm run bundle
 
 # Pack the package and get the filename
 TARBALL_NAME=$(npm pack --silent)

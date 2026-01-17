@@ -14,13 +14,13 @@ Merge your changes into `master` branch by submitting a pull request.
 
 On `master` branch:
 
-- `yarn bundle`
+- `pnpm bundle`
 - `npm login`
 - `npm publish`
 
 ## Deploy the gh-pages website
 
 - Merge `master` into `gh-pages` branch
-- `yarn build:docs:gh`
+- `pnpm build:docs:gh`
 - Commit the generated docs
 - Push to `gh-pages` branch

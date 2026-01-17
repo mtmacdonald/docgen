@@ -19,36 +19,36 @@ jobs:
           node-version: 24
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Log Node & TypeScript versions
         run: |
           node -v
-          npx tsc -v
+          pnpm exec tsc -v
 
       - name: Check Formatting
-        run: yarn formatting:check
+        run: pnpm formatting:check
 
       - name: Check Linting
-        run: yarn lint:check
+        run: pnpm lint:check
 
       - name: Check Types
-        run: yarn check:types
+        run: pnpm check:types
 
       - name: Build styles
-        run: yarn preview:style:variables
+        run: pnpm preview:style:variables
 
       - name: Bundle package (build NPM package)
-        run: yarn bundle
+        run: pnpm bundle
 
       - name: Run DocGen scaffold (DEV)
-        run: yarn test:scaffold
+        run: pnpm test:scaffold
 
       - name: Run DocGen (DEV)
-        run: yarn test:run
+        run: pnpm test:run
 
       - name: Run DocGen (PROD)
-        run: yarn test:prod:run
+        run: pnpm test:prod:run
 
       - name: Test Publish (Dry-Run)
-        run: yarn test:publish
+        run: pnpm test:publish
