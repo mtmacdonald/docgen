@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      var path = window.location.pathname;
+      if (path.startsWith("/docgen")) {
+        window.location.replace(
+          "https://inkit.github.io/docgen" + path.replace("/docgen", "")
+        );
+      }
+    </script>
+</head>
+<body>
+<p>This page has moved.
+    <a href="https://inkit.github.io/docgen/">Click here</a>
+    if you are not redirected.</p>
+</body>
+</html>
